@@ -121,6 +121,13 @@
                         icon: "fa fa-times-circle-o",
                         taskPermissionName: "CLOSE_CLIENT"
                     },
+                    {
+                        name: "label.button.addbusinessdetail",
+                        href: "#/client",
+                        subhref: "addbusinessdetail",
+                        icon: "fa fa-plus",
+                        taskPermissionName: "CREATE_CLIENTBUSINESSDETAIL"
+                    },
 
                 ],
                 "Transfer in progress": [
