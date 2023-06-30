@@ -123,8 +123,7 @@
                     },
                     {
                         name: "label.button.addbusinessdetail",
-                        href: "#/client",
-                        subhref: "addbusinessdetail",
+                        href: "#/addbusinessdetail",
                         icon: "fa fa-plus",
                         taskPermissionName: "CREATE_CLIENTBUSINESSDETAIL"
                     },
