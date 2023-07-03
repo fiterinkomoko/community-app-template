@@ -1,10 +1,1079 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="content-container" ng-controller = "CreateLoanProductController">
+    <ul class="breadcrumb">
+        <li ng-show="clientName">
+            <a href="#/viewclient/{{clientId}}">
+                <strong>'{{clientName}}'</strong>
+            </a>
+        </li>
+        <li class="active">{{'label.anchor.addclientbusinessdetail' | translate}}</li>
+    </ul>
+    <wizard current-step="step" on-finish="submit()" class="card well">
+        <wz-step wz-title="{{'label.heading.information'|translate}}">
+            <form name="Details" novalidate="" class=" form-horizontal " ng-submit="goNext(Details)">
+                <fieldset>
+                    <api-validate></api-validate>
+                    <!--<h3>{{ 'label.heading.details' | translate }}</h3>-->
+                    <hr>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.businesstype' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.businesstype' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
 
-</body>
-</html>
+                        <div class="col-sm-2">
+                            <input type="text" id="businesstype" class="form-control" name="businesstype" ng-model="formData.businesstype"
+                                   required late-validate/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="businesstype"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.startingcapital' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.startingcapital' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="startingcapital" name="startingcapital" ng-model="formData.startingcapital"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="startingcapital"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.businesscreationdate' | translate }}
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.businesscreationdate' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input id="businesscreationdate" sort type="text" class="form-control"
+                                   datepicker-pop="dd MMMM yyyy" ng-model="date.first" is-open="opened"
+                                   min="minDate" />
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="businesscreationdate"/>
+                        </div>
+
+                        <label class="control-label col-sm-2">{{ 'label.input.externalid' | translate }}<span
+                                class="required">*</span>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="externalid" name="externalid" ng-model="formData.externalid"
+                                   class="form-control" required late-validate/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="externalid"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.sourceofcapital' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.sourceofcapital' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="sourceofcapital" class="form-control" name="sourceofcapital" ng-model="formData.sourceofcapital"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="sourceofcapital"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.totalemployees' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalemployees' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalemployees" name="totalemployees" ng-model="formData.totalemployees"
+                                   class="form-control"  number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalemployees"/>
+                        </div>
+                    </div>
+                    <hr>
+                    <button class = "btn btn-default pull-left" wz-previous disabled><i class = "fa fa-arrow-left"></i>&nbsp;&nbsp;Previous</button>
+                    <button class = "btn btn-default pull-right" type="submit">Next&nbsp;&nbsp;<i class = "fa fa-arrow-right"></i></button>
+                </fieldset>
+            </form>
+        </wz-step>
+        <wz-step wz-title="{{ 'label.heading.revenue' | translate }}">
+            <form name="Currency" novalidate="" class=" form-horizontal " ng-submit="goNext(Currency)">
+                <fieldset>
+                    <api-validate></api-validate>
+                    <!--<h3>{{ 'label.heading.currency' | translate }}</h3>-->
+                    <hr>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.businessrevenue' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.businessrevenue' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="businessrevenue" class="form-control" name="businessrevenue" ng-model="formData.businessrevenue"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="businessrevenue"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.averagemonthlyrevenue' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.averagemonthlyrevenue' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="averagemonthlyrevenue" name="averagemonthlyrevenue" ng-model="formData.averagemonthlyrevenue"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="averagemonthlyrevenue"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.bestmonth' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.bestmonth' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="bestmonth" class="form-control" name="bestmonth" ng-model="formData.bestmonth"
+                                   required late-validate/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="bestmonth"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.reasonforbestmonth' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.reasonforbestmonth' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <textarea rows="2" class="form-control" ng-model="formData.reasonforbestmonth" required late-validate></textarea>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="reasonforbestmonth"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.worstmonth' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.worstmonth' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="worstmonth" class="form-control" name="worstmonth" ng-model="formData.worstmonth"
+                                   required late-validate/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="worstmonth"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.reasonforworstmonth' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.reasonforworstmonth' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <textarea rows="2" class="form-control" ng-model="formData.reasonforworstmonth" required late-validate></textarea>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="reasonforworstmonth"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.numberofpurchase' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.numberofpurchase' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="numberofpurchase" class="form-control" name="numberofpurchase" ng-model="formData.numberofpurchase"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="numberofpurchase"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.purchasefrequency' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.purchasefrequency' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="purchasefrequency" name="purchasefrequency" ng-model="formData.purchasefrequency"
+                                   class="form-control" required late-validate/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="purchasefrequency"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.totalpurchaselastmonth' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalpurchaselastmonth' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalpurchaselastmonth" class="form-control" name="totalpurchaselastmonth" ng-model="formData.totalpurchaselastmonth"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalpurchaselastmonth"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.lastpurchase' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.lastpurchase' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="lastpurchase" name="lastpurchase" ng-model="formData.lastpurchase"
+                                   class="form-control" required late-validate/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="lastpurchase"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.lastpurchaseamount' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.lastpurchaseamount' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="lastpurchaseamount" class="form-control" name="lastpurchaseamount" ng-model="formData.lastpurchaseamount"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="lastpurchaseamount"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.businessassetamount' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.businessassetamount' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="businessassetamount" name="businessassetamount" ng-model="formData.businessassetamount"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="businessassetamount"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.amountatinventory' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.amountatinventory' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="amountatinventory" class="form-control" name="amountatinventory" ng-model="formData.amountatinventory"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="amountatinventory"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.fixedassetcost' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.fixedassetcost' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="fixedassetcost" name="fixedassetcost" ng-model="formData.fixedassetcost"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="fixedassetcost"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.amountatcash' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.amountatcash' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="amountatcash" class="form-control" name="amountatcash" ng-model="formData.amountatcash"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="amountatcash"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.amountatsaving' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.amountatsaving' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="amountatsaving" name="amountatsaving" ng-model="formData.amountatsaving"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="amountatsaving"/>
+                        </div>
+                    </div>
+                    <hr>
+                    <button class = "btn btn-default pull-left" wz-previous><i class = "fa fa-arrow-left"></i>&nbsp;&nbsp;Previous</button>
+                    <button class = "btn btn-default pull-right" type="submit" >Next&nbsp;&nbsp;<i class = "fa fa-arrow-right"></i></button>
+                </fieldset>
+            </form>
+        </wz-step>
+        <wz-step wz-title="{{ 'label.heading.expense' | translate }}">
+            <form name="Terms" novalidate="" class=" form-horizontal " ng-submit="goNext(Terms)">
+                <fieldset>
+                    <api-validate></api-validate>
+                    <!--<h3>{{ 'label.heading.terms' | translate }}</h3>-->
+                    <hr>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.totalintax' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalintax' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalintax" class="form-control" name="totalintax" ng-model="formData.totalintax"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalintax"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.totalintransport' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalintransport' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalintransport" name="totalintransport" ng-model="formData.totalintransport"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalintransport"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.totalinrent' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalinrent' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalinrent" class="form-control" name="totalinrent" ng-model="formData.totalinrent"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalinrent"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.totalincommunication' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalincommunication' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalincommunication" name="totalincommunication" ng-model="formData.totalincommunication"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalincommunication"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.otherexpense' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.otherexpense' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <textarea rows="2" class="form-control" ng-model="formData.otherexpense" required late-validate></textarea>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="otherexpense"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.otherexpenseamount' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.otherexpenseamount' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="otherexpenseamount" name="otherexpenseamount" ng-model="formData.otherexpenseamount"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="otherexpenseamount"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.totalutility' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalutility' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalutility" class="form-control" name="totalutility" ng-model="formData.totalutility"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalutility"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.totalworkersalary' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalworkersalary' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalworkersalary" name="totalworkersalary" ng-model="formData.totalworkersalary"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalworkersalary"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.totalwage' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalwage' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalwage" class="form-control" name="totalwage" ng-model="formData.totalwage"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalwage"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.society' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.society' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="society" name="society" ng-model="formData.society"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="society"/>
+                        </div>
+                    </div>
+                    <hr>
+                    <button class = "btn btn-default pull-left" wz-previous><i class = "fa fa-arrow-left"></i>&nbsp;&nbsp;Previous</button>
+                    <button class = "btn btn-default pull-right" type="submit">Next&nbsp;&nbsp;<i class = "fa fa-arrow-right"></i></button>
+                </fieldset>
+            </form>
+        </wz-step>
+        <wz-step ng-if="isClicked" wz-title = "Preview">
+            <form name="Preview" novalidate="" class="form-horizontal  ">
+                <fieldset>
+                    <api-validate></api-validate>
+                    <br>
+                    <hr>
+                    <table width="100%">
+                        <tr>
+                            <td>
+                                <a id="test" class="old-syle-anchor">&nbsp;</a>
+                            </td>
+                        </tr>
+                        <tr class="bottomborder">
+                            <td colspan="4">
+                                <strong>{{'label.heading.details' | translate}}</strong>
+                            </td>
+                        </tr>
+                        <tr class="toppadding" ng-show="loanproduct.description">
+                            <td>{{'label.heading.description' | translate}} :</td>
+                            <td colspan="3">{{loanproduct.description}}</td>
+                        </tr>
+                        <tr ng-show="loanproduct.shortName">
+                            <td>{{'label.heading.shortname' | translate}} :</td>
+                            <td colspan="3">{{loanproduct.shortName}}</td>
+                        </tr>
+                        <tr ng-show="loanproduct.fundName">
+                            <td>{{'label.heading.fundname' | translate}}:</td>
+                            <td colspan="3">{{loanproduct.fundName}}</td>
+                        </tr>
+                        <tr ng-show="date.first">
+                            <td>{{'label.heading.startdate' | translate}}:</td>
+                            <td colspan="3">{{date.first | DateFormat}}</td>
+                        </tr>
+                        <tr ng-show="date.second">
+                            <td>{{'label.heading.closedate' | translate}}:</td>
+                            <td colspan="3">{{date.second | DateFormat}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.includeborrowercycle' | translate}} :</td>
+                            <td colspan="3">{{loanproduct.includeInBorrowerCycle}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><br/></td>
+                        </tr>
+                        <tr class="bottomborder">
+                            <td colspan="4"><strong>{{'label.heading.currency' | translate}}</strong></td>
+                        </tr>
+                        <tr class="toppadding">
+                            <td>{{'label.heading.currency' | translate}}:</td>
+                            <td colspan="3">{{loanproduct.currency.name}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.decimalplaces' | translate}} :</td>
+                            <td colspan="3">{{formData.digitsAfterDecimal}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.currencyinmultiplesof' | translate}}</td>
+                            <td colspan="3">{{formData.inMultiplesOf}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.input.installmentinmultiplesof' | translate}}</td>
+                            <td colspan="3">{{loanproduct.installmentAmountInMultiplesOf}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><br/></td>
+                        </tr>
+                        <tr class="bottomborder">
+                            <td colspan="4"><strong>{{'label.heading.terms' | translate}}</strong></td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.input.useborrowerloancounter' | translate}} :</td>
+                            <td colspan="3">{{loanproduct.useBorrowerCycle}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.principal' | translate}}:</td>
+                            <td colspan="3">{{loanproduct.principal|number}}&nbsp;&nbsp;&nbsp;( Min:{{loanproduct.minPrincipal|number}}&nbsp;, Max
+                                :{{loanproduct.maxPrincipal|number}} )
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.numofrepayments' | translate}}:</td>
+                            <td colspan="3">{{loanproduct.numberOfRepayments}}&nbsp;&nbsp;&nbsp;( Min:{{loanproduct.minNumberOfRepayments}}&nbsp;,
+                                Max:{{loanproduct.maxNumberOfRepayments}})
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.repayevery' | translate}}:</td>
+                            <td colspan="3">{{loanproduct.repaymentEvery}}&nbsp;&nbsp;{{loanproduct.repaymentFrequencyOption.value}}</td>
+                        </tr>
+                        <tr ng-show="!loanproduct.isLinkedToFloatingInterestRates">
+                            <td>{{'label.heading.nominalinterestrate' | translate}}:</td>
+                            <td colspan="3">{{loanproduct.interestRatePerPeriod | number}}&nbsp;&nbsp;&nbsp;(
+                                Min:{{loanproduct.minInterestRatePerPeriod | number}}&nbsp;, Max:{{loanproduct.maxInterestRatePerPeriod | number}})&nbsp;&nbsp;{{loanproduct.interestRateFrequencyOption.value}}
+                            </td>
+                        </tr>
+                        <tr ng-show="loanproduct.isLinkedToFloatingInterestRates">
+                            <td>{{'label.heading.floatinglendingrate' | translate}}:</td>
+                            <td colspan="3">{{loanproduct.floatingRateName}}&nbsp;&nbsp;&nbsp;
+                                {{'label.heading.floatinginterestratedifferential' | translate}}:{{loanproduct.interestRateDifferential}} &nbsp;&nbsp;&nbsp;
+                                {{'label.heading.isFloatingInterestRateCalculationAllowed' | translate}}:{{loanproduct.isFloatingInterestRateCalculationAllowed}}
+                            </td>
+                        </tr>
+
+                        <tr ng-show="loanproduct.isLinkedToFloatingInterestRates">
+                            <td>{{'label.heading.floatinginterestrate' | translate}}:</td>
+                            <td colspan="3">{{loanproduct.defaultDifferentialLendingRate}}&nbsp;&nbsp;&nbsp;
+                                (Min:{{loanproduct.minDifferentialLendingRate}}&nbsp;, Max:{{loanproduct.maxDifferentialLendingRate}})&nbsp;&nbsp;
+                            </td>
+                        </tr>
+
+                        <tr class="bottomborder" ng-show="loanproduct.useBorrowerCycle">
+                            <td colspan="4"><strong>{{'label.heading.principalCycleVariations' | translate}}:</strong></td>
+                        </tr>
+                        <tr class="bottomborder graybg" ng-show="loanproduct.useBorrowerCycle">
+                            <td>{{'label.input.cyclenumber' | translate}}</td>
+                            <td>{{'label.input.minimum' | translate}}</td>
+                            <td>{{'label.input.default' | translate}}</td>
+                            <td>{{'label.input.maximum' | translate}}</td>
+                            <td></td>
+                        </tr>
+                        <tr ng-repeat="borrowerCycleVariation in loanproduct.principalVariationsForBorrowerCycle">
+                            <td>{{borrowerCycleVariation.valueConditionType.code | translate}}{{borrowerCycleVariation.borrowerCycleNumber}}
+                            </td>
+                            <td>{{borrowerCycleVariation.minValue}}</td>
+                            <td>{{borrowerCycleVariation.defaultValue}}</td>
+                            <td>{{borrowerCycleVariation.maxValue}}</td>
+                        </tr>
+                        <tr class="bottomborder" ng-show="loanproduct.useBorrowerCycle">
+                            <td colspan="4"><strong>{{'label.heading.numerOfRepaymentCycleVariations' | translate}}</strong></td>
+                        </tr>
+                        <tr class="bottomborder graybg" ng-show="loanproduct.useBorrowerCycle">
+                            <td>{{'label.input.cyclenumber' | translate}}</td>
+                            <td>{{'label.input.minimum' | translate}}</td>
+                            <td>{{'label.input.default' | translate}}</td>
+                            <td>{{'label.input.maximum' | translate}}</td>
+                            <td></td>
+                        </tr>
+                        <tr ng-repeat="borrowerCycleVariation in loanproduct.numberOfRepaymentVariationsForBorrowerCycle">
+                            <td>{{borrowerCycleVariation.valueConditionType.code | translate}}{{borrowerCycleVariation.borrowerCycleNumber}}
+                            </td>
+                            <td>{{borrowerCycleVariation.minValue}}</td>
+                            <td>{{borrowerCycleVariation.defaultValue}}</td>
+                            <td>{{borrowerCycleVariation.maxValue}}</td>
+                        </tr>
+                        <tr class="bottomborder" ng-show="loanproduct.useBorrowerCycle">
+                            <td colspan="4"><strong>{{'label.heading.interestRateCycleVariations' | translate}}</strong></td>
+                        </tr>
+                        <tr class="bottomborder graybg" ng-show="loanproduct.useBorrowerCycle">
+                            <td>{{'label.input.cyclenumber' | translate}}</td>
+                            <td>{{'label.input.minimum' | translate}}</td>
+                            <td>{{'label.input.default' | translate}}</td>
+                            <td>{{'label.input.maximum' | translate}}</td>
+                            <td></td>
+                        </tr>
+                        <tr ng-repeat="borrowerCycleVariation in loanproduct.interestRateVariationsForBorrowerCycle">
+                            <td>{{borrowerCycleVariation.valueConditionType.code | translate}}{{borrowerCycleVariation.borrowerCycleNumber}}
+                            </td>
+                            <td>{{borrowerCycleVariation.minValue}}</td>
+                            <td>{{borrowerCycleVariation.defaultValue}}</td>
+                            <td>{{borrowerCycleVariation.maxValue}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.input.minimum.days.between.disbursal.and.first.repayment' | translate}}</td>
+                            <td colspan="3">{{loanproduct.minimumDaysBetweenDisbursalAndFirstRepayment}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><br/></td>
+                        </tr>
+                        <tr class="bottomborder">
+                            <td colspan="4"><strong>{{'label.heading.settings' | translate}}</strong></td>
+                        </tr>
+                        <tr class="toppadding">
+                            <td>{{'label.heading.amortization' | translate}}</td>
+                            <td colspan="3">{{loanproduct.amortizationOption.value}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.interestmethod' | translate}}</td>
+                            <td colspan="3">{{loanproduct.interestOption.value}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ 'label.input.isequalamortization' | translate }}</td>
+                            <td colspan="3">{{loanproduct.isEqualAmortization}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.interestcalculationperiod' | translate}}</td>
+                            <td colspan="3">{{loanproduct.interestCalculationPeriodOption.value}}</td>
+                        </tr>
+                        <tr ng-show="formData.interestCalculationPeriodType == 1">
+                            <td>{{'label.heading.allowpartialperiodinterestcalcualtion' | translate}}</td>
+                            <td colspan="3">{{loanproduct.allowPartialPeriodInterestCalcualtion}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.arrearstolerance' | translate}}</td>
+                            <td colspan="3">{{loanproduct.inArrearsTolerance|number}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.repaymentstrategy' | translate}}</td>
+                            <td colspan="3">{{loanproduct.transactionProcessingStrategyName}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.grace' | translate}}</td>
+                            <td colspan="3">{{loanproduct.graceOnPrincipalPayment}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.interestfreeperiod' | translate}}</td>
+                            <td colspan="3">{{loanproduct.graceOnInterestCharged}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.graceOnArrearsAgeing' | translate}}</td>
+                            <td colspan="3">{{loanproduct.graceOnArrearsAgeing}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.overduedaysfornpa' | translate}}</td>
+                            <td colspan="3">{{loanproduct.overdueDaysForNPA}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.input.loan.account.moves.out.of.npa.only.on.arrears.completion' | translate}}</td>
+                            <td colspan="3">{{loanproduct.accountMovesOutOfNPAOnlyOnArrearsCompletion | YesOrNo}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.input.daysinyears' | translate}}</td>
+                            <td colspan="3">{{loanproduct.daysInYearOption.value}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.input.daysinmonth' | translate}}</td>
+                            <td colspan="3">{{loanproduct.daysInMonthOption.value}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.input.thresholdforlastinstallment' | translate}}</td>
+                            <td colspan="3">{{loanproduct.principalThresholdForLastInstallment}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.input.candefineinstallmentamount' | translate}}</td>
+                            <td colspan="3">{{loanproduct.canDefineInstallmentAmount | YesOrNo}}</td>
+                        </tr>
+
+                        <tr ng-show="loanproduct.allowVariableInstallments">
+                            <td>{{'label.input.variableinstallments' | translate}}</td>
+                            <td colspan="3">(Min:{{loanproduct.minimumGap}}&nbsp;, Max:{{loanproduct.maximumGap}})
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.input.canUseForTopup' | translate}}</td>
+                            <td colspan="3">{{loanproduct.canUseForTopup | YesOrNo}}</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="4"><br/></td>
+                        </tr>
+                        <tr class="bottomborder">
+                            <td colspan="4"><strong>{{'label.heading.interestRecalculation' | translate}}</strong></td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.input.recalculateinterest' | translate}}</td>
+                            <td colspan="3">{{loanproduct.isInterestRecalculationEnabled | YesOrNo}}</td>
+                        </tr>
+
+                        <tr data-ng-show="loanproduct.isInterestRecalculationEnabled">
+                            <td>{{'label.input.interest.recalculation.reschdule.strategy' | translate}}</td>
+                            <td colspan="3">{{loanproduct.interestRecalculationData.rescheduleStrategyType.value}}</td>
+                        </tr>
+                        <tr data-ng-show="loanproduct.isInterestRecalculationEnabled">
+                            <td>{{'label.input.preclose.interest.calculation.strategy' | translate}}</td>
+                            <td colspan="3">{{loanproduct.interestRecalculationData.preClosureInterestCalculationStrategyCode.code | translate}}</td>
+                        </tr>
+                        <tr data-ng-show="loanproduct.isInterestRecalculationEnabled">
+                            <td>{{'label.input.interest.recalculation.compounding.method' | translate}}</td>
+                            <td colspan="3">{{loanproduct.interestRecalculationData.interestRecalculationCompoundingType.value}}</td>
+                        </tr>
+                        <tr data-ng-show="loanproduct.isInterestRecalculationEnabled && formData.interestRecalculationCompoundingMethod != 0">
+                            <td>{{'label.input.frequency.for.compounding' | translate}}</td>
+                            <td colspan="3">{{loanproduct.interestRecalculationData.recalculationCompoundingFrequencyType.value}}
+                                <label data-ng-show="formData.recalculationCompoundingFrequencyType == 3 &&
+                        loanproduct.interestRecalculationData.recalculationCompoundingFrequencyWeekday != null"> on {{ loanproduct.interestRecalculationData.recalculationCompoundingFrequencyWeekday.value}}</label>
+                                <label data-ng-show="loanproduct.interestRecalculationData.recalculationCompoundingFrequencyType.id == 4 &&
+		                loanproduct.interestRecalculationData.recalculationCompoundingFrequencyOnDay.value != null">on day {{ loanproduct.interestRecalculationData.recalculationCompoundingFrequencyOnDay.value}}</label>
+                                <label data-ng-show="formData.recalculationCompoundingFrequencyType == 4 &&
+                        loanproduct.interestRecalculationData.recalculationCompoundingFrequencyOnDay.value == null &&
+                        loanproduct.interestRecalculationData.recalculationCompoundingFrequencyNthDay != null">on {{ loanproduct.interestRecalculationData.recalculationCompoundingFrequencyNthDay.value}} {{ loanproduct.interestRecalculationData.recalculationCompoundingFrequencyWeekday.value}}
+                                </label>
+                            </td>
+                        </tr>
+                        <tr data-ng-show="loanproduct.isInterestRecalculationEnabled && formData.interestRecalculationCompoundingMethod != 0
+        && formData.recalculationCompoundingFrequencyType != 1">
+                            <td>{{'label.input.frequency.interval.for.compounding' | translate}}</td>
+                            <td colspan="3">{{formData.recalculationCompoundingFrequencyInterval}}</td>
+                        </tr>
+
+
+                        <tr data-ng-show="loanproduct.isInterestRecalculationEnabled">
+                            <td>{{'label.input.frequency.for.recalculte.outstanding.principal' | translate}}</td>
+                            <td colspan="3">{{loanproduct.interestRecalculationData.recalculationRestFrequencyType.value}}
+                                <label data-ng-show="formData.recalculationRestFrequencyType == 3 &&
+                        loanproduct.interestRecalculationData.recalculationRestFrequencyWeekday != null"> on {{ loanproduct.interestRecalculationData.recalculationRestFrequencyWeekday.value}}</label>
+                                <label data-ng-show="formData.recalculationRestFrequencyType == 4 &&
+		                loanproduct.interestRecalculationData.recalculationRestFrequencyOnDay.value != null">on day {{ loanproduct.interestRecalculationData.recalculationRestFrequencyOnDay.value}}</label>
+                                <label data-ng-show="formData.recalculationRestFrequencyType == 4 &&
+                        loanproduct.interestRecalculationData.recalculationRestFrequencyOnDay.value == null &&
+                        loanproduct.interestRecalculationData.recalculationRestFrequencyNthDay != null">on {{ loanproduct.interestRecalculationData.recalculationRestFrequencyNthDay.value}} {{ loanproduct.interestRecalculationData.recalculationRestFrequencyWeekday.value}}
+                                </label>
+                            </td>
+                        </tr>
+                        <tr data-ng-show="loanproduct.isInterestRecalculationEnabled && formData.recalculationRestFrequencyType != 1">
+                            <td>{{'label.input.frequenc.interval.for.recalculte.outstanding.principal' | translate}}</td>
+                            <td colspan="3">{{loanproduct.recalculationRestFrequencyInterval}}</td>
+                        </tr>
+
+                        <tr data-ng-show="loanproduct.isInterestRecalculationEnabled">
+                            <td>{{'label.input.arrearsbasedonoriginalschedule' | translate}}</td>
+                            <td colspan="3">{{loanproduct.isArrearsBasedOnOriginalSchedule | YesOrNo}}</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="4"><br/></td>
+                        </tr>
+                        <tr class="bottomborder">
+                            <td colspan="4"><strong>{{'label.heading.gauranteeRequirements' | translate}}</strong></td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.input.holdguaranteefunds' | translate}}</td>
+                            <td colspan="3">{{loanproduct.holdGuaranteeFunds | YesOrNo}}</td>
+                        </tr>
+                        <tr data-ng-show="loanproduct.holdGuaranteeFunds">
+                            <td>{{'label.input.mandatory.guarantee' | translate}}</td>
+                            <td colspan="3">{{loanproduct.mandatoryGuarantee}}</td>
+                        </tr>
+                        <tr data-ng-show="loanproduct.holdGuaranteeFunds">
+                            <td>{{'label.input.minimum.guarantee.from.own.funds' | translate}}</td>
+                            <td colspan="3">{{loanproduct.minimumGuaranteeFromOwnFunds}}</td>
+                        </tr>
+                        <tr data-ng-show="loanproduct.holdGuaranteeFunds">
+                            <td>{{'label.input.minimum.guarantee.from.guarantor' | translate}}</td>
+                            <td colspan="3">{{loanproduct.minimumGuaranteeFromGuarantor}}</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="4"><br/></td>
+                        </tr>
+                        <tr class="bottomborder">
+                            <td colspan="4"><strong>{{'label.heading.tranchedetails' | translate}}</strong></td>
+                        </tr>
+                        <tr class="toppadding">
+                            <td>{{'label.input.multidisburseloan' | translate}}</td>
+                            <td colspan="3">{{loanproduct.multiDisburseLoan}}</td>
+                        </tr>
+                        <tr ng-show="loanproduct.multiDisburseLoan">
+                            <td>{{'label.input.maxtranchecount' | translate}}</td>
+                            <td colspan="3">{{loanproduct.maxTrancheCount}}</td>
+                        </tr>
+                        <tr ng-show="loanproduct.multiDisburseLoan">
+                            <td>{{'label.input.outstandingloanbalance' | translate}}</td>
+                            <td colspan="3">{{loanproduct.outstandingLoanBalance}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><br/></td>
+                        </tr>
+                        <tr class="bottomborder">
+                            <td colspan="4"><strong>{{'label.heading.configurableAttributes' | translate}}</strong></td>
+                        </tr>
+                        <tr class="toppadding">
+                            <td>{{'label.input.isConfigLoanAttributes' | translate}}</td>
+                            <td colspan="3">{{allowAttributeConfiguration}}</td>
+                        </tr>
+                        <tr ng-show="allowAttributeConfiguration">
+                            <td>{{'label.input.amortization' | translate}}</td>
+                            <td colspan="3">{{amortization}}</td>
+                        </tr>
+                        <tr ng-show="allowAttributeConfiguration">
+                            <td>{{'label.input.interestmethod' | translate}}</td>
+                            <td colspan="3">{{interestMethod}}</td>
+                        </tr>
+                        <tr ng-show="allowAttributeConfiguration">
+                            <td>{{'label.input.repaymentstrategy' | translate}}</td>
+                            <td colspan="3">{{transactionProcessingStrategy}}</td>
+                        </tr>
+                        <tr ng-show="allowAttributeConfiguration">
+                            <td>{{'label.input.interestcalculationperiod' | translate}}</td>
+                            <td colspan="3">{{interestCalcPeriod}}</td>
+                        </tr>
+                        <tr ng-show="allowAttributeConfiguration">
+                            <td>{{'label.input.arearstolerance' | translate}}</td>
+                            <td colspan="3">{{arrearsTolerance}}</td>
+                        </tr>
+                        <tr ng-show="allowAttributeConfiguration">
+                            <td>{{'label.input.repaidevery' | translate}}</td>
+                            <td colspan="3">{{repaymentFrequency}}</td>
+                        </tr>
+                        <tr ng-show="allowAttributeConfiguration">
+                            <td>{{'label.input.grace' | translate}}</td>
+                            <td colspan="3">{{graceOnPrincipalAndInterest}}</td>
+                        </tr>
+                        <tr ng-show="allowAttributeConfiguration">
+                            <td>{{'label.input.no.of.overdue.days.to.move.loan.into.arrears' | translate}}</td>
+                            <td colspan="3">{{graceOnArrearsAging}}</td>
+                        </tr>
+                        <tr class="bottomborder">
+                            <td colspan="4"><strong>{{'label.heading.charges' | translate}}</strong></td>
+                        </tr>
+                        <tr class="bottomborder graybg">
+                            <td>{{'label.heading.name' | translate}}</td>
+                            <td>{{'label.heading.type' | translate}}</td>
+                            <td>{{'label.heading.amount' | translate}}</td>
+                            <td>{{'label.heading.collectedon' | translate}}</td>
+                        </tr>
+                        <tr ng-repeat="charge in charges" ng-hide="charge.penalty">
+                            <td>{{charge.name}}</td>
+                            <td>{{charge.chargeCalculationType.value}}</td>
+                            <td>{{charge.amount|number}}</td>
+                            <td>{{charge.chargeTimeType.value}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><br/></td>
+                        </tr>
+                        <tr class="bottomborder">
+                            <td colspan="4"><strong>{{'label.heading.overduepenalitycharge' | translate}}</strong></td>
+                        </tr>
+                        <tr class="bottomborder graybg">
+                            <td>{{'label.heading.name' | translate}}</td>
+                            <td>{{'label.heading.type' | translate}}</td>
+                            <td>{{'label.heading.amount' | translate}}</td>
+                            <td>{{'label.heading.collectedon' | translate}}</td>
+                        </tr>
+                        <tr ng-repeat="charge in charges" ng-show="charge.penalty">
+                            <td>{{charge.name}}</td>
+                            <td>{{charge.chargeCalculationType.value}}</td>
+                            <td>{{charge.amount|number}}</td>
+                            <td>{{charge.chargeTimeType.value}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><br/></td>
+                        </tr>
+
+                        <tr class="bottomborder">
+                            <td><strong>{{'label.heading.accounting' | translate}}</strong></td>
+                            <td colspan="3">{{accountingOptions[formData.accountingRule - 1]}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <table width="100%" ng-show="formData.accountingRule != 1">
+                                    <tr class="toppadding">
+                                        <td>{{'label.heading.fundsource' | translate}}:</td>
+                                        <td colspan="3" width="40%">{{loanproduct.accountingMappings.fundSourceAccount.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'label.heading.loanportfolio' | translate}}:</td>
+                                        <td colspan="3">{{loanproduct.accountingMappings.loanPortfolioAccount.name}}</td>
+                                    </tr>
+                                    <tr ng-show="form">
+                                        <td>{{'label.heading.receivableinterest' | translate}}:</td>
+                                        <td colspan="3">{{loanproduct.accountingMappings.receivableInterestAccount.name}}</td>
+                                    </tr>
+                                    <tr ng-show="isAccrualAccountingEnabled">
+                                        <td>{{'label.heading.receivablefees' | translate}}:</td>
+                                        <td colspan="3">{{loanproduct.accountingMappings.receivableFeeAccount.name}}</td>
+                                    </tr>
+                                    <tr ng-show="isAccrualAccountingEnabled">
+                                        <td>{{'label.heading.receivablepenalties' | translate}}:</td>
+                                        <td colspan="3">{{loanproduct.accountingMappings.receivablePenaltyAccount.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'label.heading.transfersinsuspenpense' | translate}}:</td>
+                                        <td colspan="3">{{loanproduct.accountingMappings.transfersInSuspenseAccount.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'label.heading.incomefrominterest' | translate}}:</td>
+                                        <td colspan="3">{{loanproduct.accountingMappings.interestOnLoanAccount.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'label.heading.incomefromfees' | translate}}:</td>
+                                        <td colspan="3">{{loanproduct.accountingMappings.incomeFromFeeAccount.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'label.heading.incomefrompenalties' | translate}}:</td>
+                                        <td colspan="3">{{loanproduct.accountingMappings.incomeFromPenaltyAccount.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'label.heading.recoverypayments' | translate}}:</td>
+                                        <td colspan="3">{{loanproduct.accountingMappings.incomeFromRecoveryAccount.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'label.heading.loseswrittenoff' | translate}}:</td>
+                                        <td colspan="3">{{loanproduct.accountingMappings.writeOffAccount.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'label.heading.overpaymentliability' | translate}}:</td>
+                                        <td colspan="3">{{loanproduct.accountingMappings.overpaymentLiabilityAccount.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3"><br/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>{{'label.heading.advancedaccountingrules' | translate}}</strong>
+                                        </td>
+                                    </tr>
+                                    <tr class="toppadding bottomborder">
+                                        <td colspan="4">{{'label.heading.fundsourcesforpayment' | translate}}</td>
+                                    </tr>
+                                    <tr class="bottomborder graybg">
+                                        <td>{{'label.heading.paymenttype' | translate}}</td>
+                                        <td colspan="3">{{'label.heading.fundsource' | translate}}</td>
+                                    </tr>
+                                    <tr ng-repeat="paymentChannel in loanproduct.paymentChannelToFundSourceMappings">
+                                        <td>{{paymentChannel.paymentType.name}}</td>
+                                        <td colspan="3">{{paymentChannel.fundSourceAccount.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"></td>
+                                    </tr>
+                                    <tr class="toppadding bottomborder">
+                                        <td colspan="4">{{'label.heading.feestospecificincome' | translate}}</td>
+                                    </tr>
+                                    <tr class="bottomborder graybg">
+                                        <td>{{'label.heading.fees' | translate}}</td>
+                                        <td colspan="3">{{'label.heading.incomeaccount' | translate}}</td>
+                                    </tr>
+                                    <tr ng-repeat="feeToIncomeAccount in loanproduct.feeToIncomeAccountMappings">
+                                        <td>{{feeToIncomeAccount.charge.name}}</td>
+                                        <td colspan="3">{{feeToIncomeAccount.incomeAccount.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"></td>
+                                    </tr>
+                                    <tr class="toppadding bottomborder">
+                                        <td colspan="4">{{'label.heading.penaltiesspecifictoincomeacc' | translate}}</td>
+                                    </tr>
+                                    <tr class="bottomborder graybg">
+                                        <td>{{'label.heading.penalty' | translate}}</td>
+                                        <td colspan="3">{{'label.heading.incomeaccount' | translate}}</td>
+                                    </tr>
+                                    <tr ng-repeat="penaltyToIncomeAccount in loanproduct.penaltyToIncomeAccountMappings">
+                                        <td>{{penaltyToIncomeAccount.charge.name}}</td>
+                                        <td colspan="3">{{penaltyToIncomeAccount.incomeAccount.name}}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-md-offset-5 paddedtop">
+                        <button id="cancel" type="reset" class="btn btn-default" ng-click="cancel()">{{'label.button.cancel' |
+                            translate}}
+                        </button>
+                        <button id="save" type="submit" class="btn btn-primary" wz-next has-permission='CREATE_LOANPRODUCT'>
+                            {{'label.button.createloanproduct'
+                            | translate}}
+                        </button>
+                    </div>
+                    <hr>
+                    <button class = "btn btn-default pull-left" wz-previous><i class = "fa fa-arrow-left"></i>&nbsp;&nbsp;Previous</button>
+                    <button class = "btn btn-default pull-right" disabled>Next&nbsp;&nbsp;<i class = "fa fa-arrow-right"></i></button>
+                </fieldset>
+            </form>
+        </wz-step>
+    </wizard>
+</div>
