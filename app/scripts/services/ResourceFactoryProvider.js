@@ -707,9 +707,10 @@
                     businessOwnersDocumentsResource: defineResource(apiVer + "/business_owners/:ownerId/documents/:documentId", {clientId: '@ownerId', documentId: '@documentId'}, {
                         getAllBusinessOwnerDocuments: {method: 'GET', params: {}, isArray: true}
                     }),
-                    clientBusinessDetailResource: defineResource(apiVer + "/addbusinessdetail/:clientId/:resourceType", {resourceType: '@resourceType', businessdetailId: '@businessdetailId'}, {
+                    clientBusinessDetailResource: defineResource(apiVer + "/clientBusinessDetail/:clientId/:businessdetailId/", {businessdetailId: '@businessdetailId'}, {
                         getAllClientBusinessDetails: {method: 'GET', params: {}},
-                        put: {method: 'PUT', params: {}}
+                        put: {method: 'PUT', params: {}},
+                        save: {method: 'POST', params: {}}
                     }),
                     clientBusinessDetailTemplate:defineResource(apiVer+"/clients/:clientId/clientBusinessDetail/template",{},{
                        get:{method: 'GET',params:{}}

@@ -1,19 +1,22 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        AddClientBusinessDetailController: function (scope, $rootScope, resourceFactory, location, dateFilter,WizardHandler, translate) {
+        AddClientBusinessDetailController: function (scope, $rootScope, resourceFactory, location, dateFilter,WizardHandler, translate,routeParams) {
             scope.restrictDate = new Date();
             scope.formData = {};
             scope.showOrHideValue = "show";
             scope.date = {};
+            clientId = routeParams.clientId;
 
             resourceFactory.clientBusinessDetailTemplate.get({resourceType: 'template'}, function (data) {
                 scope.clientbusinessDetails = data;
                 console.log(scope.clientbusiness);
+                scope.businessDetails = angular.copy(scope.formData);
+                scope.isClicked = false;
 
             });
 
              scope.$watch('formData',function(newVal){
-                scope.loanproduct = angular.extend(scope.loanproduct,newVal);
+                scope.businessDetails = angular.extend(scope.businessDetails,newVal);
              },true);
 
              $rootScope.formValue = function(array,model,findattr,retAttr){
@@ -31,14 +34,14 @@
             }
 
             scope.cancel = function () {
-                location.path('/addbusinessdetail');
+                location.path('/addbusinessdetail/'+clientId);
             };
 
 
             scope.submit = function () {
                 var reqFirstDate = dateFilter(scope.date.first, scope.df);
                 var reqSecondDate = dateFilter(scope.date.second, scope.df);
-                resourceFactory.loanProductResource.save(this.formData, function (data) {
+                resourceFactory.clientBusinessDetailResource.save({clientId:clientId},this.formData, function (data) {
                     location.path('/viewClientBusinessDetails/' + data.resourceId);
                 });
             };
@@ -46,7 +49,7 @@
 
         }
     });
-    mifosX.ng.application.controller('AddClientBusinessDetailController', ['$scope','$rootScope', 'ResourceFactory', '$location', 'dateFilter','WizardHandler', '$translate', mifosX.controllers.AddClientBusinessDetailController]).run(function ($log) {
+    mifosX.ng.application.controller('AddClientBusinessDetailController', ['$scope','$rootScope', 'ResourceFactory', '$location', 'dateFilter','WizardHandler', '$translate','$routeParams', mifosX.controllers.AddClientBusinessDetailController]).run(function ($log) {
         $log.info("AddClientBusinessDetailController initialized");
     });
 }(mifosX.controllers || {}));
