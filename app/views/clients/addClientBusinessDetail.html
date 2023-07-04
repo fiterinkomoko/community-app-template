@@ -22,9 +22,12 @@
                                tooltip-append-to-body="true"></i>
                         </label>
 
-                        <div class="col-sm-2">
-                            <input type="text" id="businesstype" class="form-control" name="businesstype" ng-model="formData.businesstype"
-                                   required late-validate/>
+                        <div class="col-sm-3">
+                                <select id="businesstype" ng-model="formData.businesstype" class="form-control"
+                                        ng-options="business.id as business.name for business in businessTypeOptions"
+                                        value="{{business.id}}">
+                                    <option value="">--{{'label.menu.businessType' | translate}}--</option>
+                                </select>
                         </div>
                         <div class="col-sm-2">
                             <form-validate valattributeform="Details" valattribute="businesstype"/>
@@ -51,7 +54,7 @@
                                tooltip-append-to-body="true"></i>
                         </label>
 
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <input id="businesscreationdate" sort type="text" class="form-control"
                                    datepicker-pop="dd MMMM yyyy" ng-model="date.first" is-open="opened"
                                    min="minDate" />
@@ -80,9 +83,12 @@
                                tooltip-append-to-body="true"></i>
                         </label>
 
-                        <div class="col-sm-2">
-                            <input type="text" id="sourceofcapital" class="form-control" name="sourceofcapital" ng-model="formData.sourceofcapital"
-                                   number-format required late-validate number=true/>
+                        <div class="col-sm-3">
+                            <select id="sourceofcapital" ng-model="formData.sourceofcapital" class="form-control"
+                                    ng-options="sourceOfCap.id as sourceOfCap.name for sourceOfCap in sourceOfCapitalOptions"
+                                    value="{{business.id}}">
+                                <option value="">--{{'label.menu.sourceOfCapital' | translate}}--</option>
+                            </select>
                         </div>
                         <div class="col-sm-2">
                             <form-validate valattributeform="Details" valattribute="sourceofcapital"/>
@@ -153,8 +159,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="bestmonth" class="form-control" name="bestmonth" ng-model="formData.bestmonth"
-                                   required late-validate/>
+                            <select id="bestmonth" ng-model="formData.bestmonth" class="form-control"
+                                    ng-options="bestMth.id as bestMth.value for bestMth in bestMonthOptions"
+                                    value="{{bestMth.id}}">
+                                <option value="">--{{'label.menu.bestMonth' | translate}}--</option>
+                            </select>
                         </div>
                         <div class="col-sm-2">
                             <form-validate valattributeform="Details" valattribute="bestmonth"/>
@@ -182,8 +191,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="worstmonth" class="form-control" name="worstmonth" ng-model="formData.worstmonth"
-                                   required late-validate/>
+                            <select id="worstmonth" ng-model="formData.worstmonth" class="form-control"
+                                    ng-options="worstMth.id as worstMth.value for worstMth in worstMonthOptions"
+                                    value="{{worstMth.id}}">
+                                <option value="">--{{'label.menu.worstmonth' | translate}}--</option>
+                            </select>
                         </div>
                         <div class="col-sm-2">
                             <form-validate valattributeform="Details" valattribute="worstmonth"/>

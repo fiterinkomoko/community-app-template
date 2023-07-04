@@ -7,9 +7,12 @@
             scope.date = {};
             clientId = routeParams.clientId;
 
-            resourceFactory.clientBusinessDetailTemplate.get({resourceType: 'template'}, function (data) {
+            resourceFactory.clientBusinessDetailTemplate.get({clientId:clientId},function (data) {
                 scope.clientbusinessDetails = data;
-                console.log(scope.clientbusiness);
+                scope.businessTypeOptions = data.businessType;
+                scope.sourceOfCapitalOptions = data.sourceOfCapital;
+                scope.bestMonthOptions = data.bestMonth;
+                scope.worstMonthOptions = data.worstMonth;
                 scope.businessDetails = angular.copy(scope.formData);
                 scope.isClicked = false;
 
