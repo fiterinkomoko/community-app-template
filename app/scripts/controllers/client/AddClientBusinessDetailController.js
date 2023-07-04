@@ -5,16 +5,23 @@
             scope.formData = {};
             scope.showOrHideValue = "show";
             scope.date = {};
-            clientId = routeParams.clientId;
+            scope.clientId = routeParams.clientId;
 
-            resourceFactory.clientBusinessDetailTemplate.get({clientId:clientId},function (data) {
+            resourceFactory.clientBusinessDetailTemplate.get({clientId:scope.clientId},function (data) {
                 scope.clientbusinessDetails = data;
                 scope.businessTypeOptions = data.businessType;
                 scope.sourceOfCapitalOptions = data.sourceOfCapital;
                 scope.bestMonthOptions = data.bestMonth;
                 scope.worstMonthOptions = data.worstMonth;
+
+                if (data.clientAccount) {
+                    scope.clientName = data.clientAccount.displayName;
+                }
+
                 scope.businessDetails = angular.copy(scope.formData);
                 scope.isClicked = false;
+
+
 
             });
 
@@ -37,14 +44,14 @@
             }
 
             scope.cancel = function () {
-                location.path('/addbusinessdetail/'+clientId);
+                location.path('/addbusinessdetail/'+scope.clientId);
             };
 
 
             scope.submit = function () {
                 var reqFirstDate = dateFilter(scope.date.first, scope.df);
                 var reqSecondDate = dateFilter(scope.date.second, scope.df);
-                resourceFactory.clientBusinessDetailResource.save({clientId:clientId},this.formData, function (data) {
+                resourceFactory.clientBusinessDetailResource.save({clientId:scope.clientId},this.formData, function (data) {
                     location.path('/viewClientBusinessDetails/' + data.resourceId);
                 });
             };

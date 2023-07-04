@@ -3250,7 +3250,7 @@
   "label.heading.amountatsaving": "Amount At Savings",
   "label.heading.amountatinventory": "Amount At Inventory",
   "label.heading.fixedassetcost": "Fixed Asset Cost",
-  "label.heading.fixedassetcost": "Fixed Asset Cost",
+  "label.heading.businessassetcost": "Business Asset Amount",
   "label.heading.totalintax": "Total in taxes",
   "label.heading.totalintransport": "Total in transport",
   "label.heading.totalinrent": "Total in rent",
