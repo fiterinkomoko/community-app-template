@@ -23,14 +23,14 @@
                         </label>
 
                         <div class="col-sm-3">
-                                <select id="businesstype" ng-model="formData.businesstype" class="form-control"
+                                <select id="businessType" ng-model="formData.businessType" class="form-control"
                                         ng-options="business.id as business.name for business in businessTypeOptions"
-                                        value="{{business.id}}">
+                                        value="{{business.id}}" required >
                                     <option value="">--{{'label.menu.businessType' | translate}}--</option>
                                 </select>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="businesstype"/>
+                            <form-validate valattributeform="Details" valattribute="businessType"/>
                         </div>
                         <label class="control-label col-sm-2">{{ 'label.input.startingcapital' | translate }}<span
                                 class="required">*</span>
@@ -40,27 +40,28 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="startingcapital" name="startingcapital" ng-model="formData.startingcapital"
+                            <input type="text" id="startingCapital" name="startingCapital" ng-model="formData.startingCapital"
                                    class="form-control" number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="startingcapital"/>
+                            <form-validate valattributeform="Details" valattribute="startingCapital"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2">{{ 'label.input.businesscreationdate' | translate }}
+                        <label class="control-label col-sm-2">{{ 'label.input.businesscreationdate' | translate }}<span
+                                class="required">*</span>
                             <i class="fa fa-question-circle "
                                uib-tooltip="{{'label.tooltip.clientbusinessdetail.businesscreationdate' | translate}}"
                                tooltip-append-to-body="true"></i>
                         </label>
 
                         <div class="col-sm-3">
-                            <input id="businesscreationdate" sort type="text" class="form-control"
-                                   datepicker-pop="dd MMMM yyyy" ng-model="date.first" is-open="opened"
-                                   min="minDate" />
+                            <input id="businessCreationDate" sort type="text" class="form-control"
+                                   datepicker-pop="dd MMMM yyyy" ng-model="first.businessCreationDate" is-open="opened"
+                                   min="minDate" required/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="businesscreationdate"/>
+                            <form-validate valattributeform="Details" valattribute="businessCreationDate"/>
                         </div>
 
                         <label class="control-label col-sm-2">{{ 'label.input.externalid' | translate }}<span
@@ -68,11 +69,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="externalid" name="externalid" ng-model="formData.externalid"
+                            <input type="text" id="externalId" name="externalId" ng-model="formData.externalId"
                                    class="form-control" required late-validate/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="externalid"/>
+                            <form-validate valattributeform="Details" valattribute="externalId"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -84,14 +85,14 @@
                         </label>
 
                         <div class="col-sm-3">
-                            <select id="sourceofcapital" ng-model="formData.sourceofcapital" class="form-control"
+                            <select id="sourceOfCapital" ng-model="formData.sourceOfCapital" class="form-control"
                                     ng-options="sourceOfCap.id as sourceOfCap.name for sourceOfCap in sourceOfCapitalOptions"
-                                    value="{{business.id}}">
+                                    value="{{business.id}}" required >
                                 <option value="">--{{'label.menu.sourceOfCapital' | translate}}--</option>
                             </select>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="sourceofcapital"/>
+                            <form-validate valattributeform="Details" valattribute="sourceOfCapital"/>
                         </div>
                         <label class="control-label col-sm-2">{{ 'label.input.totalemployees' | translate }}<span
                                 class="required">*</span>
@@ -101,11 +102,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="totalemployees" name="totalemployees" ng-model="formData.totalemployees"
+                            <input type="text" id="totalEmployee" name="totalEmployee" ng-model="formData.totalEmployee"
                                    class="form-control"  number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="totalemployees"/>
+                            <form-validate valattributeform="Details" valattribute="totalEmployee"/>
                         </div>
                     </div>
                     <hr>
@@ -129,11 +130,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="businessrevenue" class="form-control" name="businessrevenue" ng-model="formData.businessrevenue"
+                            <input type="text" id="businessRevenue" class="form-control" name="businessRevenue" ng-model="formData.businessRevenue"
                                    number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="businessrevenue"/>
+                            <form-validate valattributeform="Details" valattribute="businessRevenue"/>
                         </div>
                         <label class="control-label col-sm-2">{{ 'label.input.averagemonthlyrevenue' | translate }}<span
                                 class="required">*</span>
@@ -143,11 +144,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="averagemonthlyrevenue" name="averagemonthlyrevenue" ng-model="formData.averagemonthlyrevenue"
+                            <input type="text" id="averageMonthlyRevenue" name="averageMonthlyRevenue" ng-model="formData.averageMonthlyRevenue"
                                    class="form-control" number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="averagemonthlyrevenue"/>
+                            <form-validate valattributeform="Details" valattribute="averageMonthlyRevenue"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -159,14 +160,14 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <select id="bestmonth" ng-model="formData.bestmonth" class="form-control"
+                            <select id="bestMonth" ng-model="formData.bestMonth" class="form-control"
                                     ng-options="bestMth.id as bestMth.value for bestMth in bestMonthOptions"
-                                    value="{{bestMth.id}}">
+                                    value="{{bestMth.id}}" required >
                                 <option value="">--{{'label.menu.bestMonth' | translate}}--</option>
                             </select>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="bestmonth"/>
+                            <form-validate valattributeform="Details" valattribute="bestMonth"/>
                         </div>
                         <label class="control-label col-sm-2">{{ 'label.input.reasonforbestmonth' | translate }}<span
                                 class="required">*</span>
@@ -176,10 +177,10 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <textarea rows="2" class="form-control" ng-model="formData.reasonforbestmonth" required late-validate></textarea>
+                            <textarea rows="2" class="form-control" ng-model="formData.reasonForBestMonth" required late-validate></textarea>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="reasonforbestmonth"/>
+                            <form-validate valattributeform="Details" valattribute="reasonForBestMonth"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -191,14 +192,14 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <select id="worstmonth" ng-model="formData.worstmonth" class="form-control"
+                            <select id="worstMonth" ng-model="formData.worstMonth" class="form-control"
                                     ng-options="worstMth.id as worstMth.value for worstMth in worstMonthOptions"
-                                    value="{{worstMth.id}}">
+                                    value="{{worstMth.id}}" required>
                                 <option value="">--{{'label.menu.worstmonth' | translate}}--</option>
                             </select>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="worstmonth"/>
+                            <form-validate valattributeform="Details" valattribute="worstMonth"/>
                         </div>
                         <label class="control-label col-sm-2">{{ 'label.input.reasonforworstmonth' | translate }}<span
                                 class="required">*</span>
@@ -208,10 +209,10 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <textarea rows="2" class="form-control" ng-model="formData.reasonforworstmonth" required late-validate></textarea>
+                            <textarea rows="2" class="form-control" ng-model="formData.reasonForWorstMonth" required late-validate></textarea>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="reasonforworstmonth"/>
+                            <form-validate valattributeform="Details" valattribute="reasonForWorstMonth"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -223,11 +224,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="numberofpurchase" class="form-control" name="numberofpurchase" ng-model="formData.numberofpurchase"
+                            <input type="text" id="numberOfPurchase" class="form-control" name="numberOfPurchase" ng-model="formData.numberOfPurchase"
                                    number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="numberofpurchase"/>
+                            <form-validate valattributeform="Details" valattribute="numberOfPurchase"/>
                         </div>
                         <label class="control-label col-sm-2">{{ 'label.input.purchasefrequency' | translate }}<span
                                 class="required">*</span>
@@ -237,11 +238,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="purchasefrequency" name="purchasefrequency" ng-model="formData.purchasefrequency"
+                            <input type="text" id="purchaseFrequency" name="purchaseFrequency" ng-model="formData.purchaseFrequency"
                                    class="form-control" required late-validate/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="purchasefrequency"/>
+                            <form-validate valattributeform="Details" valattribute="purchaseFrequency"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -253,11 +254,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="totalpurchaselastmonth" class="form-control" name="totalpurchaselastmonth" ng-model="formData.totalpurchaselastmonth"
+                            <input type="text" id="totalPurchaseLastMonth" class="form-control" name="totalPurchaseLastMonth" ng-model="formData.totalPurchaseLastMonth"
                                    number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="totalpurchaselastmonth"/>
+                            <form-validate valattributeform="Details" valattribute="totalPurchaseLastMonth"/>
                         </div>
                         <label class="control-label col-sm-2">{{ 'label.input.lastpurchase' | translate }}<span
                                 class="required">*</span>
@@ -267,11 +268,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="lastpurchase" name="lastpurchase" ng-model="formData.lastpurchase"
+                            <input type="text" id="lastPurchase" name="lastPurchase" ng-model="formData.lastPurchase"
                                    class="form-control" required late-validate/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="lastpurchase"/>
+                            <form-validate valattributeform="Details" valattribute="lastPurchase"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -283,11 +284,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="lastpurchaseamount" class="form-control" name="lastpurchaseamount" ng-model="formData.lastpurchaseamount"
+                            <input type="text" id="lastPurchaseAmount" class="form-control" name="lastPurchaseAmount" ng-model="formData.lastPurchaseAmount"
                                    number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="lastpurchaseamount"/>
+                            <form-validate valattributeform="Details" valattribute="lastPurchaseAmount"/>
                         </div>
                         <label class="control-label col-sm-2">{{ 'label.input.businessassetamount' | translate }}<span
                                 class="required">*</span>
@@ -297,11 +298,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="businessassetamount" name="businessassetamount" ng-model="formData.businessassetamount"
+                            <input type="text" id="businessAssetAmount" name="businessAssetAmount" ng-model="formData.businessAssetAmount"
                                    class="form-control" number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="businessassetamount"/>
+                            <form-validate valattributeform="Details" valattribute="businessAssetAmount"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -313,11 +314,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="amountatinventory" class="form-control" name="amountatinventory" ng-model="formData.amountatinventory"
+                            <input type="text" id="amountAtInventory" class="form-control" name="amountAtInventory" ng-model="formData.amountAtInventory"
                                    number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="amountatinventory"/>
+                            <form-validate valattributeform="Details" valattribute="amountAtInventory"/>
                         </div>
                         <label class="control-label col-sm-2">{{ 'label.input.fixedassetcost' | translate }}<span
                                 class="required">*</span>
@@ -327,11 +328,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="fixedassetcost" name="fixedassetcost" ng-model="formData.fixedassetcost"
+                            <input type="text" id="fixedAssetCost" name="fixedAssetCost" ng-model="formData.fixedAssetCost"
                                    class="form-control" number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="fixedassetcost"/>
+                            <form-validate valattributeform="Details" valattribute="fixedAssetCost"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -343,11 +344,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="amountatcash" class="form-control" name="amountatcash" ng-model="formData.amountatcash"
+                            <input type="text" id="amountAtCash" class="form-control" name="amountAtCash" ng-model="formData.amountAtCash"
                                    number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="amountatcash"/>
+                            <form-validate valattributeform="Details" valattribute="amountAtCash"/>
                         </div>
                         <label class="control-label col-sm-2">{{ 'label.input.amountatsaving' | translate }}<span
                                 class="required">*</span>
@@ -357,11 +358,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="amountatsaving" name="amountatsaving" ng-model="formData.amountatsaving"
+                            <input type="text" id="amountAtSaving" name="amountAtSaving" ng-model="formData.amountAtSaving"
                                    class="form-control" number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="amountatsaving"/>
+                            <form-validate valattributeform="Details" valattribute="amountAtSaving"/>
                         </div>
                     </div>
                     <hr>
@@ -385,11 +386,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="totalintax" class="form-control" name="totalintax" ng-model="formData.totalintax"
+                            <input type="text" id="totalInTax" class="form-control" name="totalInTax" ng-model="formData.totalInTax"
                                    number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="totalintax"/>
+                            <form-validate valattributeform="Details" valattribute="totalInTax"/>
                         </div>
                         <label class="control-label col-sm-2">{{ 'label.input.totalintransport' | translate }}<span
                                 class="required">*</span>
@@ -399,11 +400,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="totalintransport" name="totalintransport" ng-model="formData.totalintransport"
+                            <input type="text" id="totalInTransport" name="totalInTransport" ng-model="formData.totalInTransport"
                                    class="form-control" number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="totalintransport"/>
+                            <form-validate valattributeform="Details" valattribute="totalInTransport"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -415,11 +416,11 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="totalinrent" class="form-control" name="totalinrent" ng-model="formData.totalinrent"
+                            <input type="text" id="totalInRent" class="form-control" name="totalInRent" ng-model="formData.totalInRent"
                                    number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="totalinrent"/>
+                            <form-validate valattributeform="Details" valattribute="totalInRent"/>
                         </div>
                         <label class="control-label col-sm-2">{{ 'label.input.totalincommunication' | translate }}<span
                                 class="required">*</span>
@@ -429,40 +430,38 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="totalincommunication" name="totalincommunication" ng-model="formData.totalincommunication"
+                            <input type="text" id="totalInCommunication" name="totalInCommunication" ng-model="formData.totalInCommunication"
                                    class="form-control" number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="totalincommunication"/>
+                            <form-validate valattributeform="Details" valattribute="totalInCommunication"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2">{{ 'label.input.otherexpense' | translate }}<span
-                                class="required">*</span>
+                        <label class="control-label col-sm-2">{{ 'label.input.otherexpense' | translate }}
                             <i class="fa fa-question-circle "
                                uib-tooltip="{{'label.tooltip.clientbusinessdetail.otherexpense' | translate}}"
                                tooltip-append-to-body="true"></i>
                         </label>
 
                         <div class="col-sm-2">
-                            <textarea rows="2" class="form-control" ng-model="formData.otherexpense" required late-validate></textarea>
+                            <textarea rows="2" class="form-control" ng-model="formData.otherExpense"></textarea>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="otherexpense"/>
+                            <form-validate valattributeform="Details" valattribute="otherExpense"/>
                         </div>
-                        <label class="control-label col-sm-2">{{ 'label.input.otherexpenseamount' | translate }}<span
-                                class="required">*</span>
+                        <label class="control-label col-sm-2">{{ 'label.input.otherexpenseamount' | translate }}
                             <i class="fa fa-question-circle"
                                uib-tooltip="{{'label.tooltip.clientbusinessdetail.otherexpenseamount' | translate}}"
                                tooltip-append-to-body="true"></i>
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="otherexpenseamount" name="otherexpenseamount" ng-model="formData.otherexpenseamount"
-                                   class="form-control" number-format required late-validate number=true/>
+                            <input type="text" id="otherExpenseAmount" name="otherExpenseAmount" ng-model="formData.otherExpenseAmount"
+                                   class="form-control" number-format  number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="otherexpenseamount"/>
+                            <form-validate valattributeform="Details" valattribute="otherExpenseAmount"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -474,44 +473,41 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="totalutility" class="form-control" name="totalutility" ng-model="formData.totalutility"
+                            <input type="text" id="totalUtility" class="form-control" name="totalUtility" ng-model="formData.totalUtility"
                                    number-format required late-validate number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="totalutility"/>
+                            <form-validate valattributeform="Details" valattribute="totalUtility"/>
                         </div>
-                        <label class="control-label col-sm-2">{{ 'label.input.totalworkersalary' | translate }}<span
-                                class="required">*</span>
+                        <label class="control-label col-sm-2">{{ 'label.input.totalworkersalary' | translate }}
                             <i class="fa fa-question-circle"
                                uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalworkersalary' | translate}}"
                                tooltip-append-to-body="true"></i>
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="totalworkersalary" name="totalworkersalary" ng-model="formData.totalworkersalary"
-                                   class="form-control" number-format required late-validate number=true/>
+                            <input type="text" id="totalWorkerSalary" name="totalWorkerSalary" ng-model="formData.totalWorkerSalary"
+                                   class="form-control" number-format number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="totalworkersalary"/>
+                            <form-validate valattributeform="Details" valattribute="totalWorkerSalary"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-sm-2">{{ 'label.input.totalwage' | translate }}<span
-                                class="required">*</span>
+                        <label class="control-label col-sm-2">{{ 'label.input.totalwage' | translate }}
                             <i class="fa fa-question-circle "
                                uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalwage' | translate}}"
                                tooltip-append-to-body="true"></i>
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="totalwage" class="form-control" name="totalwage" ng-model="formData.totalwage"
-                                   number-format required late-validate number=true/>
+                            <input type="text" id="totalWage" class="form-control" name="totalWage" ng-model="formData.totalWage"
+                                   number-format  number=true/>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="totalwage"/>
+                            <form-validate valattributeform="Details" valattribute="totalWage"/>
                         </div>
-                        <label class="control-label col-sm-2">{{ 'label.input.society' | translate }}<span
-                                class="required">*</span>
+                        <label class="control-label col-sm-2">{{ 'label.input.society' | translate }}
                             <i class="fa fa-question-circle"
                                uib-tooltip="{{'label.tooltip.clientbusinessdetail.society' | translate}}"
                                tooltip-append-to-body="true"></i>
@@ -519,10 +515,7 @@
 
                         <div class="col-sm-2">
                             <input type="text" id="society" name="society" ng-model="formData.society"
-                                   class="form-control" number-format required late-validate number=true/>
-                        </div>
-                        <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="society"/>
+                                   class="form-control" number-format  number=true/>
                         </div>
                     </div>
                     <hr>
@@ -548,13 +541,13 @@
                                 <strong>{{'label.heading.details' | translate}}</strong>
                             </td>
                         </tr>
-                        <tr class="toppadding" ng-show="businessDetails.businesstype">
+                        <tr>
                             <td>{{'label.heading.businesstype' | translate}} :</td>
-                            <td colspan="3">{{businessDetails.businesstype}}</td>
+                            <td colspan="3">{{businessDetails.businessType}}</td>
                         </tr>
-                        <tr class="toppadding" ng-show="businessDetails.startingcapital">
+                        <tr>
                             <td>{{'label.heading.startingcapital' | translate}} :</td>
-                            <td colspan="3">{{businessDetails.startingcapital}}</td>
+                            <td colspan="3">{{businessDetails.startingCapital}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.businesscreationdate' | translate }} :</td>
@@ -562,117 +555,116 @@
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.sourceofcapital' | translate }} :</td>
-                            <td>{{businessDetails.startingcapital}}</td>
+                            <td>{{businessDetails.sourceOfCapital}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.totalemployees' | translate }} :</td>
-                            <td>{{businessDetails.totalemployees}}</td>
+                            <td>{{businessDetails.totalEmployee}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.businessrevenue' | translate }} :</td>
-                            <td>{{businessDetails.businessrevenue}}</td>
+                            <td>{{businessDetails.businessRevenue}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.averagemonthlyrevenue' | translate }} :</td>
-                            <td>{{businessDetails.averagemonthlyrevenue}}</td>
+                            <td>{{businessDetails.averageMonthlyRevenue}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.bestmonth' | translate }} :</td>
-                            <td>{{businessDetails.bestmonth}}</td>
+                            <td>{{businessDetails.bestMonth}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.reasonforbestmonth' | translate }} :</td>
-                            <td>{{businessDetails.reasonforbestmonth}}</td>
+                            <td>{{businessDetails.reasonForBestMonth}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.worstmonth' | translate }} :</td>
-                            <td>{{businessDetails.worstmonth}}</td>
+                            <td>{{businessDetails.worstMonth}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.reasonforworstmonth' | translate }} :</td>
-                            <td>{{businessDetails.reasonforworstmonth}}</td>
+                            <td>{{businessDetails.reasonForWorstMonth}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.numberofpurchase' | translate }} :</td>
-                            <td>{{businessDetails.numberofpurchase}}</td>
+                            <td>{{businessDetails.numberOfPurchase}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.purchasefrequency' | translate }} :</td>
-                            <td>{{businessDetails.purchasefrequency}}</td>
+                            <td>{{businessDetails.purchaseFrequency}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.totalpurchaselastmonth' | translate }} :</td>
-                            <td>{{businessDetails.totalpurchaselastmonth}}</td>
+                            <td>{{businessDetails.totalPurchaseLastMonth}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.lastpurchase' | translate }} :</td>
-                            <td>{{businessDetails.lastpurchase}}</td>
+                            <td>{{businessDetails.lastPurchase}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.lastpurchaseamount' | translate }} :</td>
-                            <td>{{businessDetails.lastpurchaseamount}}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">{{ 'label.heading.businessassetcost' | translate }} :</td>
-                            <td>{{businessDetails.businessassetcost}}</td>
+                            <td>{{businessDetails.lastPurchaseAmount}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.businessassetamount' | translate }} :</td>
-                            <td>{{businessDetails.businessassetamount}}</td>
+                            <td>{{businessDetails.businessAssetAmount}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.amountatcash' | translate }} :</td>
-                            <td>{{businessDetails.amountatcash}}</td>
+                            <td>{{businessDetails.amountAtCash}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.amountatsaving' | translate }} :</td>
-                            <td>{{businessDetails.amountatsaving}}</td>
+                            <td>{{businessDetails.amountAtSaving}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.amountatinventory' | translate }} :</td>
-                            <td>{{businessDetails.amountatinventory}}</td>
+                            <td>{{businessDetails.amountAtInventory}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.fixedassetcost' | translate }} :</td>
-                            <td>{{businessDetails.fixedassetcost}}</td>
+                            <td>{{businessDetails.fixedAssetCost}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.totalintax' | translate }} :</td>
-                            <td>{{businessDetails.totalintax}}</td>
+                            <td>{{businessDetails.totalInTax}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.totalintransport' | translate }} :</td>
-                            <td>{{businessDetails.totalintransport}}</td>
+                            <td>{{businessDetails.totalInTransport}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.totalinrent' | translate }} :</td>
-                            <td>{{businessDetails.totalinrent}}</td>
+                            <td>{{businessDetails.totalInRent}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.totalincommunication' | translate }} :</td>
-                            <td>{{businessDetails.totalincommunication}}</td>
+                            <td>{{businessDetails.totalInCommunication}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.otherexpense' | translate }} :</td>
-                            <td>{{businessDetails.otherexpense}}</td>
+                            <td>{{businessDetails.otherExpense}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.otherexpenseamount' | translate }} :</td>
-                            <td>{{businessDetails.otherexpenseamount}}</td>
+                            <td>{{businessDetails.otherExpenseAmount}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.totalutility' | translate }} :</td>
-                            <td>{{businessDetails.totalutility}}</td>
+                            <td>{{businessDetails.totalUtility}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.totalworkersalary' | translate }} :</td>
+                            <td>{{businessDetails.totalWorkerSalary}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.totalwage' | translate }} :</td>
-                            <td>{{businessDetails.totalwage}}</td>
+                            <td>{{businessDetails.totalWage}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.society' | translate }} :</td>
                             <td>{{businessDetails.society}}</td>
                         </tr>
-
                     </table>
                     <br>
                     <br>
