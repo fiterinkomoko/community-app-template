@@ -15,6 +15,7 @@
                 scope.sourceOfCapitalOptions = data.sourceOfCapital;
                 scope.bestMonthOptions = data.bestMonth;
                 scope.worstMonthOptions = data.worstMonth;
+                scope.whenLastPurchaseOptions = data.worstMonth;
 
                 if (data.clientAccount) {
                     scope.clientName = data.clientAccount.displayName;
@@ -60,7 +61,7 @@
                         this.formData.businessCreationDate = dateFilter(scope.first.businessCreationDate, scope.df);
                     }
                 resourceFactory.clientBusinessDetailResource.save({clientId:scope.clientId},this.formData, function (data) {
-                    location.path('/viewClientBusinessDetails/' + data.resourceId);
+                    location.path('/viewclient/'+scope.clientId);
                 });
             };
 

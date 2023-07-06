@@ -260,19 +260,22 @@
                         <div class="col-sm-2">
                             <form-validate valattributeform="Details" valattribute="totalPurchaseLastMonth"/>
                         </div>
-                        <label class="control-label col-sm-2">{{ 'label.input.lastpurchase' | translate }}<span
+                        <label class="control-label col-sm-2">{{ 'label.input.whenlastpurchase' | translate }}<span
                                 class="required">*</span>
                             <i class="fa fa-question-circle"
-                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.lastpurchase' | translate}}"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.whenlastPurchase' | translate}}"
                                tooltip-append-to-body="true"></i>
                         </label>
 
                         <div class="col-sm-2">
-                            <input type="text" id="lastPurchase" name="lastPurchase" ng-model="formData.lastPurchase"
-                                   class="form-control" required late-validate/>
+                            <select id="whenLastPurchase" ng-model="formData.whenLastPurchase" class="form-control"
+                                    ng-options="whenLastPur.id as whenLastPur.value for whenLastPur in whenLastPurchaseOptions"
+                                    value="{{whenLastPur.id}}" required >
+                                <option value="">--{{'label.menu.whenLastPurchase' | translate}}--</option>
+                            </select>
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="Details" valattribute="lastPurchase"/>
+                            <form-validate valattributeform="Details" valattribute="whenlastPurchase"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -551,11 +554,15 @@
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.businesscreationdate' | translate }} :</td>
-                            <td>{{date.first | DateFormat}}</td>
+                            <td>{{first.businessCreationDate | DateFormat}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.sourceofcapital' | translate }} :</td>
                             <td>{{businessDetails.sourceOfCapital}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.externalid' | translate }} :</td>
+                            <td>{{businessDetails.externalId}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.totalemployees' | translate }} :</td>
@@ -598,8 +605,8 @@
                             <td>{{businessDetails.totalPurchaseLastMonth}}</td>
                         </tr>
                         <tr>
-                            <td colspan="3">{{ 'label.heading.lastpurchase' | translate }} :</td>
-                            <td>{{businessDetails.lastPurchase}}</td>
+                            <td colspan="3">{{ 'label.heading.whenlastpurchase' | translate }} :</td>
+                            <td>{{businessDetails.whenlastPurchase}}</td>
                         </tr>
                         <tr>
                             <td colspan="3">{{ 'label.heading.lastpurchaseamount' | translate }} :</td>
