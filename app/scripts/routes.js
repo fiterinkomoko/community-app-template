@@ -145,6 +145,13 @@
             .when('/clients/survey/:clientId', {
                 templateUrl: 'views/surveys/viewclientsurvey.html'
             })
+            .when('/clientOtherInfo/:clientId', {
+                 templateUrl: 'views/clients/clientotherinfo.html'
+            })
+            .when('/editclientOtherInfo/:clientId/:otherInfoId', {
+                 templateUrl: 'views/clients/editclientotherinfo.html'
+            })
+
             .when('/newclientloanaccount/:clientId', {
                 templateUrl: 'views/loans/newloanaccount.html'
             })
