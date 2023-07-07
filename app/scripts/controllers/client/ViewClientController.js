@@ -72,11 +72,26 @@
 
 
                 })*/
+                resourceFactory.clientExpensesTemplateResource.getOtherExpenses({clientId: routeParams.id}, function(data) {
+                                          scope.expenses=data.otherExpenses;
+                                          scope.expensesData=data
+                                          scope.otherExpensesList=data.otherExpensesData
+                                            });
 
             });
 
+            scope.addExpenses=function()
+            {
+                location.path('/addExpenses/'+ routeParams.id);
+            }
 
+          scope.deleteExpenses=function(householdExpensesId)
+            {
+                resourceFactory.clientExpensesResource.deleteExpense({clientId: routeParams.id,householdExpensesId:householdExpensesId},function (data) {
+                                    location.path('/viewclient/'+clientId);
+                                });
 
+            }
 
             scope.routeTo=function()
             {

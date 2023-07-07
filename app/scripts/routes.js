@@ -1010,6 +1010,12 @@
             .when('/editAddress/:addrType/:addrId/:clientId', {
                 templateUrl: 'views/administration/EditAddress.html'
             })
+             .when('/addExpenses/:clientId', {
+                            templateUrl: 'views/administration/AddExpenses.html'
+                        })
+             .when('/editExpenses/:clientId', {
+                            templateUrl: 'views/administration/EditExpenses.html'
+                        })
             .when('/smscampaigns', {
                 templateUrl: 'views/organization/smscampaigns/smscampaigns.html'
             })
