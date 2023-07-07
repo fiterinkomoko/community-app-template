@@ -1181,6 +1181,9 @@
             .when('/creditreport/thitsaworkUploadCreditbureau/:clientId/:cbId', {
                 templateUrl: 'views/loans/creditReportUpload_ThitsaWorks.html'
             })
+            .when('/addbusinessdetail/:clientId', {
+                templateUrl: 'views/clients/addClientBusinessDetail.html'
+             })
             .otherwise({
                 templateUrl: "views/errors/404.html"
             });
