@@ -560,9 +560,6 @@
 									</tr>
 								</table>
 								</div>
-
-
-
 								<!-- Business Details Overview -->
 								<div data-ng-show="businessDetailSize != 0">
 									<div class="pull-right">
@@ -589,18 +586,13 @@
 										<tr class="pointer-main"
 											ng-repeat="detail in businessDetails">
 											<td class="pointer" data-ng-click="routeToBusinessDetail(detail.id)">{{detail.id}}</td>
-											<td class="pointer" data-ng-click="routeToBusinessDetail(detail.id)">{{detail.businessType}}</td>
+											<td class="pointer" data-ng-click="routeToBusinessDetail(detail.id)">{{detail.businessTypeId.name}}</td>
 											<td class="pointer" data-ng-click="routeToBusinessDetail(detail.id)">{{detail.externalId}}</td>
-											<td class="pointer" data-ng-click="routeToBusinessDetail(detail.id)">{{detail.sourceOfCapital}}</td>
+											<td class="pointer" data-ng-click="routeToBusinessDetail(detail.id)">{{detail.businessTypeId.name}}</td>
 											<td class="pointer center" data-ng-click="routeToBusinessDetail(detail.id)">{{detail.totalEmployee}}</td>
 										</tr>
 									</table>
 								</div>
-
-
-
-
-
                                 <!-- Fixed deposits overview -->
                                 <div data-ng-show="showFixed">
 									<div class="pull-right">

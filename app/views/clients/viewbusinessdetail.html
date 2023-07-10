@@ -1,0 +1,55 @@
+<div class="content-container" ng-controller="ViewClientBusinessDetailController">
+  <div id="viewlptop"></div>
+  <div class="paddedbottom10">
+
+    <ul class="breadcrumb">
+      <li ng-show="clientName">
+        <a href="#/viewclient/{{clientId}}">
+          <strong>'{{clientName}}'</strong>
+        </a>
+      </li>
+      <li class="active">{{'label.anchor.viewclientbusinessdetail' | translate}}</li>
+    </ul>
+  </div>
+  <div>
+    <div class="card">
+      <div class="content">
+        <div class="pull-right">
+          <div class="btn-group">
+            <a href="#/editbusinessdetail/{{clientbusinessDetails.id}}" class="btn btn-primary" has-permission='UPDATE_BUSINESSDETAIL'><i
+                    class="fa fa-edit "></i>&nbsp;&nbsp;{{'label.button.edit' | translate}}</a>
+          </div>
+        </div>
+        <legend class="paddedtop paddedbottom10">{{clientbusinessDetails.businesstype}}</legend>
+        <table width="100%">
+          <tr>
+            <td>
+              <a id="test" class="old-syle-anchor">&nbsp;</a>
+            </td>
+          </tr>
+          <tr class="bottomborder">
+            <td colspan="4">
+              <strong>{{'label.heading.details' | translate}}</strong>
+            </td>
+          </tr>
+          <tr class="toppadding">
+            <td>{{'label.heading.businesstype' | translate}} :</td>
+            <td colspan="3">{{businessTypeOptions.description}}</td>
+          </tr>
+          <tr >
+            <td>{{'label.heading.externalid' | translate}} :</td>
+            <td colspan="3">{{clientbusinessDetails.externalId}}</td>
+          </tr>
+
+          <tr>
+            <td colspan="3">
+            </td>
+            <td class="pull-right">
+              <a ng-click="scrollto('viewlptop')"><i class="fa fa-upload"></i>{{'label.button.top' | translate}}</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
