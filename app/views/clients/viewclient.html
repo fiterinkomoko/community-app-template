@@ -560,6 +560,47 @@
 									</tr>
 								</table>
 								</div>
+
+
+
+								<!-- Business Details Overview -->
+								<div data-ng-show="businessDetailSize != 0">
+									<div class="pull-right">
+										<span>
+											<button type="button" data-ng-click="viewBusinessDetails()"
+													class="btn-primary btn btn-sm">
+												{{ 'label.button.viewbusinessdetails' | translate }}
+											</button>
+										</span>
+									</div>
+									<div class="span gray-head">
+										<span class="boldlabel">
+											<strong>{{'label.heading.businessdetails' | translate }}</strong>
+										</span>
+									</div>
+									<table class="table table-condensed">
+										<tr class="graybg">
+											<th>{{'label.heading.id' | translate}}</th>
+											<th>{{'label.heading.businessType' | translate}}</th>
+											<th>{{'label.heading.externalid' | translate}}</th>
+											<th>{{'label.heading.sourceOfCapital' | translate}}</th>
+											<th>{{'label.heading.totalEmployee' | translate}}</th>
+										</tr>
+										<tr class="pointer-main"
+											ng-repeat="detail in businessDetails">
+											<td class="pointer" data-ng-click="routeToBusinessDetail(detail.id)">{{detail.id}}</td>
+											<td class="pointer" data-ng-click="routeToBusinessDetail(detail.id)">{{detail.businessType}}</td>
+											<td class="pointer" data-ng-click="routeToBusinessDetail(detail.id)">{{detail.externalId}}</td>
+											<td class="pointer" data-ng-click="routeToBusinessDetail(detail.id)">{{detail.sourceOfCapital}}</td>
+											<td class="pointer center" data-ng-click="routeToBusinessDetail(detail.id)">{{detail.totalEmployee}}</td>
+										</tr>
+									</table>
+								</div>
+
+
+
+
+
                                 <!-- Fixed deposits overview -->
                                 <div data-ng-show="showFixed">
 									<div class="pull-right">
