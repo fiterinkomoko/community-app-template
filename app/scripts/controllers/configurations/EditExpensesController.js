@@ -12,13 +12,13 @@
 
             resourceFactory.clientExpensesTemplateResource.getOtherExpenses({clientId: clientId}, function(data) {
                         $scope.expenses=data.otherExpenses;
-                         $scope.householdExpensesId=data.id
+                        $scope.householdExpensesId=data.id
                         $scope.formData.utilitiesAmount=data.utilitiesAmount;
                         $scope.formData.rentAmount=data.rentAmount;
                         $scope.formData.schoolFessAmount=data.schoolFessAmount;
                         $scope.formData.foodExpensesAmount=data.foodExpensesAmount;
                         $scope.otherExpensesList=data.otherExpensesData
-                                                   .map(item => ({description: item.otherExpense.name,
+                                                   .map(item => ({id: item.otherExpense.id, description: item.otherExpense.name,
                                                        amount: item.amount
                                                         }))
 
@@ -44,15 +44,14 @@
             };
 
             $scope.deleteOtherExpenses = function (index) {
-              $scope.otherExpensesId = $scope.otherExpensesList[index].otherExpensesId;
+              $scope.otherExpensesId = $scope.otherExpensesList[index].id;
               $scope.expensesAddedDataArray = $scope.expensesAddedDataArray.filter((expense) => expense.otherExpensesId != $scope.otherExpensesId);
               $scope.otherExpensesList.splice(index, 1);
                 };
 
             $scope.save = function () {
              $scope.formData.otherExpensesList=$scope.expensesAddedDataArray
-            console.log($scope.formData)
-                resourceFactory.clientExpensesResource.update({clientId: routeParams.id,householdExpensesId:$scope.householdExpensesId},$scope.formData,function (data) {
+                resourceFactory.clientExpensesResource.update({clientId: clientId,householdExpensesId:$scope.householdExpensesId},$scope.formData,function (data) {
                     location.path('/viewclient/'+clientId);
                 });
             };

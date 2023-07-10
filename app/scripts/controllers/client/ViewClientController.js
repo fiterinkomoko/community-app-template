@@ -89,6 +89,9 @@
             {
                 resourceFactory.clientExpensesResource.deleteExpense({clientId: routeParams.id,householdExpensesId:householdExpensesId},function (data) {
                                     location.path('/viewclient/'+clientId);
+                                    scope.expenses=[];
+                                    scope.expensesData=null
+                                    scope.otherExpensesList=[]
                                 });
 
             }
