@@ -6,6 +6,7 @@
             scope.first = {};
             scope.first.businessCreationDate = new Date();
             scope.clientId = routeParams.clientId;
+            scope.businessDetailId = routeParams.businessDetailId;
              scope.businessDetails = {};
 
 
@@ -24,14 +25,20 @@
                     this.formData.businessCreationDate = dateFilter(scope.first.businessCreationDate, scope.df);
                 }
                 scope.businessDetails = angular.copy(scope.formData);
-                scope.isClicked = false;
+            });
 
-
-
+            resourceFactory.clientBusinessDetailResource.get({clientId:scope.clientId,businessDetailId:scope.businessDetailId},function (data) {
+                scope.details = data;
             });
 
             scope.update = function () {
                 location.path('/editbusinessdetail/'+scope.clientId);
+            };
+            scope.deletebusinessDetail = function () {
+                resourceFactory.clientBusinessDetailResource.delete({clientId:scope.clientId,businessDetailId:scope.businessDetailId},function (data) {
+                location.path('/viewclient/'+scope.clientId);
+            });
+
             };
 
         }
