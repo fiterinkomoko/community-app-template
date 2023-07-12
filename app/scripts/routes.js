@@ -1011,10 +1011,10 @@
                 templateUrl: 'views/administration/EditAddress.html'
             })
              .when('/addExpenses/:clientId', {
-                            templateUrl: 'views/administration/AddExpenses.html'
+                            templateUrl: 'views/clients/AddExpenses.html'
                         })
              .when('/editExpenses/:clientId', {
-                            templateUrl: 'views/administration/EditExpenses.html'
+                            templateUrl: 'views/clients/EditExpenses.html'
                         })
             .when('/smscampaigns', {
                 templateUrl: 'views/organization/smscampaigns/smscampaigns.html'

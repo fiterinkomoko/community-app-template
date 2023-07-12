@@ -38,7 +38,6 @@
 
             $scope.save = function () {
              $scope.formData.otherExpensesList=$scope.expensesAddedDataArray
-            console.log($scope.formData)
                 resourceFactory.clientExpensesResource.save({clientId: clientId},$scope.formData,function (data) {
                     location.path('/viewclient/'+clientId);
                 });
