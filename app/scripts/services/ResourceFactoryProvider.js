@@ -465,6 +465,18 @@
                     recurringDepositTrxnsResource: defineResource(apiVer + "/recurringdepositaccounts/:savingsId/transactions/:transactionId", {savingsId: '@savingsId', transactionId: '@transactionId'}, {
                         get: {method: 'GET', params: {savingsId: '@savingsId', transactionId: '@transactionId'}}
                     }),
+                      clientExpensesTemplateResource: defineResource(apiVer + "/clients/:clientId/householdExpenses", {clientId: '@clientId'}, {
+                                            getOtherExpenses: {method: 'GET'}
+                                        }),
+
+                    clientExpensesResource: defineResource(apiVer + "/clients/:clientId/householdExpenses", {clientId: '@clientId'}, {
+                         save: {method: 'POST'}
+                                }),
+                clientExpensesResource: defineResource(apiVer + "/clients/:clientId/householdExpenses/:householdExpensesId", {clientId: '@clientId',householdExpensesId:'@householdExpensesId'}, {
+                                        deleteExpense: {method: 'DELETE'},
+                                        update: {method: 'PUT'}
+                                               }),
+
                     accountTransferResource: defineResource(apiVer + "/accounttransfers/:transferId", {transferId: '@transferId'}, {
                         get: {method: 'GET', params: {transferId: '@transferId'}}
                     }),

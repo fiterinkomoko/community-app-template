@@ -1017,6 +1017,12 @@
             .when('/editAddress/:addrType/:addrId/:clientId', {
                 templateUrl: 'views/administration/EditAddress.html'
             })
+             .when('/addExpenses/:clientId', {
+                            templateUrl: 'views/clients/AddExpenses.html'
+                        })
+             .when('/editExpenses/:clientId', {
+                            templateUrl: 'views/clients/EditExpenses.html'
+                        })
             .when('/smscampaigns', {
                 templateUrl: 'views/organization/smscampaigns/smscampaigns.html'
             })

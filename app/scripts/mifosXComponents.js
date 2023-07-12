@@ -330,6 +330,8 @@ define(['Q', 'underscore', 'mifosX'], function (Q) {
             'configurations/CreditBureauConfigurationController',
             'configurations/AddNewCreditBureauConfigurationController',
             'configurations/EditCreditBureauConfigurationController',
+            'client/AddExpensesController',
+            'client/EditExpensesController',
             'notification/NotificationsController',
             'selfservice/CreateSelfServiceUserController',
             'notification/NotificationsController',
