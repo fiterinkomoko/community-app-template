@@ -89,6 +89,17 @@
                     clientDocumentTemplateResource: defineResource(apiVer + "/clients/:clientId/documentsuploaded", {clientId: '@clientId'}, {
                         get: {method: 'GET', params: {}}
                     }),
+                    clientOtherInfoTemplateResource: defineResource(apiVer + "/clients/:clientId/otherInfo/template", {clientId: '@clientId'}, {
+                         get: {method: 'GET', params: {}}
+                    }),
+                    clientOtherInfoResource: defineResource(apiVer + "/clients/:clientId/otherInfo", {clientId: '@clientId'}, {
+                          getAll: {method: 'GET', params: {}, isArray: true},
+                    }),
+                    otherInfoResource: defineResource(apiVer + "/clients/:clientId/otherInfo/:otherInfoId", {clientId: '@clientId', otherInfoId: '@otherInfoId'}, {
+                          get: {method: 'GET', params: {}},
+                          put: {method: 'PUT', params: {}},
+                    }),
+
                     surveyResource: defineResource(apiVer + "/surveys/:surveyId", {surveyId: '@surveyId'}, {
                         getAll: {method: 'GET', params: {}, isArray: true},
                         get: {method: 'GET', params: {surveyId: '@surveyId'}, isArray: false},
@@ -718,6 +729,15 @@
                     }),
                     businessOwnersDocumentsResource: defineResource(apiVer + "/business_owners/:ownerId/documents/:documentId", {clientId: '@ownerId', documentId: '@documentId'}, {
                         getAllBusinessOwnerDocuments: {method: 'GET', params: {}, isArray: true}
+                    }),
+                    clientBusinessDetailResource: defineResource(apiVer + "/clients/:clientId/businessDetail/:businessDetailId/", {clientId: '@clientId',businessDetailId: '@businessDetailId'}, {
+                        getAllClientBusinessDetails: {method: 'GET', params: {}},
+                        put: {method: 'PUT', params: {}},
+                        save: {method: 'POST', params: {}},
+                        delete:{method: 'DELETE',params:{}},
+                    }),
+                    clientBusinessDetailTemplate:defineResource(apiVer+"/clients/:clientId/businessDetail/template",{clientId: '@clientId'},{
+                       get:{method: 'GET',params:{}}
                     }),
                    provisioningcriteria: defineResource(apiVer + "/provisioningcriteria/:criteriaId",{criteriaId:'@criteriaId'},{
                          get: {method: 'GET',params:{}},

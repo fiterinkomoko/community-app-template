@@ -145,6 +145,13 @@
             .when('/clients/survey/:clientId', {
                 templateUrl: 'views/surveys/viewclientsurvey.html'
             })
+            .when('/clientOtherInfo/:clientId', {
+                 templateUrl: 'views/clients/clientotherinfo.html'
+            })
+            .when('/editclientOtherInfo/:clientId/:otherInfoId', {
+                 templateUrl: 'views/clients/editclientotherinfo.html'
+            })
+
             .when('/newclientloanaccount/:clientId', {
                 templateUrl: 'views/loans/newloanaccount.html'
             })
@@ -1187,6 +1194,12 @@
             .when('/creditreport/thitsaworkUploadCreditbureau/:clientId/:cbId', {
                 templateUrl: 'views/loans/creditReportUpload_ThitsaWorks.html'
             })
+            .when('/addbusinessdetail/:clientId', {
+                templateUrl: 'views/clients/addClientBusinessDetail.html'
+             })
+            .when('/viewclient/:clientId/viewbusinessdetail/:businessDetailId', {
+                templateUrl: 'views/clients/viewbusinessdetail.html'
+             })
             .otherwise({
                 templateUrl: "views/errors/404.html"
             });

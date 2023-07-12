@@ -19,6 +19,7 @@
             scope.legalform = 'm_client';
 
             scope.collaterals = [];
+            scope.businessDetails = [];
 
 
             // address
@@ -195,6 +196,10 @@
                 location.path('/viewclient/'+ routeParams.id +'/viewallclientcollaterals');
             }
 
+            scope.viewBusinessDetails=function() {
+                location.path('/viewclient/'+ routeParams.id +'/viewallbusinessdetails');
+            }
+
             scope.editFamilyMember=function(clientFamilyMemberId)
             {
 
@@ -270,11 +275,19 @@
                 location.path('/viewclient/' + routeParams.id + '/viewclientcollateral/' + id);
             }
 
+            scope.routeToBusinessDetail = function(id) {
+                location.path('/viewclient/' + routeParams.id + '/viewbusinessdetail/' + id);
+            }
+
             scope.haveFile = [];
             resourceFactory.clientResource.get({clientId: routeParams.id}, function (data) {
                 scope.client = data;
                 scope.collaterals = scope.client.clientCollateralManagements;
                 scope.collateralSize = scope.collaterals.length;
+                //business-Details
+                scope.businessDetails = scope.client.clientBusinessDetailDataSet;
+                scope.businessDetailSize = scope.businessDetails.length;
+
                 scope.isClosedClient = scope.client.status.value == 'Closed';
                 scope.staffData.staffId = data.staffId;
                 if (data.imagePresent) {
