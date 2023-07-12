@@ -89,6 +89,17 @@
                     clientDocumentTemplateResource: defineResource(apiVer + "/clients/:clientId/documentsuploaded", {clientId: '@clientId'}, {
                         get: {method: 'GET', params: {}}
                     }),
+                    clientOtherInfoTemplateResource: defineResource(apiVer + "/clients/:clientId/otherInfo/template", {clientId: '@clientId'}, {
+                         get: {method: 'GET', params: {}}
+                    }),
+                    clientOtherInfoResource: defineResource(apiVer + "/clients/:clientId/otherInfo", {clientId: '@clientId'}, {
+                          getAll: {method: 'GET', params: {}, isArray: true},
+                    }),
+                    otherInfoResource: defineResource(apiVer + "/clients/:clientId/otherInfo/:otherInfoId", {clientId: '@clientId', otherInfoId: '@otherInfoId'}, {
+                          get: {method: 'GET', params: {}},
+                          put: {method: 'PUT', params: {}},
+                    }),
+
                     surveyResource: defineResource(apiVer + "/surveys/:surveyId", {surveyId: '@surveyId'}, {
                         getAll: {method: 'GET', params: {}, isArray: true},
                         get: {method: 'GET', params: {surveyId: '@surveyId'}, isArray: false},
@@ -454,6 +465,18 @@
                     recurringDepositTrxnsResource: defineResource(apiVer + "/recurringdepositaccounts/:savingsId/transactions/:transactionId", {savingsId: '@savingsId', transactionId: '@transactionId'}, {
                         get: {method: 'GET', params: {savingsId: '@savingsId', transactionId: '@transactionId'}}
                     }),
+                      clientExpensesTemplateResource: defineResource(apiVer + "/clients/:clientId/householdExpenses", {clientId: '@clientId'}, {
+                                            getOtherExpenses: {method: 'GET'}
+                                        }),
+
+                    clientExpensesResource: defineResource(apiVer + "/clients/:clientId/householdExpenses", {clientId: '@clientId'}, {
+                         save: {method: 'POST'}
+                                }),
+                clientExpensesResource: defineResource(apiVer + "/clients/:clientId/householdExpenses/:householdExpensesId", {clientId: '@clientId',householdExpensesId:'@householdExpensesId'}, {
+                                        deleteExpense: {method: 'DELETE'},
+                                        update: {method: 'PUT'}
+                                               }),
+
                     accountTransferResource: defineResource(apiVer + "/accounttransfers/:transferId", {transferId: '@transferId'}, {
                         get: {method: 'GET', params: {transferId: '@transferId'}}
                     }),
@@ -526,7 +549,7 @@
                     loanRescheduleResource: defineResource(apiVer + "/rescheduleloans/:scheduleId",{scheduleId:'@scheduleId', command: '@command'},{
                      get: {method: 'GET',params:{}},
                      getAll: {method: 'GET', params: {}, isArray: true},
-                     template: {method: 'GET',params:{}},
+                     template: {method: 'GET',params:{loanId:'@loanId'}},
                      preview:{method:'GET',params:{command:'previewLoanReschedule'}},
                      put: {method: 'POST', params: {command:'reschedule'}},
                      reject:{method:'POST',params:{command:'reject'}},
@@ -706,6 +729,15 @@
                     }),
                     businessOwnersDocumentsResource: defineResource(apiVer + "/business_owners/:ownerId/documents/:documentId", {clientId: '@ownerId', documentId: '@documentId'}, {
                         getAllBusinessOwnerDocuments: {method: 'GET', params: {}, isArray: true}
+                    }),
+                    clientBusinessDetailResource: defineResource(apiVer + "/clients/:clientId/businessDetail/:businessDetailId/", {clientId: '@clientId',businessDetailId: '@businessDetailId'}, {
+                        getAllClientBusinessDetails: {method: 'GET', params: {}},
+                        put: {method: 'PUT', params: {}},
+                        save: {method: 'POST', params: {}},
+                        delete:{method: 'DELETE',params:{}},
+                    }),
+                    clientBusinessDetailTemplate:defineResource(apiVer+"/clients/:clientId/businessDetail/template",{clientId: '@clientId'},{
+                       get:{method: 'GET',params:{}}
                     }),
                    provisioningcriteria: defineResource(apiVer + "/provisioningcriteria/:criteriaId",{criteriaId:'@criteriaId'},{
                          get: {method: 'GET',params:{}},
