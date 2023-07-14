@@ -102,7 +102,7 @@
                  if (scope.first.businessCreationDate) {
                         this.formData.businessCreationDate = dateFilter(scope.first.businessCreationDate, scope.df);
                     }
-                resourceFactory.clientBusinessDetailResource.update({clientId:scope.clientId},this.formData, function (data) {
+                resourceFactory.clientBusinessDetailResource.put({clientId:scope.clientId,businessDetailId:scope.businessDetailId},this.formData, function (data) {
                     location.path('/viewclient/'+scope.clientId);
                 });
             };
