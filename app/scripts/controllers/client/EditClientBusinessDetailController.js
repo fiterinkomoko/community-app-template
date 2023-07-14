@@ -69,9 +69,6 @@
                if (data.businessCreationDate) {
                       this.scope.first.businessCreationDate = dateFilter(data.businessCreationDate, scope.df);
                   }
-                console.log("Data to be editted");
-                console.log(scope.formData);
-                console.log("Data to be editted ends here . . . . .");
             });
 
 
