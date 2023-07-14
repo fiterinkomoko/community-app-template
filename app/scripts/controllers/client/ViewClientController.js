@@ -20,6 +20,7 @@
 
             scope.collaterals = [];
             scope.businessDetails = [];
+            scope.isClientBusinessDetailEnabled = false;
 
 
             // address
@@ -64,15 +65,7 @@
 
 
                 }
-
-
-               /* resourceFactory.getAllFamilyMembers.get({clientId:routeParams.id},function(data)
-                {
-
-                    scope.families=data;
-
-
-                })*/
+            scope.isClientBusinessDetailEnabled = data.isClientBusinessDetailEnabled;
 
             });
 
@@ -350,6 +343,15 @@
                     }
                     else {
                         scope.buttons.push(clientStatus.getStatus("Assign Staff"));
+                    }
+                    if(scope.isClientBusinessDetailEnabled){
+                    scope.buttons.push(
+                    {
+                        name: "label.button.addbusinessdetail",
+                        href: "#/addbusinessdetail",
+                        icon: "fa fa-plus",
+                        taskPermissionName: "CREATE_CLIENTBUSINESSDETAIL"
+                    })
                     }
                 }
 
