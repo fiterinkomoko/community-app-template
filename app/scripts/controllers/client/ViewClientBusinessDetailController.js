@@ -31,9 +31,6 @@
                 scope.details = data;
             });
 
-            scope.update = function () {
-                location.path('/editbusinessdetail/'+scope.clientId);
-            };
             scope.deletebusinessDetail = function () {
                 resourceFactory.clientBusinessDetailResource.delete({clientId:scope.clientId,businessDetailId:scope.businessDetailId},function (data) {
                 location.path('/viewclient/'+scope.clientId);

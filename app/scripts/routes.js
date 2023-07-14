@@ -1194,6 +1194,9 @@
             .when('/viewclient/:clientId/viewbusinessdetail/:businessDetailId', {
                 templateUrl: 'views/clients/viewbusinessdetail.html'
              })
+             .when('/viewclient/:clientId/editbusinessdetail/:businessDetailId', {
+                 templateUrl: 'views/clients/editClientBusinessDetail.html'
+             })
             .otherwise({
                 templateUrl: "views/errors/404.html"
             });
