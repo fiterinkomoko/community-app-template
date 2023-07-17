@@ -15,8 +15,8 @@
     <div class="card">
       <div class="content">
         <div class="pull-right">
-          <div class="btn-group">
-            <a href="#/editbusinessdetail/{{clientbusinessDetails.id}}" class="btn btn-primary" has-permission='UPDATE_BUSINESSDETAIL'><i
+          <div class="btn-group" ng-show="isClientBusinessDetailEnabled">
+            <a href="#/viewclient/{{clientId}}/editbusinessdetail/{{details.id}}" class="btn btn-primary" has-permission='UPDATE_BUSINESSDETAIL'><i
                     class="fa fa-edit "></i>&nbsp;&nbsp;{{'label.button.edit' | translate}}</a>
             <button class="btn btn-danger" ng-click="deletebusinessDetail()" has-permission='DELETE_BUSINESSDETAIL'><i class="fa fa-trash-o" aria-hidden="true"></i>{{'label.button.delete' | translate}}</button>
 

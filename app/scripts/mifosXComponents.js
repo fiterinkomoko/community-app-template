@@ -382,6 +382,7 @@ define(['Q', 'underscore', 'mifosX'], function (Q) {
             'client/BusinessOwnerDocumentController',
             'client/AddClientBusinessDetailController',
             'client/ViewClientBusinessDetailController',
+            'client/EditClientBusinessDetailController',
             'product/ValidationLimitController',
             'product/CreateValidationLimitController',
             'product/EditValidationLimitController',

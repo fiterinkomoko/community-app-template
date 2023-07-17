@@ -3,11 +3,10 @@
         ViewClientBusinessDetailController: function (scope, resourceFactory, location, dateFilter,translate,routeParams) {
             scope.formData = {};
             scope.showOrHideValue = "show";
-            scope.first = {};
-            scope.first.businessCreationDate = new Date();
             scope.clientId = routeParams.clientId;
             scope.businessDetailId = routeParams.businessDetailId;
              scope.businessDetails = {};
+             scope.isClientBusinessDetailEnabled = false;
 
 
             resourceFactory.clientBusinessDetailTemplate.get({clientId:scope.clientId},function (data) {
@@ -21,9 +20,8 @@
                 if (data.clientAccount) {
                     scope.clientName = data.clientAccount.displayName;
                 }
-                if (scope.first.businessCreationDate) {
-                    this.formData.businessCreationDate = dateFilter(scope.first.businessCreationDate, scope.df);
-                }
+                scope.isClientBusinessDetailEnabled = data.isClientBusinessDetailEnabled;
+
                 scope.businessDetails = angular.copy(scope.formData);
             });
 
@@ -31,9 +29,6 @@
                 scope.details = data;
             });
 
-            scope.update = function () {
-                location.path('/editbusinessdetail/'+scope.clientId);
-            };
             scope.deletebusinessDetail = function () {
                 resourceFactory.clientBusinessDetailResource.delete({clientId:scope.clientId,businessDetailId:scope.businessDetailId},function (data) {
                 location.path('/viewclient/'+scope.clientId);
