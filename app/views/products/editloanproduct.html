@@ -98,6 +98,14 @@
 	            <input type="checkbox" ng-model="formData.includeInBorrowerCycle" ng-true-value="true" ng-false-value="false">
 	        </label>
 	    </div>
+		<label class="control-label col-sm-4">{{ 'label.input.islamic' | translate }}
+			<i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.loanproduct.islamic' | translate}}" tooltip-append-to-body="true"></i>
+		</label>
+		<div class="checkbox col-sm-4">
+			<label>
+				<input type="checkbox" ng-model="formData.isIslamic" ng-true-value="true" ng-false-value="false">
+			</label>
+		</div>
 	</div>
 	<h3>{{ 'label.heading.currency' | translate }}</h3>
 	<hr>
