@@ -151,7 +151,12 @@
             .when('/editclientOtherInfo/:clientId/:otherInfoId', {
                  templateUrl: 'views/clients/editclientotherinfo.html'
             })
-
+            .when('/clientOtherInfoEntity/:clientId', {
+                 templateUrl: 'views/clients/clientotherinfoentity.html'
+            })
+            .when('/editclientOtherInfoEntity/:clientId/:otherInfoId', {
+                 templateUrl: 'views/clients/editclientotherinfoentity.html'
+            })
             .when('/newclientloanaccount/:clientId', {
                 templateUrl: 'views/loans/newloanaccount.html'
             })
@@ -1199,6 +1204,9 @@
              })
             .when('/viewclient/:clientId/viewbusinessdetail/:businessDetailId', {
                 templateUrl: 'views/clients/viewbusinessdetail.html'
+             })
+             .when('/viewclient/:clientId/editbusinessdetail/:businessDetailId', {
+                 templateUrl: 'views/clients/editClientBusinessDetail.html'
              })
             .otherwise({
                 templateUrl: "views/errors/404.html"
