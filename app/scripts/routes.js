@@ -151,7 +151,12 @@
             .when('/editclientOtherInfo/:clientId/:otherInfoId', {
                  templateUrl: 'views/clients/editclientotherinfo.html'
             })
-
+            .when('/clientOtherInfoEntity/:clientId', {
+                 templateUrl: 'views/clients/clientotherinfoentity.html'
+            })
+            .when('/editclientOtherInfoEntity/:clientId/:otherInfoId', {
+                 templateUrl: 'views/clients/editclientotherinfoentity.html'
+            })
             .when('/newclientloanaccount/:clientId', {
                 templateUrl: 'views/loans/newloanaccount.html'
             })
@@ -1017,6 +1022,12 @@
             .when('/editAddress/:addrType/:addrId/:clientId', {
                 templateUrl: 'views/administration/EditAddress.html'
             })
+             .when('/addExpenses/:clientId', {
+                            templateUrl: 'views/clients/AddExpenses.html'
+                        })
+             .when('/editExpenses/:clientId', {
+                            templateUrl: 'views/clients/EditExpenses.html'
+                        })
             .when('/smscampaigns', {
                 templateUrl: 'views/organization/smscampaigns/smscampaigns.html'
             })

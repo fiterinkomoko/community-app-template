@@ -65,6 +65,20 @@
 
 
                 }
+
+
+               /* resourceFactory.getAllFamilyMembers.get({clientId:routeParams.id},function(data)
+                {
+
+                    scope.families=data;
+
+
+                })*/
+                resourceFactory.clientExpensesTemplateResource.getOtherExpenses({clientId: routeParams.id}, function(data) {
+                                          scope.expenses=data.otherExpenses;
+                                          scope.expensesData=data
+                                          scope.otherExpensesList=data.otherExpensesData
+                                            });
             scope.isClientBusinessDetailEnabled = data.isClientBusinessDetailEnabled;
 
             });
