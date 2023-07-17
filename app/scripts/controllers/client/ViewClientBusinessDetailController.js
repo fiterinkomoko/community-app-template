@@ -3,8 +3,6 @@
         ViewClientBusinessDetailController: function (scope, resourceFactory, location, dateFilter,translate,routeParams) {
             scope.formData = {};
             scope.showOrHideValue = "show";
-            scope.first = {};
-            scope.first.businessCreationDate = new Date();
             scope.clientId = routeParams.clientId;
             scope.businessDetailId = routeParams.businessDetailId;
              scope.businessDetails = {};
@@ -21,9 +19,7 @@
                 if (data.clientAccount) {
                     scope.clientName = data.clientAccount.displayName;
                 }
-                if (scope.first.businessCreationDate) {
-                    this.formData.businessCreationDate = dateFilter(scope.first.businessCreationDate, scope.df);
-                }
+
                 scope.businessDetails = angular.copy(scope.formData);
             });
 

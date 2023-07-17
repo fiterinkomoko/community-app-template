@@ -21,9 +21,6 @@
                 if (data.clientAccount) {
                     scope.clientName = data.clientAccount.displayName;
                 }
-                if (scope.first.businessCreationDate) {
-                    this.formData.businessCreationDate = dateFilter(scope.first.businessCreationDate, scope.df);
-                }
                 scope.businessDetails = angular.copy(scope.formData);
                 scope.isClicked = false;
 
@@ -67,7 +64,8 @@
                     society: data.society
                 };
                if (data.businessCreationDate) {
-                      this.scope.first.businessCreationDate = dateFilter(data.businessCreationDate, scope.df);
+                      var businessCreationDate = dateFilter(data.businessCreationDate, scope.df);
+                      scope.first.businessCreationDate = new Date(businessCreationDate);
                   }
             });
 
