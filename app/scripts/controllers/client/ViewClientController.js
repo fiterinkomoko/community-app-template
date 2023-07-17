@@ -20,6 +20,7 @@
 
             scope.collaterals = [];
             scope.businessDetails = [];
+            scope.isClientBusinessDetailEnabled = false;
 
 
             // address
@@ -78,24 +79,12 @@
                                           scope.expensesData=data
                                           scope.otherExpensesList=data.otherExpensesData
                                             });
+            scope.isClientBusinessDetailEnabled = data.isClientBusinessDetailEnabled;
 
             });
 
-            scope.addExpenses=function()
-            {
-                location.path('/addExpenses/'+ routeParams.id);
-            }
 
-          scope.deleteExpenses=function(householdExpensesId)
-            {
-                resourceFactory.clientExpensesResource.deleteExpense({clientId: routeParams.id,householdExpensesId:householdExpensesId},function (data) {
-                                    location.path('/viewclient/'+clientId);
-                                    scope.expenses=[];
-                                    scope.expensesData=null
-                                    scope.otherExpensesList=[]
-                                });
 
-            }
 
             scope.routeTo=function()
             {
@@ -368,6 +357,15 @@
                     }
                     else {
                         scope.buttons.push(clientStatus.getStatus("Assign Staff"));
+                    }
+                    if(scope.isClientBusinessDetailEnabled){
+                    scope.buttons.push(
+                    {
+                        name: "label.button.addbusinessdetail",
+                        href: "#/addbusinessdetail",
+                        icon: "fa fa-plus",
+                        taskPermissionName: "CREATE_CLIENTBUSINESSDETAIL"
+                    })
                     }
                 }
 

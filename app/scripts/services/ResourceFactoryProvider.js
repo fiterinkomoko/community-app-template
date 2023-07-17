@@ -99,7 +99,12 @@
                           get: {method: 'GET', params: {}},
                           put: {method: 'PUT', params: {}},
                     }),
-
+                    clientOtherInfoEntityResource: defineResource(apiVer + "/clients/:clientId/otherInfo/entity", {clientId: '@clientId'}, {
+                          getAll: {method: 'GET', params: {}, isArray: true},
+                    }),
+                    otherInfoEntityResource: defineResource(apiVer + "/clients/:clientId/otherInfo/entity/:otherInfoId", {clientId: '@clientId', otherInfoId: '@otherInfoId'}, {
+                          get: {method: 'GET', params: {}},
+                    }),
                     surveyResource: defineResource(apiVer + "/surveys/:surveyId", {surveyId: '@surveyId'}, {
                         getAll: {method: 'GET', params: {}, isArray: true},
                         get: {method: 'GET', params: {surveyId: '@surveyId'}, isArray: false},
