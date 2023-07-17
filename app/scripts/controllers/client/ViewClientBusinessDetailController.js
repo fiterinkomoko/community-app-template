@@ -6,6 +6,7 @@
             scope.clientId = routeParams.clientId;
             scope.businessDetailId = routeParams.businessDetailId;
              scope.businessDetails = {};
+             scope.isClientBusinessDetailEnabled = false;
 
 
             resourceFactory.clientBusinessDetailTemplate.get({clientId:scope.clientId},function (data) {
@@ -19,6 +20,7 @@
                 if (data.clientAccount) {
                     scope.clientName = data.clientAccount.displayName;
                 }
+                scope.isClientBusinessDetailEnabled = data.isClientBusinessDetailEnabled;
 
                 scope.businessDetails = angular.copy(scope.formData);
             });
