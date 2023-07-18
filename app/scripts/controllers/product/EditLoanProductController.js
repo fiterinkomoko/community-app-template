@@ -63,6 +63,7 @@
                     fundId: scope.product.fundId,
                     description: scope.product.description,
                     includeInBorrowerCycle: scope.product.includeInBorrowerCycle,
+                    isIslamic: scope.product.isIslamic,
                     useBorrowerCycle: scope.product.useBorrowerCycle,
                     currencyCode: scope.product.currency.code,
                     digitsAfterDecimal: scope.product.currency.decimalPlaces,
