@@ -291,6 +291,9 @@
 										<li data-ng-show="client.status.value=='Active' && client.legalForm.id==2">
 											<a href="#/clientOtherInfoEntity/{{client.id}}" has-permission='READ_CLIENTOTHERINFO'>{{'label.button.clientOtherInfoCompany' | translate}}</a>
 										</li>
+										<li data-ng-show="client.status.value=='Active'">
+											<a href="#/clientRecruitmentSurvey/{{client.id}}" has-permission='READ_CLIENTRECRUITMENTSURVEY'>{{'label.button.clientRecruitmentSurvey' | translate}}</a>
+										</li>
 									</ul>
 								</span>
 						</div>
