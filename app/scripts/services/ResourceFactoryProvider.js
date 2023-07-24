@@ -744,6 +744,9 @@
                     clientBusinessDetailTemplate:defineResource(apiVer+"/clients/:clientId/businessDetail/template",{clientId: '@clientId'},{
                        get:{method: 'GET',params:{}}
                     }),
+                    loanDecisionEngineResource: defineResource(apiVer + "/loans/decision/reviewApplication/:loanId", {loanId: '@loanId'}, {
+                        reviewApplication: {method: 'POST', params: {}},
+                    }),
                    provisioningcriteria: defineResource(apiVer + "/provisioningcriteria/:criteriaId",{criteriaId:'@criteriaId'},{
                          get: {method: 'GET',params:{}},
                         getAll: {method: 'GET',params:{}, isArray : true},

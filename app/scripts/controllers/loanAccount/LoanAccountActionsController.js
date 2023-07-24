@@ -492,6 +492,17 @@
                     scope.showDateField = false;
                     scope.taskPermissionName = 'UPDATE_DISBURSEMENTDETAIL';
                     break;
+                    case "reviewapplication":
+                        scope.taskPermissionName = 'ACCEPT_LOANAPPLICATIONREVIEW';
+                        resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+
+                            scope.title = 'label.heading.reviewapplicationloanaccount';
+                            scope.labelName = 'label.input.reviewApplicationOn';
+                            scope.modelName = 'loanReviewOnDate';
+                            scope.formData[scope.modelName] =  new Date();
+                        });
+
+                        break;
             }
 
             scope.cancel = function () {
@@ -617,7 +628,12 @@
                     resourceFactory.LoanAccountResource.delete({loanId: routeParams.id, resourceType: 'charges', chargeId: routeParams.chargeId}, this.formData, function (data) {
                         location.path('/viewloanaccount/' + data.loanId);
                     });
-                }else {
+                }else if (scope.action == "reviewapplication") {
+                         console.log("JB Console . . . .");
+                         resourceFactory.loanDecisionEngineResource.reviewApplication({loanId: routeParams.id}, this.formData, function (data) {
+                             location.path('/viewloanaccount/' + data.loanId);
+                         });
+                    }else {
                                      console.log("else");
                                      params.loanId = scope.accountId;
                                      var allCharges = [];
