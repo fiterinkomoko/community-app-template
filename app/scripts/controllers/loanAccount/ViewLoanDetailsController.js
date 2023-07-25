@@ -128,6 +128,9 @@
                     case "foreclosure":
                         location.path('loanforeclosure/' + accountId);
                         break;
+                    case "reviewapplication":
+                        location.path('/loanaccount/' + accountId + '/reviewapplication');
+                        break;
                 }
             };
 
@@ -190,6 +193,29 @@
                 if (scope.status == "Submitted and pending approval" || scope.status == "Active" || scope.status == "Approved") {
                     scope.choice = true;
                 }
+                function getLoanStage(data) {
+                if((data.isExtendLoanLifeCycleConfig == false)){
+                    return {
+                        name: "button.approve",
+                        icon: "fa fa-check",
+                        taskPermissionName: 'APPROVE_LOAN'
+                    };
+                }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState == null || data.loanDecisionState == ""))){
+                return {
+                    name: "button.reviewapplication",
+                    icon: "fa fa-check",
+                    taskPermissionName: 'ACCEPT_LOANAPPLICATIONREVIEW'
+                };
+                }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "REVIEW_APPLICATION"))){
+                return {
+                    name: "button.duediligence",
+                    icon: "fa fa-check",
+                    taskPermissionName: 'ACCEPT_LOANAPPLICATIONREVIEW'
+                };
+                }else{
+                console.log("No Options Found here . . . . ");
+                }
+                }
                 if (data.status.value == "Submitted and pending approval") {
                     scope.buttons = { singlebuttons: [
                         {
@@ -197,11 +223,7 @@
                             icon: "fa fa-plus",
                             taskPermissionName: 'CREATE_LOANCHARGE'
                         },
-                        {
-                            name: "button.approve",
-                            icon: "fa fa-check",
-                            taskPermissionName: 'APPROVE_LOAN'
-                        },
+                        getLoanStage(data),
                         {
                             name: "button.modifyapplication",
                             icon: "fa fa-pincel-square-o",
@@ -252,7 +274,6 @@
                         }) ;
                     }
                 }
-
                 if (data.status.value == "Approved") {
                     scope.buttons = { singlebuttons: [
                         {
@@ -297,7 +318,6 @@
 
                     };
                 }
-
                 if (data.status.value == "Active") {
                     scope.buttons = { singlebuttons: [
                         {
