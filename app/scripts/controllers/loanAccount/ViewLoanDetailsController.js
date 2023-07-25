@@ -194,18 +194,38 @@
                     scope.choice = true;
                 }
                 console.log(data);
-                if (data.status.value == "Submitted and pending approval" && (data.isExtendLoanLifeCycleConfig == false)) {
+
+                function getLoanStage(data) {
+                if((data.isExtendLoanLifeCycleConfig == false)){
+                    return {
+                        name: "button.approve",
+                        icon: "fa fa-check",
+                        taskPermissionName: 'APPROVE_LOAN'
+                    };
+                }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState == null || data.loanDecisionState == ""))){
+                return {
+                    name: "button.reviewapplication",
+                    icon: "fa fa-check",
+                    taskPermissionName: 'ACCEPT_LOANAPPLICATIONREVIEW'
+                };
+                }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "REVIEW_APPLICATION"))){
+                return {
+                    name: "button.duediligence",
+                    icon: "fa fa-check",
+                    taskPermissionName: 'ACCEPT_LOANAPPLICATIONREVIEW'
+                };
+                }else{
+                console.log("No Options Found here . . . . ");
+                }
+                }
+                if (data.status.value == "Submitted and pending approval") {
                     scope.buttons = { singlebuttons: [
                         {
                             name: "button.addloancharge",
                             icon: "fa fa-plus",
                             taskPermissionName: 'CREATE_LOANCHARGE'
                         },
-                        {
-                            name: "button.approve",
-                            icon: "fa fa-check",
-                            taskPermissionName: 'APPROVE_LOAN'
-                        },
+                        getLoanStage(data),
                         {
                             name: "button.modifyapplication",
                             icon: "fa fa-pincel-square-o",
@@ -256,131 +276,6 @@
                         }) ;
                     }
                 }
-                if (data.status.value == "Submitted and pending approval" && (data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState == null || data.loanDecisionState == ""))) {
-                    scope.buttons = { singlebuttons: [
-                        {
-                            name: "button.addloancharge",
-                            icon: "fa fa-plus",
-                            taskPermissionName: 'CREATE_LOANCHARGE'
-                        },
-                        {
-                            name: "button.reviewapplication",
-                            icon: "fa fa-check",
-                            taskPermissionName: 'ACCEPT_LOANAPPLICATIONREVIEW'
-                        },
-                        {
-                            name: "button.modifyapplication",
-                            icon: "fa fa-pincel-square-o",
-                            taskPermissionName: 'UPDATE_LOAN'
-                        },
-                        {
-                            name: "button.reject",
-                            icon: "fa fa-times",
-                            taskPermissionName: 'REJECT_LOAN'
-                        }
-                    ],
-                        options: [
-                            {
-                                name: (scope.loandetails.loanOfficerName?"button.changeloanofficer":"button.assignloanofficer"),
-                                taskPermissionName: 'UPDATELOANOFFICER_LOAN'
-                            },
-                            {
-                                name: "button.withdrawnbyclient",
-                                taskPermissionName: 'WITHDRAW_LOAN'
-                            },
-                            {
-                                name: "button.delete",
-                                taskPermissionName: 'DELETE_LOAN'
-                            },
-                            {
-                                name: "button.addcollateral",
-                                taskPermissionName: 'CREATE_COLLATERAL'
-                            },
-                            {
-                                name: "button.listguarantor",
-                                taskPermissionName: 'READ_GUARANTOR'
-                            },
-                            {
-                                name: "button.createguarantor",
-                                taskPermissionName: 'CREATE_GUARANTOR'
-                            },
-                            {
-                                name: "button.loanscreenreport",
-                                taskPermissionName: 'READ_LOAN'
-                            }
-                        ]
-
-                    };
-                    if(data.isVariableInstallmentsAllowed) {
-                        scope.buttons.options.push({
-                            name: "button.adjustrepaymentschedule",
-                            taskPermissionName: 'ADJUST_REPAYMENT_SCHEDULE'
-                        }) ;
-                    }
-                }
-                if (data.status.value == "Submitted and pending approval" && (data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null || data.loanDecisionState.value == "REVIEW_APPLICATION"))) {
-                    scope.buttons = { singlebuttons: [
-                        {
-                            name: "button.addloancharge",
-                            icon: "fa fa-plus",
-                            taskPermissionName: 'CREATE_LOANCHARGE'
-                        },
-                        {
-                            name: "button.duediligence",
-                            icon: "fa fa-check",
-                            taskPermissionName: 'ACCEPT_LOANAPPLICATIONREVIEW'
-                        },
-                        {
-                            name: "button.modifyapplication",
-                            icon: "fa fa-pincel-square-o",
-                            taskPermissionName: 'UPDATE_LOAN'
-                        },
-                        {
-                            name: "button.reject",
-                            icon: "fa fa-times",
-                            taskPermissionName: 'REJECT_LOAN'
-                        }
-                    ],
-                        options: [
-                            {
-                                name: (scope.loandetails.loanOfficerName?"button.changeloanofficer":"button.assignloanofficer"),
-                                taskPermissionName: 'UPDATELOANOFFICER_LOAN'
-                            },
-                            {
-                                name: "button.withdrawnbyclient",
-                                taskPermissionName: 'WITHDRAW_LOAN'
-                            },
-                            {
-                                name: "button.delete",
-                                taskPermissionName: 'DELETE_LOAN'
-                            },
-                            {
-                                name: "button.addcollateral",
-                                taskPermissionName: 'CREATE_COLLATERAL'
-                            },
-                            {
-                                name: "button.listguarantor",
-                                taskPermissionName: 'READ_GUARANTOR'
-                            },
-                            {
-                                name: "button.createguarantor",
-                                taskPermissionName: 'CREATE_GUARANTOR'
-                            },
-                            {
-                                name: "button.loanscreenreport",
-                                taskPermissionName: 'READ_LOAN'
-                            }
-                        ]
-
-                    };
-                    if(data.isVariableInstallmentsAllowed) {
-                        scope.buttons.options.push({
-                            name: "button.adjustrepaymentschedule",
-                            taskPermissionName: 'ADJUST_REPAYMENT_SCHEDULE'
-                        }) ;
-                    }
-                }
-
                 if (data.status.value == "Approved") {
                     scope.buttons = { singlebuttons: [
                         {
@@ -425,7 +320,6 @@
 
                     };
                 }
-
                 if (data.status.value == "Active") {
                     scope.buttons = { singlebuttons: [
                         {
