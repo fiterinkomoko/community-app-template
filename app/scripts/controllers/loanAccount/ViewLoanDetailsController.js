@@ -193,8 +193,6 @@
                 if (scope.status == "Submitted and pending approval" || scope.status == "Active" || scope.status == "Approved") {
                     scope.choice = true;
                 }
-                console.log(data);
-
                 function getLoanStage(data) {
                 if((data.isExtendLoanLifeCycleConfig == false)){
                     return {

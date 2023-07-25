@@ -629,12 +629,10 @@
                         location.path('/viewloanaccount/' + data.loanId);
                     });
                 }else if (scope.action == "reviewapplication") {
-                         console.log("JB Console . . . .");
                          resourceFactory.loanDecisionEngineResource.reviewApplication({loanId: routeParams.id}, this.formData, function (data) {
                              location.path('/viewloanaccount/' + data.loanId);
                          });
                     }else {
-                                     console.log("else");
                                      params.loanId = scope.accountId;
                                      var allCharges = [];
                                  if(scope.action == "disbursetosavings"){
