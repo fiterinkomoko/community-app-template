@@ -35,7 +35,7 @@
 
                     <div class="col-sm-3">
                         <input id="startDate" type="text" name="startDate" datepicker-pop="dd MMMM yyyy"
-                               ng-model="first.date" is-open="opened" min="'2000-01-01'" max="restrictDate"
+                               ng-model="first.startDate" is-open="opened" min="'2000-01-01'" max="restrictDate"
                                class="form-control" />
                     </div>
 
@@ -51,7 +51,7 @@
 
                     <div class="col-sm-3">
                         <input id="endDate" type="text" name="endDate" datepicker-pop="dd MMMM yyyy"
-                               ng-model="second.date" is-open="opened" min="'2000-01-01'" max="restrictDate"
+                               ng-model="second.endDate" is-open="opened" min="'2000-01-01'" max="restrictDate"
                                class="form-control" />
                     </div>
 
@@ -67,7 +67,7 @@
                     <div class="col-sm-3">
                         <select id="surveyLocation" ng-model="formData.surveyLocation" class="form-control"
                                 ng-options="survey.id as survey.name for survey in surveyLocationOptions"
-                                value="{{survey.id}}"></select>
+                                value="{{survey.id}}"><option value="">--{{'label.menu.surveyLocation' | translate}}--</option></select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -77,7 +77,7 @@
                     <div class="col-sm-3">
                         <select id="cohort" ng-model="formData.cohort" class="form-control"
                                 ng-options="coht.id as coht.name for coht in cohortOptions"
-                                value="{{coht.id}}"></select>
+                                value="{{coht.id}}"><option value="">--{{'label.menu.cohort' | translate}}--</option></select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -87,7 +87,7 @@
                     <div class="col-sm-3">
                         <select id="program" ng-model="formData.program" class="form-control"
                                 ng-options="prog.id as prog.name for prog in programOptions"
-                                value="{{prog.id}}"></select>
+                                value="{{prog.id}}"><option value="">--{{'label.menu.program' | translate}}--</option></select>
                     </div>
                 </div>
 
@@ -98,7 +98,7 @@
                     <div class="col-sm-3">
                         <select id="country" ng-model="formData.country" class="form-control"
                                 ng-options="cty.id as cty.name for cty in countryOptions"
-                                value="{{cty.id}}"></select>
+                                value="{{cty.id}}"><option value="">--{{'label.menu.country' | translate}}--</option></select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -107,7 +107,7 @@
 
                     <div class="col-sm-3">
                         <input id="dueDiligenceOn" type="text" name="dueDiligenceOn" datepicker-pop="dd MMMM yyyy"
-                               ng-model="third.date" is-open="opened" min="'2000-01-01'" max="restrictDate"
+                               ng-model="third.dueDiligenceOn" is-open="opened" min="'2000-01-01'" max="restrictDate"
                                class="form-control" />
                     </div>
 
