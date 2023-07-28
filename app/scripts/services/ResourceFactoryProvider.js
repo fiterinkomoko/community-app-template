@@ -757,6 +757,12 @@
                     loanDecisionEngineResource: defineResource(apiVer + "/loans/decision/reviewApplication/:loanId", {loanId: '@loanId'}, {
                         reviewApplication: {method: 'POST', params: {}},
                     }),
+                    dueDiligenceLoanDecisionEngineResource: defineResource(apiVer + "/loans/decision/dueDiligence/:loanId", {loanId: '@loanId'}, {
+                        approveDueDiligence: {method: 'POST', params: {}},
+                    }),
+                    dueDiligenceLoanDecisionEngineResource: defineResource(apiVer + "/loans/decision/template/:loanId", {loanId: '@loanId'}, {
+                        getTemplate: {method: 'GET', params: {}},
+                    }),
                    provisioningcriteria: defineResource(apiVer + "/provisioningcriteria/:criteriaId",{criteriaId:'@criteriaId'},{
                          get: {method: 'GET',params:{}},
                         getAll: {method: 'GET',params:{}, isArray : true},
