@@ -371,6 +371,7 @@ define(['Q', 'underscore', 'mifosX'], function (Q) {
             'loanAccount/NewGLIMAccountController',
             'loanAccount/ViewGLIMAccountController',
             'loanAccount/GlimLoanAccountActionsController',
+            'loanAccount/ApproveLoanDueDiligenceController',
             'savings/CreateGSIMAccountController',
             'savings/ViewGSIMaccountController',
             'savings/GSIMAccountActionsController',

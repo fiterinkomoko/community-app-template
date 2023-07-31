@@ -181,6 +181,9 @@
             .when('/viewloanaccount/:id', {
                 templateUrl: 'views/loans/viewloanaccountdetails.html'
             })
+            .when('/viewloanaccount/:id/duediligence', {
+                templateUrl: 'views/loans/loanDueDiligence.html'
+            })
             .when('/viewglimaccount/:groupId/:id/:glimId', {
                 templateUrl: 'views/loans/viewglimaccount.html'
             })
