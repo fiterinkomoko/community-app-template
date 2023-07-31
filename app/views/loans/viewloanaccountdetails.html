@@ -1027,6 +1027,48 @@
                             </div>
                         </div>
                     </uib-tab>
+                    <uib-tab ng-show="loandetails.loanDueDiligenceData" heading="{{'label.heading.duediligencedetail' | translate}}">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th class="empty"></th>
+                                <th class="empty"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{'label.heading.surveyname' |
+                                    translate}}
+                                </td>
+                                <td><span class="padded-td">{{loandetails.loanDueDiligenceData.surveyName}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.startdate' | translate}}</td>
+                                <td><span class="padded-td">{{loandetails.loanDueDiligenceData.startDate | DateFormat}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.enddate' | translate}}</td>
+                                <td><span class="padded-td">{{loandetails.loanDueDiligenceData.endDate | DateFormat }}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.surveylocation' | translate}}</td>
+                                <td><span class="padded-td">{{loandetails.loanDueDiligenceData.surveyLocation}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.cohort' | translate}}</td>
+                                <td><span class="padded-td">{{loandetails.loanDueDiligenceData.cohort}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.program' | translate}}</td>
+                                <td><span class="padded-td">{{loandetails.loanDueDiligenceData.program}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.country' | translate}}</td>
+                                <td><span class="padded-td">{{loandetails.loanDueDiligenceData.country}}</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </uib-tab>
                 </uib-tabset>
             </div>
         </div>
