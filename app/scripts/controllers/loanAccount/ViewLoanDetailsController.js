@@ -131,6 +131,9 @@
                     case "reviewapplication":
                         location.path('/loanaccount/' + accountId + '/reviewapplication');
                         break;
+                    case "duediligence":
+                        location.path('/viewloanaccount/' + accountId + '/duediligence');
+                        break;
                 }
             };
 
@@ -210,9 +213,15 @@
                 return {
                     name: "button.duediligence",
                     icon: "fa fa-check",
-                    taskPermissionName: 'ACCEPT_LOANAPPLICATIONREVIEW'
+                    taskPermissionName: 'ACCEPT_DUEDILIGENCE'
                 };
-                }else{
+                }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "DUE_DILIGENCE"))){
+                 return {
+                     name: "button.collateralreview",
+                     icon: "fa fa-check",
+                     taskPermissionName: 'ACCEPT_COLLATERALREVIEW'
+                 };
+                 }else{
                 console.log("No Options Found here . . . . ");
                 }
                 }
