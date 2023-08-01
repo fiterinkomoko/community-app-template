@@ -504,7 +504,7 @@
 
                         break;
                    case "collateralreview":
-                       scope.taskPermissionName = 'ACCEPT_COLLATERALREVIEW';
+                       scope.taskPermissionName = 'ACCEPT_LOANCOLLATERALREVIEW';
                        resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
 
                            scope.title = 'label.heading.collateralreviewloanaccount';
@@ -645,7 +645,7 @@
                          });
                     }
                 else if (scope.action == "collateralreview") {
-                         resourceFactory.loanDecisionEngineResource.collateralReview({loanId: routeParams.id}, this.formData, function (data) {
+                         resourceFactory.collateralReviewLoanDecisionEngineResource.collateralReview({loanId: routeParams.id}, this.formData, function (data) {
                              location.path('/viewloanaccount/' + data.loanId);
                      });
                     }

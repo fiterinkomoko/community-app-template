@@ -222,7 +222,7 @@
                  return {
                      name: "button.collateralreview",
                      icon: "fa fa-check",
-                     taskPermissionName: 'ACCEPT_COLLATERALREVIEW'
+                     taskPermissionName: 'ACCEPT_LOANCOLLATERALREVIEW'
                  };
                  }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "COLLATERAL_REVIEW"))){
                    return {
