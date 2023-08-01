@@ -493,6 +493,7 @@
                     scope.taskPermissionName = 'UPDATE_DISBURSEMENTDETAIL';
                     break;
                     case "reviewapplication":
+                    console.log("JB 1");
                         scope.taskPermissionName = 'ACCEPT_LOANAPPLICATIONREVIEW';
                         resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
 
@@ -503,6 +504,17 @@
                         });
 
                         break;
+                   case "collateralreview":
+                       scope.taskPermissionName = 'ACCEPT_COLLATERALREVIEW';
+                       resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+
+                           scope.title = 'label.heading.collateralreviewloanaccount';
+                           scope.labelName = 'label.input.collateralReviewOn';
+                           scope.modelName = 'collateralReviewOn';
+                           scope.formData[scope.modelName] =  new Date();
+                       });
+
+                       break;
             }
 
             scope.cancel = function () {
@@ -632,7 +644,14 @@
                          resourceFactory.loanDecisionEngineResource.reviewApplication({loanId: routeParams.id}, this.formData, function (data) {
                              location.path('/viewloanaccount/' + data.loanId);
                          });
-                    }else {
+                    }
+                else if (scope.action == "collateralreview") {
+                         resourceFactory.loanDecisionEngineResource.collateralReview({loanId: routeParams.id}, this.formData, function (data) {
+                             location.path('/viewloanaccount/' + data.loanId);
+                     });
+                    }
+                    else {
+
                                      params.loanId = scope.accountId;
                                      var allCharges = [];
                                  if(scope.action == "disbursetosavings"){
