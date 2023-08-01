@@ -757,6 +757,9 @@
                     loanDecisionEngineResource: defineResource(apiVer + "/loans/decision/reviewApplication/:loanId", {loanId: '@loanId'}, {
                         reviewApplication: {method: 'POST', params: {}},
                     }),
+                    collateralReviewLoanDecisionEngineResource: defineResource(apiVer + "/loans/decision/collateralReview/:loanId", {loanId: '@loanId'}, {
+                        collateralReview: {method: 'POST', params: {}},
+                    }),
                     approveDueDiligenceLoanDecisionEngineResource: defineResource(apiVer + "/loans/decision/dueDiligence/:loanId", {loanId: '@loanId'}, {
                         approveDueDiligence: {method: 'POST', params: {}},
                     }),

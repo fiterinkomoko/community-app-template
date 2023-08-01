@@ -503,6 +503,17 @@
                         });
 
                         break;
+                   case "collateralreview":
+                       scope.taskPermissionName = 'ACCEPT_LOANCOLLATERALREVIEW';
+                       resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+
+                           scope.title = 'label.heading.collateralreviewloanaccount';
+                           scope.labelName = 'label.input.collateralReviewOn';
+                           scope.modelName = 'collateralReviewOn';
+                           scope.formData[scope.modelName] =  new Date();
+                       });
+
+                       break;
             }
 
             scope.cancel = function () {
@@ -632,7 +643,14 @@
                          resourceFactory.loanDecisionEngineResource.reviewApplication({loanId: routeParams.id}, this.formData, function (data) {
                              location.path('/viewloanaccount/' + data.loanId);
                          });
-                    }else {
+                    }
+                else if (scope.action == "collateralreview") {
+                         resourceFactory.collateralReviewLoanDecisionEngineResource.collateralReview({loanId: routeParams.id}, this.formData, function (data) {
+                             location.path('/viewloanaccount/' + data.loanId);
+                     });
+                    }
+                    else {
+
                                      params.loanId = scope.accountId;
                                      var allCharges = [];
                                  if(scope.action == "disbursetosavings"){
