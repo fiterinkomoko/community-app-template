@@ -207,7 +207,6 @@
                         taskPermissionName: 'APPROVE_LOAN'
                     };
                 }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState == null || data.loanDecisionState == ""))){
-                console.log("JB 3");
                 return {
                     name: "button.reviewapplication",
                     icon: "fa fa-check",

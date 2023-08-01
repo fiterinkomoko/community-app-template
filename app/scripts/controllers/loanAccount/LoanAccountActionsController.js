@@ -493,7 +493,6 @@
                     scope.taskPermissionName = 'UPDATE_DISBURSEMENTDETAIL';
                     break;
                     case "reviewapplication":
-                    console.log("JB 1");
                         scope.taskPermissionName = 'ACCEPT_LOANAPPLICATIONREVIEW';
                         resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
 
