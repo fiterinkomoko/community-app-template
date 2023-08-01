@@ -39,6 +39,13 @@
             resourceFactory.collateralResource.getAllCollaterals(function (data) {
                 scope.collaterals = data;
             });
+            resourceFactory.clientAdditionalCollateralTemplateResource.get({clientId: scope.clientId}, function (data) {
+                scope.provinceOptions = data.provinces;
+                scope.districtOptions = data.districts;
+                scope.sectorOptions = data.sectors;
+                scope.villageOptions = data.villages;
+                scope.cellOptions = data.cells;
+            });
             resourceFactory.configurationResourceByName.get({name:'Enable-Client-Collateral-Addition_Details'},function (data) {
                 scope.additionalCollateralDetailsEnabled = data.enabled;
             });

@@ -209,6 +209,9 @@
                     clientcollateralTemplateResource: defineResource(apiVer + "/clients/:clientId/collaterals/template", {clientId: '@clientId', prodId: '@prodId'}, {
                         getAllCollaterals: {method: 'GET', params: {prodId: '@prodId'}, isArray: true},
                     }),
+                    clientAdditionalCollateralTemplateResource: defineResource(apiVer + "/clients/:clientId/collaterals/additionalDetailsTemplate", {clientId: '@clientId'}, {
+                        template: {method: 'GET', params: {}},
+                    }),
                     collateralResource: defineResource(apiVer + "/collateral-management/:collateralId", {collateralId: '@collateralId'}, {
                         getAllCollaterals: {method: 'GET', params: {}, isArray: true},
                         get: {method: 'GET', params: {}},
