@@ -766,6 +766,9 @@
                     dueDiligenceLoanDecisionEngineResource: defineResource(apiVer + "/loans/decision/template/:loanId", {loanId: '@loanId'}, {
                         getTemplate: {method: 'GET', params: {}},
                     }),
+                    addApprovalMatrixEngineResource: defineResource(apiVer + "/loans/decision/dueDiligence/approvalMatrix/createApprovalMatrix", {}, {
+                        save: {method: 'POST', params: {}},
+                    }),
                    provisioningcriteria: defineResource(apiVer + "/provisioningcriteria/:criteriaId",{criteriaId:'@criteriaId'},{
                          get: {method: 'GET',params:{}},
                         getAll: {method: 'GET',params:{}, isArray : true},

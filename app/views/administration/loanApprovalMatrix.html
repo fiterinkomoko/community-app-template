@@ -1,0 +1,382 @@
+<div class="content-container" ng-controller = "LoanApprovalMatrixController">
+
+    <wizard current-step="step" on-finish="submit()" class="card well">
+        <wz-step wz-title="{{ 'label.heading.decisionLevelOne' |translate}}">
+            <form name="Details" novalidate="" class=" form-horizontal " ng-submit="goNext(Details)">
+                <fieldset>
+                    <api-validate></api-validate>
+                    <!--<h3>{{ 'label.heading.details' | translate }}</h3>-->
+                    <hr>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.businesstype' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.businesstype' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-3">
+                            <select id="businessType" ng-model="formData.businessType" class="form-control"
+                                    ng-options="business.id as business.name for business in businessTypeOptions"
+                                    value="{{business.id}}" required >
+                                <option value="">--{{'label.menu.businessType' | translate}}--</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="businessType"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.startingcapital' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.startingcapital' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="startingCapital" name="startingCapital" ng-model="formData.startingCapital"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="startingCapital"/>
+                        </div>
+                    </div>
+                    <hr>
+                    <button class = "btn btn-default pull-left" wz-previous disabled><i class = "fa fa-arrow-left"></i>&nbsp;&nbsp;Previous</button>
+                    <button class = "btn btn-default pull-right" type="submit">Next&nbsp;&nbsp;<i class = "fa fa-arrow-right"></i></button>
+                </fieldset>
+            </form>
+        </wz-step>
+        <wz-step wz-title="{{ 'label.heading.decisionLevelTwo' | translate }}">
+            <form name="Currency" novalidate="" class=" form-horizontal " ng-submit="goNext(Currency)">
+                <fieldset>
+                    <api-validate></api-validate>
+                    <!--<h3>{{ 'label.heading.currency' | translate }}</h3>-->
+                    <hr>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.businessrevenue' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.businessrevenue' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="businessRevenue" class="form-control" name="businessRevenue" ng-model="formData.businessRevenue"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="businessRevenue"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.averagemonthlyrevenue' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.averagemonthlyrevenue' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="averageMonthlyRevenue" name="averageMonthlyRevenue" ng-model="formData.averageMonthlyRevenue"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="averageMonthlyRevenue"/>
+                        </div>
+                    </div>
+                    <hr>
+                    <button class = "btn btn-default pull-left" wz-previous><i class = "fa fa-arrow-left"></i>&nbsp;&nbsp;Previous</button>
+                    <button class = "btn btn-default pull-right" type="submit" >Next&nbsp;&nbsp;<i class = "fa fa-arrow-right"></i></button>
+                </fieldset>
+            </form>
+        </wz-step>
+        <wz-step wz-title="{{ 'label.heading.decisionLevelThree' | translate }}">
+            <form name="Terms" novalidate="" class=" form-horizontal " ng-submit="goNext(Terms)">
+                <fieldset>
+                    <api-validate></api-validate>
+                    <!--<h3>{{ 'label.heading.terms' | translate }}</h3>-->
+                    <hr>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.totalintax' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalintax' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalInTax" class="form-control" name="totalInTax" ng-model="formData.totalInTax"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalInTax"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.totalintransport' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalintransport' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalInTransport" name="totalInTransport" ng-model="formData.totalInTransport"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalInTransport"/>
+                        </div>
+                    </div>
+                    <hr>
+                    <button class = "btn btn-default pull-left" wz-previous><i class = "fa fa-arrow-left"></i>&nbsp;&nbsp;Previous</button>
+                    <button class = "btn btn-default pull-right" type="submit">Next&nbsp;&nbsp;<i class = "fa fa-arrow-right"></i></button>
+                </fieldset>
+            </form>
+        </wz-step>
+        <wz-step wz-title="{{ 'label.heading.decisionLevelFour' | translate }}">
+            <form name="Terms" novalidate="" class=" form-horizontal " ng-submit="goNext(Terms)">
+                <fieldset>
+                    <api-validate></api-validate>
+                    <!--<h3>{{ 'label.heading.terms' | translate }}</h3>-->
+                    <hr>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.totalintax' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalintax' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalInTax" class="form-control" name="totalInTax" ng-model="formData.totalInTax"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalInTax"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.totalintransport' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalintransport' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalInTransport" name="totalInTransport" ng-model="formData.totalInTransport"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalInTransport"/>
+                        </div>
+                    </div>
+                    <hr>
+                    <button class = "btn btn-default pull-left" wz-previous><i class = "fa fa-arrow-left"></i>&nbsp;&nbsp;Previous</button>
+                    <button class = "btn btn-default pull-right" type="submit">Next&nbsp;&nbsp;<i class = "fa fa-arrow-right"></i></button>
+                </fieldset>
+            </form>
+        </wz-step>
+        <wz-step wz-title="{{ 'label.heading.decisionLevelFive' | translate }}">
+            <form name="Terms" novalidate="" class=" form-horizontal " ng-submit="goNext(Terms)">
+                <fieldset>
+                    <api-validate></api-validate>
+                    <!--<h3>{{ 'label.heading.terms' | translate }}</h3>-->
+                    <hr>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.totalintax' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle "
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalintax' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalInTax" class="form-control" name="totalInTax" ng-model="formData.totalInTax"
+                                   number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalInTax"/>
+                        </div>
+                        <label class="control-label col-sm-2">{{ 'label.input.totalintransport' | translate }}<span
+                                class="required">*</span>
+                            <i class="fa fa-question-circle"
+                               uib-tooltip="{{'label.tooltip.clientbusinessdetail.totalintransport' | translate}}"
+                               tooltip-append-to-body="true"></i>
+                        </label>
+
+                        <div class="col-sm-2">
+                            <input type="text" id="totalInTransport" name="totalInTransport" ng-model="formData.totalInTransport"
+                                   class="form-control" number-format required late-validate number=true/>
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="Details" valattribute="totalInTransport"/>
+                        </div>
+                    </div>
+                    <hr>
+                    <button class = "btn btn-default pull-left" wz-previous><i class = "fa fa-arrow-left"></i>&nbsp;&nbsp;Previous</button>
+                    <button class = "btn btn-default pull-right" type="submit">Next&nbsp;&nbsp;<i class = "fa fa-arrow-right"></i></button>
+                </fieldset>
+            </form>
+        </wz-step>
+        <wz-step ng-if="isClicked" wz-title = "Preview">
+            <form name="Preview" novalidate="" class="form-horizontal  ">
+                <fieldset>
+                    <api-validate></api-validate>
+                    <br>
+                    <hr>
+                    <table width="100%">
+                        <tr>
+                            <td>
+                                <a id="test" class="old-syle-anchor">&nbsp;</a>
+                            </td>
+                        </tr>
+                        <tr class="bottomborder">
+                            <td colspan="4">
+                                <strong>{{'label.heading.details' | translate}}</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.businesstype' | translate}} :</td>
+                            <td colspan="3">{{businessDetails.businessType}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{'label.heading.startingcapital' | translate}} :</td>
+                            <td colspan="3">{{businessDetails.startingCapital}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.businesscreationdate' | translate }} :</td>
+                            <td>{{first.businessCreationDate | DateFormat}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.sourceofcapital' | translate }} :</td>
+                            <td>{{businessDetails.sourceOfCapital}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.externalid' | translate }} :</td>
+                            <td>{{businessDetails.externalId}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.totalemployees' | translate }} :</td>
+                            <td>{{businessDetails.totalEmployee}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.businessrevenue' | translate }} :</td>
+                            <td>{{businessDetails.businessRevenue}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.averagemonthlyrevenue' | translate }} :</td>
+                            <td>{{businessDetails.averageMonthlyRevenue}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.bestmonth' | translate }} :</td>
+                            <td>{{businessDetails.bestMonth}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.reasonforbestmonth' | translate }} :</td>
+                            <td>{{businessDetails.reasonForBestMonth}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.worstmonth' | translate }} :</td>
+                            <td>{{businessDetails.worstMonth}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.reasonforworstmonth' | translate }} :</td>
+                            <td>{{businessDetails.reasonForWorstMonth}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.numberofpurchase' | translate }} :</td>
+                            <td>{{businessDetails.numberOfPurchase}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.purchasefrequency' | translate }} :</td>
+                            <td>{{businessDetails.purchaseFrequency}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.totalpurchaselastmonth' | translate }} :</td>
+                            <td>{{businessDetails.totalPurchaseLastMonth}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.whenlastpurchase' | translate }} :</td>
+                            <td>{{businessDetails.whenLastPurchase}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.lastpurchaseamount' | translate }} :</td>
+                            <td>{{businessDetails.lastPurchaseAmount}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.businessassetamount' | translate }} :</td>
+                            <td>{{businessDetails.businessAssetAmount}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.amountatcash' | translate }} :</td>
+                            <td>{{businessDetails.amountAtCash}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.amountatsaving' | translate }} :</td>
+                            <td>{{businessDetails.amountAtSaving}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.amountatinventory' | translate }} :</td>
+                            <td>{{businessDetails.amountAtInventory}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.fixedassetcost' | translate }} :</td>
+                            <td>{{businessDetails.fixedAssetCost}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.totalintax' | translate }} :</td>
+                            <td>{{businessDetails.totalInTax}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.totalintransport' | translate }} :</td>
+                            <td>{{businessDetails.totalInTransport}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.totalinrent' | translate }} :</td>
+                            <td>{{businessDetails.totalInRent}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.totalincommunication' | translate }} :</td>
+                            <td>{{businessDetails.totalInCommunication}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.otherexpense' | translate }} :</td>
+                            <td>{{businessDetails.otherExpense}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.otherexpenseamount' | translate }} :</td>
+                            <td>{{businessDetails.otherExpenseAmount}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.totalutility' | translate }} :</td>
+                            <td>{{businessDetails.totalUtility}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.totalworkersalary' | translate }} :</td>
+                            <td>{{businessDetails.totalWorkerSalary}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.totalwage' | translate }} :</td>
+                            <td>{{businessDetails.totalWage}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{ 'label.heading.society' | translate }} :</td>
+                            <td>{{businessDetails.society}}</td>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="col-md-offset-5 paddedtop">
+                        <button id="cancel" type="reset" class="btn btn-default" ng-click="cancel()">{{'label.button.cancel' |
+                            translate}}
+                        </button>
+                        <button id="save" type="submit" class="btn btn-primary" wz-next has-permission='CREATE_businessDetails'>
+                            {{'label.button.createbusinessDetails'
+                            | translate}}
+                        </button>
+                    </div>
+                    <hr>
+                    <button class = "btn btn-default pull-left" wz-previous><i class = "fa fa-arrow-left"></i>&nbsp;&nbsp;Previous</button>
+                    <button class = "btn btn-default pull-right" disabled>Next&nbsp;&nbsp;<i class = "fa fa-arrow-right"></i></button>
+                </fieldset>
+            </form>
+        </wz-step>
+    </wizard>
+</div>

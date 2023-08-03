@@ -1217,6 +1217,9 @@
              .when('/viewclient/:clientId/editbusinessdetail/:businessDetailId', {
                  templateUrl: 'views/clients/editClientBusinessDetail.html'
              })
+             .when('/loanApprovalMatrix', {
+                 templateUrl: 'views/administration/loanApprovalMatrix.html'
+             })
             .otherwise({
                 templateUrl: "views/errors/404.html"
             });
