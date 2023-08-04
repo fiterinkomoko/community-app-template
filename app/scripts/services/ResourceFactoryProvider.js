@@ -772,6 +772,9 @@
                     getApprovalMatrixEngineTemplateResource: defineResource(apiVer + "/loans/decision/template/approvalMatrix", {}, {
                         get: {method: 'GET', params: {}},
                     }),
+                    getAllApprovalMatrixEngineResource: defineResource(apiVer + "/loans/decision/getAllApprovalMatrix", {}, {
+                        getAll: {method: 'GET', params: {}},
+                    }),
                    provisioningcriteria: defineResource(apiVer + "/provisioningcriteria/:criteriaId",{criteriaId:'@criteriaId'},{
                          get: {method: 'GET',params:{}},
                         getAll: {method: 'GET',params:{}, isArray : true},

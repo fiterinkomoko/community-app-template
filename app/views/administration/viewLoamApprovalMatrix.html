@@ -25,14 +25,14 @@
                     <th>{{'label.heading.maximumloanterm' | translate}}</th>
                 </tr>
                 </thead>
-
+                {{matrixDetails}}
                 <tbody>
-                <tr>
-                    <td class="pointer" data-ng-click="routeTo(matrixDetails.id)">{{matrixDetails.id}}</td>
-                    <td class="pointer" data-ng-click="routeTo(matrixDetails.id)">{{matrixDetails.currency}}</td>
-                    <td class="pointer" data-ng-click="routeTo(matrixDetails.id)">{{matrixDetails.levelOneUnsecuredFirstCycleMaxAmount}}</td>
-                    <td class="pointer" data-ng-click="routeTo(matrixDetails.id)">{{matrixDetails.levelOneUnsecuredFirstCycleMinTerm}}</td>
-                    <td class="pointer" data-ng-click="routeTo(matrixDetails.id)">{{matrixDetails.levelOneUnsecuredFirstCycleMaxTerm}}</td>
+                <tr ng-repeat="matrixDetail in matrixDetails | orderBy:'id':true ">
+                    <td class="pointer" data-ng-click="routeTo(matrixDetail.id)">{{matrixDetail.id}}</td>
+                    <td class="pointer" data-ng-click="routeTo(matrixDetail.id)">{{matrixDetail.currency}}</td>
+                    <td class="pointer" data-ng-click="routeTo(matrixDetail.id)">{{matrixDetail.levelOneUnsecuredFirstCycleMaxAmount}}</td>
+                    <td class="pointer" data-ng-click="routeTo(matrixDetail.id)">{{matrixDetail.levelOneUnsecuredFirstCycleMinTerm}}</td>
+                    <td class="pointer" data-ng-click="routeTo(matrixDetail.id)">{{matrixDetail.levelOneUnsecuredFirstCycleMaxTerm}}</td>
                 </tr>
                 </tbody>
 
