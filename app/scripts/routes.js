@@ -1220,6 +1220,9 @@
              .when('/loanApprovalMatrix', {
                  templateUrl: 'views/administration/loanApprovalMatrix.html'
              })
+              .when('/viewLoanApprovalMatrix', {
+                  templateUrl: 'views/administration/viewLoamApprovalMatrix.html'
+              })
             .otherwise({
                 templateUrl: "views/errors/404.html"
             });

@@ -1,0 +1,45 @@
+<div class="content-container" ng-controller="ViewLoanApprovalMatrixController">
+    <div class="card">
+        <div class="toolbar">
+            <h4 class="pull-left">List of Loan Approval Matrix</h4>
+        </div>
+        <div class="content">
+            <br>
+            <div class="row">
+                <div class="col-sm-8">
+
+                </div>
+                <div class="col-sm-4">
+                    <a href="#/loanApprovalMatrix" class="btn btn-primary pull-right" has-permission='CREATE_LOANAPPROVALMATRIX'><i
+                        class="fa fa-plus"></i> {{'label.button.createloanapprovalmatrix' | translate}}</a> &nbsp;
+                </div>
+            </div>
+            <hr/>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>{{'label.heading.id' | translate}}</th>
+                    <th>{{'label.heading.currency' | translate}}</th>
+                    <th>{{'label.heading.maximumloanprincipalamount' | translate}}</th>
+                    <th>{{'label.heading.minimumloanterm' | translate}}</th>
+                    <th>{{'label.heading.maximumloanterm' | translate}}</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td class="pointer" data-ng-click="routeTo(matrixDetails.id)">{{matrixDetails.id}}</td>
+                    <td class="pointer" data-ng-click="routeTo(matrixDetails.id)">{{matrixDetails.currency}}</td>
+                    <td class="pointer" data-ng-click="routeTo(matrixDetails.id)">{{matrixDetails.levelOneUnsecuredFirstCycleMaxAmount}}</td>
+                    <td class="pointer" data-ng-click="routeTo(matrixDetails.id)">{{matrixDetails.levelOneUnsecuredFirstCycleMinTerm}}</td>
+                    <td class="pointer" data-ng-click="routeTo(matrixDetails.id)">{{matrixDetails.levelOneUnsecuredFirstCycleMaxTerm}}</td>
+                </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+
+</div>

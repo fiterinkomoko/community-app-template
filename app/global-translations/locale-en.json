@@ -790,6 +790,7 @@
   "label.anchor.reactivate": "Reactivate",
   "label.anchor.undoReject": "Undo Rejection",
   "label.anchor.undoWithdrawn": "Undo Withdrawal",
+  "label.anchor.loanapprovalmatrix": "Loan Approval Matrix",
   "#Inputs": "..",
   "label.input.filterbynameaccno": "Filter display by name/client number/staff/office",
   "label.input.searchByNameAccNo": "Find by name/mobile/client number/external ID/identifier",

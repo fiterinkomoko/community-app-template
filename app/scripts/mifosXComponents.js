@@ -196,6 +196,7 @@ define(['Q', 'underscore', 'mifosX'], function (Q) {
             'system/EditSurveyController',
             'system/ViewSurveyController',
             'system/LoanApprovalMatrixController',
+            'system/ViewLoanApprovalMatrixController',
             'tasks/ManageTasksController',
             'tasks/ViewTasksController',
             'organization/HolController',
