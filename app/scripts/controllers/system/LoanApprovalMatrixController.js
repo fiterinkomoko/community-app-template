@@ -5,7 +5,10 @@
             scope.showOrHideValue = "show";
              scope.matrixDetails = {};
 
-
+            resourceFactory.getApprovalMatrixEngineTemplateResource.get({}, function (data) {
+                            scope.matrixDetails = data;
+                            scope.formData.currencyCode = scope.matrixDetails.currencyOptions[0].code;
+                        });
 
 
              scope.$watch('formData',function(newVal){
