@@ -15,7 +15,7 @@
                         </label>
 
                         <div class="col-sm-2">
-                            <select id="currencyCode" ng-model="formData.currency" class="form-control"
+                            <select id="currency" ng-model="formData.currency" class="form-control"
                                     ng-options="currency.code as currency.name for currency in matrixDetails.currencyOptions"
                                     value="{{currency.code}}" ng-change="matrixDetails.currency.name = formValue(matrixDetails.currencyOptions,formData.currencyCode,'code','name')"></select>
                         </div>
@@ -1044,13 +1044,7 @@
                 <fieldset>
                     <api-validate></api-validate>
                     <br>
-                    <hr>
                     <table width="100%">
-                        <tr>
-                            <td>
-                                <a id="test" class="old-syle-anchor">&nbsp;</a>
-                            </td>
-                        </tr>
                         <tr>
                             <td>{{'label.heading.currency' | translate}} :</td>
                             <td colspan="3">{{matrixDetails.currency}}</td>

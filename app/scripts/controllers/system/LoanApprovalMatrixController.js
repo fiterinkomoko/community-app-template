@@ -7,7 +7,7 @@
 
             resourceFactory.getApprovalMatrixEngineTemplateResource.get({}, function (data) {
                             scope.matrixDetails = data;
-                            scope.formData.currencyCode = scope.matrixDetails.currencyOptions[0].code;
+                            scope.formData.currency = scope.matrixDetails.currencyOptions[0].code;
                         });
 
 
@@ -36,9 +36,6 @@
 
             scope.submit = function () {
                  this.formData.locale = scope.optlang.code;
-                 this.formData.dateFormat = scope.df;
-
-
                 resourceFactory.addApprovalMatrixEngineResource.save(this.formData, function (data) {
                     location.path('/system/');
                 });
