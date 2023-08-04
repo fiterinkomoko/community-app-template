@@ -10,41 +10,28 @@
             scope.additionalDetailsAddOrRemove = false;
             scope.additionalDetails = {};
 
-            resourceFactory.clientAdditionalCollateralTemplateResource.get({clientId: scope.clientId}, function (data) {
-                 scope.provinceOptions = data.provinces;
-                 scope.districtOptions = data.districts;
-                 scope.sectorOptions = data.sectors;
-                 scope.villageOptions = data.villages;
-                 scope.cellOptions = data.cells;
-            });
+
             resourceFactory.clientcollateralResource.get({clientId: scope.clientId, collateralParamId: scope.collateralId}, function (data) {
+               resourceFactory.clientAdditionalCollateralTemplateResource.get({clientId: scope.clientId}, function (data) {
+                    scope.provinceOptions = data.provinces;
+                    scope.districtOptions = data.districts;
+                    scope.sectorOptions = data.sectors;
+                    scope.villageOptions = data.villages;
+                    scope.cellOptions = data.cells;
+               });
                 scope.collaterals = data;
                 console.log(data);
                 scope.additionalCollateralDetailsEnabled = data.additionalDetailsEnabled;
                 scope.existingAdditionalDetails = data.additionalDetails;
+                scope.additionalDetails = data.additionalDetails;
                 scope.formData = {
                     name: data.name,
                     quantity: data.quantity,
                     total: data.total,
-                    totalCollateral: data.totalCollateral,
-                    provinceId: data.additionalDetails.province !=null ? data.additionalDetails.province.id: null,
+                    totalCollateral: data.totalCollateral
                 }
-                if(scope.existingAdditionalDetails && scope.additionalCollateralDetailsEnabled){
+                if(scope.additionalCollateralDetailsEnabled && scope.existingAdditionalDetails != null){
                     scope.additionalDetailsAddOrRemove = true;
-                    scope.additionalDetails = {
-                        upiNo: scope.existingAdditionalDetails.upiNo,
-                        chassisNo: scope.existingAdditionalDetails.chassisNo,
-                        collateralOwnerFirst: scope.existingAdditionalDetails.collateralOwnerFirst,
-                        idNoOfCollateralOwnerFirst: scope.existingAdditionalDetails.idNoOfCollateralOwnerFirst,
-                        collateralOwnerSecond: scope.existingAdditionalDetails.collateralOwnerSecond,
-                        idNoOfCollateralOwnerSecond: scope.existingAdditionalDetails.idNoOfCollateralOwnerSecond,
-                        worthOfCollateral: scope.existingAdditionalDetails.worthOfCollateral,
-                        districtId: scope.existingAdditionalDetails.district !=null ? scope.existingAdditionalDetails.district.id: null,
-                        sectorId: scope.existingAdditionalDetails.sector !=null ? scope.existingAdditionalDetails.sector.id: null,
-                        cellId: scope.existingAdditionalDetails.cell != null? scope.existingAdditionalDetails.cell.id : null,
-                        villageId: scope.existingAdditionalDetails.village != null ? scope.existingAdditionalDetails.village.id : null
-                    }
-                    console.log(scope.additionalDetails);
                 }
             });
             scope.createAdditionalDetails = function () {
@@ -56,11 +43,11 @@
                 scope.collateralDataRequestBody.collateralOwnerSecond = scope.additionalDetails.collateralOwnerSecond;
                 scope.collateralDataRequestBody.idNoOfCollateralOwnerSecond = scope.additionalDetails.idNoOfCollateralOwnerSecond;
                 scope.collateralDataRequestBody.worthOfCollateral = scope.additionalDetails.worthOfCollateral;
-                scope.collateralDataRequestBody.provinceId = scope.additionalDetails.provinceId;
-                scope.collateralDataRequestBody.districtId = scope.additionalDetails.districtId;
-                scope.collateralDataRequestBody.sectorId = scope.additionalDetails.sectorId;
-                scope.collateralDataRequestBody.villageId = scope.additionalDetails.villageId;
-                scope.collateralDataRequestBody.cellId = scope.additionalDetails.cellId;
+                scope.collateralDataRequestBody.provinceId = scope.additionalDetails.province != null ? scope.additionalDetails.province.id : null;
+                scope.collateralDataRequestBody.districtId = scope.additionalDetails.district != null ? scope.additionalDetails.district.id : null;
+                scope.collateralDataRequestBody.sectorId = scope.additionalDetails.sector != null ? scope.additionalDetails.sector.id : null;
+                scope.collateralDataRequestBody.villageId = scope.additionalDetails.village != null ? scope.additionalDetails.village.id : null;
+                scope.collateralDataRequestBody.cellId = scope.additionalDetails.cell != null ? scope.additionalDetails.cell.id : null;
              }
             }
 
@@ -78,8 +65,8 @@
                 scope.collateralDataRequestBody.collateralId = scope.collateralId;
                 scope.collateralDataRequestBody.quantity = this.formData.quantity;
                 scope.collateralDataRequestBody.locale = this.formData.locale;
-                console.log(angular.equals(scope.existingAdditionalDetails, scope.additionalDetails));
-                if(scope.additionalDetails){
+                console.log(scope.additionalDetails);
+                if(scope.additionalDetails != null){
                     scope.createAdditionalDetails();
                 }
                 resourceFactory.clientcollateralResource.update({clientId: scope.clientId, collateralParamId: scope.collateralId}, scope.collateralDataRequestBody, function (data) {

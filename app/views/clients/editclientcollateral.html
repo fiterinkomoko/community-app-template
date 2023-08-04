@@ -132,26 +132,30 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group" ng-show ="additionalDetailsAddOrRemove">
+                <div class="form-group">
+                    <div ng-show ="additionalDetailsAddOrRemove">
                     <label class="control-label col-sm-2">{{ 'label.heading.province' | translate }}</label>
                     <div class="col-sm-3">
-                        <select chosen="provinceOptions" name = "province" ng-model="formData.provinceId"
-                                class="form-control" required ng-options="provinceOption.id as provinceOption.name for provinceOption in provinceOptions"
-                                value="{{provinceOption.id}}"></select>
+                        <select chosen="provinceOptions" id ="provinceId" name ="provinceId" ng-model="additionalDetails.province.id"
+                                class="form-control" ng-options="provinceOption.id as provinceOption.name for provinceOption in provinceOptions"
+                                value="provinceId"></select>
+                    </div>
                     </div>
                 </div>
-                <div class="form-group" ng-show ="additionalDetailsAddOrRemove">
+                <div class="form-group">
+                    <div ng-show ="additionalDetailsAddOrRemove">
                     <label class="control-label col-sm-2">{{ 'label.heading.district' | translate }}</label>
                     <div class="col-sm-3">
-                        <select chosen="districtOptions" name = "district" ng-model="additionalDetails.districtId"
+                        <select chosen="districtOptions" name = "district" ng-model="additionalDetails.district.id"
                                 class="form-control" required ng-options="districtOption.id as districtOption.name for districtOption in districtOptions"
                                 value="districtId"></select>
+                    </div>
                     </div>
                 </div>
                 <div class="form-group" ng-show ="additionalDetailsAddOrRemove">
                     <label class="control-label col-sm-2">{{ 'label.heading.sector' | translate }}</label>
                     <div class="col-sm-3">
-                        <select chosen="sectorOptions" name = "sector" ng-model="additionalDetails.sectorId"
+                        <select chosen="sectorOptions" name = "sector" ng-model="additionalDetails.sector.id"
                                 class="form-control" required ng-options="sectorOption.id as sectorOption.name for sectorOption in sectorOptions"
                                 value="sectorId"></select>
                     </div>
@@ -159,7 +163,7 @@
                 <div class="form-group" ng-show ="additionalDetailsAddOrRemove">
                     <label class="control-label col-sm-2">{{ 'label.heading.cell' | translate }}</label>
                     <div class="col-sm-3">
-                        <select chosen="cellOptions" name = "cell" ng-model="additionalDetails.cellId"
+                        <select chosen="cellOptions" name = "cell" ng-model="additionalDetails.cell.id"
                                 class="form-control" required ng-options="cellOption.id as cellOption.name for cellOption in cellOptions"
                                 value="cellId"></select>
                     </div>
@@ -167,7 +171,7 @@
                 <div class="form-group" ng-show ="additionalDetailsAddOrRemove">
                     <label class="control-label col-sm-2">{{ 'label.heading.village' | translate }}</label>
                     <div class="col-sm-3">
-                        <select chosen="villageOptions" name = "village" ng-model="additionalDetails.villageId"
+                        <select chosen="villageOptions" name = "village" ng-model="additionalDetails.village.id"
                                 class="form-control" required ng-options="villageOption.id as villageOption.name for villageOption in villageOptions"
                                 value="villageId"></select>
                     </div>
