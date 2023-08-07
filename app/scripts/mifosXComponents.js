@@ -198,6 +198,7 @@ define(['Q', 'underscore', 'mifosX'], function (Q) {
             'system/LoanApprovalMatrixController',
             'system/ViewLoanApprovalMatrixController',
             'system/ViewLoanApprovalMatrixDetailsController',
+            'system/UpdateLoanApprovalMatrixController',
             'tasks/ManageTasksController',
             'tasks/ViewTasksController',
             'organization/HolController',

@@ -1226,6 +1226,9 @@
               .when('/viewLoanApprovalMatrixDetails/:approvalMatrixId', {
                     templateUrl: 'views/administration/ViewLoanApprovalMatrixDetails.html'
               })
+              .when('/updateLoanApprovalMatrix/:approvalMatrixId', {
+                   templateUrl: 'views/administration/updateLoanApprovalMatrix.html'
+              })
             .otherwise({
                 templateUrl: "views/errors/404.html"
             });
