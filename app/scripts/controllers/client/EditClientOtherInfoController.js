@@ -22,7 +22,6 @@
                       numberOfDependents: data.numberOfDependents,
                       numberOfChildren: data.numberOfChildren
                 }
-                console.log(scope.otherInfoData);
             });
 
             scope.cancel = function () {
