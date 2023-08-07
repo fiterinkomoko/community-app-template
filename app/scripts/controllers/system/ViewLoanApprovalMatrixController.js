@@ -5,9 +5,11 @@
 
             resourceFactory.getAllApprovalMatrixEngineResource.getAll({}, function (data) {
                             scope.matrixDetails = data;
-                            console.log("Matrices   data::>"+data);
-                            console.log("Matrices ::>"+scope.matrixDetails);
                         });
+            scope.routeTo=function(id)
+            {
+                location.path('/viewLoanApprovalMatrixDetails/'+ id);
+            }
 
         }
     });

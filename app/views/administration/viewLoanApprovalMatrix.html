@@ -20,14 +20,13 @@
                 <tr>
                     <th>{{'label.heading.id' | translate}}</th>
                     <th>{{'label.heading.currency' | translate}}</th>
-                    <th>{{'label.heading.maximumloanprincipalamount' | translate}}</th>
-                    <th>{{'label.heading.minimumloanterm' | translate}}</th>
-                    <th>{{'label.heading.maximumloanterm' | translate}}</th>
+                    <th>{{'label.heading.levelOneUnsecuredFirstCycleMaxAmount' | translate}}</th>
+                    <th>{{'label.heading.levelOneUnsecuredFirstCycleMinTerm' | translate}}</th>
+                    <th>{{'label.heading.levelOneUnsecuredFirstCycleMaxTerm' | translate}}</th>
                 </tr>
                 </thead>
-                {{matrixDetails}}
                 <tbody>
-                <tr ng-repeat="matrixDetail in matrixDetails | orderBy:'id':true ">
+                <tr ng-repeat="matrixDetail in matrixDetails">
                     <td class="pointer" data-ng-click="routeTo(matrixDetail.id)">{{matrixDetail.id}}</td>
                     <td class="pointer" data-ng-click="routeTo(matrixDetail.id)">{{matrixDetail.currency}}</td>
                     <td class="pointer" data-ng-click="routeTo(matrixDetail.id)">{{matrixDetail.levelOneUnsecuredFirstCycleMaxAmount}}</td>
