@@ -3,12 +3,16 @@
         ViewLoanApprovalMatrixDetailsController: function (scope, resourceFactory, location ,WizardHandler, translate, routeParams) {
              scope.matrixDetails = [];
 
-            console.log(" Here in details API . Out. . - = = "});
-
-            resourceFactory.getAllApprovalMatrixDetailsEngineResource.get({approvalMatrixId: routeParams.id}, function (data) {
-            console.log(" Here in details API . . . ");
+            resourceFactory.getAllApprovalMatrixDetailsEngineResource.get({approvalMatrixId: routeParams.approvalMatrixId}, function (data) {
                             scope.matrixDetails = data;
                         });
+
+            scope.deleteLoanApprovalMatrix = function () {
+                resourceFactory.deleteApprovalMatrixDetailsEngineResource.delete({approvalMatrixId:routeParams.approvalMatrixId},function (data) {
+                location.path('/viewLoanApprovalMatrix/');
+            });
+
+            };
 
         }
     });

@@ -30,14 +30,14 @@
             }
 
             scope.cancel = function () {
-                location.path('/system/');
+                location.path('/viewLoanApprovalMatrix/');
             };
 
 
             scope.submit = function () {
                  this.formData.locale = scope.optlang.code;
                 resourceFactory.addApprovalMatrixEngineResource.save(this.formData, function (data) {
-                    location.path('/system/');
+                    location.path('/viewLoanApprovalMatrix/');
                 });
             };
 

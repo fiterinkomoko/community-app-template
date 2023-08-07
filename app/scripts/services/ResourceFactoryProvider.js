@@ -775,8 +775,11 @@
                     getAllApprovalMatrixEngineResource: defineResource(apiVer + "/loans/decision/getAllApprovalMatrix", {}, {
                         getAll: {method: 'GET', params: {},isArray:true},
                     }),
-                      getAllApprovalMatrixDetailsEngineResource: defineResource(apiVer + "/loans/decision/getApprovalMatrixDetails/:approvalMatrixId", {approvalMatrixId: '@approvalMatrixId'}, {
-                        get: {method: 'GET', params: {}},
+                     getAllApprovalMatrixDetailsEngineResource: defineResource(apiVer + "/loans/decision/getApprovalMatrixDetails/:approvalMatrixId",{approvalMatrixId: '@approvalMatrixId'}, {
+                        get: {method: 'GET', params:{}},
+                    }),
+                    deleteApprovalMatrixDetailsEngineResource: defineResource(apiVer + "/loans/decision/approvalMatrix/:approvalMatrixId",{approvalMatrixId: '@approvalMatrixId'}, {
+                        delete: {method: 'DELETE', params:{}},
                     }),
                    provisioningcriteria: defineResource(apiVer + "/provisioningcriteria/:criteriaId",{criteriaId:'@criteriaId'},{
                          get: {method: 'GET',params:{}},

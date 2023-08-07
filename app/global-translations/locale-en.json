@@ -3571,6 +3571,7 @@
   "label.button.createcampaign": "Create Campaign",
   "label.button.createbusinessDetails": "Create Client Business Details",
   "label.button.createloanapprovalmatrix": "Create Loan Approval Matrix",
+  "label.button.updateLoanapprovalmatrix": "Update Loan Approval Matrix",
   "#Misc Labels": "..",
   "label.selectproduct": "Select Product",
   "label.selectfund": "Select fund",
