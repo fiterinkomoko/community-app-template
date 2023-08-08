@@ -2,7 +2,7 @@
     <div class="card">
         <div class="content">
             <div class="pull-right">
-                <div class="btn-group" >
+                <div class="btn-group" data-ng-show="configurations.isExtendLoanLifeCycleConfig">
                     <a href="#/updateLoanApprovalMatrix/{{matrixDetails.id}}" class="btn btn-primary" has-permission='UPDATE_LOANAPPROVALMATRIX'><i
                             class="fa fa-edit "></i>&nbsp;&nbsp;{{'label.button.updateLoanapprovalmatrix' | translate}}</a>
                     <button class="btn btn-danger" ng-click="deleteLoanApprovalMatrix()" has-permission='DELETE_LOANAPPROVALMATRIX'><i class="fa fa-trash-o" aria-hidden="true"></i>{{'label.button.delete' | translate}}</button>

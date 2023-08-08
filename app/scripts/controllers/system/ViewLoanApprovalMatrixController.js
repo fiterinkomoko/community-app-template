@@ -2,10 +2,14 @@
     mifosX.controllers = _.extend(module, {
         ViewLoanApprovalMatrixController: function (scope, resourceFactory, location ,WizardHandler, translate, routeParams) {
              scope.matrixDetails = [];
+             scope.configurations = [];
 
-            resourceFactory.getAllApprovalMatrixEngineResource.getAll({}, function (data) {
-                            scope.matrixDetails = data;
+            resourceFactory.getApprovalMatrixEngineTemplateResource.get({}, function (data) {
+                            scope.configurations = data;
                         });
+            resourceFactory.getAllApprovalMatrixEngineResource.getAll({}, function (data) {
+                scope.matrixDetails = data;
+            });
             scope.routeTo=function(id)
             {
                 location.path('/viewLoanApprovalMatrixDetails/'+ id);
