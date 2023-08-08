@@ -7,7 +7,91 @@
 
             resourceFactory.getApprovalMatrixEngineTemplateResource.get({}, function (data) {
                             scope.matrixDetails = data;
-                            scope.formData.currency = scope.matrixDetails.currencyOptions[0].code;
+                        });
+
+            resourceFactory.getAllApprovalMatrixDetailsEngineResource.get({approvalMatrixId: routeParams.approvalMatrixId}, function (data) {
+                            scope.formData = {
+                            currency: data.currencyData.code,
+                            levelOneUnsecuredFirstCycleMaxAmount: data.levelOneUnsecuredFirstCycleMaxAmount,
+                            levelOneUnsecuredFirstCycleMinTerm: data.levelOneUnsecuredFirstCycleMinTerm,
+                            levelOneUnsecuredFirstCycleMaxTerm: data.levelOneUnsecuredFirstCycleMaxTerm,
+
+                            levelOneUnsecuredSecondCycleMaxAmount: data.levelOneUnsecuredSecondCycleMaxAmount,
+                            levelOneUnsecuredSecondCycleMinTerm: data.levelOneUnsecuredSecondCycleMinTerm,
+                            levelOneUnsecuredSecondCycleMaxTerm: data.levelOneUnsecuredSecondCycleMaxTerm,
+
+                            levelOneSecuredFirstCycleMaxAmount: data.levelOneSecuredFirstCycleMaxAmount,
+                            levelOneSecuredFirstCycleMinTerm: data.levelOneSecuredFirstCycleMinTerm,
+                            levelOneSecuredFirstCycleMaxTerm: data.levelOneSecuredFirstCycleMaxTerm,
+
+                            levelOneSecuredSecondCycleMaxAmount: data.levelOneSecuredSecondCycleMaxAmount,
+                            levelOneSecuredSecondCycleMinTerm: data.levelOneSecuredSecondCycleMinTerm,
+                            levelOneSecuredSecondCycleMaxTerm: data.levelOneSecuredSecondCycleMaxTerm,
+
+                            levelTwoUnsecuredFirstCycleMaxAmount: data.levelTwoUnsecuredFirstCycleMaxAmount,
+                            levelTwoUnsecuredFirstCycleMinTerm: data.levelTwoUnsecuredFirstCycleMinTerm,
+                            levelTwoUnsecuredFirstCycleMaxTerm: data.levelTwoUnsecuredFirstCycleMaxTerm,
+
+                            levelTwoUnsecuredSecondCycleMaxAmount: data.levelTwoUnsecuredSecondCycleMaxAmount,
+                            levelTwoUnsecuredSecondCycleMinTerm: data.levelTwoUnsecuredSecondCycleMinTerm,
+                            levelTwoUnsecuredSecondCycleMaxTerm: data.levelTwoUnsecuredSecondCycleMaxTerm,
+
+                            levelTwoSecuredFirstCycleMaxAmount: data.levelTwoSecuredFirstCycleMaxAmount,
+                            levelTwoSecuredFirstCycleMinTerm: data.levelTwoSecuredFirstCycleMinTerm,
+                            levelTwoSecuredFirstCycleMaxTerm: data.levelTwoSecuredFirstCycleMaxTerm,
+
+                            levelTwoSecuredSecondCycleMaxAmount: data.levelTwoSecuredSecondCycleMaxAmount,
+                            levelTwoSecuredSecondCycleMinTerm: data.levelTwoSecuredSecondCycleMinTerm,
+                            levelTwoSecuredSecondCycleMaxTerm: data.levelTwoSecuredSecondCycleMaxTerm,
+
+                            levelThreeUnsecuredFirstCycleMaxAmount: data.levelThreeUnsecuredFirstCycleMaxAmount,
+                            levelThreeUnsecuredFirstCycleMinTerm: data.levelThreeUnsecuredFirstCycleMinTerm,
+                            levelThreeUnsecuredFirstCycleMaxTerm: data.levelThreeUnsecuredFirstCycleMaxTerm,
+
+                            levelThreeUnsecuredSecondCycleMaxAmount: data.levelThreeUnsecuredSecondCycleMaxAmount,
+                            levelThreeUnsecuredSecondCycleMinTerm: data.levelThreeUnsecuredSecondCycleMinTerm,
+                            levelThreeUnsecuredSecondCycleMaxTerm: data.levelThreeUnsecuredSecondCycleMaxTerm,
+
+                            levelThreeSecuredFirstCycleMaxAmount: data.levelThreeSecuredFirstCycleMaxAmount,
+                            levelThreeSecuredFirstCycleMinTerm: data.levelThreeSecuredFirstCycleMinTerm,
+                            levelThreeSecuredFirstCycleMaxTerm: data.levelThreeSecuredFirstCycleMaxTerm,
+
+                            levelThreeSecuredSecondCycleMaxAmount: data.levelThreeSecuredSecondCycleMaxAmount,
+                            levelThreeSecuredSecondCycleMinTerm: data.levelThreeSecuredSecondCycleMinTerm,
+                            levelThreeSecuredSecondCycleMaxTerm: data.levelThreeSecuredSecondCycleMaxTerm,
+
+                            levelFourUnsecuredFirstCycleMaxAmount: data.levelFourUnsecuredFirstCycleMaxAmount,
+                            levelFourUnsecuredFirstCycleMinTerm: data.levelFourUnsecuredFirstCycleMinTerm,
+                            levelFourUnsecuredFirstCycleMaxTerm: data.levelFourUnsecuredFirstCycleMaxTerm,
+
+                            levelFourUnsecuredSecondCycleMaxAmount: data.levelFourUnsecuredSecondCycleMaxAmount,
+                            levelFourUnsecuredSecondCycleMinTerm: data.levelFourUnsecuredSecondCycleMinTerm,
+                            levelFourUnsecuredSecondCycleMaxTerm: data.levelFourUnsecuredSecondCycleMaxTerm,
+
+                            levelFourSecuredFirstCycleMaxAmount: data.levelFourSecuredFirstCycleMaxAmount,
+                            levelFourSecuredFirstCycleMinTerm: data.levelFourSecuredFirstCycleMinTerm,
+                            levelFourSecuredFirstCycleMaxTerm: data.levelFourSecuredFirstCycleMaxTerm,
+
+                            levelFourSecuredSecondCycleMaxAmount: data.levelFourSecuredSecondCycleMaxAmount,
+                            levelFourSecuredSecondCycleMinTerm: data.levelFourSecuredSecondCycleMinTerm,
+                            levelFourSecuredSecondCycleMaxTerm: data.levelFourSecuredSecondCycleMaxTerm,
+
+                            levelFiveUnsecuredFirstCycleMaxAmount: data.levelFiveUnsecuredFirstCycleMaxAmount,
+                            levelFiveUnsecuredFirstCycleMinTerm: data.levelFiveUnsecuredFirstCycleMinTerm,
+                            levelFiveUnsecuredFirstCycleMaxTerm: data.levelFiveUnsecuredFirstCycleMaxTerm,
+
+                            levelFiveUnsecuredSecondCycleMaxAmount: data.levelFiveUnsecuredSecondCycleMaxAmount,
+                            levelFiveUnsecuredSecondCycleMinTerm: data.levelFiveUnsecuredSecondCycleMinTerm,
+                            levelFiveUnsecuredSecondCycleMaxTerm: data.levelFiveUnsecuredSecondCycleMaxTerm,
+
+                            levelFiveSecuredFirstCycleMaxAmount: data.levelFiveSecuredFirstCycleMaxAmount,
+                            levelFiveSecuredFirstCycleMinTerm: data.levelFiveSecuredFirstCycleMinTerm,
+                            levelFiveSecuredFirstCycleMaxTerm: data.levelFiveSecuredFirstCycleMaxTerm,
+
+                            levelFiveSecuredSecondCycleMaxAmount: data.levelFiveSecuredSecondCycleMaxAmount,
+                            levelFiveSecuredSecondCycleMinTerm: data.levelFiveSecuredSecondCycleMinTerm,
+                            levelFiveSecuredSecondCycleMaxTerm: data.levelFiveSecuredSecondCycleMaxTerm
+                            };
                         });
 
 
@@ -36,7 +120,7 @@
 
             scope.submit = function () {
                  this.formData.locale = scope.optlang.code;
-                resourceFactory.addApprovalMatrixEngineResource.save(this.formData, function (data) {
+                resourceFactory.updateApprovalMatrixDetailsEngineResource.put({approvalMatrixId:routeParams.approvalMatrixId},this.formData, function (data) {
                     location.path('/viewLoanApprovalMatrix/');
                 });
             };
