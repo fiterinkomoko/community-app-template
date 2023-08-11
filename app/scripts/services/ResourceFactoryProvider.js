@@ -787,6 +787,9 @@
                     updateApprovalMatrixDetailsEngineResource: defineResource(apiVer + "/loans/decision/updateApprovalMatrix/:approvalMatrixId",{approvalMatrixId: '@approvalMatrixId'}, {
                         put: {method: 'PUT', params:{}},
                     }),
+                    icReviewLevelOneLoanDecisionEngineResource: defineResource(apiVer + "/loans/decision/icReviewDecisionLevelOne/:loanId", {loanId: '@loanId'}, {
+                        acceptIcReviewLevelOne: {method: 'POST', params: {}},
+                    }),
                    provisioningcriteria: defineResource(apiVer + "/provisioningcriteria/:criteriaId",{criteriaId:'@criteriaId'},{
                          get: {method: 'GET',params:{}},
                         getAll: {method: 'GET',params:{}, isArray : true},
