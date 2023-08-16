@@ -673,7 +673,11 @@
                       resourceFactory.icReviewLevelOneLoanDecisionEngineResource.acceptIcReviewLevelOne({loanId: routeParams.id}, this.formData, function (data) {
                           location.path('/viewloanaccount/' + data.loanId);
                   });
-                 }
+                 }else if (scope.action == "icreviewleveltwo") {
+                    resourceFactory.icReviewLevelTwoLoanDecisionEngineResource.acceptIcReviewLevelTwo({loanId: routeParams.id}, this.formData, function (data) {
+                        location.path('/viewloanaccount/' + data.loanId);
+                });
+               }
 
                     else {
 
