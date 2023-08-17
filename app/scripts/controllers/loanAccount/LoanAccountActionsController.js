@@ -515,16 +515,27 @@
 
                        break;
                    case "icreviewlevelone":
-                          scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELONE';
-                          resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+                      scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELONE';
+                      resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
 
-                              scope.title = 'label.heading.icreviewleveloneloanaccount';
-                              scope.labelName = 'label.input.icReviewOn';
-                              scope.modelName = 'icReviewOn';
-                              scope.formData[scope.modelName] =  new Date();
-                          });
+                          scope.title = 'label.heading.icreviewleveloneloanaccount';
+                          scope.labelName = 'label.input.icReviewOn';
+                          scope.modelName = 'icReviewOn';
+                          scope.formData[scope.modelName] =  new Date();
+                      });
 
-                          break;
+                      break;
+                  case "icreviewleveltwo":
+                     scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELTWO';
+                     resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+
+                         scope.title = 'label.heading.icreviewleveltwoloanaccount';
+                         scope.labelName = 'label.input.icReviewOn';
+                         scope.modelName = 'icReviewOn';
+                         scope.formData[scope.modelName] =  new Date();
+                     });
+
+                     break;
             }
 
             scope.cancel = function () {
@@ -662,7 +673,11 @@
                       resourceFactory.icReviewLevelOneLoanDecisionEngineResource.acceptIcReviewLevelOne({loanId: routeParams.id}, this.formData, function (data) {
                           location.path('/viewloanaccount/' + data.loanId);
                   });
-                 }
+                 }else if (scope.action == "icreviewleveltwo") {
+                    resourceFactory.icReviewLevelTwoLoanDecisionEngineResource.acceptIcReviewLevelTwo({loanId: routeParams.id}, this.formData, function (data) {
+                        location.path('/viewloanaccount/' + data.loanId);
+                });
+               }
 
                     else {
 

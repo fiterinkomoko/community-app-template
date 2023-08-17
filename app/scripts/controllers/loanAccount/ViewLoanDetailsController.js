@@ -140,6 +140,9 @@
                     case "icreviewlevelone":
                         location.path('/loanaccount/' + accountId + '/icreviewlevelone');
                         break;
+                     case "icreviewleveltwo":
+                         location.path('/loanaccount/' + accountId + '/icreviewleveltwo');
+                         break;
                 }
             };
 
