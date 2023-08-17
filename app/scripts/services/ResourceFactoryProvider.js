@@ -793,6 +793,9 @@
                     icReviewLevelTwoLoanDecisionEngineResource: defineResource(apiVer + "/loans/decision/icReviewDecisionLevelTwo/:loanId", {loanId: '@loanId'}, {
                         acceptIcReviewLevelTwo: {method: 'POST', params: {}},
                     }),
+                    icReviewLevelThreeLoanDecisionEngineResource: defineResource(apiVer + "/loans/decision/icReviewDecisionLevelThree/:loanId", {loanId: '@loanId'}, {
+                        acceptIcReviewLevelThree: {method: 'POST', params: {}},
+                    }),
                    provisioningcriteria: defineResource(apiVer + "/provisioningcriteria/:criteriaId",{criteriaId:'@criteriaId'},{
                          get: {method: 'GET',params:{}},
                         getAll: {method: 'GET',params:{}, isArray : true},
