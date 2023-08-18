@@ -536,6 +536,17 @@
                      });
 
                      break;
+                 case "icreviewlevelthree":
+                      scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELTHREE';
+                      resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+
+                          scope.title = 'label.heading.icreviewlevelthreeloanaccount';
+                          scope.labelName = 'label.input.icReviewOn';
+                          scope.modelName = 'icReviewOn';
+                          scope.formData[scope.modelName] =  new Date();
+                      });
+
+                      break;
             }
 
             scope.cancel = function () {
@@ -670,12 +681,16 @@
                              location.path('/viewloanaccount/' + data.loanId);
                      });
                 }else if (scope.action == "icreviewlevelone") {
-                      resourceFactory.icReviewLevelOneLoanDecisionEngineResource.acceptIcReviewLevelOne({loanId: routeParams.id}, this.formData, function (data) {
-                          location.path('/viewloanaccount/' + data.loanId);
+                          resourceFactory.icReviewLevelOneLoanDecisionEngineResource.acceptIcReviewLevelOne({loanId: routeParams.id}, this.formData, function (data) {
+                              location.path('/viewloanaccount/' + data.loanId);
                   });
                  }else if (scope.action == "icreviewleveltwo") {
-                    resourceFactory.icReviewLevelTwoLoanDecisionEngineResource.acceptIcReviewLevelTwo({loanId: routeParams.id}, this.formData, function (data) {
-                        location.path('/viewloanaccount/' + data.loanId);
+                        resourceFactory.icReviewLevelTwoLoanDecisionEngineResource.acceptIcReviewLevelTwo({loanId: routeParams.id}, this.formData, function (data) {
+                            location.path('/viewloanaccount/' + data.loanId);
+                });
+                 }else if (scope.action == "icreviewlevelthree") {
+                        resourceFactory.icReviewLevelThreeLoanDecisionEngineResource.acceptIcReviewLevelThree({loanId: routeParams.id}, this.formData, function (data) {
+                           location.path('/viewloanaccount/' + data.loanId);
                 });
                }
 
