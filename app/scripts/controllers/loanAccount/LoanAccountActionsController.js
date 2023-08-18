@@ -514,6 +514,39 @@
                        });
 
                        break;
+                   case "icreviewlevelone":
+                      scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELONE';
+                      resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+
+                          scope.title = 'label.heading.icreviewleveloneloanaccount';
+                          scope.labelName = 'label.input.icReviewOn';
+                          scope.modelName = 'icReviewOn';
+                          scope.formData[scope.modelName] =  new Date();
+                      });
+
+                      break;
+                  case "icreviewleveltwo":
+                     scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELTWO';
+                     resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+
+                         scope.title = 'label.heading.icreviewleveltwoloanaccount';
+                         scope.labelName = 'label.input.icReviewOn';
+                         scope.modelName = 'icReviewOn';
+                         scope.formData[scope.modelName] =  new Date();
+                     });
+
+                     break;
+                 case "icreviewlevelthree":
+                      scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELTHREE';
+                      resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+
+                          scope.title = 'label.heading.icreviewlevelthreeloanaccount';
+                          scope.labelName = 'label.input.icReviewOn';
+                          scope.modelName = 'icReviewOn';
+                          scope.formData[scope.modelName] =  new Date();
+                      });
+
+                      break;
             }
 
             scope.cancel = function () {
@@ -643,12 +676,24 @@
                          resourceFactory.loanDecisionEngineResource.reviewApplication({loanId: routeParams.id}, this.formData, function (data) {
                              location.path('/viewloanaccount/' + data.loanId);
                          });
-                    }
-                else if (scope.action == "collateralreview") {
+                }else if (scope.action == "collateralreview") {
                          resourceFactory.collateralReviewLoanDecisionEngineResource.collateralReview({loanId: routeParams.id}, this.formData, function (data) {
                              location.path('/viewloanaccount/' + data.loanId);
                      });
-                    }
+                }else if (scope.action == "icreviewlevelone") {
+                          resourceFactory.icReviewLevelOneLoanDecisionEngineResource.acceptIcReviewLevelOne({loanId: routeParams.id}, this.formData, function (data) {
+                              location.path('/viewloanaccount/' + data.loanId);
+                  });
+                 }else if (scope.action == "icreviewleveltwo") {
+                        resourceFactory.icReviewLevelTwoLoanDecisionEngineResource.acceptIcReviewLevelTwo({loanId: routeParams.id}, this.formData, function (data) {
+                            location.path('/viewloanaccount/' + data.loanId);
+                });
+                 }else if (scope.action == "icreviewlevelthree") {
+                        resourceFactory.icReviewLevelThreeLoanDecisionEngineResource.acceptIcReviewLevelThree({loanId: routeParams.id}, this.formData, function (data) {
+                           location.path('/viewloanaccount/' + data.loanId);
+                });
+               }
+
                     else {
 
                                      params.loanId = scope.accountId;
