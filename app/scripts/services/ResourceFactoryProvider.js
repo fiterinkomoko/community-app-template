@@ -769,6 +769,33 @@
                     dueDiligenceLoanDecisionEngineResource: defineResource(apiVer + "/loans/decision/template/:loanId", {loanId: '@loanId'}, {
                         getTemplate: {method: 'GET', params: {}},
                     }),
+                    addApprovalMatrixEngineResource: defineResource(apiVer + "/loans/decision/approvalMatrix/createApprovalMatrix", {}, {
+                        save: {method: 'POST', params: {}},
+                    }),
+                    getApprovalMatrixEngineTemplateResource: defineResource(apiVer + "/loans/decision/template/approvalMatrix", {}, {
+                        get: {method: 'GET', params: {}},
+                    }),
+                    getAllApprovalMatrixEngineResource: defineResource(apiVer + "/loans/decision/getAllApprovalMatrix", {}, {
+                        getAll: {method: 'GET', params: {},isArray:true},
+                    }),
+                     getAllApprovalMatrixDetailsEngineResource: defineResource(apiVer + "/loans/decision/getApprovalMatrixDetails/:approvalMatrixId",{approvalMatrixId: '@approvalMatrixId'}, {
+                        get: {method: 'GET', params:{}},
+                    }),
+                    deleteApprovalMatrixDetailsEngineResource: defineResource(apiVer + "/loans/decision/approvalMatrix/:approvalMatrixId",{approvalMatrixId: '@approvalMatrixId'}, {
+                        delete: {method: 'DELETE', params:{}},
+                    }),
+                    updateApprovalMatrixDetailsEngineResource: defineResource(apiVer + "/loans/decision/updateApprovalMatrix/:approvalMatrixId",{approvalMatrixId: '@approvalMatrixId'}, {
+                        put: {method: 'PUT', params:{}},
+                    }),
+                    icReviewLevelOneLoanDecisionEngineResource: defineResource(apiVer + "/loans/decision/icReviewDecisionLevelOne/:loanId", {loanId: '@loanId'}, {
+                        acceptIcReviewLevelOne: {method: 'POST', params: {}},
+                    }),
+                    icReviewLevelTwoLoanDecisionEngineResource: defineResource(apiVer + "/loans/decision/icReviewDecisionLevelTwo/:loanId", {loanId: '@loanId'}, {
+                        acceptIcReviewLevelTwo: {method: 'POST', params: {}},
+                    }),
+                    icReviewLevelThreeLoanDecisionEngineResource: defineResource(apiVer + "/loans/decision/icReviewDecisionLevelThree/:loanId", {loanId: '@loanId'}, {
+                        acceptIcReviewLevelThree: {method: 'POST', params: {}},
+                    }),
                    provisioningcriteria: defineResource(apiVer + "/provisioningcriteria/:criteriaId",{criteriaId:'@criteriaId'},{
                          get: {method: 'GET',params:{}},
                         getAll: {method: 'GET',params:{}, isArray : true},

@@ -20625,36 +20625,72 @@ span.required {
 .card .statusgood {
   color: #008000;
 }
-/* line 462, ../styles-dev/main/components/_content.scss */
+/* line 461, ../styles-dev/main/components/_content.scss */
+.card .statusreviewapplication {
+  color: #FFD700;
+}
+/* line 464, ../styles-dev/main/components/_content.scss */
+.card .statusduediligence {
+  color: #BA55D3;
+}
+/* line 467, ../styles-dev/main/components/_content.scss */
+.card .statuscollateralreview {
+  color: #FF8C00;
+}
+/* line 470, ../styles-dev/main/components/_content.scss */
+.card .statusiclevelone {
+  color: #40E0D0;
+}
+/* line 473, ../styles-dev/main/components/_content.scss */
+.card .statusicleveltwo {
+  color: #40E0DF;
+}
+/* line 476, ../styles-dev/main/components/_content.scss */
+.card .statusiclevelthree {
+  color: #40E0FF;
+}
+/* line 479, ../styles-dev/main/components/_content.scss */
+.card .statusiclevelfour {
+  color: #40E0FF;
+}
+/* line 482, ../styles-dev/main/components/_content.scss */
+.card .statusiclevelfive {
+  color: #40E0FF;
+}
+/* line 485, ../styles-dev/main/components/_content.scss */
+.card .statusprepareandsign {
+  color: #ADFF2F;
+}
+/* line 489, ../styles-dev/main/components/_content.scss */
 .card .statushold {
   color: #FFFF00;
 }
-/* line 466, ../styles-dev/main/components/_content.scss */
+/* line 493, ../styles-dev/main/components/_content.scss */
 .card .statusprogresspendingtab {
   color: #F7FE2E;
 }
-/* line 470, ../styles-dev/main/components/_content.scss */
+/* line 497, ../styles-dev/main/components/_content.scss */
 .card .statusprogresstab {
   color: #FFA500;
 }
-/* line 474, ../styles-dev/main/components/_content.scss */
+/* line 501, ../styles-dev/main/components/_content.scss */
 .card .statusprogresscompletedtab {
   color: #298A08;
 }
-/* line 478, ../styles-dev/main/components/_content.scss */
+/* line 505, ../styles-dev/main/components/_content.scss */
 .card a {
   cursor: pointer;
 }
-/* line 482, ../styles-dev/main/components/_content.scss */
+/* line 509, ../styles-dev/main/components/_content.scss */
 .card .error {
   color: #d9534f;
 }
-/* line 486, ../styles-dev/main/components/_content.scss */
+/* line 513, ../styles-dev/main/components/_content.scss */
 .card .toolbar {
   height: 40px;
   border-bottom: 1px solid #e5e5e5;
 }
-/* line 490, ../styles-dev/main/components/_content.scss */
+/* line 517, ../styles-dev/main/components/_content.scss */
 .card .toolbar > h4 {
   float: left;
   margin: 0;
@@ -20662,7 +20698,7 @@ span.required {
   font-size: 18px;
   font-weight: bold;
 }
-/* line 500, ../styles-dev/main/components/_content.scss */
+/* line 527, ../styles-dev/main/components/_content.scss */
 .card .toolbar > .btn-group .btn {
   border: none;
   border-radius: 0;
@@ -20670,28 +20706,28 @@ span.required {
   height: 39px;
   min-width: 39px;
 }
-/* line 506, ../styles-dev/main/components/_content.scss */
+/* line 533, ../styles-dev/main/components/_content.scss */
 .card .toolbar > .btn-group .btn:hover {
   border: none;
   border-left: 1px solid #e5e5e5;
 }
-/* line 511, ../styles-dev/main/components/_content.scss */
+/* line 538, ../styles-dev/main/components/_content.scss */
 .card .toolbar > .btn-group .btn.btn-default:hover {
   background: #f5f5f5;
   color: #5bc0de;
 }
-/* line 517, ../styles-dev/main/components/_content.scss */
+/* line 544, ../styles-dev/main/components/_content.scss */
 .card .toolbar > .btn-group.open .dropdown-toggle {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
 }
-/* line 523, ../styles-dev/main/components/_content.scss */
+/* line 550, ../styles-dev/main/components/_content.scss */
 .card .toolbar > .btn-group.btn-group-right {
   float: right;
 }
 
-/* line 531, ../styles-dev/main/components/_content.scss */
+/* line 558, ../styles-dev/main/components/_content.scss */
 .pre-wrap {
   white-space: pre-wrap;
 }
@@ -21183,6 +21219,16 @@ div.chosen-container.chosen-container-single {
   font-size: 14px;
   text-align: center;
   padding: 8px 5px;
+}
+
+/* line 76, ../styles-dev/main/components/_notifications.scss */
+.new-notification {
+  font-weight: bold;
+  border-left: #4f99ed solid 2px;
+}
+/* line 80, ../styles-dev/main/components/_notifications.scss */
+.new-notification h4 {
+  font-weight: bold;
 }
 
 /* line 76, ../styles-dev/main/components/_notifications.scss */
