@@ -547,6 +547,17 @@
                       });
 
                       break;
+               case "icreviewlevelfour":
+                    scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELFOUR';
+                    resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+
+                        scope.title = 'label.heading.icreviewlevelfourloanaccount';
+                        scope.labelName = 'label.input.icReviewOn';
+                        scope.modelName = 'icReviewOn';
+                        scope.formData[scope.modelName] =  new Date();
+                    });
+
+                    break;
             }
 
             scope.cancel = function () {
@@ -692,9 +703,11 @@
                         resourceFactory.icReviewLevelThreeLoanDecisionEngineResource.acceptIcReviewLevelThree({loanId: routeParams.id}, this.formData, function (data) {
                            location.path('/viewloanaccount/' + data.loanId);
                 });
-               }
-
-                    else {
+                }else if (scope.action == "icreviewlevelfour") {
+                           resourceFactory.icReviewLevelFourLoanDecisionEngineResource.acceptIcReviewLevelFour({loanId: routeParams.id}, this.formData, function (data) {
+                              location.path('/viewloanaccount/' + data.loanId);
+                   });
+                  }else {
 
                                      params.loanId = scope.accountId;
                                      var allCharges = [];
