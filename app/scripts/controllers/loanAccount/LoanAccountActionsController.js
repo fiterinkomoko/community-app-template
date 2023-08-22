@@ -8,6 +8,7 @@
             scope.entityformData = {datatables:{}};
             scope.showDateField = true;
             scope.showNoteField = true;
+            scope.noteFieldMandatory = false;
             scope.showAmountField = false;
             scope.restrictDate = new Date();
             // Transaction UI Related
@@ -492,7 +493,7 @@
                     scope.showDateField = false;
                     scope.taskPermissionName = 'UPDATE_DISBURSEMENTDETAIL';
                     break;
-                    case "reviewapplication":
+                case "reviewapplication":
                         scope.taskPermissionName = 'ACCEPT_LOANAPPLICATIONREVIEW';
                         resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
 
@@ -500,10 +501,11 @@
                             scope.labelName = 'label.input.reviewApplicationOn';
                             scope.modelName = 'loanReviewOnDate';
                             scope.formData[scope.modelName] =  new Date();
+                            scope.noteFieldMandatory = true;
                         });
 
                         break;
-                   case "collateralreview":
+                case "collateralreview":
                        scope.taskPermissionName = 'ACCEPT_LOANCOLLATERALREVIEW';
                        resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
 
@@ -511,10 +513,11 @@
                            scope.labelName = 'label.input.collateralReviewOn';
                            scope.modelName = 'collateralReviewOn';
                            scope.formData[scope.modelName] =  new Date();
+                           scope.noteFieldMandatory = true;
                        });
 
                        break;
-                   case "icreviewlevelone":
+                case "icreviewlevelone":
                       scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELONE';
                       resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
 
@@ -522,10 +525,11 @@
                           scope.labelName = 'label.input.icReviewOn';
                           scope.modelName = 'icReviewOn';
                           scope.formData[scope.modelName] =  new Date();
+                          scope.noteFieldMandatory = true;
                       });
 
                       break;
-                  case "icreviewleveltwo":
+                case "icreviewleveltwo":
                      scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELTWO';
                      resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
 
@@ -533,10 +537,11 @@
                          scope.labelName = 'label.input.icReviewOn';
                          scope.modelName = 'icReviewOn';
                          scope.formData[scope.modelName] =  new Date();
+                         scope.noteFieldMandatory = true;
                      });
 
                      break;
-                 case "icreviewlevelthree":
+                case "icreviewlevelthree":
                       scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELTHREE';
                       resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
 
@@ -544,10 +549,11 @@
                           scope.labelName = 'label.input.icReviewOn';
                           scope.modelName = 'icReviewOn';
                           scope.formData[scope.modelName] =  new Date();
+                          scope.noteFieldMandatory = true;
                       });
 
                       break;
-               case "icreviewlevelfour":
+                case "icreviewlevelfour":
                     scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELFOUR';
                     resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
 
@@ -555,10 +561,11 @@
                         scope.labelName = 'label.input.icReviewOn';
                         scope.modelName = 'icReviewOn';
                         scope.formData[scope.modelName] =  new Date();
+                        scope.noteFieldMandatory = true;
                     });
 
                     break;
-               case "icreviewlevelfive":
+                case "icreviewlevelfive":
                     scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELFIVE';
                     resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
 
@@ -566,6 +573,19 @@
                         scope.labelName = 'label.input.icReviewOn';
                         scope.modelName = 'icReviewOn';
                         scope.formData[scope.modelName] =  new Date();
+                        scope.noteFieldMandatory = true;
+                    });
+
+                    break;
+                case "prepareandsigncontract":
+                    scope.taskPermissionName = 'ACCEPT_LOANPREPAREANDSIGNCONTRACT';
+                    resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+
+                        scope.title = 'label.heading.prepareandsigncontractloanaccount';
+                        scope.labelName = 'label.input.prepareAndSignContractOn';
+                        scope.modelName = 'icReviewOn';
+                        scope.formData[scope.modelName] =  new Date();
+                        scope.noteFieldMandatory = true;
                     });
 
                     break;
@@ -720,6 +740,10 @@
                    });
                }else if (scope.action == "icreviewlevelfive") {
                           resourceFactory.icReviewLevelFiveLoanDecisionEngineResource.acceptIcReviewLevelFive({loanId: routeParams.id}, this.formData, function (data) {
+                             location.path('/viewloanaccount/' + data.loanId);
+                  });
+               }else if (scope.action == "prepareandsigncontract") {
+                          resourceFactory.prepareAndSignContractLoanDecisionEngineResource.acceptPrepareAndSignContract({loanId: routeParams.id}, this.formData, function (data) {
                              location.path('/viewloanaccount/' + data.loanId);
                   });
                } else {
