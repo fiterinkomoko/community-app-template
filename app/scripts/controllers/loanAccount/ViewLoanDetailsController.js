@@ -146,8 +146,14 @@
                      case "icreviewlevelthree":
                           location.path('/loanaccount/' + accountId + '/icreviewlevelthree');
                           break;
-                   case "icreviewlevelfour":
+                     case "icreviewlevelfour":
                           location.path('/loanaccount/' + accountId + '/icreviewlevelfour');
+                          break;
+                     case "icreviewlevelfive":
+                          location.path('/loanaccount/' + accountId + '/icreviewlevelfive');
+                          break;
+                      case "prepareandsigncontract":
+                          location.path('/loanaccount/' + accountId + '/prepareandsigncontract');
                           break;
                 }
             };
@@ -266,13 +272,19 @@
                  icon: "fa fa-check",
                  taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELFIVE'
              };
-           }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT"))){
+           }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT" && data.loanDecisionState.value != "PREPARE_AND_SIGN_CONTRACT"))){
               return {
                  name: "button.prepareandsigncontract",
                  icon: "fa fa-check",
                  taskPermissionName: 'ACCEPT_LOANPREPAREANDSIGNCONTRACT'
              };
-           }else{
+           } else if(((data.isExtendLoanLifeCycleConfig == true) && (data.loanDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT" && data.loanDecisionState.value == "PREPARE_AND_SIGN_CONTRACT"))){
+            return {
+                name: "button.approve",
+                icon: "fa fa-check",
+                taskPermissionName: 'APPROVE_LOAN'
+            };
+          }else{
                 console.log("No Options Found here . . . . ");
                 }
                 }
