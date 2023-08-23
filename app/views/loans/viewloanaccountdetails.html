@@ -77,11 +77,14 @@
                       <span style="margin-left: 10px;font-size:24px">
                             <strong>
 
-                                 <i ng-show="(!loandetails.inArrears && loandetails.isExtendLoanLifeCycleConfig && loandetails.loanDecisionState == null) || (!loandetails.inArrears && loandetails.isExtendLoanLifeCycleConfig && loandetails.loanDecisionState != null && loandetails.loanDecisionState.value == 'PREPARE_AND_SIGN_CONTRACT')"
+                                 <i ng-show="(!loandetails.inArrears && loandetails.isExtendLoanLifeCycleConfig && loandetails.loanDecisionState == null) ||
+                                 (!loandetails.inArrears && loandetails.isExtendLoanLifeCycleConfig && loandetails.loanDecisionState != null && loandetails.loanDecisionState.value == 'PREPARE_AND_SIGN_CONTRACT') ||
+                                 (!loandetails.inArrears && loandetails.isExtendLoanLifeCycleConfig && loandetails.loanDecisionState != null && loandetails.loanDecisionState.value != 'PREPARE_AND_SIGN_CONTRACT' && loandetails.status.code != 'loanStatusType.submitted.and.pending.approval')"
+
                                     class="fa fa-stop {{loandetails.status.code | StatusLookup}}"></i>
 
 
-                                 <i ng-show="!loandetails.inArrears && loandetails.isExtendLoanLifeCycleConfig && loandetails.loanDecisionState != null && loandetails.loanDecisionState.value != 'PREPARE_AND_SIGN_CONTRACT'"
+                                 <i ng-show="!loandetails.inArrears && loandetails.isExtendLoanLifeCycleConfig && loandetails.loanDecisionState != null && loandetails.loanDecisionState.value != 'PREPARE_AND_SIGN_CONTRACT' && loandetails.status.code == 'loanStatusType.submitted.and.pending.approval'"
                                     class="fa fa-stop {{loandetails.loanDecisionState.code | StatusLookup}}"></i>
 
 
