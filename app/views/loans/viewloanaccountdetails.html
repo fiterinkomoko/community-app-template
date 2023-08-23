@@ -60,12 +60,38 @@
         </div>
         <br>
         <div ng-hide="report">
-            <div class="span gray-head" style="margin-left:0%;">
+            <div class="span gray-head" style="margin-left:0%;" ng-hide="loandetails.isExtendLoanLifeCycleConfig">
                       <span style="margin-left: 10px;font-size:24px">
-                            <strong> <i ng-hide="loandetails.inArrears"
+                            <strong>
+
+                                <i ng-hide="loandetails.inArrears"
                                         class="fa fa-stop {{loandetails.status.code | StatusLookup}}"></i>
+
                                 <i ng-show="loandetails.inArrears"
-                                   class="fa fa-stop {{loandetails.status.code | StatusLookup}}overdue"></i>&nbsp;{{loandetails.loanProductName}}(#{{loandetails.accountNo}})</strong>
+                                   class="fa fa-stop {{loandetails.status.code | StatusLookup}}overdue"></i>
+                                &nbsp;{{loandetails.loanProductName}}(#{{loandetails.accountNo}})
+                            </strong>
+                      </span>
+            </div>
+            <div class="span gray-head" style="margin-left:0%;" ng-show="loandetails.isExtendLoanLifeCycleConfig">
+                      <span style="margin-left: 10px;font-size:24px">
+                            <strong>
+
+                                 <i ng-show="(!loandetails.inArrears && loandetails.isExtendLoanLifeCycleConfig && loandetails.loanDecisionState == null) || (!loandetails.inArrears && loandetails.isExtendLoanLifeCycleConfig && loandetails.loanDecisionState != null && loandetails.loanDecisionState.value == 'PREPARE_AND_SIGN_CONTRACT')"
+                                    class="fa fa-stop {{loandetails.status.code | StatusLookup}}"></i>
+
+
+                                 <i ng-show="!loandetails.inArrears && loandetails.isExtendLoanLifeCycleConfig && loandetails.loanDecisionState != null && loandetails.loanDecisionState.value != 'PREPARE_AND_SIGN_CONTRACT'"
+                                    class="fa fa-stop {{loandetails.loanDecisionState.code | StatusLookup}}"></i>
+
+
+                                <i ng-show="loandetails.inArrears"
+                                   class="fa fa-stop {{loandetails.status.code | StatusLookup}}overdue"></i>
+
+
+                                &nbsp;{{loandetails.loanProductName}}(#{{loandetails.accountNo}})
+
+                            </strong>
                       </span>
             </div>
             <br>
