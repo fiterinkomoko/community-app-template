@@ -78,7 +78,7 @@
                 CKEDITOR.instances.templateeditor.setData('');
                 scope.loanProductTemplateKeys = ["{{loan.loanProduct.fund}}",
                                                 "{{loan.loanProduct.transactionProcessingStrategy}}",
-                                                "{{loan.loanProduct.name}}",
+                                                "{{loan.loanProduct.productName}}",
                                                 "{{loan.loanProduct.shortName}}",
                                                 "{{loan.loanProduct.description}}",
                                                 "{{loan.loanProduct.charges}}",
