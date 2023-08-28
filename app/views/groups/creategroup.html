@@ -32,9 +32,12 @@
 								<div class="col-sm-2">
 									<form-validate valattributeform="creategroupform" valattribute="office"/>
 								</div>
-								<label class="control-label col-sm-2" for="externalId">{{'label.input.externalid' | translate}}</label>
+								<label class="control-label col-sm-2" for="externalId">{{'label.input.groupuid' | translate}}<span class="required">*</span></label>
 								<div class="col-sm-3">
-									<input type="text" name="externalid" id="externalId" ng-model="formData.externalId" class="form-control"/>
+									<input type="text" name="externalid" id="externalId" ng-model="formData.externalId" class="form-control" required late-validate/>
+								</div>
+								<div class="col-sm-2">
+									<form-validate valattributeform="creategroupform" valattribute="externalId"/>
 								</div>
 							</div>
 							<div class="form-group">
