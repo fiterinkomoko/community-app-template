@@ -26,6 +26,36 @@
               });
             };
             scope.rescheduleData();
+            //Review Application
+             scope.loanPendingReviewApplicationData = [];
+             scope.getLoanPendingReviewApplication = function(){
+                     var nextLoanDecisionStateValue = '100'; //100 will be interpreted as null in Backend
+                      resourceFactory.getAllLoansPendingDecisionEngineResource.getAll({nextLoanDecisionState:nextLoanDecisionStateValue}, function (data) {
+                        scope.loanPendingReviewApplicationData = data;
+                      });
+                    };
+            scope.getLoanPendingReviewApplication();
+
+            //Due Diligence
+            scope.loanPendingDueDiligenceData = [];
+            scope.getLoanPendingDueDiligence = function(){
+                     var nextLoanDecisionStateValue = '1000';
+                      resourceFactory.getAllLoansPendingDecisionEngineResource.getAll({nextLoanDecisionState:nextLoanDecisionStateValue}, function (data) {
+                        scope.loanPendingDueDiligenceData = data;
+                      });
+                    };
+            scope.getLoanPendingDueDiligence();
+
+            //Collateral Review
+            scope.loanPendingCollateralReviewData = [];
+            scope.getLoanPendingCollateralReview = function(){
+                     var nextLoanDecisionStateValue = '1200';
+                      resourceFactory.getAllLoansPendingDecisionEngineResource.getAll({nextLoanDecisionState:nextLoanDecisionStateValue}, function (data) {
+                        scope.loanPendingCollateralReviewData = data;
+                      });
+                    };
+            scope.getLoanPendingCollateralReview();
+
 
             resourceFactory.checkerInboxResource.get({templateResource: 'searchtemplate'}, function (data) {
                 scope.checkerTemplate = data;
