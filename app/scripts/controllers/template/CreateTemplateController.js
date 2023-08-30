@@ -63,7 +63,7 @@
                                         "{{client.reopenedBy}}",
                                         "{{client.proposedTransferDate}}",
                                         "{{client.clientCollateralManagements}}"];
-                                        scope.additionalInfo = ["{{activity}}","{{time}}","{{clientId}}","{{loanId}}", "{{bvn}}"];
+                                        scope.additionalInfo = ["{{activity}}","{{time}}","{{clientId}}","{{loanId}}", "{{bvn}}","{{resourceId}}"];
                 scope.templateEntity = [
                     {"entityName": "Client",
                         "templateKeys": scope.templateKeys
