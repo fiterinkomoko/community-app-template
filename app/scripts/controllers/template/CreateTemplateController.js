@@ -21,7 +21,8 @@
             });
 
             scope.clientKeys = function () {
-                scope.templateKeys = ["{{client.accountNumber}}",
+                scope.templateKeys = ["{{client.id}}",
+                                        "{{client.accountNumber}}",
                                         "{{client.transferToOffice}}",
                                         "{{client.status}}",
                                         "{{client.subStatus}}",
@@ -62,10 +63,28 @@
                                         "{{client.reopenedBy}}",
                                         "{{client.proposedTransferDate}}",
                                         "{{client.clientCollateralManagements}}"];
-                                        scope.additionalInfo = ["{{activity}}","{{time}}","{{clientId}}","{{loanId}}"];
+                                        scope.additionalInfo = ["{{activity}}","{{time}}","{{clientId}}","{{loanId}}", "{{bvn}}","{{resourceId}}"];
                 scope.templateEntity = [
                     {"entityName": "Client",
                         "templateKeys": scope.templateKeys
+                    },                    {
+                        "entityName": "SavingsAccount",
+                        "templateKeys": scope.templateKeys},
+                    {
+                        "entityName": "Loan",
+                        "templateKeys": scope.loanTemplateKeys
+                    },
+                    {
+                        "entityName": "Repayment Schedule",
+                        "templateKeys": scope.repaymentTemplateKeys
+                    },
+                    {
+                        "entityName": "Loan Product",
+                        "templateKeys": scope.loanProductTemplateKeys
+                    },
+                    {
+                        "entityName": "Loan Summary",
+                        "templateKeys": scope.loanSummaryTemplateKeys
                     },
                     {"entityName": "Additional Info",
                         "templateKeys": scope.additionalInfo
@@ -259,8 +278,86 @@
                 ];
             };
 
+            scope.savingsAccountKeys = function () {
+                scope.templateKeys = ["{{savingsAccount.id}}",
+                "{{savingsAccount.client.id}}",
+                "{{savingsAccount.accountNumber}}",
+                "{{savingsAccount.externalId}}",
+                "{{savingsAccount.product.name}}",
+                "{{savingsAccount.product.id}}",
+                "{{savingsAccount.savingsOfficer}}",
+                "{{savingsAccount.status}}",
+                "{{savingsAccount.sub_status}}",
+                "{{savingsAccount.accountType}}",
+                "{{savingsAccount.submittedOnDate}}",
+                "{{savingsAccount.rejectedOnDate}}",
+                "{{savingsAccount.withdrawnOnDate}}",
+                "{{savingsAccount.withdrawnBy}}",
+                "{{savingsAccount.approvedOnDate}}",
+                "{{savingsAccount.activatedOnDate}}",
+                "{{savingsAccount.activatedBy}}",
+                "{{savingsAccount.closedOnDate}}",
+                "{{savingsAccount.closedBy}}",
+                "{{savingsAccount.reasonForBlock}}",
+                "{{savingsAccount.currency}}",
+                "{{savingsAccount.nominalAnnualInterestRate}}",
+                "{{savingsAccount.interestCompoundingPeriodType}}",
+                "{{savingsAccount.interestPostingPeriodType}}",
+                "{{savingsAccount.interestCalculationType}}",
+                "{{savingsAccount.interestCalculationDaysInYearType}}",
+                "{{savingsAccount.minRequiredOpeningBalance}}",
+                "{{savingsAccount.lockinPeriodFrequency}}",
+                "{{savingsAccount.lockinPeriodFrequencyType}}",
+                "{{savingsAccount.lockedInUntilDate}}",
+                "{{savingsAccount.withdrawalFeeApplicableForTransfer}}",
+                "{{savingsAccount.allowOverdraft}}",
+                "{{savingsAccount.overdraftLimit}}",
+                "{{savingsAccount.nominalAnnualInterestRateOverdraft}}",
+                "{{savingsAccount.minOverdraftForInterestCalculation}}",
+                "{{savingsAccount.postOverdraftInterestOnDeposit}}",
+                "{{savingsAccount.enforceMinRequiredBalance}}",
+                "{{savingsAccount.minRequiredBalance}}",
+                "{{savingsAccount.lienAllowed}}",
+                "{{savingsAccount.maxAllowedLienLimit}}",
+                "{{savingsAccount.onHoldFunds}}",
+                "{{savingsAccount.startInterestCalculationDate}}",
+                "{{savingsAccount.summary}}"
+                ];
+
+                scope.templateEntity = [
+                    {
+                        "entityName": "SavingsAccount",
+                        "templateKeys": scope.templateKeys},
+                    {
+                        "entityName": "Loan",
+                        "templateKeys": scope.loanTemplateKeys
+                    },
+                    {
+                        "entityName": "Repayment Schedule",
+                        "templateKeys": scope.repaymentTemplateKeys
+                    },
+                    {
+                        "entityName": "Loan Product",
+                        "templateKeys": scope.loanProductTemplateKeys
+                    },
+                    {
+                        "entityName": "Loan Summary",
+                        "templateKeys": scope.loanSummaryTemplateKeys
+                    },
+                    {
+                        "entityName": "Client",
+                        "templateKeys": scope.templateKeys
+                    },
+                    {
+                        "entityName": "Additional Info",
+                        "templateKeys": scope.additionalInfo
+                    }
+                ];
+                CKEDITOR.instances.templateeditor.setData('');
+            };
+
             scope.entityChange = function (entityId) {
-                if (entityId !== 0) {
+                if (entityId === 1) {
                     scope.mappers.splice(0, 1, {
                         mappersorder: 0,
                         mapperskey: "loan",
@@ -269,7 +366,7 @@
                     });
                     scope.loanKeys();
                     scope.templateKeyEntity = "Loan";
-                } else {
+                } else if (entityId === 0){
                     scope.templateKeyEntity = "Client";
                     scope.mappers.splice(0, 1, {
                         mappersorder: 0,
@@ -278,6 +375,15 @@
                         defaultAddIcon: 'true'
                     });
                     scope.clientKeys();
+                } else if (entityId === 2){
+                    scope.templateKeyEntity = "SavingsAccount";
+                    scope.mappers.splice(0, 1, {
+                        mappersorder: 0,
+                        mapperskey: "savingsaccount",
+                        mappersvalue: "savingsaccounts/{{savingsAccountId}}?tenantIdentifier=" + $rootScope.tenantIdentifier,
+                        defaultAddIcon: 'true'
+                    });
+                    scope.savingsAccountKeys();
                 }
             };
 

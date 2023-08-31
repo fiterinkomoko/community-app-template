@@ -51,7 +51,8 @@
             });
 
             scope.clientKeys = function () {
-                scope.clientTemplateKeys = ["{{client.accountNumber}}",
+                scope.clientTemplateKeys = ["{{client.id}}",
+                                            "{{client.accountNumber}}",
                                             "{{client.transferToOffice}}",
                                             "{{client.status}}",
                                             "{{client.subStatus}}",
@@ -92,7 +93,7 @@
                                             "{{client.reopenedBy}}",
                                             "{{client.proposedTransferDate}}",
                                             "{{client.clientCollateralManagements}}"];
-                                            scope.additionalInfo = ["{{activity}}","{{time}}","{{clientId}}","{{loanId}}"];
+                                            scope.additionalInfo = ["{{activity}}","{{time}}","{{clientId}}","{{loanId}}", "{{bvn}}","{{resourceId}}"];
                 scope.templateEntity = [
                     {"entityName": "Client",
                         "templateKeys": scope.clientTemplateKeys
@@ -101,10 +102,7 @@
                         "templateKeys": scope.additionalInfo
                     }
                 ];
-                scope.additionalInfo = ["{{activity}}","{{time}}","{{clientId}}","{{loanId}}"];
-                if (scope.templateKeyEntity != "client") {
-                    CKEDITOR.instances.templateeditor.setData('');
-                }
+                scope.additionalInfo = ["{{activity}}","{{time}}","{{clientId}}","{{loanId}}","{{resourceId}}"];
             }
 
             scope.loanKeys = function () {
@@ -289,9 +287,6 @@ scope.loanSummaryTemplateKeys = ["{{loan.summary.totalPrincipalDisbursed}}",
                         "templateKeys": scope.additionalInfo
                     }
                     ];
-                if (scope.templateKeyEntity != "loan") {
-                    CKEDITOR.instances.templateeditor.setData('');
-                }
             }
 
             scope.entityChange = function (entityId) {
