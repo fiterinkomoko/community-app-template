@@ -293,6 +293,7 @@
   "label.input.accno": "Account Number",
   "label.input.activationdate": "Activation date",
   "label.input.staff": "Staff",
+  "label.input.representative": "Representative",
   "label.input.office": "Office",
   "label.input.client": "Client",
   "label.input.clients": "Clients",
