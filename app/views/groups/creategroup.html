@@ -139,7 +139,7 @@
 								<div class="col-sm-3">
 									<select id="representativeId" ng-model="formData.representativeId" class="form-control"
 											ng-options="representative.id as representative.displayName for representative in addedClients"
-											value="{{business.id}}" required >
+											value="{{representative.id}}" required >
 										<option value="">--{{'label.menu.selectone' | translate}}--</option>
 									</select>
 								</div>
