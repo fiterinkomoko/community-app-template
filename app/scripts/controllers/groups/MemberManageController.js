@@ -4,6 +4,7 @@
             scope.group = [];
             scope.indexOfClientToBeDeleted = "";
             scope.allMembers = [];
+            scope.formData = {};
 
             scope.viewClient = function (item) {
                 scope.client = item;
@@ -11,7 +12,7 @@
 
             scope.clientOptions = function(value){
                 var deferred = $q.defer();
-                resourceFactory.clientResource.getAllClientsWithoutLimit({displayName: value, orderBy : 'displayName', officeId : scope.group.officeId,
+                resourceFactory.clientResource.getAllClientsWithoutLimit({displayName: value,accountNo: value, orderBy : 'displayName', officeId : scope.group.officeId,
                 sortOrder : 'ASC', orphansOnly : true}, function (data) {
                     deferred.resolve(data.pageItems);
                 });
@@ -22,6 +23,7 @@
                 scope.group = data;
                 if(data.clientMembers) {
                     scope.allMembers = data.clientMembers;
+                    scope.formData.representativeId = data.representativeId || '';
                 }
             });
             
@@ -62,6 +64,12 @@
                     $uibModalInstance.dismiss('cancel');
                 };
             };
+            scope.$watch('formData.representativeId', function (newVal, oldVal) {
+                if (newVal !== oldVal) {
+                resourceFactory.groupResource.save({groupId: routeParams.id, command: 'updateGroupRepresentative'}, scope.formData, function (data) {
+                });
+                }
+            });
         }
     });
     mifosX.ng.application.controller('MemberManageController', ['$q','$scope', '$routeParams', '$route', '$location', 'ResourceFactory', '$uibModal', mifosX.controllers.MemberManageController]).run(function ($log) {
