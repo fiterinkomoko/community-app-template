@@ -19,7 +19,6 @@
             resourceFactory.glimLoanTemplate.get({glimId: scope.glimId}, function (data) {
 
                 scope.glimAccounts = data;
-                console.log(scope.glimAccounts);
 
                 for(i=0;i<scope.glimAccounts.length;i++)
                 {
