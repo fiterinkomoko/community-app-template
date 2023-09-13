@@ -19,6 +19,7 @@
             resourceFactory.glimLoanTemplate.get({glimId: scope.glimId}, function (data) {
 
                 scope.glimAccounts = data;
+                console.log(scope.glimAccounts);
 
                 for(i=0;i<scope.glimAccounts.length;i++)
                 {
@@ -29,7 +30,7 @@
                     temp.childLoanId=data[i].childLoanId;
                     temp.childLoanAccountNo=data[i].childLoanAccountNo;
                     temp.approvedLoanAmount=parseFloat(data[i].childPrincipalAmount);
-
+                    temp.actualPrincipalAmount=parseFloat(data[i].actualPrincipalAmount);
                     scope.totalLoanAmount+=parseFloat(data[i].childPrincipalAmount);
 
 

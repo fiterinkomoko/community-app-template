@@ -48,6 +48,7 @@
                         <th>{{'label.heading.loanaccountnum' | translate}}</th>
                         <th>{{'label.heading.clientprincipalloan' | translate}}</th>
                         <th>{{'label.heading.grouplprincipalloan' | translate}}</th>
+                        <th>{{'label.heading.groupactualprincipalloan' | translate}}</th>
                     </tr>
 
                    <tr class="pointer-main" ng-repeat="glimloanaccount in glimAccounts">
@@ -62,6 +63,8 @@
                        <td class="pointer" data-ng-click="routeToLoan(glimloanaccount.childLoanId)">{{glimloanaccount.childPrincipalAmount }}</td>
 
                        <td class="pointer" data-ng-click="routeToLoan(glimloanaccount.childLoanId)">{{glimloanaccount.parentPrincipalAmount }}</td>
+
+                       <td class="pointer" data-ng-click="routeToLoan(glimloanaccount.childLoanId)">{{glimloanaccount.actualPrincipalAmount }}</td>
                     </tr>
 
                 </table>
