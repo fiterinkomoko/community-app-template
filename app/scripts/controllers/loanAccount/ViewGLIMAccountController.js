@@ -29,7 +29,7 @@
                     temp.childLoanId=data[i].childLoanId;
                     temp.childLoanAccountNo=data[i].childLoanAccountNo;
                     temp.approvedLoanAmount=parseFloat(data[i].childPrincipalAmount);
-
+                    temp.actualPrincipalAmount=parseFloat(data[i].actualPrincipalAmount);
                     scope.totalLoanAmount+=parseFloat(data[i].childPrincipalAmount);
 
 
