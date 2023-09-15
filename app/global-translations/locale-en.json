@@ -1687,6 +1687,8 @@
   "label.input.isTopup": "Is Topup Loan",
   "label.input.payoffondate": "Pay Off On Date",
   "label.input.loanIdToClose": "Choose loan to close",
+  "label.input.totalTransactionAmount": "Total Transaction Amount",
+  "label.input.derivedTotalTransactionAmount": "Derived Total Transaction Amount",
   "#Buttons": "..",
   "label.button.addloancharge": "Add Loan Charge",
   "label.button.addcollateral": "Add Collateral",

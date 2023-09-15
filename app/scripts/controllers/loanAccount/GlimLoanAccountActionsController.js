@@ -20,6 +20,7 @@
             scope.disbursementDetails = [];
             scope.showTrancheAmountTotal = 0;
             scope.processDate = false;
+            scope.submitRepayment = false;
 
             var prevLoanAmount;
 
@@ -789,6 +790,25 @@
                         scope.interestPortion = data.interestPortion;
                     });
                 }
+            };
+
+            scope.calculateTotalRepaymentAmount = function() {
+              var totalAmount = 0;
+              scope.submitRepayment = false;
+              for (var i = 0; i < scope.repaymentArray.length; i++) {
+                var transactionAmount = parseFloat(scope.repaymentArray[i].transactionAmount);
+                if (!isNaN(transactionAmount)) {
+                  totalAmount += transactionAmount;
+                }
+              }
+
+              scope.derivedTotalTransactionAmount = totalAmount;
+
+              if(totalAmount == scope.totalTransactionAmount){
+              scope.submitRepayment = true
+              }else{
+              scope.submitRepayment = false;
+              }
             };
         }
     });
