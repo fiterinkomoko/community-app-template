@@ -16,7 +16,7 @@
 
 
 
-            resourceFactory.glimLoanTemplate.get({glimId: scope.glimId}, function (data) {
+            resourceFactory.glimLoanTemplate.get({glimId: scope.glimId,isRepayment: false}, function (data) {
 
                 scope.glimAccounts = data;
 

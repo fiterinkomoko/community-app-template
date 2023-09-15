@@ -70,7 +70,7 @@
                     });
                     // start of glim
 
-                    resourceFactory.glimLoanTemplate.get({glimId: scope.glimId}, function (data) {
+                    resourceFactory.glimLoanTemplate.get({glimId: scope.glimId,isRepayment: true}, function (data) {
                         scope.glimAccounts = data;
 
                         if(scope.approvalArray.length!=0)
@@ -174,7 +174,7 @@
                     scope.glimAccounts=[];
                     scope.totalLoanAmount=0;
                     scope.showDisbursalTable=true;
-                    resourceFactory.glimLoanTemplate.get({glimId: scope.glimId}, function (data) {
+                    resourceFactory.glimLoanTemplate.get({glimId: scope.glimId,isRepayment: true}, function (data) {
                         scope.glimAccounts = data;
 
                         if(scope.approvalArray.length!=0)
@@ -257,7 +257,7 @@
                     });
 
                     //scope.repaymentArray=new Array();
-                    resourceFactory.glimLoanTemplate.get({glimId: scope.glimId}, function (data) {
+                    resourceFactory.glimLoanTemplate.get({glimId: scope.glimId,isRepayment: true}, function (data) {
                         scope.glimRepaymentAccounts = data;
 
                         if(scope.repaymentArray.length!=0)
