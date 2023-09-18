@@ -20,7 +20,6 @@
             scope.disbursementDetails = [];
             scope.showTrancheAmountTotal = 0;
             scope.processDate = false;
-            scope.submitRepayment = false;
 
             var prevLoanAmount;
 
@@ -71,7 +70,7 @@
                     });
                     // start of glim
 
-                    resourceFactory.glimLoanTemplate.get({glimId: scope.glimId,isRepayment: true}, function (data) {
+                    resourceFactory.glimLoanTemplate.get({glimId: scope.glimId,isRepayment: false}, function (data) {
                         scope.glimAccounts = data;
 
                         if(scope.approvalArray.length!=0)
@@ -175,7 +174,7 @@
                     scope.glimAccounts=[];
                     scope.totalLoanAmount=0;
                     scope.showDisbursalTable=true;
-                    resourceFactory.glimLoanTemplate.get({glimId: scope.glimId,isRepayment: true}, function (data) {
+                    resourceFactory.glimLoanTemplate.get({glimId: scope.glimId,isRepayment: false}, function (data) {
                         scope.glimAccounts = data;
 
                         if(scope.approvalArray.length!=0)
@@ -285,7 +284,6 @@
                     scope.isTransaction = true;
                     scope.showAmountField = false;
                     scope.taskPermissionName = 'REPAYMENT_LOAN';
-                    scope.showRepaymentTable=true;
                     break;
                 case "prepayloan":
                     scope.modelName = 'transactionDate';
@@ -731,7 +729,8 @@
                 else  if(scope.action=="glimrepayment")
                 {
                     scope.formData.formDataArray=[];
-
+                    scope.formData.totalTransactionAmount = scope.totalTransactionAmount;
+                    scope.formData.derivedTotalTransactionAmount = scope.derivedTotalTransactionAmount;
                     var j=0;
                     for(j=0;j<scope.repaymentArray.length;j++)
                     {
@@ -785,7 +784,6 @@
 
             scope.calculateTotalRepaymentAmount = function() {
               var totalAmount = 0;
-              scope.submitRepayment = false;
               for (var i = 0; i < scope.repaymentArray.length; i++) {
                 var transactionAmount = parseFloat(scope.repaymentArray[i].transactionAmount);
                 if (!isNaN(transactionAmount)) {
@@ -795,11 +793,6 @@
 
               scope.derivedTotalTransactionAmount = totalAmount;
 
-              if(totalAmount == scope.totalTransactionAmount){
-              scope.submitRepayment = true
-              }else{
-              scope.submitRepayment = false;
-              }
             };
         }
     });

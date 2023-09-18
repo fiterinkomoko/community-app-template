@@ -8,13 +8,16 @@
             scope.groupGLIMAccounts={};
             scope.productName="";
             scope.buttons={};
+            scope.isExtendLoanLifeCycleConfig = false;
             scope.routeToLoan = function (id) {
                 location.path('/viewloanaccount/' + id);
             };
 
             var parentglimid=0;
 
-
+            resourceFactory.configurationResourceByName.get({name:'Add-More-Stages-To-A-Loan-Life-Cycle'},function (data) {
+                scope.isExtendLoanLifeCycleConfig = data.enabled;
+            });
 
             resourceFactory.glimLoanTemplate.get({glimId: scope.glimId,isRepayment: false}, function (data) {
 
