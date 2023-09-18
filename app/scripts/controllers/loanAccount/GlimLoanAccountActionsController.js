@@ -272,21 +272,12 @@
                             temp.clientName=data[i].clientName;
                             temp.childLoanId=data[i].childLoanId;
                             temp.childLoanAccountNo=data[i].childLoanAccountNo;
-
-                            resourceFactory.loanTrxnsTemplateResource.get({loanId: data[i].childLoanId, command: 'repayment'}, function (data1) {
-                                if(data1.amount)
-                                {
-                                    temp.transactionAmount=data1.amount;
-                                }
-                                else {
-                                    temp.transactionAmount=0;
-                                }
-                                //console.log(temp.transactionAmount);
-                            });
+                            temp.transactionAmount=data[i].nextRepaymentAmount;
 
                             scope.repaymentArray.push(temp);
 
                         }
+                        scope.calculateTotalRepaymentAmount();
                     });
 
                     scope.title = 'label.heading.loanrepayments';
