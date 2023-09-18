@@ -20,6 +20,7 @@
             scope.disbursementDetails = [];
             scope.showTrancheAmountTotal = 0;
             scope.processDate = false;
+            scope.showRepaymentTable=false;
 
             var prevLoanAmount;
 
@@ -244,21 +245,12 @@
                     scope.repaymentArray=[];
                     scope.glimRepaymentAccounts=[];
                     scope.modelName = 'transactionDate';
-                    resourceFactory.loanTrxnsTemplateResource.get({loanId: scope.accountId, command: 'repayment'}, function (data) {
-                        scope.paymentTypes = data.paymentTypeOptions;
-                        if (data.paymentTypeOptions.length > 0) {
-                            scope.formData.paymentTypeId = data.paymentTypeOptions[0].id;
-                        }
-                        // scope.formData.transactionAmount = data.amount;
-                        scope.formData[scope.modelName] = new Date(data.date) || new Date();
-                        if(data.penaltyChargesPortion>0){
-                            scope.showPenaltyPortionDisplay = true;
-                        }
-                    });
+
 
                     //scope.repaymentArray=new Array();
                     resourceFactory.glimLoanTemplate.get({glimId: scope.glimId,isRepayment: true}, function (data) {
                         scope.glimRepaymentAccounts = data;
+                        scope.isTemplateReceived=false;
 
                         if(scope.repaymentArray.length!=0)
                         {
@@ -275,6 +267,21 @@
 
                             scope.repaymentArray.push(temp);
 
+                        if(scope.isTemplateReceived == false && data[i].loanStatus.id == 300){
+                        scope.isTemplateReceived=true;
+                        resourceFactory.loanTrxnsTemplateResource.get({loanId: data[i].childLoanId, command: 'repayment'}, function (data) {
+                            scope.paymentTypes = data.paymentTypeOptions;
+                            if (data.paymentTypeOptions.length > 0) {
+                                scope.formData.paymentTypeId = data.paymentTypeOptions[0].id;
+                            }
+                            // scope.formData.transactionAmount = data.amount;
+                            scope.formData[scope.modelName] = new Date(data.date) || new Date();
+                            if(data.penaltyChargesPortion>0){
+                                scope.showPenaltyPortionDisplay = true;
+                            }
+                        });
+                        }
+
                         }
                         scope.calculateTotalRepaymentAmount();
                     });
@@ -284,6 +291,7 @@
                     scope.isTransaction = true;
                     scope.showAmountField = false;
                     scope.taskPermissionName = 'REPAYMENT_LOAN';
+                    scope.showRepaymentTable=true;
                     break;
                 case "prepayloan":
                     scope.modelName = 'transactionDate';
