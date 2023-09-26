@@ -9,7 +9,7 @@
             scope.submit = function () {
                 Upload.upload({
                     url: $rootScope.hostUrl + API_VERSION + '/loans/' + scope.loanId + '/documents',
-                    data: { name : scope.formData.name, description : scope.formData.description, file: scope.formData.file},
+                    data: { name : scope.formData.name, description : scope.formData.description, file: scope.formData.file,isKivaProfileImage : scope.formData.isKivaProfileImage},
                 }).then(function (data) {
                         // to fix IE not refreshing the model
                         if (!scope.$$phase) {

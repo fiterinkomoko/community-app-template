@@ -156,6 +156,14 @@
                             <th class="table-bold-loan">{{'label.heading.department' | translate}}</th>
                             <td><span class="padded-td">{{loandetails.department.name}}</span><span ng-hide="loandetails.department">{{'label.heading.notprovided' | translate}}</span></td>
                         </tr>
+                        <tr>
+                            <th class="table-bold-loan">{{'label.heading.kivaId' | translate}}</th>
+                            <td><span class="padded-td">{{loandetails.kivaId}}</span><span ng-hide="loandetails.kivaId">{{'label.heading.notprovided' | translate}}</span></td>
+                        </tr>
+                        <tr>
+                            <th class="table-bold-loan">{{'label.heading.kivaUUId' | translate}}</th>
+                            <td><span class="padded-td">{{loandetails.kivaUUId}}</span><span ng-hide="loandetails.kivaUUId">{{'label.heading.notprovided' | translate}}</span></td>
+                        </tr>
                     </table>
                     <div ng-show="loandetails.summary">
                         <h3>{{'label.heading.currentBalance' | translate}}: {{loandetails.currency.displaySymbol}} {{loandetails.summary.totalOutstanding | number}}</h3>
@@ -484,6 +492,10 @@
                                 <td colspan="3">(Min:{{loandetails.minimumGap}}&nbsp;{{'label.input.days' | translate }} &nbsp;, Max:{{loandetails.maximumGap}}&nbsp;{{'label.input.days' | translate }})
                                 </td>
 
+                            </tr>
+                            <tr data-ng-show="loandetails.description">
+                                <td>{{ 'label.input.kivaDescription' | translate }}</td>
+                                <td><span class="padded-td">{{loandetails.description}}</span></td>
                             </tr>
                             </tbody>
                         </table>
