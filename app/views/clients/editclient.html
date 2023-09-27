@@ -144,11 +144,18 @@
 	            </div>
 	        </div>
 			<div class="form-group">
-			    <label class="control-label col-sm-2">{{ 'label.input.externalid' | translate }}:</label>
+			    <label class="control-label col-sm-2">{{ 'label.input.externalid' | translate }}:<span class="required">*</span></label>
 			
 			    <div class="col-sm-3">
 			        <input id="externalId" type="text" ng-model="formData.externalId" class="form-control">
 			    </div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2">{{ 'label.input.kivaId' | translate }}:</label>
+
+				<div class="col-sm-3">
+					<input id="kivaId" type="text" ng-model="formData.kivaId" class="form-control">
+				</div>
 			</div>
 	        <div class="form-group">
 	            <label class="control-label col-sm-2" for="mobileNo">{{'label.input.mobilenumber' | translate}}</label>
@@ -191,7 +198,7 @@
 
 				<div data-ng-switch on="showNonPersonOptions">
 					<div data-ng-switch-when="false">
-						<label class="control-label col-sm-2">{{'label.input.gender' | translate}}</label>
+						<label class="control-label col-sm-2">{{'label.input.gender' | translate}}<span class="required">*</span></label>
 
 						<div class="col-sm-3">
 							<select id="genderId" ng-model="formData.genderId"  class="form-control"
