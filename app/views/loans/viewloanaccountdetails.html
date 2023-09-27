@@ -303,6 +303,10 @@
                             <td><span class="padded-td">{{loandetails.externalId}}</span><span ng-hide="loandetails.externalId">{{'label.heading.notprovided' | translate}}</span></td>
                         </tr>
                         <tr>
+                            <th class="table-bold-loan">{{'label.heading.kivaId' | translate}}</th>
+                            <td><span class="padded-td">{{loandetails.kivaId}}</span><span ng-hide="loandetails.kivaId">{{'label.heading.notprovided' | translate}}</span></td>
+                        </tr>
+                        <tr>
                             <th class="table-bold-loan">{{'label.heading.proposedamount' | translate}}</th>
                             <td><span class="padded-td">{{loandetails.proposedPrincipal | number}}</span></td>
                         </tr>
@@ -496,6 +500,10 @@
                             <tr data-ng-show="loandetails.description">
                                 <td>{{ 'label.input.kivaDescription' | translate }}</td>
                                 <td><span class="padded-td">{{loandetails.description}}</span></td>
+                            </tr>
+                            <tr data-ng-show="loandetails.kivaUUId">
+                                <td>{{ 'label.input.kivaUUId' | translate }}</td>
+                                <td><span class="padded-td">{{loandetails.kivaUUId}}</span></td>
                             </tr>
                             </tbody>
                         </table>
