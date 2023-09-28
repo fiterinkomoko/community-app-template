@@ -118,11 +118,20 @@
                        tooltip-append-to-body="true"></i>
                 </label>
 
-                <div class="checkbox col-sm-2">
-                    <label>
+                <div class="col-sm-2">
                         <input type="checkbox" ng-model="formData.includeInBorrowerCycle" ng-true-value="true"
                                ng-false-value="false">
-                    </label>
+                </div>
+
+                <label class="control-label col-sm-4">{{ 'label.input.islamic' | translate }}
+                    <i class="fa fa-question-circle "
+                       uib-tooltip="{{'label.tooltip.loanproduct.islamic' | translate}}"
+                       tooltip-append-to-body="true"></i>
+                </label>
+
+                <div class="col-sm-4">
+                        <input type="checkbox" ng-model="formData.isIslamic" ng-true-value="true"
+                               ng-false-value="false">
                 </div>
             </div>
                     <hr>

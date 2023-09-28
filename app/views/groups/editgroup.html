@@ -37,10 +37,13 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="externalid">{{'label.input.externalid' | translate}}</label>
+                                <label class="control-label col-sm-2" for="externalid">{{'label.input.groupuid' | translate}}<span class="required">*</span></label>
 
                                 <div class="col-sm-3">
-                                    <input type="text" id="externalId" ng-model="formData.externalId" class="form-control"/>
+                                    <input type="text" id="externalId" ng-model="formData.externalId" class="form-control" placeholder="{{editGroup.externalId}}" required/>
+                                </div>
+                                <div class="col-sm-3">
+                                    <form-validate valattributeform="editgroupform" valattribute="externalId"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -59,6 +62,16 @@
                                         <input type="text" datepicker-pop="dd MMMM yyyy" ng-model="first.date" is-open="opened"
                                                min="'2000-01-01'" max="restrictDate" class="form-control" readonly/>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="representativeName">{{'label.input.representative' | translate}}<span class="required">*</span></label>
+
+                                <div class="col-sm-3">
+                                    <input type="text" id="representativeName" ng-model="formData.representativeName" class="form-control" placeholder="{{editGroup.representativeName}}" required readonly />
+                                </div>
+                                <div class="col-sm-3">
+                                    <form-validate valattributeform="editgroupform" valattribute="representativeName"/>
                                 </div>
                             </div>
                             <div class="col-md-offset-3">
