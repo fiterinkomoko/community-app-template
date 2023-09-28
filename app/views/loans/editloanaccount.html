@@ -72,12 +72,12 @@
         </td>
     </tr>
     <tr ng-show="formData.productId">
-        <td><label>{{ 'label.input.externalid' | translate }}</label></td>
+        <td><label>{{ 'label.input.externalid' | translate }}<span c    lass="required">*</span></label></td>
         <td class="paddedbottom10">
             <input type="text" id="externalId" name="externalId" ng-model="formData.externalId" class="form-control"/>
         </td>
         <td class="width14">
-            <label>{{ 'label.input.department' | translate }}</label>
+            <label>{{ 'label.input.department' | translate }}<span class="required">*</span></label>
             <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.department' | translate}}"></i>
         </td>
         <td class="paddedbottom20 width36">
@@ -88,7 +88,24 @@
             </select>
         </td>
     </tr>
-</table>
+    <tr ng-show="formData.productId">
+        <td class="width14">
+            <label>{{ 'label.input.kivaId' | translate }} </label>
+            <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.kivaId' | translate}}"></i>
+        </td>
+        <td class="paddedbottom20 width36">
+            <input type="text" id="kivaId" name="kivaId" ng-model="formData.kivaId" class="form-control" />
+        </td>
+
+        <td class="width14">
+            <label>{{ 'label.input.description' | translate }} <span class="required">*</span> </label>
+            <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.kivaDescription' | translate}}"></i>
+        </td>
+        <td class="paddedbottom20 width36">
+            <textarea type="text" id="description" name="description" ng-model="formData.description" class="form-control" required="required"/>
+        </td>
+    </tr>
+    </table>
 
     <!-- bnpl -->
     <table class=" width100" ng-show="formData.productId">
