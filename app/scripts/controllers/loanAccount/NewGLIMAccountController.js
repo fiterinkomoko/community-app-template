@@ -318,6 +318,9 @@
                         loanApplication.loanPurposeId = scope.group.clients[i].loanPurposeId;
                         loanApplication.loanOfficerId = scope.loanApplicationCommonData.loanOfficerId;
                         loanApplication.principal = scope.group.clients[i].principal;
+                        loanApplication.externalId = scope.formData[i].externalId;
+                        loanApplication.description = scope.formData[i].description;
+                        loanApplication.department = scope.formData.department;
 
                         if(child==0)
                         {

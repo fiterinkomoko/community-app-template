@@ -86,6 +86,19 @@
                                                                    datepicker-pop="dd MMMM yyyy" ng-model="loanApplicationCommonData.expectedDisbursementDate" is-open="opened1" class="form-control"/>
                                                         </td>
                                                     </tr>
+                                                    <tr>
+                                                    <td class="width14">
+                                                        <label>{{ 'label.input.department' | translate }}<span class="required">*</span> </label>
+                                                        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.department' | translate}}"></i>
+                                                    </td>
+                                                    <td class="paddedbottom20 width36">
+                                                        <select id="department" ng-model="formData.department" class="form-control"
+                                                                ng-options="dept.id as dept.name for dept in loanaccountinfo.departmentOptions"
+                                                                value="{{dept.id}}" required="required" >
+                                                            <option value="">--{{'label.menu.department' | translate}}--</option>
+                                                        </select>
+                                                    </td>
+                                                    </tr>
                                                 </table>
                                             </div>
                                         </div>
@@ -219,8 +232,10 @@
                                                     <th><input type="checkbox"  ng-click="checkerInboxAllCheckBoxesClicked()" ng-checked="checkerInboxAllCheckBoxesMet()"/></th>
                                                     <th>{{'label.heading.clientid' | translate}}</th>
                                                     <th>{{'label.heading.clientname' | translate}}</th>
-                                                    <th>{{'label.heading.loanpurpose' | translate}}</th>
-                                                    <th>{{'label.heading.loanamount' | translate}}</th>
+                                                    <th>{{'label.heading.loanpurpose' | translate}}<span class="required">*</span></th>
+                                                    <th>{{'label.heading.externalId' | translate}}<span class="required">*</span></th>
+                                                    <th>{{'label.heading.loanamount' | translate}}<span class="required">*</span></th>
+                                                    <th>{{'label.heading.description' | translate}}<span class="required">*</span></th>
 
                                                 </tr>
                                                 </thead>
@@ -239,6 +254,9 @@
                                                     </select>
                                                     </td>
                                                     <td>
+                                                        <input type="text" id="externalId" name="externalId" ng-model="formData[outerIndex].externalId" class="form-control" required="required"/>
+                                                    </td>
+                                                    <td>
                                                         <input  type="text"
                                                                 class="form-control principal"
                                                                 name="principal"
@@ -247,6 +265,9 @@
                                                                 number-format
                                                                 late-Validate/>&nbsp;{{productDetails.currency.displaySymbol}}
                                                         <form-validate valattributeform="newjlgloanaccountform" valattribute="principal"/>
+                                                    </td>
+                                                    <td>
+                                                        <textarea type="text" id="description" name="description" ng-model="formData[outerIndex].description" class="form-control" required="required"/>
                                                     </td>
                                                 </tr>
                                                 <tbody>
