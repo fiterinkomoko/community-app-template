@@ -1447,6 +1447,7 @@
   "label.heading.borrowername": "Borrower Name",
   "label.heading.groups/clients": "Groups/Clients",
   "label.heading.loanpurpose": "Loan Purpose",
+  "label.heading.externalId": "External ID",
   "label.heading.loanId": "Loan Id#",
   "label.heading.loanaccountnum": "Loan account number",
   "label.heading.loanproduct": "Loan Product",
