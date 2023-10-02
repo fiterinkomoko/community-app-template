@@ -94,7 +94,7 @@
 
                             scope.approvalArray.push(temp);
                         }
-
+                    scope.calculateTotalApprovedAmount();
                     });
                     // end of glim
 
@@ -800,6 +800,17 @@
               }
 
               scope.derivedTotalTransactionAmount = totalAmount;
+
+            };
+            scope.calculateTotalApprovedAmount = function() {
+              var approvedTotalAmount = 0;
+              for (var i = 0; i < scope.approvalArray.length; i++) {
+                var approvedTransactionAmount = parseFloat(scope.approvalArray[i].approvedLoanAmount);
+                if (!isNaN(approvedTransactionAmount)) {
+                  approvedTotalAmount += approvedTransactionAmount;
+                }
+              }
+              scope.totalLoanAmount = approvedTotalAmount;
 
             };
         }
