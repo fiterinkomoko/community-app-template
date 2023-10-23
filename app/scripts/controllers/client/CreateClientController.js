@@ -469,6 +469,18 @@
                         {
                             temp.lgaId=scope.addressArray[i].lgaId;
                         }
+                        if(scope.addressArray[i].physicalAddressDistrict)
+                        {
+                            temp.physicalAddressDistrict=scope.addressArray[i].physicalAddressDistrict;
+                        }
+                        if(scope.addressArray[i].physicalAddressSector)
+                        {
+                            temp.physicalAddressSector=scope.addressArray[i].physicalAddressSector;
+                        }
+                        if(scope.addressArray[i].physicalAddressCell)
+                        {
+                            temp.physicalAddressCell=scope.addressArray[i].physicalAddressCell;
+                        }
                         scope.formData.address.push(temp);
                     }
                 }

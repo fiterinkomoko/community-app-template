@@ -14,6 +14,7 @@
             $scope.editable=false;
             clientId=routeParams.clientId;
             addresstypid=routeParams.addrType;
+            $scope.addressTypeEditable=true;
 
 
             isActive={};
@@ -65,7 +66,6 @@
                     {
                         if(data[i].addressId==addressId)
                         {
-console.log(data[i]);
                             if(data[i].street&&$scope.street)
                             {
                                 $scope.formData.street=data[i].street;
@@ -121,6 +121,23 @@ console.log(data[i]);
                             if(data[i].lgaId)
                             {
                                $scope.formData.lgaId=data[i].lgaId;
+                            }
+
+                            if(data[i].physicalAddressDistrict)
+                            {
+                               $scope.formData.physicalAddressDistrict=data[i].physicalAddressDistrict;
+                            }
+                            if(data[i].physicalAddressSector)
+                            {
+                               $scope.formData.physicalAddressSector=data[i].physicalAddressSector;
+                            }
+                            if(data[i].physicalAddressCell)
+                            {
+                               $scope.formData.physicalAddressCell=data[i].physicalAddressCell;
+                            }
+                            if(data[i].addressTypeId)
+                            {
+                               $scope.formData.addressTypeId=data[i].addressTypeId;
                             }
                         }
                     }
