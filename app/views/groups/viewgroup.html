@@ -472,10 +472,15 @@
 								                </td>
 								            </tr>
 								            <tr data-ng-show="group.externalId">
-								                <th>{{ 'label.input.externalid' | translate }}</th>
+								                <th>{{ 'label.input.groupuid' | translate }}</th>
 								                <td><span class="padded-td">{{group.externalId}}</span>
 								                </td>
 								            </tr>
+											<tr data-ng-show="group.representativeName">
+												<th>{{ 'label.input.representative' | translate }}:</th>
+												<td><span class="padded-td"><a class="list-group-item-text" href="#/viewclient/{{group.representativeId}}">{{group.representativeName}}</a></span>
+												</td>
+											</tr>
 								            <tr data-ng-show="group.centerName">
 								                <td>{{ 'label.heading.center' | translate }}</td>
 								                <td><span class="padded-td"><a class="list-group-item-text" href="#/viewcenter/{{group.centerId}}">{{group.centerName}}</a></span>

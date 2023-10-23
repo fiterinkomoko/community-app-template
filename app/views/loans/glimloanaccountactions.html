@@ -436,7 +436,7 @@
                         </td>
                         <td>
                             <input  type="text" name="repaymentAmount" ng-model="approvalArray[$index].approvedLoanAmount"
-                                    class="form-control">
+                                    class="form-control" ng-change="calculateTotalApprovedAmount()" number-format>
                         </td>
                     </tr>
                     </body>
@@ -450,7 +450,7 @@
 
                 <div class="col-sm-3">
                     <input id="parentPrincipalAmount" type="text" name="parentPrincipalAmount" ng-model="totalLoanAmount"
-                           class="form-control" readonly>
+                           class="form-control" readonly number-format>
                 </div>
 
             </div>

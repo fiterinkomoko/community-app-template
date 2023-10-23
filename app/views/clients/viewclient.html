@@ -212,7 +212,7 @@
 					<strong>{{client.displayName}} </strong>
 					<small>
 						{{ 'label.heading.clientno' | translate }}: {{client.accountNo}} |
-						{{ 'label.input.externalid' | translate }}: {{client.externalId}} |
+						{{ 'label.input.clientuid' | translate }}: {{client.externalId}} |
 						{{ 'label.input.staff' | translate }}: {{client.staffName}}
 					</small>
 				</h3>
@@ -912,6 +912,11 @@
 										<td><span class="padded-td">{{client.gender.name}}</span>
 										</td>
 									</tr>
+									<tr data-ng-show="client.kivaId">
+										<th class="table-bold">{{ 'label.input.kivaId' | translate }}</th>
+										<td><span class="padded-td">{{client.kivaId}}</span>
+										</td>
+									</tr>
 									<tr data-ng-show="client.clientType.name">
 										<th class="table-bold">{{ 'label.input.clienttype' | translate }}</th>
 										<td><span class="padded-td">{{client.clientType.name}}</span>
@@ -973,8 +978,7 @@
 
 				</uib-tab>
 				<uib-tab ng-show="enableAddress" heading="{{'label.heading.address' | translate}}" >
-					<!--<fieldset>-->
-					<!-- <div ng-controller="AddressController">-->
+
 					<div ng-show="enableAddress">
 						<button class="btn btn-primary pull-right" ng-click="routeTo()"><i class="icon-plus icon-white"></i>{{'label.button.addAddress' | translate}}</button>
 						<br>
@@ -1100,6 +1104,30 @@
 								</th>
 								<td>
 									{{address.longitude}}
+								</td>
+							</tr>
+							<tr ng-show="view.physicalAddressDistrict">
+								<th>
+									{{'label.input.physicalAddressDistrict' | translate }}
+								</th>
+								<td>
+									{{address.physicalAddressDistrict}}
+								</td>
+							</tr>
+							<tr ng-show="view.physicalAddressSector">
+								<th>
+									{{'label.input.physicalAddressSector' | translate }}
+								</th>
+								<td>
+									{{address.physicalAddressSector}}
+								</td>
+							</tr>
+							<tr ng-show="view.physicalAddressCell">
+								<th>
+									{{'label.input.physicalAddressCell' | translate }}
+								</th>
+								<td>
+									{{address.physicalAddressCell}}
 								</td>
 							</tr>
 							<tr ng-show="view.isActive">

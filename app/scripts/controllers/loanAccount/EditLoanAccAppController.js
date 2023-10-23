@@ -49,6 +49,9 @@
                 scope.formData.loanPurposeId = data.loanPurposeId;
                 scope.formData.externalId = data.externalId;
                 scope.formData.department = data.department.id
+                scope.formData.description = data.description
+                scope.formData.kivaId = data.kivaId
+
 
                 //update collaterals
                 resourceFactory.clientcollateralTemplateResource.getAllCollaterals({clientId: scope.clientId}, function(data) {
