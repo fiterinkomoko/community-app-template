@@ -47,9 +47,9 @@
                     importResource: defineResource(apiVer + "/imports", {}, {
                 			getImports: {method: 'GET', params: {}, isArray: true}
                     }),
-                    clientResource: defineResource(apiVer + "/clients/:clientId/:anotherresource", {clientId: '@clientId', anotherresource: '@anotherresource', status: '@status'}, {
-                        getAllClients: {method: 'GET', params: {limit: 1000, status: '@status'}},
-                        getAllClientsWithoutLimit: {method: 'GET', params: {}},
+                    clientResource: defineResource(apiVer + "/clients/:clientId/:anotherresource", {clientId: '@clientId', anotherresource: '@anotherresource', status: '@status', limit: '@limit'}, {
+                        getAllClients: {method: 'GET', params: {limit: '@limit', status: '@status'}},
+                        getAllClientsWithoutStatus: {method: 'GET', params: {limit: '@limit'}},
                         getClientClosureReasons: {method: 'GET', params: {}},
                         getAllClientDocuments: {method: 'GET', params: {}, isArray: true},
                         update: { method: 'PUT'},
@@ -69,8 +69,8 @@
                     clientDocumentsResource: defineResource(apiVer + "/clients/:clientId/documents/:documentId", {clientId: '@clientId', documentId: '@documentId'}, {
                         getAllClientDocuments: {method: 'GET', params: {}, isArray: true}
                     }),
-                    clientAccountResource: defineResource(apiVer + "/clients/:clientId/accounts", {clientId: '@clientId'}, {
-                        getAllClients: {method: 'GET', params: {}}
+                    clientAccountResource: defineResource(apiVer + "/clients/:clientId/accounts", {clientId: '@clientId', fields: '@fields'}, {
+                        getAllAccounts: {method: 'GET', params: {fields: '@fields'}}
                     }),
                     clientNotesResource: defineResource(apiVer + "/clients/:clientId/notes/:noteId", {clientId: '@clientId', noteId: '@noteId'}, {
                         getAllNotes: {method: 'GET', params: {}, isArray: true},
@@ -144,8 +144,8 @@
                     groupSummaryResource: defineResource(apiVer + "/runreports/:reportSource", {reportSource: '@reportSource'}, {
                         getSummary: {method: 'GET', params: {}}
                     }),
-                    groupAccountResource: defineResource(apiVer + "/groups/:groupId/accounts", {groupId: '@groupId'}, {
-                        getAll: {method: 'GET', params: {}}
+                    groupAccountResource: defineResource(apiVer + "/groups/:groupId/accounts", {groupId: '@groupId', fields: '@fields'}, {
+                        getAll: {method: 'GET', params: {fields: '@fields'}}
                     }),
                     groupGSIMAccountResource: defineResource(apiVer + "/groups/:groupId/gsimaccounts", {groupId: '@groupId',parentGSIMAccountNo: '@parentGSIMAccountNo',
                         parentGSIMId:'@parentGSIMId'}, {
