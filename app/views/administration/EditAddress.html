@@ -5,7 +5,12 @@
         <api-validate></api-validate>
         <fieldset>
 
+            <div class="form-group" ng-hide="addressTypeEditable">
+                <div class="col-sm-3">
+                    <input type="text" id="addressTypeId" name="addressTypeId" ng-model="formData.addressTypeId"  class="form-control">
+                </div>
 
+            </div>
 
             <div class="form-group" ng-show="street">
                 <label class="control-label col-sm-2" for="street">{{ 'label.input.street' | translate }}<span class="required">*</span></label>

@@ -14,6 +14,7 @@
             $scope.editable=false;
             clientId=routeParams.clientId;
             addresstypid=routeParams.addrType;
+            $scope.addressTypeEditable=true;
 
 
             isActive={};
@@ -133,6 +134,10 @@
                             if(data[i].physicalAddressCell)
                             {
                                $scope.formData.physicalAddressCell=data[i].physicalAddressCell;
+                            }
+                            if(data[i].addressTypeId)
+                            {
+                               $scope.formData.addressTypeId=data[i].addressTypeId;
                             }
                         }
                     }
