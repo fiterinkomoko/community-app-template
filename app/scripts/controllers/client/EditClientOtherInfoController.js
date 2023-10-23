@@ -20,7 +20,11 @@
                       nationalityId: data.nationality.id,
                       yearArrivedInHostCountryId: data.yearArrivedInHostCountry.id,
                       numberOfDependents: data.numberOfDependents,
-                      numberOfChildren: data.numberOfChildren
+                      numberOfChildren: data.numberOfChildren,
+                      nationalIdentificationNumber: data.nationalIdentificationNumber,
+                      passportNumber: data.passportNumber,
+                      bankAccountNumber: data.bankAccountNumber,
+                      bankName: data.bankName
                 }
             });
 
