@@ -129,8 +129,8 @@
             };
 
             scope.exportexcel =  function () {
-                const aboutData = 'Test_Excel' + scope.reportName+'.xlsx';
-                let htmltable = angular.element(document).find('#report-table');
+                const aboutData =  scope.reportName+'.xlsx';
+                let htmltable = angular.element(document).find('#report-export-table');
                 const html = htmltable[0].outerHTML;
                 window.open('data:application/vnd.ms-excel;charset=utf-8,' + encodeURIComponent(html), aboutData);  
             }
