@@ -1412,6 +1412,9 @@
                     alert("Please Select Respective integrated Credit Bureau");
                 }
             };
+          resourceFactory.transUnionClientDetailsToVerify.get({clientId: routeParams.id}, function (data) {
+              scope.clientDetails = data;
+          });
 
         }
     });

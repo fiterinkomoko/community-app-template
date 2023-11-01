@@ -2004,6 +2004,161 @@
                         </form>
 
                     </uib-tab>
+				<uib-tab heading="{{ 'label.heading.transunionVerification' | translate }}" has-permission='VERIFYCLIENTONTRANSUNIONCRBRWANDA_CLIENT'>
+					<div class="row">
+						<div class="col-sm-9 col-md-9">
+							<div>
+								<api-validate></api-validate>
+								<div data-ng-show="clientAccounts.loanAccounts">
+
+									<table class="table table-condensed" data-ng-show="openLoan">
+										<span class="span gray-head">
+											<strong>{{ 'label.heading.loanaccoverview' | translate }}</strong>
+										</span>
+										<tr class="graybg">
+											<th>{{'label.heading.accnum' | translate}}</th>
+											<th>{{'label.heading.loanaccount' | translate}}</th>
+											<th>{{'label.heading.loanamount' | translate}}</th>
+											<th>{{'label.heading.outstandingamount' | translate}}</th>
+											<th>{{'label.heading.dueamount' | translate}}</th>
+											<th>{{'label.heading.type' | translate}}</th>
+											<th>{{'label.heading.actions' | translate}}</th>
+										</tr>
+										<tr class="pointer-main"
+											ng-repeat="loanaccount in clientAccounts.loanAccounts | orderBy:'id':true | filter:isLoanNotClosed">
+
+											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)" ng-hide="clientAccounts.isExtendLoanLifeCycleConfig">
+												<i ng-hide="loanaccount.inArrears" uib-tooltip-placement="right" uib-tooltip="{{loanaccount.status.value}}"
+												   class="fa fa-stop {{loanaccount.status.code | StatusLookup}}"></i>
+												<i ng-show="loanaccount.inArrears" uib-tooltip-placement="right" uib-tooltip="{{loanaccount.status.value}}"
+												   class="fa fa-stop {{loanaccount.status.code | StatusLookup}}overdue"></i>
+												{{loanaccount.accountNo}}
+											</td>
+
+											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)" ng-show="clientAccounts.isExtendLoanLifeCycleConfig">
+
+												<i ng-show="(!loanaccount.inArrears && clientAccounts.isExtendLoanLifeCycleConfig && loanaccount.loanDecisionState == null) ||
+												(!loanaccount.inArrears && clientAccounts.isExtendLoanLifeCycleConfig && loanaccount.loanDecisionState != null && loanaccount.loanDecisionState.value == 'PREPARE_AND_SIGN_CONTRACT') ||
+												(!loanaccount.inArrears && clientAccounts.isExtendLoanLifeCycleConfig && loanaccount.loanDecisionState != null && loanaccount.loanDecisionState.value != 'PREPARE_AND_SIGN_CONTRACT' && loanaccount.status.code != 'loanStatusType.submitted.and.pending.approval' )"
+												   uib-tooltip-placement="right" uib-tooltip="{{loanaccount.status.value}}"
+												   class="fa fa-stop {{loanaccount.status.code | StatusLookup}}"></i>
+
+												<i ng-show="!loanaccount.inArrears && clientAccounts.isExtendLoanLifeCycleConfig && loanaccount.loanDecisionState != null && loanaccount.loanDecisionState.value != 'PREPARE_AND_SIGN_CONTRACT' && loanaccount.status.code == 'loanStatusType.submitted.and.pending.approval'"
+												   uib-tooltip-placement="right" uib-tooltip="{{loanaccount.loanDecisionState.value}}"
+												   class="fa fa-stop {{loanaccount.loanDecisionState.code | StatusLookup}}"></i>
+
+												<i ng-show="loanaccount.inArrears" uib-tooltip-placement="right" uib-tooltip="{{loanaccount.status.value}}"
+												   class="fa fa-stop {{loanaccount.status.code | StatusLookup}}overdue"></i>
+												{{loanaccount.accountNo}}
+											</td>
+
+
+											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.productName}}</td>
+											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.originalLoan|number}}</td>
+											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.loanBalance|number}}</td>
+											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.amountPaid|number}}</td>
+											<td class="pointer center" data-ng-click="routeToLoan(loanaccount.id)" ng-if="loanaccount.loanType.value == 'Individual'">
+												<i uib-tooltip="{{loanaccount.loanType.value}}" class="fa fa-user"></i>
+											</td>
+											<td class="pointer center" data-ng-click="routeToLoan(loanaccount.id)" ng-if="loanaccount.loanType.value != 'Individual'">
+												<i uib-tooltip="{{loanaccount.loanType.value}}" class="fa fa-group"></i>
+											</td>
+											<td class="pointer center" ng-if="loanaccount.status.active">
+												<a uib-tooltip="{{'label.button.makerepayment' | translate}}" ng-href="#/loanaccount/{{loanaccount.id}}/repayment" class="btn btn-xs btn-primary ng-binding">
+													<i class="fa fa-dollar"></i>
+												</a>
+											</td>
+											<td class="pointer center" ng-if="loanaccount.status.pendingApproval">
+												<a uib-tooltip="{{'label.button.approve' | translate}}" has-permission='APPROVE_LOAN' ng-href="#/loanaccount/{{loanaccount.id}}/approve" class="btn btn-xs btn-primary ng-binding">
+													<i class="fa fa-check"></i>
+												</a>
+											</td>
+											<td class="pointer center" ng-if="!loanaccount.status.pendingApproval && !loanaccount.status.active && !loanaccount.status.overpaid">
+												<a uib-tooltip="{{'label.button.disburse' | translate}}" has-permission='DISBURSE_LOAN' ng-href="#/loanaccount/{{loanaccount.id}}/disburse" class="btn btn-xs btn-primary ng-binding">
+													<i class="fa fa-flag"></i>
+												</a>
+											</td>
+											<td class="pointer center" ng-if="!loanaccount.status.pendingApproval && !loanaccount.status.active && loanaccount.status.overpaid">
+												<a uib-tooltip="{{'label.button.transferFunds' | translate}}" has-permission='DISBURSE_LOAN' ng-href="#/accounttransfers/fromloans/{{loanaccount.id}}" class="btn btn-xs btn-primary ng-binding">
+													<i class="fa fa-exchange"></i>
+												</a>
+											</td>
+										</tr>
+									</table>
+									<table class="table table-condensed" data-ng-show="!openLoan">
+										<tr class="graybg">
+											<th>{{'label.heading.accnum' | translate}}</th>
+											<th>{{'label.heading.loanaccount' | translate}}</th>
+											<th>{{'label.heading.loanamount' | translate}}</th>
+											<th>{{'label.heading.outstandingamount' | translate}}</th>
+											<th>{{'label.heading.dueamount' | translate}}</th>
+											<th class="center">{{'label.heading.type' | translate}}</th>
+											<th>{{'label.heading.closedate' | translate}}</th>
+										</tr>
+										<tr class="pointer-main"
+											ng-repeat="loanaccount in clientAccounts.loanAccounts | orderBy:'id':true | filter:isClosed">
+											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">
+												<i uib-tooltip-placement="right" uib-tooltip="{{loanaccount.status.value}}" class="fa fa-stop {{loanaccount.status.code | StatusLookup}}"></i>
+												{{loanaccount.accountNo}}
+											</td>
+											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.productName}}</td>
+											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.originalLoan|number}}</td>
+											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.loanBalance|number}}</td>
+											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">{{loanaccount.amountPaid|number}}</td>
+											<td class="pointer center" data-ng-click="routeToLoan(loanaccount.id)" ng-if="loanaccount.loanType.value == 'Individual'">
+												<i uib-tooltip="{{loanaccount.loanType.value}}" class="fa fa-user fa fa-large"></i>
+											</td>
+											<td class="pointer center" data-ng-click="routeToLoan(loanaccount.id)" ng-if="loanaccount.loanType.value != 'Individual'">
+												<i uib-tooltip="{{loanaccount.loanType.value}}" class="fa fa-group fa fa-large"></i>
+											</td>
+											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)">
+												<span data-ng-show="loanaccount.timeline.closedOnDate">{{loanaccount.timeline.closedOnDate | DateFormat}}</span>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+						<br>
+						<div class="col-sm-3 col-md-3">
+							<div class="thumbnail row">
+								<h4><strong>{{client.displayName}}</strong></h4>
+								<img ng-hide="client.imagePresent" ng-src="./images/client-image-placeholder.png" alt="Avatar">
+								<img ng-show="client.imagePresent"  ng-src="{{image}}" alt="Avatar" data-ng-click="showPicture()" title="{{'label.zoom' | translate}}" >
+								<div class="btn-group-xs center">
+									<button type="button" class="btn btn-primary" data-ng-click="uploadPic()" has-permission='CREATE_CLIENTIMAGE'
+											uib-tooltip="{{'label.button.uploadpic' | translate}}">
+										<i class="fa fa-upload"></i>
+									</button>
+									<button type="button" class="btn btn-primary" data-ng-click="capturePic()" has-permission='CREATE_CLIENTIMAGE'
+											uib-tooltip="{{'label.button.capturepic' | translate}}">
+										<i class="fa fa-camera"></i>
+									</button>
+									<button type="button" class="btn btn-primary" ng-show="client.imagePresent" data-ng-click="deletePic()" has-permission='DELETE_CLIENTIMAGE'
+											uib-tooltip="{{'label.button.deletepic' | translate}}">
+										<i class="fa fa-trash-o"></i>
+									</button>
+								</div>
+								<div ng-show="signature_url" class="show-large-picture center" data-ng-click="showSignature()"><a>{{'label.showClientSignature' | translate}}</a></div>
+								<div ng-hide="signature_url" class="show-large-picture center" data-ng-click="showWithoutSignature()"><a>{{'label.showClientSignature' | translate}}</a></div>
+								<table class="table-minified">
+
+									<tr data-ng-show="client.mobileNo">
+										<th class="table-bold">{{ 'label.input.mobilenumber' | translate }}</th>
+										<td><span class="padded-td">{{client.mobileNo}}</span>
+										</td>
+									</tr>
+									<tr data-ng-show="client.gender.name">
+										<th class="table-bold">{{ 'label.input.gender' | translate }}</th>
+										<td><span class="padded-td">{{client.gender.name}}</span>
+										</td>
+									</tr>
+
+								</table>
+							</div>
+						</div>
+					</div>
+				</uib-tab>
                 </uib-tabset>
             </div>
         </div>

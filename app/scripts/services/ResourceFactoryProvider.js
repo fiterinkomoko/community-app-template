@@ -865,6 +865,9 @@
                     thitsaworkCreditCheck: defineResource(apiVer + "/creditBureauIntegration/getcreditreport/", {}, {
                         get: {method: 'GET',params:{}}
                     }),
+                    transUnionClientDetailsToVerify: defineResource(apiVer + "/CreditBureauConfiguration/clientDetails/:clientId", {clientId:'@clientId'}, {
+                        get: {method: 'GET',params:{}}
+                    }),
                     creditBureauGeneric: defineResource(apiVer + "/creditBureauIntegration/creditReport", {}, {
                         post: {method: 'POST'}
                     }),
