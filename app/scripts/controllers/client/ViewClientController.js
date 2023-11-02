@@ -1412,9 +1412,13 @@
                     alert("Please Select Respective integrated Credit Bureau");
                 }
             };
-          resourceFactory.transUnionClientDetailsToVerify.get({clientId: routeParams.id}, function (data) {
-              scope.clientDetails = data;
-          });
+
+            scope.verifyClient = function () {
+               console.log("verifyClient"+routeParams.id);
+                 resourceFactory.verifyClientOnTransUnionRwanda.post({clientId: routeParams.id},function (data) {
+                               scope.creditReport = data;
+                 });
+            }
 
         }
     });
