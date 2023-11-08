@@ -1413,13 +1413,6 @@
                 }
             };
 
-            scope.verifyClient = function () {
-               console.log("verifyClient"+routeParams.id);
-                 resourceFactory.verifyClientOnTransUnionRwanda.post({clientId: routeParams.id},function (data) {
-                               scope.creditReport = data;
-                 });
-            }
-
         }
     });
 
