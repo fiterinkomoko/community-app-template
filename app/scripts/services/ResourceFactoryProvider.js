@@ -865,7 +865,7 @@
                     thitsaworkCreditCheck: defineResource(apiVer + "/creditBureauIntegration/getcreditreport/", {}, {
                         get: {method: 'GET',params:{}}
                     }),
-                    verifyClientOnTransUnionRwanda: defineResource(apiVer + "/CreditBureauConfiguration/verifyClientOnTransUnionRwanda/:clientId", {clientId:'@clientId'}, {
+                    verifyClientOnTransUnionRwanda: defineResource(apiVer + "/CreditBureauConfiguration/verifyClientOnTransUnionRwanda/:loanId", {loanId:'@loanId'}, {
                         post: {method: 'POST',params:{}}
                     }),
                     creditBureauGeneric: defineResource(apiVer + "/creditBureauIntegration/creditReport", {}, {
