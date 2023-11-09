@@ -2287,6 +2287,7 @@
   "#Buttons": "..",
   "label.button.undo": "Undo",
   "label.button.modifyapplication": "Modify Application",
+  "label.button.crbVerification": "CRB Verification",
   "label.button.withdrawnbyclient": "Withdrawn by client",
   "label.button.addcharge": "Add Charge",
   "label.button.undoapproval": "Undo Approval",
@@ -4986,6 +4987,7 @@
   "label.heading.idNoOfCollateralOwnerSecond": "Second Owner Id",
   "label.heading.worthOfCollateral": "Worth of Collateral",
   "label.heading.taxhistory": "Tax History",
+  "error.msg.odoo.failed":"Odoo Failed with message {{params[0].value}}",
 
   "----End---": "--End of file--- "
 }
