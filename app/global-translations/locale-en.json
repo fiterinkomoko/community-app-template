@@ -2287,6 +2287,7 @@
   "#Buttons": "..",
   "label.button.undo": "Undo",
   "label.button.modifyapplication": "Modify Application",
+  "label.button.crbVerification": "CRB Verification",
   "label.button.withdrawnbyclient": "Withdrawn by client",
   "label.button.addcharge": "Add Charge",
   "label.button.undoapproval": "Undo Approval",
