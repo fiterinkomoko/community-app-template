@@ -156,7 +156,7 @@
                           location.path('/loanaccount/' + accountId + '/prepareandsigncontract');
                           break;
                       case "crbVerification":
-                            resourceFactory.verifyClientOnTransUnionRwanda.post({loanId: accountId},function (data) {
+                            resourceFactory.verifyLoanOnTransUnionRwanda.post({loanId: accountId},function (data) {
                                    location.path('/viewloanaccount/' + accountId);
                                });
                             break;
@@ -304,7 +304,7 @@
                         {
                             name: "button.crbVerification",
                             icon: "fa fa-search",
-                            taskPermissionName: 'VERIFYCLIENTONTRANSUNIONCRBRWANDA_CLIENT'
+                            taskPermissionName: 'VERIFYLOANONTRANSUNIONCRBRWANDA_LOAN'
                         },
                         {
                             name: "button.modifyapplication",
