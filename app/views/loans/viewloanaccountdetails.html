@@ -1118,6 +1118,135 @@
                             </tbody>
                         </table>
                     </uib-tab>
+                    <uib-tab ng-show="crbReportTransUnion" heading="{{'label.heading.crbReportDetails' | translate}}">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th class="empty"></th>
+                                <th class="empty"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{'label.heading.crbName' |
+                                    translate}}
+                                </td>
+                                <td><span class="padded-td">{{crbReportTransUnion.crbName}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.pdfId' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.pdfId}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.productDisplayName' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.productDisplayName}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.reportDate' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.reportDate | DateFormat }}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.reportType' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.reportType}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.requestNo' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.requestNo}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.requester' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.requester}}</span></td>
+                            </tr>
+                            <tr>
+                                <td>{{'label.heading.createdOnDate' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.createdOnDate | DateFormat }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.personalCrn' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.personalCrn}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.dateOfBirth' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.dateOfBirth | DateFormat}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.fullName' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.fullName}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.gender' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.gender}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.healthInsuranceNo' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.healthInsuranceNo}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.maritalStatus' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.maritalStatus}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.nationalId' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.nationalId}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.otherNames' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.otherNames}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.salutation' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.salutation}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.surname' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.surname}}</span></td>
+                            </tr>
+
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.grade' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.grade}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.positiveScore' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.positiveScore}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.possibility' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.possibility}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.reasonCodeAarc1' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.reasonCodeAarc1}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.reasonCodeAarc2' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.reasonCodeAarc2}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.reasonCodeAarc3' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.reasonCodeAarc3}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 1">
+                                <td>{{'label.heading.reasonCodeAarc4' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.reasonCodeAarc4}}</span></td>
+                            </tr>
+
+                            <tr data-ng-show="crbReportTransUnion.clientType == 2">
+                                <td>{{'label.heading.corporateCrn' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.corporateCrn}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 2">
+                                <td>{{'label.heading.companyRegNo' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.companyRegNo}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 2">
+                                <td>{{'label.heading.companyName' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.companyName}}</span></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </uib-tab>
                 </uib-tabset>
             </div>
         </div>

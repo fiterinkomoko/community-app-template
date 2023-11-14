@@ -159,6 +159,7 @@
                             resourceFactory.verifyLoanOnTransUnionRwanda.post({loanId: accountId},function (data) {
                                    location.path('/viewloanaccount/' + accountId);
                                });
+                            scope.getCrbReport();
                             break;
                 }
             };
@@ -530,6 +531,7 @@
                     scope.cblpstatusactive = data.isActive;
                     scope.cbIsCreditCheckMandatory = data.isCreditCheckMandatory
                 });
+                scope.getCrbReport();
             });
 
             var fetchFunction = function (offset, limit, callback) {
@@ -876,6 +878,11 @@
 
                 return true;
             };
+            scope.getCrbReport = function(){
+              resourceFactory.fetchCrbReportForTransUnion.get({loanId: routeParams.id}, function (data) {
+                  scope.crbReportTransUnion = data;
+              });
+          }
         }
     });
     mifosX.ng.application.controller('ViewLoanDetailsController', ['$scope', '$routeParams', 'ResourceFactory','PaginatorService', '$location', '$route', '$http', '$uibModal', 'dateFilter', 'API_VERSION', '$sce', '$rootScope','$window', mifosX.controllers.ViewLoanDetailsController]).run(function ($log) {
