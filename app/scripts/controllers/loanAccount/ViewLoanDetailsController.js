@@ -161,6 +161,12 @@
                                });
                             scope.getCrbReport();
                             break;
+                      case "crbVerificationKenya":
+                            resourceFactory.verifyLoanOnMetropolKenya.post({loanId: accountId},function (data) {
+                                 location.path('/viewloanaccount/' + accountId);
+                             });
+                            scope.getCrbReport();
+                            break;
                 }
             };
 
@@ -306,6 +312,11 @@
                             name: "button.crbVerification",
                             icon: "fa fa-search",
                             taskPermissionName: 'VERIFYLOANONTRANSUNIONCRBRWANDA_LOAN'
+                        },
+                        {
+                            name: "button.crbVerificationKenya",
+                            icon: "fa fa-search",
+                            taskPermissionName: 'VERIFYLOANONMETROPOLCRBKENYA_LOAN'
                         },
                         {
                             name: "button.modifyapplication",
