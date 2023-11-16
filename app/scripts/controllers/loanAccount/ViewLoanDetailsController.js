@@ -165,7 +165,6 @@
                             resourceFactory.verifyLoanOnMetropolKenya.post({loanId: accountId},function (data) {
                                  location.path('/viewloanaccount/' + accountId);
                              });
-                            scope.getCrbReport();
                             break;
                 }
             };
