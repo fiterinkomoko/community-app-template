@@ -300,7 +300,6 @@
                 }
                 }
                 function getCrbActionOptions(data) {
-                console.log("data JB : " + data.currency.code);
                 if((data.currency.code == "KES")){
                     return {
                        name: "button.crbVerificationKenya",
