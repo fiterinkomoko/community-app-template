@@ -299,6 +299,22 @@
                 console.log("No Options Found here . . . . ");
                 }
                 }
+                function getCrbActionOptions(data) {
+                console.log("data JB : " + data.currency.code);
+                if((data.currency.code == "KES")){
+                    return {
+                       name: "button.crbVerificationKenya",
+                       icon: "fa fa-search",
+                       taskPermissionName: 'VERIFYLOANONMETROPOLCRBKENYA_LOAN'
+                    };
+                }else if((data.currency.code == "RWF")){
+                return {
+                    name: "button.crbVerification",
+                    icon: "fa fa-search",
+                    taskPermissionName: 'VERIFYLOANONTRANSUNIONCRBRWANDA_LOAN'
+                };
+                }
+                }
                 if (data.status.value == "Submitted and pending approval") {
                     scope.buttons = { singlebuttons: [
                         {
@@ -307,16 +323,7 @@
                             taskPermissionName: 'CREATE_LOANCHARGE'
                         },
                         getLoanStage(data),
-                        {
-                            name: "button.crbVerification",
-                            icon: "fa fa-search",
-                            taskPermissionName: 'VERIFYLOANONTRANSUNIONCRBRWANDA_LOAN'
-                        },
-                        {
-                            name: "button.crbVerificationKenya",
-                            icon: "fa fa-search",
-                            taskPermissionName: 'VERIFYLOANONMETROPOLCRBKENYA_LOAN'
-                        },
+                        getCrbActionOptions(data),
                         {
                             name: "button.modifyapplication",
                             icon: "fa fa-pincel-square-o",
