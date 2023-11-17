@@ -874,6 +874,9 @@
                     fetchCrbReportForTransUnion: defineResource(apiVer + "/CreditBureauConfiguration/crbReportTransUnion/:loanId", {loanId:'@loanId'}, {
                         get: {method: 'GET',params:{}}
                     }),
+                     crbMetropolIdentityVerification: defineResource(apiVer + "/CreditBureauConfiguration/crbMetropolIdentityVerification/:loanId", {loanId:'@loanId'}, {
+                        get: {method: 'GET',params:{}}
+                    }),
                     creditBureauGeneric: defineResource(apiVer + "/creditBureauIntegration/creditReport", {}, {
                         post: {method: 'POST'}
                     }),

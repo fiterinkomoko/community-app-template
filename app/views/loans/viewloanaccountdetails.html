@@ -1247,6 +1247,103 @@
                             </tbody>
                         </table>
                     </uib-tab>
+                    <uib-tab ng-show="crbReportMetrolpolIdentityVerification" heading="{{'label.heading.crbReportMetrolpolIdentityVerification' | translate}}">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th class="empty"></th>
+                                <th class="empty"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.citizenShip">
+                                <td>{{'label.heading.metropolCitizenShip' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.citizenShip}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.clan">
+                                <td>{{'label.heading.metropolClan' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.clan}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.dateOfBirth">
+                                <td>{{'label.heading.metropolDateOfBirth' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.dateOfBirth | DateFormat}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.dateOfDeath">
+                                <td>{{'label.heading.metropolDateOfDeath' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.dateOfDeath | DateFormat}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.dateOfIssue">
+                                <td>{{'label.heading.metropolDateOfIssue' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.dateOfIssue | DateFormat}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.ethnicGroup">
+                                <td>{{'label.heading.metropolEthnicGroup' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.ethnicGroup}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.family">
+                                <td>{{'label.heading.metropolFamily' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.family}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.firstName">
+                                <td>{{'label.heading.metropolFirstName' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.firstName}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.gender">
+                                <td>{{'label.heading.metropolGender' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.gender}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.identityNumber">
+                                <td>{{'label.heading.metropolIdentityNumber' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.identityNumber}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.identityType">
+                                <td>{{'label.heading.metropolIdentityType' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.identityType}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.lastName">
+                                <td>{{'label.heading.metropolLastName' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.lastName}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.occupation">
+                                <td>{{'label.heading.metropolOccupation' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.occupation}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.otherName">
+                                <td>{{'label.heading.metropolOtherName' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.otherName}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.placeOfBirth">
+                                <td>{{'label.heading.metropolPlaceOfBirth' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.placeOfBirth}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.placeOfDeath">
+                                <td>{{'label.heading.metropolPlaceOfDeath' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.placeOfDeath}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.placeOfLive">
+                                <td>{{'label.heading.metropolPlaceOfLive' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.placeOfLive}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.refOffice">
+                                <td>{{'label.heading.metropolRefOffice' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.refOffice}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.serialNumber">
+                                <td>{{'label.heading.metropolSerialNumber' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.serialNumber}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.trxId">
+                                <td>{{'label.heading.metropolReferenceNumber' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.trxId}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.createdOn">
+                                <td>{{'label.heading.metropolCreationDate' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.createdOn | DateFormat}}</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </uib-tab>
                 </uib-tabset>
             </div>
         </div>
