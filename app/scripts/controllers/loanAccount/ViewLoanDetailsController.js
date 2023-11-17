@@ -161,6 +161,12 @@
                                });
                             scope.getCrbReport();
                             break;
+                      case "crbVerificationKenya":
+                            resourceFactory.verifyLoanOnMetropolKenya.post({loanId: accountId},function (data) {
+                                 location.path('/viewloanaccount/' + accountId);
+                             });
+                             scope.crbMetropolIdentityVerification();
+                            break;
                 }
             };
 
@@ -294,6 +300,21 @@
                 console.log("No Options Found here . . . . ");
                 }
                 }
+                function getCrbActionOptions(data) {
+                if((data.currency.code == "KES")){
+                    return {
+                       name: "button.crbVerificationKenya",
+                       icon: "fa fa-search",
+                       taskPermissionName: 'VERIFYLOANONMETROPOLCRBKENYA_LOAN'
+                    };
+                }else if((data.currency.code == "RWF")){
+                return {
+                    name: "button.crbVerification",
+                    icon: "fa fa-search",
+                    taskPermissionName: 'VERIFYLOANONTRANSUNIONCRBRWANDA_LOAN'
+                };
+                }
+                }
                 if (data.status.value == "Submitted and pending approval") {
                     scope.buttons = { singlebuttons: [
                         {
@@ -302,11 +323,7 @@
                             taskPermissionName: 'CREATE_LOANCHARGE'
                         },
                         getLoanStage(data),
-                        {
-                            name: "button.crbVerification",
-                            icon: "fa fa-search",
-                            taskPermissionName: 'VERIFYLOANONTRANSUNIONCRBRWANDA_LOAN'
-                        },
+                        getCrbActionOptions(data),
                         {
                             name: "button.modifyapplication",
                             icon: "fa fa-pincel-square-o",
@@ -531,7 +548,12 @@
                     scope.cblpstatusactive = data.isActive;
                     scope.cbIsCreditCheckMandatory = data.isCreditCheckMandatory
                 });
-                scope.getCrbReport();
+                if((data.currency.code == "RWF")){
+                 scope.getCrbReport();
+                }else if(data.currency.code == "KES"){
+                scope.crbMetropolIdentityVerification();
+                }
+
             });
 
             var fetchFunction = function (offset, limit, callback) {
@@ -883,6 +905,11 @@
                   scope.crbReportTransUnion = data;
               });
           }
+           scope.crbMetropolIdentityVerification = function(){
+            resourceFactory.crbMetropolIdentityVerification.get({loanId: routeParams.id}, function (data) {
+                scope.crbReportMetrolpolIdentityVerification = data;
+            });
+        }
         }
     });
     mifosX.ng.application.controller('ViewLoanDetailsController', ['$scope', '$routeParams', 'ResourceFactory','PaginatorService', '$location', '$route', '$http', '$uibModal', 'dateFilter', 'API_VERSION', '$sce', '$rootScope','$window', mifosX.controllers.ViewLoanDetailsController]).run(function ($log) {
