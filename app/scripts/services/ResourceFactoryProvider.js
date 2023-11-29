@@ -871,6 +871,9 @@
                      verifyLoanOnMetropolKenya: defineResource(apiVer + "/CreditBureauConfiguration/verifyLoanOnMetropolKenya/:loanId", {loanId:'@loanId'}, {
                         post: {method: 'POST',params:{}}
                     }),
+                    verifyLoanCreditInfoEnhancedOnMetropolKenya: defineResource(apiVer + "/CreditBureauConfiguration/verifyLoanCreditInfoEnhancedOnMetropolKenya/:loanId", {loanId:'@loanId'}, {
+                        post: {method: 'POST',params:{}}
+                    }),
                     fetchCrbReportForTransUnion: defineResource(apiVer + "/CreditBureauConfiguration/crbReportTransUnion/:loanId", {loanId:'@loanId'}, {
                         get: {method: 'GET',params:{}}
                     }),
