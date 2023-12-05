@@ -167,6 +167,11 @@
                              });
                              scope.crbMetropolIdentityVerification();
                             break;
+                      case "verifyLoanCreditInfoEnhancedOnMetropolKenya":
+                              resourceFactory.verifyLoanCreditInfoEnhancedOnMetropolKenya.post({loanId: accountId},function (data) {
+                                   location.path('/viewloanaccount/' + accountId);
+                               });
+                              break;
                 }
             };
 
@@ -301,18 +306,28 @@
                 }
                 }
                 function getCrbActionOptions(data) {
-                if((data.currency.code == "KES")){
-                    return {
-                       name: "button.crbVerificationKenya",
-                       icon: "fa fa-search",
-                       taskPermissionName: 'VERIFYLOANONMETROPOLCRBKENYA_LOAN'
-                    };
-                }else if((data.currency.code == "RWF")){
+                if((data.currency.code == "RWF")){
                 return {
                     name: "button.crbVerification",
                     icon: "fa fa-search",
                     taskPermissionName: 'VERIFYLOANONTRANSUNIONCRBRWANDA_LOAN'
                 };
+                }
+                }
+                function getIdentityVerificationActionOptions(data) {
+                if((data.currency.code == "KES")){
+                    return {
+                       name: "button.crbVerificationKenya",
+                       taskPermissionName: 'VERIFYLOANONMETROPOLCRBKENYA_LOAN'
+                    };
+                }
+                }
+                function getCreditInfoEnhancedActionOptions(data) {
+                if((data.currency.code == "KES")){
+                    return {
+                       name: "button.verifyLoanCreditInfoEnhancedOnMetropolKenya",
+                       taskPermissionName: 'VERIFYLOANCREDITINFOENHANCEDONMETROPOLCRBKENYA_LOAN'
+                    };
                 }
                 }
                 if (data.status.value == "Submitted and pending approval") {
@@ -363,7 +378,9 @@
                             {
                                 name: "button.loanscreenreport",
                                 taskPermissionName: 'READ_LOAN'
-                            }
+                            },
+                            getIdentityVerificationActionOptions(data),
+                            getCreditInfoEnhancedActionOptions(data)
                         ]
 
                     };
