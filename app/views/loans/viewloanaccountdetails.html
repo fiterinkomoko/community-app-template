@@ -1256,6 +1256,10 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.id" style="color: #00205F;">
+                                <td><b>{{'label.heading.identityVerification' | translate}}</b></td>
+                                <td></td>
+                            </tr>
 
                             <tr data-ng-show="crbReportMetrolpolIdentityVerification.citizenShip">
                                 <td>{{'label.heading.metropolCitizenShip' | translate}}</td>
@@ -1341,8 +1345,186 @@
                                 <td>{{'label.heading.metropolCreationDate' | translate}}</td>
                                 <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.createdOn | DateFormat}}</span></td>
                             </tr>
+
+
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData" style="color: #00205F;">
+                                <td><b>{{'label.heading.creditInfoEnhanced' | translate}}</b></td>
+                                <td></td>
+                            </tr>
+
+
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.reportType">
+                                <td>{{'label.heading.creditInfoReportType' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.reportType }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.applicationRefNo">
+                                <td>{{'label.heading.creditInfoApplicationRefNo' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.applicationRefNo }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.delinquencyCode">
+                                <td>{{'label.heading.creditInfoDelinquencyCode' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.delinquencyCode }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.hasError">
+                                <td>{{'label.heading.creditInfoHasError' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.hasError }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.hasFraud">
+                                <td>{{'label.heading.creditInfoHasFraud' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.hasFraud }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.identityType">
+                                <td>{{'label.heading.metropolIdentityType' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.identityType }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.isGuarantor">
+                                <td>{{'label.heading.creditInfoIsGuarantor' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.isGuarantor }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.trxId">
+                                <td>{{'label.heading.creditInfoTrxId' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.trxId }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData" style="color: #5DC5E9;">
+                                <td><b>{{'label.heading.creditInfoLenderSector' | translate}}</b></td>
+                                <td></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.creditinfoBankAccountNpa' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.lenderBankAccountNpa }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.creditinfoBankAccountPerforming' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.lenderBankAccountPerforming }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.creditinfoBankAccountPerformingNpaHistory' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.lenderBankAccountPerformingNpaHistory }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.creditinfoOtherAccountNpa' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.lenderOtherAccountNpa }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.creditinfoOtherAccountPerforming' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.lenderOtherAccountPerforming }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.creditinfoOtherAccountPerformingNpaHistory' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.lenderOtherAccountPerformingNpaHistory }}</span></td>
+                            </tr>
+
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData" style="color: #5DC5E9;">
+                                <td><b>{{'label.heading.creditinfoNumberOfBouncedCheques' | translate}}</b></td>
+                                <td></td>
+                            </tr>
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.last_12_months' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.bChecquesLast12Months }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.last_3_months' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.bChecquesLast3Months }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.last_6_months' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.bChecquesLast6Months }}</span></td>
+                            </tr>
+
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData" style="color: #5DC5E9;">
+                                <td><b>{{'label.heading.creditinfoNumberOfCreditApplications' | translate}}</b></td>
+                                <td></td>
+                            </tr>
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.last_12_months' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.creditApLast12Months }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.last_3_months' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.creditApLast3Months }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.last_6_months' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.creditApLast6Months }}</span></td>
+                            </tr>
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData" style="color: #5DC5E9;">
+                                <td><b>{{'label.heading.creditinfoNumberOfEnquiries' | translate}}</b></td>
+                                <td></td>
+                            </tr>
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.last_12_months' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.enquiriesApLast12Months }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.last_3_months' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.enquiriesApLast3Months }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.last_6_months' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.enquiriesApLast6Months }}</span></td>
+                            </tr>
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData" style="color: #5DC5E9;">
+                                <td><b>{{'label.heading.accountInfo' | translate}}</b></td>
+                                <td></td>
+                            </tr>
+
+
                             </tbody>
                         </table>
+                        <div style="overflow-x: auto;">
+                        <table class="table table-striped .width100">
+                            <thead>
+                            <tr>
+                                <th>{{'label.heading.id' | translate}}</th>
+                                <th>{{'label.heading.accountNumber' | translate}}</th>
+                                <th>{{'label.heading.accountStatus' | translate}}</th>
+                                <th>{{'label.heading.currentBalance' | translate}}</th>
+                                <th>{{'label.heading.dateOpened' | translate}}</th>
+                                <th>{{'label.heading.daysInArrears' | translate}}</th>
+                                <th>{{'label.heading.delinquencyCode' | translate}}</th>
+                                <th>{{'label.heading.highestDaysInArrears' | translate}}</th>
+                                <th>{{'label.heading.isYourAccount' | translate}}</th>
+                                <th>{{'label.heading.lastPaymentAmount' | translate}}</th>
+                                <th>{{'label.heading.lastPaymentDate' | translate}}</th>
+                                <th>{{'label.heading.loadedAt' | translate}}</th>
+                                <th>{{'label.heading.originalAmount' | translate}}</th>
+                                <th>{{'label.heading.overdueBalance' | translate}}</th>
+                                <th>{{'label.heading.overdueDate' | translate}}</th>
+                                <th>{{'label.heading.productTypeId' | translate}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="acc in crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.accountInfoDataList">
+
+                                <td>{{acc.id}}</td>
+                                <td>{{acc.accountNumber}}</td>
+                                <td>{{acc.accountStatus}}</td>
+                                <td>{{acc.currentBalance}}</td>
+                                <td>{{acc.dateOpened}}</td>
+                                <td>{{acc.daysInArrears}}</td>
+                                <td>{{acc.delinquencyCode}}</td>
+                                <td>{{acc.highestDaysInArrears}}</td>
+                                <td>{{acc.isYourAccount}}</td>
+                                <td>{{acc.lastPaymentAmount}}</td>
+                                <td>{{acc.lastPaymentDate}}</td>
+                                <td>{{acc.loadedAt}}</td>
+                                <td>{{acc.originalAmount}}</td>
+                                <td>{{acc.overdueBalance}}</td>
+                                <td>{{acc.overdueDate}}</td>
+                                <td>{{acc.productTypeId}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
                     </uib-tab>
                 </uib-tabset>
             </div>
