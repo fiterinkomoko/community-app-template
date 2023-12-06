@@ -2968,7 +2968,7 @@
   "label.heading.length": "Length",
   "label.heading.code": "Code",
   "label.heading.associatedwith": "Associated With",
-  "label.heading.datatablename": "Data table Name",
+  "label.heading.datatablename": "",
   "label.heading.editcode": "Edit Code",
   "label.heading.editdatatable": "Edit Data table",
   "label.heading.newname": "New Name",
