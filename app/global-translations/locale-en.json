@@ -2204,6 +2204,7 @@
   "label.heading.metropolCreationDate": "Creation Date On CBS",
   "label.heading.creditInfoEnhanced": "Credit Info Enhanced",
   "label.heading.identityVerification": "Identity Verification",
+  "label.button.verifyLoanReportJsonOnMetropolKenya": "Credit Report Json",
   "label.heading.creditInfoReportType": "Report Type",
   "label.heading.creditInfoApplicationRefNo": "Application Reference Number",
   "label.heading.creditInfoDelinquencyCode": "Delinquency Code",

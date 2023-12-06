@@ -172,6 +172,11 @@
                                    location.path('/viewloanaccount/' + accountId);
                                });
                               break;
+                       case "verifyLoanReportJsonOnMetropolKenya":
+                             resourceFactory.verifyLoanReportJsonOnMetropolKenya.post({loanId: accountId},function (data) {
+                                 location.path('/viewloanaccount/' + accountId);
+                              });
+                             break;
                 }
             };
 
@@ -330,6 +335,14 @@
                     };
                 }
                 }
+                function getCreditReportJsonActionOptions(data) {
+                if((data.currency.code == "KES")){
+                    return {
+                       name: "button.verifyLoanReportJsonOnMetropolKenya",
+                       taskPermissionName: 'VERIFYLOANREPORTJSONONMETROPOLCRBKENYA_LOAN'
+                    };
+                }
+                }
                 if (data.status.value == "Submitted and pending approval") {
                     scope.buttons = { singlebuttons: [
                         {
@@ -380,7 +393,8 @@
                                 taskPermissionName: 'READ_LOAN'
                             },
                             getIdentityVerificationActionOptions(data),
-                            getCreditInfoEnhancedActionOptions(data)
+                            getCreditInfoEnhancedActionOptions(data),
+                            getCreditReportJsonActionOptions(data)
                         ]
 
                     };
