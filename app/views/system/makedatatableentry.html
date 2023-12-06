@@ -13,7 +13,7 @@
            <form class="form-horizontal" ng-controller="MakeDataTableEntryController" ng-submit="submit()">
 
                <fieldset>
-                   <h3>{{ 'label.heading.datatablename' | translate }}-<strong>{{tableName}}</strong></h3>
+                   <h3>{{ 'label.heading.datatablename' | translate }} <strong>{{tableName}}</strong></h3>
                    <hr/>
                    <div class="form-group" ng-repeat="columnHeader in columnHeaders">
                        <label class="control-label col-sm-3">{{ columnHeader.columnName | prettifyDataTableColumn }}
