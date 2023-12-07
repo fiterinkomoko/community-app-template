@@ -2202,7 +2202,8 @@
   "label.heading.reasonCodeAarc3": "Reason Code Aarc3",
   "label.heading.reasonCodeAarc4": "Reason Code Aarc4",
   "label.heading.metropolCreationDate": "Creation Date On CBS",
-  "label.heading.creditInfoEnhanced": "Credit Info Enhanced",
+  "label.heading.creditInfoEnhanced": "Credit Info Enhanced :- Report 10",
+  "label.heading.verifyLoanReportJsonOnMetropolKenya": "Json Report :- Report 5",
   "label.heading.identityVerification": "Identity Verification",
   "label.button.verifyLoanReportJsonOnMetropolKenya": "Credit Report Json",
   "label.heading.creditInfoReportType": "Report Type",
@@ -2242,6 +2243,14 @@
   "label.heading.overdueBalance": "Overdue Balance",
   "label.heading.overdueDate": "Overdue Date",
   "label.heading.productTypeId": "Product Type Id",
+  "label.heading.ppiAnalysis": "PPI Analysis",
+  "label.heading.ppiAnalysisMonth": "Month",
+  "label.heading.ppiAnalysisPpi": "Ppi",
+  "label.heading.ppiAnalysisPpiRank": "Ppi Rank",
+  "label.heading.verifiedName": "Verified Name",
+  "label.heading.verifiedNameFirstName": "First Name",
+  "label.heading.verifiedNameOthername": "Other Name",
+  "label.heading.verifiedNameSurname": "Surname",
 
 
 

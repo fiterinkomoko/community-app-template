@@ -171,11 +171,13 @@
                               resourceFactory.verifyLoanCreditInfoEnhancedOnMetropolKenya.post({loanId: accountId},function (data) {
                                    location.path('/viewloanaccount/' + accountId);
                                });
+                               scope.crbMetropolIdentityVerification();
                               break;
                        case "verifyLoanReportJsonOnMetropolKenya":
                              resourceFactory.verifyLoanReportJsonOnMetropolKenya.post({loanId: accountId},function (data) {
                                  location.path('/viewloanaccount/' + accountId);
                               });
+                              scope.crbMetropolIdentityVerification();
                              break;
                 }
             };
@@ -392,9 +394,11 @@
                                 name: "button.loanscreenreport",
                                 taskPermissionName: 'READ_LOAN'
                             },
-                            getIdentityVerificationActionOptions(data),
-                            getCreditInfoEnhancedActionOptions(data),
-                            getCreditReportJsonActionOptions(data)
+                            ...[
+                                getIdentityVerificationActionOptions(data),
+                                getCreditInfoEnhancedActionOptions(data),
+                                getCreditReportJsonActionOptions(data)
+                            ].filter(option => option !== undefined)
                         ]
 
                     };
