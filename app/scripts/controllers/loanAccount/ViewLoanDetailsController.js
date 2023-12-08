@@ -171,7 +171,14 @@
                               resourceFactory.verifyLoanCreditInfoEnhancedOnMetropolKenya.post({loanId: accountId},function (data) {
                                    location.path('/viewloanaccount/' + accountId);
                                });
+                               scope.crbMetropolIdentityVerification();
                               break;
+                       case "verifyLoanReportJsonOnMetropolKenya":
+                             resourceFactory.verifyLoanReportJsonOnMetropolKenya.post({loanId: accountId},function (data) {
+                                 location.path('/viewloanaccount/' + accountId);
+                              });
+                              scope.crbMetropolIdentityVerification();
+                             break;
                 }
             };
 
@@ -330,6 +337,14 @@
                     };
                 }
                 }
+                function getCreditReportJsonActionOptions(data) {
+                if((data.currency.code == "KES")){
+                    return {
+                       name: "button.verifyLoanReportJsonOnMetropolKenya",
+                       taskPermissionName: 'VERIFYLOANREPORTJSONONMETROPOLCRBKENYA_LOAN'
+                    };
+                }
+                }
                 if (data.status.value == "Submitted and pending approval") {
                     scope.buttons = { singlebuttons: [
                         {
@@ -379,8 +394,11 @@
                                 name: "button.loanscreenreport",
                                 taskPermissionName: 'READ_LOAN'
                             },
-                            getIdentityVerificationActionOptions(data),
-                            getCreditInfoEnhancedActionOptions(data)
+                            ...[
+                                getIdentityVerificationActionOptions(data),
+                                getCreditInfoEnhancedActionOptions(data),
+                                getCreditReportJsonActionOptions(data)
+                            ].filter(option => option !== undefined)
                         ]
 
                     };

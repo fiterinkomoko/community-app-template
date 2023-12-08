@@ -1347,12 +1347,14 @@
                             </tr>
 
 
-
-                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData" style="color: #00205F;">
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.reportType === 'CREDIT_INFO_ENHANCED'" style="color: #00205F;">
                                 <td><b>{{'label.heading.creditInfoEnhanced' | translate}}</b></td>
                                 <td></td>
                             </tr>
-
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.reportType === 'JSON_REPORT'" style="color: #00205F;">
+                                <td><b>{{'label.heading.verifyLoanReportJsonOnMetropolKenya' | translate}}</b></td>
+                                <td></td>
+                            </tr>
 
 
                             <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.reportType">
@@ -1470,6 +1472,43 @@
                             <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
                                 <td>{{'label.heading.last_6_months' | translate}}</td>
                                 <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.enquiriesApLast6Months }}</span></td>
+                            </tr>
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData" style="color: #5DC5E9;">
+                                <td><b>{{'label.heading.ppiAnalysis' | translate}}</b></td>
+                                <td></td>
+                            </tr>
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.ppiAnalysisMonth' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.ppiAnalysisMonth }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.ppiAnalysisPpi' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.ppiAnalysisPpi }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.ppiAnalysisPpiRank' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.ppiAnalysisPpiRank }}</span></td>
+                            </tr>
+
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData" style="color: #5DC5E9;">
+                                <td><b>{{'label.heading.verifiedName' | translate}}</b></td>
+                                <td></td>
+                            </tr>
+
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.verifiedNameFirstName' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.verifiedNameFirstName }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.verifiedNameOthername' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.verifiedNameOthername }}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.verifiedNameSurname' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.verifiedNameSurname }}</span></td>
                             </tr>
 
                             <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData" style="color: #5DC5E9;">
