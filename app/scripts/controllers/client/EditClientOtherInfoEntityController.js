@@ -23,7 +23,6 @@
                       incomeGeneratingActivityMonthlyAmount: data.incomeGeneratingActivityMonthlyAmount,
                       telephoneNo: data.telephoneNumber,
                 }
-console.log(scope.otherInfoData);
             });
 
             scope.cancel = function () {
