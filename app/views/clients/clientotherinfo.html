@@ -10,7 +10,7 @@
             <h4>{{ 'label.heading.clientOtherInfo' | translate }}</h4>
         </div>
         <br/>
-        <form name="clientotherinfoform" class="form-horizontal" rc-submit="submit()" >
+        <form name="clientotherinfoform" class="form-horizontal" novalidate="" rc-submit="submit()" >
             <api-validate></api-validate>
             <fieldset>
                 <div class="form-group">
@@ -77,31 +77,49 @@
                     <form-validate valattributeform="clientotherinfoform" valattribute="nationalIdentificationNumber"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="passportNumber">{{ 'label.input.passportNumber' | translate }}
+                    <label class="control-label col-sm-2" for="passportNumber">
+                        {{ 'label.input.passportNumber' | translate }}
+                        <span class="required">*</span>
                     </label>
 
                     <div class="col-sm-3">
-                        <input id="passportNumber" name="passportNumber" type="text" class="form-control" ng-model="formData.passportNumber" late-validate>
+                        <input id="passportNumber" name="passportNumber" type="text" class="form-control" ng-model="formData.passportNumber" required late-validate>
                     </div>
                     <form-validate valattributeform="clientotherinfoform" valattribute="passportNumber"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="bankAccountNumber">{{ 'label.input.bankAccountNumber' | translate }}
+                    <label class="control-label col-sm-2" for="bankAccountNumber">
+                        {{ 'label.input.bankAccountNumber' | translate }}
+                        <span class="required">*</span>
                     </label>
 
                     <div class="col-sm-3">
-                        <input id="bankAccountNumber" name="bankAccountNumber" type="text" class="form-control" ng-model="formData.bankAccountNumber" late-validate>
+                        <input id="bankAccountNumber" name="bankAccountNumber" type="text" class="form-control" ng-model="formData.bankAccountNumber" required late-validate>
                     </div>
                     <form-validate valattributeform="clientotherinfoform" valattribute="bankAccountNumber"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="bankName">{{ 'label.input.bankName' | translate }}
+                    <label class="control-label col-sm-2" for="bankName">
+                        {{ 'label.input.bankName' | translate }}
+                        <span class="required">*</span>
                     </label>
 
                     <div class="col-sm-3">
-                        <input id="bankName" name="bankName" type="text" class="form-control" ng-model="formData.bankName" late-validate>
+                        <input id="bankName" name="bankName" type="text" class="form-control" ng-model="formData.bankName" required late-validate>
                     </div>
                     <form-validate valattributeform="clientotherinfoform" valattribute="bankName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="telephoneNo">
+                        {{ 'label.input.telephoneNo' | translate }}
+                        <span class="required">*</span>
+                    </label>
+                
+                    <div class="col-sm-3">
+                        <input id="telephoneNo" name="telephoneNo" type="text" class="form-control" ng-model="formData.telephoneNo" required late-validate>
+                    </div>
+                    <form-validate valattributeform="clientotherinfoform" valattribute="telephoneNo" />
                 </div>
 
                 <div class="col-md-offset-3">
@@ -163,6 +181,10 @@
                     <tr>
                         <td>{{'label.heading.bankName' | translate}}</td>
                         <td>{{otherInfoData.bankName}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{'label.heading.telephoneNo' | translate}}</td>
+                        <td>{{otherInfoData.telephoneNumber}}</td>
                     </tr>
                 </table>
 

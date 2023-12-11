@@ -11,7 +11,7 @@
                 scope.strataOptions = data.strataOptions;
                 scope.nationalityOptions = data.nationalityOptions;
                 scope.yearArrivedInHostCountryOptions = data.yearArrivedInHostCountryOptions;
-            });
+                            });
 
             resourceFactory.otherInfoResource.get({clientId:routeParams.clientId, otherInfoId: routeParams.otherInfoId}, function(data){
                 scope.otherInfoData = data;
@@ -24,9 +24,10 @@
                       nationalIdentificationNumber: data.nationalIdentificationNumber,
                       passportNumber: data.passportNumber,
                       bankAccountNumber: data.bankAccountNumber,
-                      bankName: data.bankName
+                      bankName: data.bankName,
+                      telephoneNo: data.telephoneNumber
                 }
-            });
+                            });
 
             scope.cancel = function () {
                 location.path('/clientOtherInfo/' + scope.clientId);
