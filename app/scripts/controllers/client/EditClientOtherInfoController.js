@@ -24,7 +24,8 @@
                       nationalIdentificationNumber: data.nationalIdentificationNumber,
                       passportNumber: data.passportNumber,
                       bankAccountNumber: data.bankAccountNumber,
-                      bankName: data.bankName
+                      bankName: data.bankName,
+                      telephoneNo: data.telephoneNumber
                 }
             });
 
