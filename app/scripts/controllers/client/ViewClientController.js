@@ -820,8 +820,14 @@
                         if(data.loanAccounts[i].status.value == "Active" && data.loanAccounts[i].inArrears){
                             scope.clientAccounts.loanAccounts[i].status.value = "Active in Bad Standing"
                         }
+                        if(data.loanAccounts[i].status && data.loanAccounts[i].status.id === 200 && data.loanAccounts[i].subStatus && data.loanAccounts[i].subStatus.id === 200) {
+                            scope.clientAccounts.loanAccounts[i].isPendingDisbursement = true;
+                        } else {
+                            scope.clientAccounts.loanAccounts[i].isPendingDisbursement = false;
+                        }
                     }
                 }
+                console.log(scope.clientAccounts.loanAccounts);
                 if (data.savingsAccounts) {
                     for (var i in data.savingsAccounts) {
                         if (data.savingsAccounts[i].status.value == "Active") {
