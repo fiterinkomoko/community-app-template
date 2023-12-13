@@ -827,7 +827,6 @@
                         }
                     }
                 }
-                console.log(scope.clientAccounts.loanAccounts);
                 if (data.savingsAccounts) {
                     for (var i in data.savingsAccounts) {
                         if (data.savingsAccounts[i].status.value == "Active") {
