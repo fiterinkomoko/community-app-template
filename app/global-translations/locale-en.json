@@ -5096,6 +5096,8 @@
   "label.heading.worthOfCollateral": "Worth of Collateral",
   "label.heading.taxhistory": "Tax History",
   "error.msg.odoo.failed":"Odoo Failed with message {{params[0].value}}",
-
+  "label.input.clientPhoneNumber": "Phone Number",
+  "label.input.clientAccountNumber": "Account Number",
+  "label.input.clientBankName": "Bank Name",
   "----End---": "--End of file--- "
 }

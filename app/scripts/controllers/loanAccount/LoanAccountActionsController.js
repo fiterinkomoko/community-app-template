@@ -21,6 +21,9 @@
             scope.showTrancheAmountTotal = 0;
             scope.processDate = false;
             scope.submittedDatatables = [];
+            scope.isCashPayment = false;
+            scope.showClientOtherInfoForm = false;
+            scope.clientOtherInfoData = {};
             var submitStatus = [];
 
             rootScope.RequestEntities = function(entity,status,productId){
@@ -71,6 +74,7 @@
                 if(!productId){
                     resourceFactory.LoanAccountResource.getLoanAccountDetails({loanId: routeParams.id}, function (data) {
                         scope.productId = data.loanProductId;
+                        scope.clientId = data.clientId;
                         rootScope.RequestEntities(entity,status,scope.productId);
                     });
                 }
@@ -186,22 +190,6 @@
                     scope.fetchEntities('m_loan','DISBURSE');
                     break;
                 case "disbursetosavings":
-                    scope.modelName = 'actualDisbursementDate';
-                    resourceFactory.loanTrxnsTemplateResource.get({loanId: scope.accountId, command: 'disburseToSavings'}, function (data) {
-                       scope.formData.transactionAmount = data.amount;
-                        scope.formData[scope.modelName] = new Date();
-                        if (data.fixedEmiAmount) {
-                            scope.formData.fixedEmiAmount = data.fixedEmiAmount;
-                            scope.showEMIAmountField = true;
-                        }
-                    });
-                    scope.title = 'label.heading.disburseloanaccount';
-                    scope.labelName = 'label.input.disbursedondate';
-                    scope.isTransaction = false;
-                    scope.showAmountField = true;
-                    scope.taskPermissionName = 'DISBURSETOSAVINGS_LOAN';
-                    break;
-                    case "disbursetosavings":
                     scope.modelName = 'actualDisbursementDate';
                     resourceFactory.loanTrxnsTemplateResource.get({loanId: scope.accountId, command: 'disburseToSavings'}, function (data) {
                        scope.formData.transactionAmount = data.amount;
@@ -747,62 +735,66 @@
                              location.path('/viewloanaccount/' + data.loanId);
                   });
                } else {
-
-                                     params.loanId = scope.accountId;
-                                     var allCharges = [];
-                                 if(scope.action == "disbursetosavings"){
-                                     var count = 0;
-                                     var increasedCount = 0;
-                                     var amount = 0;
-                                     var fundTransferData = {};
-                                     var actualDisbursementDateForTransaction = this.formData.actualDisbursementDate;
-                                     resourceFactory.LoanAccountResource.save(params, this.formData, function (data) {
-                                     resourceFactory.LoanAccountResource.getLoanAccountDetails({loanId: data.loanId, associations: 'all',
-                                        exclude: 'guarantors,futureSchedule'}, function (loanData) {
-                                        console.log(loanData.charges);
-                                        if(angular.isDefined(loanData.charges)){
-                                        for (let i = 0; i < loanData.charges.length; i++) {
-                                            var charge = loanData.charges[i];
-                                            if (charge.chargeTimeType.code == "chargeTimeType.disburseToSavings" && charge.amountPaid == 0){
-                                                    amount  = amount + charge.amount;
-                                                   fundTransferData = {
-                                                    dateFormat: scope.df,
-                                                    fromAccountId: loanData.linkedAccount.id,
-                                                    fromAccountType: 2,
-                                                    fromClientId: loanData.clientId,
-                                                                             fromOfficeId: data.officeId,
-                                                                             locale: scope.optlang.code,
-                                                                             toAccountId: loanData.id,
-                                                                             toAccountType: 1,
-                                                                             toClientId: loanData.clientId,
-                                                                             toOfficeId: data.officeId,
-                                                                             transferAmount: amount,
-                                                                             transferDate: actualDisbursementDateForTransaction,
-                                                                             transferDescription: "DisBurseToSavingsCharges"
-                                                  };
-                                                  count++;
-                                                  }else{
-                                                    location.path('/viewloanaccount/' + data.loanId);
-                                                  }
-                                                  console.log(fundTransferData, "fundtransfer");
-
-                                        }
-                                        fundTransferData.transferAmount = amount;
-                                        resourceFactory.accountTransferResource.save(fundTransferData, function (accData) {
-                                           if(count == loanData.charges.length){
-                                           location.path('/viewloanaccount/' + data.loanId);
-                                           }
-                                        });
-                                        }else{ location.path('/viewloanaccount/' + data.loanId);} ;
-                                       });
-                                     });
-                                     }
-                else {
                     params.loanId = scope.accountId;
-                    resourceFactory.LoanAccountResource.save(params, this.formData, function (data) {
-
-                        location.path('/viewloanaccount/' + data.loanId);
-                    });
+                    var allCharges = [];
+                    if(scope.action == "disbursetosavings"){
+                        var count = 0;
+                        var increasedCount = 0;
+                        var amount = 0;
+                        var fundTransferData = {};
+                        var actualDisbursementDateForTransaction = this.formData.actualDisbursementDate;
+                        resourceFactory.LoanAccountResource.save(params, this.formData, function (data) {
+                            resourceFactory.LoanAccountResource.getLoanAccountDetails({loanId: data.loanId, associations: 'all',
+                            exclude: 'guarantors,futureSchedule'}, function (loanData) {
+                                console.log(loanData.charges);
+                                if(angular.isDefined(loanData.charges)){
+                                    for (let i = 0; i < loanData.charges.length; i++) {
+                                        var charge = loanData.charges[i];
+                                        if (charge.chargeTimeType.code == "chargeTimeType.disburseToSavings" && charge.amountPaid == 0){
+                                            amount  = amount + charge.amount;
+                                            fundTransferData = {
+                                                dateFormat: scope.df,
+                                                fromAccountId: loanData.linkedAccount.id,
+                                                fromAccountType: 2,
+                                                fromClientId: loanData.clientId,
+                                                fromOfficeId: data.officeId,
+                                                locale: scope.optlang.code,
+                                                toAccountId: loanData.id,
+                                                toAccountType: 1,
+                                                toClientId: loanData.clientId,
+                                                toOfficeId: data.officeId,
+                                                transferAmount: amount,
+                                                transferDate: actualDisbursementDateForTransaction,
+                                                transferDescription: "DisBurseToSavingsCharges"
+                                            };
+                                            count++;
+                                        }else{
+                                            location.path('/viewloanaccount/' + data.loanId);
+                                        }
+                                        console.log(fundTransferData, "fundtransfer");
+                                    }
+                                    fundTransferData.transferAmount = amount;
+                                    resourceFactory.accountTransferResource.save(fundTransferData, function (accData) {
+                                        if(count == loanData.charges.length){
+                                            location.path('/viewloanaccount/' + data.loanId);
+                                        }
+                                    });
+                                }else{ 
+                                    location.path('/viewloanaccount/' + data.loanId);} ;
+                                }
+                            );
+                        });
+                    }
+                    else if(scope.action === 'disburse' && !scope.isCashPayment) {
+                        params = {command: 'disbursementRequest', loanId: scope.accountId};
+                        resourceFactory.LoanAccountResource.save(params, this.formData, function (data) {
+                            location.path('/viewloanaccount/' + data.loanId);
+                        });
+                    } else {
+                        params.loanId = scope.accountId;
+                        resourceFactory.LoanAccountResource.save(params, this.formData, function (data) {
+                            location.path('/viewloanaccount/' + data.loanId);
+                        });
                     }
                 }
             };
@@ -896,6 +888,52 @@
                     });
                 }
             };
+
+            scope.fetchClientOtherInfo = function(clientId){
+                resourceFactory.clientOtherInfoResource.getAll({clientId: clientId}, function(data){
+                    if(data.length > 0) {
+                        scope.clientOtherInfoData = data[0];
+                        if(!scope.isCashPayment) {
+                            scope.formData.clientPhoneNumber = scope.clientOtherInfoData.telephoneNumber;
+                            scope.formData.clientAccountNumber = scope.clientOtherInfoData.bankAccountNumber;
+                            scope.formData.clientBankName = scope.clientOtherInfoData.bankName;
+                        }
+                    }
+                });
+            }
+
+            scope.onPaymentTypeChange = function (paymentTypeId) {
+                scope.isCashPayment = scope.paymentTypes.find(function (paymentType) { return paymentTypeId === paymentType.id })?.isCashPayment || false;
+                if(!scope.isCashPayment && scope.action === 'disburse') {
+                    scope.showClientOtherInfoForm = true;
+                } else {
+                    scope.showClientOtherInfoForm = false;
+                }
+                if(scope.isCashPayment) {
+                    delete scope.formData.clientPhoneNumber;
+                    delete scope.formData.clientAccountNumber;
+                    delete scope.formData.clientBankName;
+                } else {
+                    scope.formData.clientPhoneNumber = scope.clientOtherInfoData.telephoneNumber;
+                    scope.formData.clientAccountNumber = scope.clientOtherInfoData.bankAccountNumber;
+                    scope.formData.clientBankName = scope.clientOtherInfoData.bankName;
+                }
+            }
+
+            scope.$watch('clientId', function() {
+                if(scope.action === 'disburse' && scope.clientId !== undefined && scope.formData.paymentTypeId !== undefined) {
+                    scope.fetchClientOtherInfo(scope.clientId);
+                }
+                
+            })
+
+            scope.$watch('formData.paymentTypeId', function() {
+                if(scope.formData.paymentTypeId !== undefined) {
+                    scope.onPaymentTypeChange(scope.formData.paymentTypeId);
+                }
+            });
+
+            
         }
     });
     mifosX.ng.application.controller('LoanAccountActionsController', ['$scope','$rootScope', 'ResourceFactory', '$location', '$routeParams', 'dateFilter', mifosX.controllers.LoanAccountActionsController]).run(function ($log) {
