@@ -10,6 +10,7 @@
             scope.hideAccrualTransactions = false;
             scope.isHideAccrualsCheckboxChecked = true;
             scope.loandetails = [];
+            scope.isPendingDisbursement = false;
 
             scope.routeTo = function (loanId, transactionId, transactionTypeId) {
                 if (transactionTypeId == 2 || transactionTypeId == 4 || transactionTypeId == 1) {
@@ -220,6 +221,9 @@
                 if(scope.status == 'Submitted and pending approval' || scope.status == 'Approved'){
                 scope.date.fromDate = new Date(data.timeline.submittedOnDate);
                 }
+                if(scope.loandetails.status && scope.loandetails.status.id === 200 && scope.loandetails.subStatus && scope.loandetails.subStatus.id === 200) {
+                    scope.isPendingDisbursement = true;
+                }
                 scope.decimals = data.currency.decimalPlaces;
                 if (scope.loandetails.charges) {
                     scope.charges = scope.loandetails.charges;
@@ -415,21 +419,6 @@
                             name: (scope.loandetails.loanOfficerName?"button.changeloanofficer":"button.assignloanofficer"),
                             icon: "fa fa-user",
                             taskPermissionName: 'UPDATELOANOFFICER_LOAN'
-                        },
-                        {
-                            name: "button.disburse",
-                            icon: "fa fa-flag",
-                            taskPermissionName: 'DISBURSE_LOAN'
-                        },
-                        {
-                            name: "button.disbursetosavings",
-                            icon: "fa fa-flag",
-                            taskPermissionName: 'DISBURSETOSAVINGS_LOAN'
-                        },
-                        {
-                            name: "button.undoapproval",
-                            icon: "fa fa-undo",
-                            taskPermissionName: 'APPROVALUNDO_LOAN'
                         }
                     ],
                         options: [
@@ -452,6 +441,24 @@
                         ]
 
                     };
+
+                    if(!data.subStatus || (data.subStatus && data.subStatus.value !== 'PendingDisbursement')) {
+                        scope.buttons.singlebuttons.push({
+                            name: "button.disburse",
+                            icon: "fa fa-flag",
+                            taskPermissionName: 'DISBURSE_LOAN'
+                        });
+                        scope.buttons.singlebuttons.push({
+                            name: "button.disbursetosavings",
+                            icon: "fa fa-flag",
+                            taskPermissionName: 'DISBURSETOSAVINGS_LOAN'
+                        });
+                        scope.buttons.singlebuttons.push({
+                            name: "button.undoapproval",
+                            icon: "fa fa-undo",
+                            taskPermissionName: 'APPROVALUNDO_LOAN'
+                        });
+                    }
                 }
                 if (data.status.value == "Active") {
                     scope.buttons = { singlebuttons: [

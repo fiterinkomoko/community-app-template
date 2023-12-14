@@ -48,7 +48,8 @@
                     "purchasedSharesStatusType.approved": "statusApproved",
                     "purchasedSharesStatusType.rejected": "statusrejected",
                     "charges.StatusType.active.true": "statusactive",
-                    "employees.StatusType.active.true": "statusactive"
+                    "employees.StatusType.active.true": "statusactive",
+                    "loanSubStatus.loanSubStatusType.pending.disbursement": "statuspendingdisbursement"
                 }
 
                 return cssClassNameLookup[input];

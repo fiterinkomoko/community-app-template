@@ -65,7 +65,7 @@
                             <strong>
 
                                 <i ng-hide="loandetails.inArrears"
-                                        class="fa fa-stop {{loandetails.status.code | StatusLookup}}"></i>
+                                        class="fa fa-stop {{isPendingDisbursement ? loandetails.subStatus.code : loandetails.status.code | StatusLookup}}"></i>
 
                                 <i ng-show="loandetails.inArrears"
                                    class="fa fa-stop {{loandetails.status.code | StatusLookup}}overdue"></i>

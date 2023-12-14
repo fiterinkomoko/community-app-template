@@ -387,8 +387,8 @@
 											ng-repeat="loanaccount in clientAccounts.loanAccounts | orderBy:'id':true | filter:isLoanNotClosed">
 
 											<td class="pointer" data-ng-click="routeToLoan(loanaccount.id)" ng-hide="clientAccounts.isExtendLoanLifeCycleConfig">
-												<i ng-hide="loanaccount.inArrears" uib-tooltip-placement="right" uib-tooltip="{{loanaccount.status.value}}"
-												   class="fa fa-stop {{loanaccount.status.code | StatusLookup}}"></i>
+												<i ng-hide="loanaccount.inArrears" uib-tooltip-placement="right" uib-tooltip="{{loanaccount.isPendingDisbursement ? loanaccount.subStatus.value : loanaccount.status.value}}"
+												   class="fa fa-stop {{loanaccount.isPendingDisbursement ? loanaccount.subStatus.code : loanaccount.status.code | StatusLookup}}"></i>
 												<i ng-show="loanaccount.inArrears" uib-tooltip-placement="right" uib-tooltip="{{loanaccount.status.value}}"
 												   class="fa fa-stop {{loanaccount.status.code | StatusLookup}}overdue"></i>
 												{{loanaccount.accountNo}}
@@ -432,7 +432,7 @@
 													<i class="fa fa-check"></i>
 												</a>
 											</td>
-											<td class="pointer center" ng-if="!loanaccount.status.pendingApproval && !loanaccount.status.active && !loanaccount.status.overpaid">
+											<td class="pointer center" ng-if="!loanaccount.status.pendingApproval && !loanaccount.status.active && !loanaccount.status.overpaid && !loanaccount.isPendingDisbursement">
 												<a uib-tooltip="{{'label.button.disburse' | translate}}" has-permission='DISBURSE_LOAN' ng-href="#/loanaccount/{{loanaccount.id}}/disburse" class="btn btn-xs btn-primary ng-binding">
 													<i class="fa fa-flag"></i>
 												</a>
@@ -442,6 +442,7 @@
 													<i class="fa fa-exchange"></i>
 												</a>
 											</td>
+											<td class="pointer center" ng-if="loanaccount.subStatus"></td>
 										</tr>
 									</table>
 									<table class="table table-condensed" data-ng-show="!openLoan">

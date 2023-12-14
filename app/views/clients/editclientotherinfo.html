@@ -10,7 +10,7 @@
             <h4>{{ 'label.heading.editClientOtherInfo' | translate }}</h4>
         </div>
         <br/>
-        <form name="editclientotherinfoform" class="form-horizontal" rc-submit="submit()" >
+        <form name="editclientotherinfoform" class="form-horizontal" novalidate="" rc-submit="submit()" >
             <api-validate></api-validate>
             <fieldset>
                 <div class="form-group">
@@ -18,22 +18,26 @@
                         <span class="required">*</span></label>
 
                     <div class="col-sm-3">
-                        <select chosen="strataOptions" id="strataId" name = "strataId" ng-model="formData.strataId" class="form-control"
+                        <select id="strataId" name = "strataId" ng-model="formData.strataId" class="form-control"
                                 ng-options="strata.id as strata.name for strata in strataOptions"
-                                value="{{strata.id}}" required></select>
+                                value="{{strata.id}}" required>
+                                <option value="" disabled></option>
+                            </select>
                     </div>
-                    <form-validate valattributeform="clientotherinfoform" valattribute="strataId"/>
+                    <form-validate valattributeform="editclientotherinfoform" valattribute="strataId"/>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="nationalityId">{{ 'label.input.nationality' | translate }}
                         <span class="required">*</span></label>
 
                     <div class="col-sm-3">
-                        <select chosen="nationalityOptions" id="nationalityId" name="nationalityId" ng-model="formData.nationalityId" class="form-control"
+                        <select id="nationalityId" name="nationalityId" ng-model="formData.nationalityId" class="form-control"
                                 ng-options="nationality.id as nationality.name for nationality in nationalityOptions"
-                                value="{{nationality.id}}" required></select>
+                                value="{{nationality.id}}" required>
+                            <option value="" disabled></option>
+                        </select>
                     </div>
-                    <form-validate valattributeform="clientotherinfoform" valattribute="nationalityId"/>
+                    <form-validate valattributeform="editclientotherinfoform" valattribute="nationalityId"/>
                 </div>
 
                 <div class="form-group">
@@ -61,11 +65,13 @@
                         <span class="required">*</span></label>
 
                     <div class="col-sm-3">
-                        <select chosen="yearArrivedInHostCountryOptions" id="yearArrivedInHostCountryId" name="yearArrivedInHostCountryId" ng-model="formData.yearArrivedInHostCountryId" class="form-control"
+                        <select id="yearArrivedInHostCountryId" name="yearArrivedInHostCountryId" ng-model="formData.yearArrivedInHostCountryId" class="form-control"
                                 ng-options="yearArrivedInHostCountry.id as yearArrivedInHostCountry.name for yearArrivedInHostCountry in yearArrivedInHostCountryOptions"
-                                value="{{yearArrivedInHostCountry.id}}" required></select>
+                                value="{{yearArrivedInHostCountry.id}}" required>
+                            <option value="" disabled></option>
+                        </select>
                     </div>
-                    <form-validate valattributeform="clientotherinfoform" valattribute="yearArrivedInHostCountryId"/>
+                    <form-validate valattributeform="editclientotherinfoform" valattribute="yearArrivedInHostCountryId"/>
                 </div>
 
                 <div class="form-group">
@@ -75,7 +81,7 @@
                     <div class="col-sm-3">
                         <input id="nationalIdentificationNumber" name="nationalIdentificationNumber" type="text" class="form-control" ng-model="formData.nationalIdentificationNumber" late-validate>
                     </div>
-                    <form-validate valattributeform="clientotherinfoform" valattribute="nationalIdentificationNumber"/>
+                    <form-validate valattributeform="editclientotherinfoform" valattribute="nationalIdentificationNumber"/>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="passportNumber">{{ 'label.input.passportNumber' | translate }}
@@ -84,7 +90,7 @@
                     <div class="col-sm-3">
                         <input id="passportNumber" name="passportNumber" type="text" class="form-control" ng-model="formData.passportNumber" late-validate>
                     </div>
-                    <form-validate valattributeform="clientotherinfoform" valattribute="passportNumber"/>
+                    <form-validate valattributeform="editclientotherinfoform" valattribute="passportNumber"/>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="bankAccountNumber">{{ 'label.input.bankAccountNumber' | translate }}
@@ -93,7 +99,7 @@
                     <div class="col-sm-3">
                         <input id="bankAccountNumber" name="bankAccountNumber" type="text" class="form-control" ng-model="formData.bankAccountNumber" late-validate>
                     </div>
-                    <form-validate valattributeform="clientotherinfoform" valattribute="bankAccountNumber"/>
+                    <form-validate valattributeform="editclientotherinfoform" valattribute="bankAccountNumber"/>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="bankName">{{ 'label.input.bankName' | translate }}
@@ -102,7 +108,18 @@
                     <div class="col-sm-3">
                         <input id="bankName" name="bankName" type="text" class="form-control" ng-model="formData.bankName" late-validate>
                     </div>
-                    <form-validate valattributeform="clientotherinfoform" valattribute="bankName"/>
+                    <form-validate valattributeform="editclientotherinfoform" valattribute="bankName"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="telephoneNo">
+                        {{ 'label.input.telephoneNo' | translate }}
+                        <span class="required">*</span>
+                    </label>
+                
+                    <div class="col-sm-3">
+                        <input id="telephoneNo" name="telephoneNo" type="text" class="form-control" ng-model="formData.telephoneNo" required late-validate>
+                    </div>
+                    <form-validate valattributeform="editclientotherinfoform" valattribute="telephoneNo" />
                 </div>
 
                 <div class="col-md-offset-3">
