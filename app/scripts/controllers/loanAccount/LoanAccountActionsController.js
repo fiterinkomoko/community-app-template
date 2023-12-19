@@ -21,7 +21,6 @@
             scope.showTrancheAmountTotal = 0;
             scope.processDate = false;
             scope.submittedDatatables = [];
-            scope.isCashPayment = false;
             scope.showClientOtherInfoForm = false;
             scope.clientOtherInfoData = {};
             var submitStatus = [];
@@ -785,17 +784,14 @@
                             );
                         });
                     }
-                    else if(scope.action === 'disburse' && !scope.isCashPayment) {
-                        params = {command: 'disbursementRequest', loanId: scope.accountId};
-                        resourceFactory.LoanAccountResource.save(params, this.formData, function (data) {
-                            location.path('/viewloanaccount/' + data.loanId);
-                        });
-                    } else {
+                    else  {
                         params.loanId = scope.accountId;
+                        params.command = scope.isCashPayment() ? params.command: 'disbursementRequest';
+                        scope.filterDisburseFormData();
                         resourceFactory.LoanAccountResource.save(params, this.formData, function (data) {
                             location.path('/viewloanaccount/' + data.loanId);
                         });
-                    }
+                    } 
                 }
             };
 
@@ -893,23 +889,17 @@
                 resourceFactory.clientOtherInfoResource.getAll({clientId: clientId}, function(data){
                     if(data.length > 0) {
                         scope.clientOtherInfoData = data[0];
-                        if(!scope.isCashPayment) {
                             scope.formData.clientPhoneNumber = scope.clientOtherInfoData.telephoneNumber;
                             scope.formData.clientAccountNumber = scope.clientOtherInfoData.bankAccountNumber;
                             scope.formData.clientBankName = scope.clientOtherInfoData.bankName;
-                        }
+                    
                     }
                 });
             }
 
-            scope.onPaymentTypeChange = function (paymentTypeId) {
-                scope.isCashPayment = scope.paymentTypes.find(function (paymentType) { return paymentTypeId === paymentType.id })?.isCashPayment || false;
-                if(!scope.isCashPayment && scope.action === 'disburse') {
-                    scope.showClientOtherInfoForm = true;
-                } else {
-                    scope.showClientOtherInfoForm = false;
-                }
-                if(scope.isCashPayment) {
+            scope.filterDisburseFormData = function () {
+                const isCashPayment = scope.isCashPayment();
+                if(isCashPayment) {
                     delete scope.formData.clientPhoneNumber;
                     delete scope.formData.clientAccountNumber;
                     delete scope.formData.clientBankName;
@@ -921,7 +911,7 @@
             }
 
             scope.$watch('clientId', function() {
-                if(scope.action === 'disburse' && scope.clientId !== undefined && scope.formData.paymentTypeId !== undefined) {
+                if(scope.action === 'disburse' && scope.clientId !== undefined) {
                     scope.fetchClientOtherInfo(scope.clientId);
                 }
                 
@@ -929,9 +919,19 @@
 
             scope.$watch('formData.paymentTypeId', function() {
                 if(scope.formData.paymentTypeId !== undefined) {
-                    scope.onPaymentTypeChange(scope.formData.paymentTypeId);
+                    const isCashPayment = scope.isCashPayment();
+                    if(!isCashPayment && scope.action === 'disburse') {
+                        scope.showClientOtherInfoForm = true;
+                    } else {
+                        scope.showClientOtherInfoForm = false;
+                    }
                 }
             });
+
+            scope.isCashPayment = function() {
+                const paymentTypeId =scope.formData.paymentTypeId;
+                return scope.paymentTypes.find(function (paymentType) { return paymentTypeId === paymentType.id })?.isCashPayment || false;
+            }
 
             
         }
