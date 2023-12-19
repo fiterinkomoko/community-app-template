@@ -180,6 +180,7 @@
                             scope.formData.fixedEmiAmount = data.fixedEmiAmount;
                             scope.showEMIAmountField = true;
                         }
+                        scope.isLoanDisbursementRequestEnabled = data.isLoanDisbursementRequestEnabled;
                     });
                     scope.title = 'label.heading.disburseloanaccount';
                     scope.labelName = 'label.input.disbursedondate';
@@ -786,7 +787,7 @@
                     }
                     else  {
                         params.loanId = scope.accountId;
-                        params.command = scope.isCashPayment() ? params.command: 'disbursementRequest';
+                        params.command = scope.isLoanDisbursementRequestEnabled && !scope.isCashPayment() ? 'disbursementRequest' : params.command;
                         scope.filterDisburseFormData();
                         resourceFactory.LoanAccountResource.save(params, this.formData, function (data) {
                             location.path('/viewloanaccount/' + data.loanId);
@@ -892,14 +893,13 @@
                             scope.formData.clientPhoneNumber = scope.clientOtherInfoData.telephoneNumber;
                             scope.formData.clientAccountNumber = scope.clientOtherInfoData.bankAccountNumber;
                             scope.formData.clientBankName = scope.clientOtherInfoData.bankName;
-                    
                     }
                 });
             }
 
             scope.filterDisburseFormData = function () {
                 const isCashPayment = scope.isCashPayment();
-                if(isCashPayment) {
+                if(!scope.isLoanDisbursementRequestEnabled || (isCashPayment && scope.isLoanDisbursementRequestEnabled)) {
                     delete scope.formData.clientPhoneNumber;
                     delete scope.formData.clientAccountNumber;
                     delete scope.formData.clientBankName;
@@ -920,7 +920,7 @@
             scope.$watch('formData.paymentTypeId', function() {
                 if(scope.formData.paymentTypeId !== undefined) {
                     const isCashPayment = scope.isCashPayment();
-                    if(!isCashPayment && scope.action === 'disburse') {
+                    if(scope.isLoanDisbursementRequestEnabled && scope.action === 'disburse' && !isCashPayment) {
                         scope.showClientOtherInfoForm = true;
                     } else {
                         scope.showClientOtherInfoForm = false;
