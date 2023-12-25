@@ -20,9 +20,11 @@
                     <div class="col-sm-3">
                         <select chosen="countryOptions" id="countryId" name = "countryId" ng-model="formData.countryId" class="form-control"
                                 ng-options="country.id as country.name for country in countryOptions"
-                                value="{{country.id}}" required></select>
+                                value="{{country.id}}" required>
+                                <option class="displaynone" value="">{{'label.selectCountry' | translate}}</option>
+                            </select>
                     </div>
-                    <form-validate valattributeform="surveyform" valattribute="countryId"/>
+                    <!-- <form-validate valattributeform="surveyform" valattribute="countryId"/> -->
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="cohortId">{{ 'label.input.cohort' | translate }}
@@ -31,7 +33,9 @@
                     <div class="col-sm-3">
                         <select chosen="cohortOptions" id="cohortId" name="cohortId" ng-model="formData.cohortId" class="form-control"
                                 ng-options="cohort.id as cohort.name for cohort in cohortOptions"
-                                value="{{cohort.id}}" required></select>
+                                value="{{cohort.id}}" required>
+                                <option class="displaynone" value="">{{'label.selectCohort' | translate}}</option>
+                            </select>
                     </div>
                     <form-validate valattributeform="surveyform" valattribute="cohortId"/>
                 </div>
@@ -43,7 +47,9 @@
                     <div class="col-sm-3">
                         <select chosen="programOptions" id="programId" name="programId" ng-model="formData.programId" class="form-control"
                                 ng-options="program.id as program.name for program in programOptions"
-                                value="{{program.id}}" required></select>
+                                value="{{program.id}}" required>
+                                <option class="displaynone" value="">{{'label.selectProgram' | translate}}</option>
+                            </select>
                     </div>
                     <form-validate valattributeform="surveyform" valattribute="nationalityId"/>
                 </div>
@@ -65,7 +71,9 @@
                     <div class="col-sm-3">
                         <select chosen="surveyLocationOptions" id="surveyLocationId" name="surveyLocationId" ng-model="formData.surveyLocationId" class="form-control"
                                 ng-options="surveyLocation.id as surveyLocation.name for surveyLocation in surveyLocationOptions"
-                                value="{{surveyLocation.id}}" required></select>
+                                value="{{surveyLocation.id}}" required>
+                                <option class="displaynone" value="">{{'label.selectLocation' | translate}}</option>
+                            </select>
                     </div>
                     <form-validate valattributeform="surveyform" valattribute="surveyLocationId"/>
                 </div>
