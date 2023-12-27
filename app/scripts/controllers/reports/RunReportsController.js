@@ -77,6 +77,9 @@
                     for (var i in data.data) {
                         selectData.push({id: data.data[i].row[0], name: data.data[i].row[1]});
                     }
+                    if(paramData.selectAll == 'Y'){
+                        selectData.push({id: "-1", name: "All"});
+                    }
                     for (var j in scope.reportParams) {
                         if (scope.reportParams[j].name == paramData.name) {
                             scope.reportParams[j].selectOptions = selectData;
@@ -84,9 +87,6 @@
                         }
                     }
                     if (!isExistedRecord) {
-                        if(paramData.selectAll == 'Y'){
-                            selectData.push({id: "-1", name: "All"});
-                        }
                         paramData.selectOptions = selectData;
                         scope.reportParams.push(paramData);
                     }
