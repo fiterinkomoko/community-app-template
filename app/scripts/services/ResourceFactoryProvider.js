@@ -490,7 +490,7 @@
                     clientExpensesResource: defineResource(apiVer + "/clients/:clientId/householdExpenses", {clientId: '@clientId'}, {
                          save: {method: 'POST'}
                                 }),
-                clientExpensesResource: defineResource(apiVer + "/clients/:clientId/householdExpenses/:householdExpensesId", {clientId: '@clientId',householdExpensesId:'@householdExpensesId'}, {
+                    clientExpensesResource: defineResource(apiVer + "/clients/:clientId/householdExpenses/:householdExpensesId", {clientId: '@clientId',householdExpensesId:'@householdExpensesId'}, {
                                         deleteExpense: {method: 'DELETE'},
                                         update: {method: 'PUT'}
                                                }),
@@ -1016,6 +1016,9 @@
                         getRate: {method: 'GET', params: {}},
                         update: {method: 'PUT', params: {}},
                         save: {method: 'POST', params: {}}
+                    }),
+                    loanDocumentsTemplateResource: defineResource(apiVer + "/loans/:loanId/documents/template", {loanId: '@loanId'}, {
+                        get: {method: 'GET', params: {}}
                     })
                 };
             }];
