@@ -51,20 +51,10 @@
                     };
             scope.getLoanPendingDueDiligence();
 
-            //Collateral Review
-            scope.loanPendingCollateralReviewData = [];
-            scope.getLoanPendingCollateralReview = function(){
-                     var nextLoanDecisionStateValue = '1200';
-                      resourceFactory.getAllLoansPendingDecisionEngineResource.getAll({nextLoanDecisionState:nextLoanDecisionStateValue}, function (data) {
-                        scope.loanPendingCollateralReviewData = data;
-                      });
-                    };
-            scope.getLoanPendingCollateralReview();
-
             //IC Review Level One
             scope.loanPendingIcReviewLevelOneData = [];
             scope.getLoanPendingIcReviewLevelOne = function(){
-                     var nextLoanDecisionStateValue = '1300';
+                     var nextLoanDecisionStateValue = '1200';
                       resourceFactory.getAllLoansPendingDecisionEngineResource.getAll({nextLoanDecisionState:nextLoanDecisionStateValue}, function (data) {
                         scope.loanPendingIcReviewLevelOneData = data;
                       });

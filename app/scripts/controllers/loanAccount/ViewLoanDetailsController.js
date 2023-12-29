@@ -265,18 +265,12 @@
                     taskPermissionName: 'ACCEPT_DUEDILIGENCE'
                 };
                 }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "DUE_DILIGENCE"))){
-                 return {
-                     name: "button.collateralreview",
-                     icon: "fa fa-check",
-                     taskPermissionName: 'ACCEPT_LOANCOLLATERALREVIEW'
+                    return {
+                        name: "button.icreviewlevelone",
+                        icon: "fa fa-check",
+                        taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELONE'
                  };
-                 }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "COLLATERAL_REVIEW"))){
-                   return {
-                       name: "button.icreviewlevelone",
-                       icon: "fa fa-check",
-                       taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELONE'
-                   };
-                   }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "IC_REVIEW_LEVEL_ONE" && data.nextLoanIcReviewDecisionState.value == "IC_REVIEW_LEVEL_TWO"))){
+                 }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "IC_REVIEW_LEVEL_ONE" && data.nextLoanIcReviewDecisionState.value == "IC_REVIEW_LEVEL_TWO"))){
                     return {
                        name: "button.icreviewleveltwo",
                        icon: "fa fa-check",
