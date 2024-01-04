@@ -180,6 +180,11 @@
                               });
                               scope.crbMetropolIdentityVerification();
                              break;
+                       case "generatecashflow":
+                            resourceFactory.generateCashFlow.post({loanId: accountId},function (data) {
+                            location.path('/viewloanaccount/' + accountId);
+                            });
+                         break;
                 }
             };
 
@@ -375,6 +380,10 @@
                             {
                                 name: "button.delete",
                                 taskPermissionName: 'DELETE_LOAN'
+                            },
+                            {
+                                name: "button.generatecashflow",
+                                taskPermissionName: 'GENERATE_CASHFLOW'
                             },
                             {
                                 name: "button.addcollateral",

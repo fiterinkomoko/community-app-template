@@ -1017,6 +1017,9 @@
                         update: {method: 'PUT', params: {}},
                         save: {method: 'POST', params: {}}
                     }),
+                    generateCashFlow: defineResource(apiVer + "/loans/generateCashFlow/:loanId", {loanId:'@loanId'}, {
+                        post: {method: 'POST',params:{}}
+                    }),
                     loanDocumentsTemplateResource: defineResource(apiVer + "/loans/:loanId/documents/template", {loanId: '@loanId'}, {
                         get: {method: 'GET', params: {}}
                     })
