@@ -436,7 +436,7 @@
 
                     };
 
-                    if(!data.subStatus || (data.subStatus && data.subStatus.value !== 'PendingDisbursement')) {
+                    if(!data.subStatus || (data.subStatus && data.subStatus.code !== 'loanSubStatus.loanSubStatusType.pending.disbursement')) {
                         scope.buttons.singlebuttons.push({
                             name: "button.disburse",
                             icon: "fa fa-flag",

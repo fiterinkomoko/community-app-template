@@ -5103,5 +5103,6 @@
   "label.input.clientPhoneNumber": "Phone Number",
   "label.input.clientAccountNumber": "Account Number",
   "label.input.clientBankName": "Bank Name",
+  "label.heading.disbursementStatus": "Disbursement Status",
   "----End---": "--End of file--- "
 }
