@@ -1552,13 +1552,13 @@
                             <tr>
                                 <th class="empty"></th>
                                 <th class="empty"></th>
-                                <th class="empty" colspan="2" style="text-align: center;">{{'label.heading.historicalInformation' | translate}}</th>
-                                <th class="empty">{{'label.heading.baseline' | translate}}</th>
-                                <th class="empty" colspan="7" style="text-align: center;">{{'label.heading.projections' | translate}}</th>
+                                <th class="empty" colspan="2" style="text-align: center;">{{'label.heading.historicalInformation' | translate | uppercase}}</th>
+                                <th class="empty">{{'label.heading.baseline' | translate | uppercase}}</th>
+                                <th class="empty" colspan="7" style="text-align: center;">{{'label.heading.projections' | translate | uppercase}}</th>
                             </tr>
                             <tr>
-                                <th class="empty">{{'label.heading.sN' | translate}}</th>
-                                <th class="empty">{{'label.heading.particulars' | translate}}</th>
+                                <th class="empty">{{'label.heading.sN' | translate | uppercase}}</th>
+                                <th class="empty">{{'label.heading.particulars' | translate | uppercase}}</th>
                                 <th class="empty">{{'label.heading.previousMonth2' | translate}}</th>
                                 <th class="empty">{{'label.heading.previousMonth1' | translate}}</th>
                                 <th class="empty">{{'label.heading.month0' | translate}}</th>
@@ -1573,8 +1573,8 @@
                             <tbody>
                             <tr><td colspan="7"></td></tr>
                             <tr>
-                                <td><b>{{'label.heading.income' | translate}}</b></td>
-                                <td><b>{{'label.heading.salesIncome' | translate}}</b></td>
+                                <td><b>{{'label.heading.income' | translate | uppercase}}</b></td>
+                                <td>{{'label.heading.salesIncome' | translate}}</td>
                                 <td>1700</td>
                                 <td>1700</td>
                                 <td>1700</td>
@@ -1587,7 +1587,7 @@
                             </tr>
                             <tr>
                                 <td><b></b></td>
-                                <td><b>{{'label.heading.otherIncome' | translate}}</b></td>
+                                <td>{{'label.heading.otherIncome' | translate}}</td>
                                 <td>900</td>
                                 <td>900</td>
                                 <td>900</td>
@@ -1601,7 +1601,7 @@
                             <tr><td colspan="7"></td></tr>
                             <tr>
                                 <td><b></b></td>
-                                <td><b>{{'label.heading.totalIncome' | translate}}</b></td>
+                                <td><b>{{'label.heading.totalIncome' | translate | uppercase}}</b></td>
                                 <td><b>900</b></td>
                                 <td><b>900</b></td>
                                 <td><b>900</b></td>
@@ -1614,7 +1614,7 @@
                             </tr>
                             <tr><td colspan="7"></td></tr>
                             <tr>
-                                <td><b>{{'label.heading.expenses' | translate}}</b></td>
+                                <td><b>{{'label.heading.expensesBothBusinessAndNon' | translate | uppercase}}</b></td>
                                 <td>{{'label.heading.purchases' | translate}}</td>
                                 <td>1700</td>
                                 <td>1700</td>
@@ -1638,6 +1638,88 @@
                                 <td>1700</td>
                                 <td>1700</td>
                                 <td>1700</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>{{'label.heading.houseHoldExpense' | translate}}</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>{{'label.heading.feedingExpense' | translate}}</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>{{'label.heading.schoolFees' | translate}}</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><b>{{'label.heading.totalExpense' | translate | uppercase}}</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                            </tr>
+                            <tr><td colspan="7"></td></tr>
+                            <tr>
+                                <td><b>{{'label.heading.netCashFlow' | translate | uppercase}}</b></td>
+                                <td></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                            </tr>
+                            <tr><td colspan="7"></td></tr>
+                            <tr>
+                                <td></td>
+                                <td><b>{{'label.heading.allowableDSCR' | translate}}</b></td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><b>{{'label.heading.maximumAmountToBePaid' | translate}}</b></td>
+                                <td>147</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><b>{{'label.heading.maxLoanAmount' | translate}}</b></td>
+                                <td>882</td>
                             </tr>
                             </tbody>
                         </table>
