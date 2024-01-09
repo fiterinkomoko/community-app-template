@@ -598,7 +598,7 @@
                 }else if(data.currency.code == "KES"){
                 scope.crbMetropolIdentityVerification();
                 }
-
+                scope.retrieveCashFlow();
             });
 
             var fetchFunction = function (offset, limit, callback) {
@@ -955,6 +955,14 @@
                 scope.crbReportMetrolpolIdentityVerification = data;
             });
         }
+
+        scope.retrieveCashFlow = function(){
+                    resourceFactory.retrieveCashFlow.get({loanId: routeParams.id}, function (data) {
+                        console.log(data);
+                        scope.cashFlowData = data;
+                    });
+                }
+
         }
     });
     mifosX.ng.application.controller('ViewLoanDetailsController', ['$scope', '$routeParams', 'ResourceFactory','PaginatorService', '$location', '$route', '$http', '$uibModal', 'dateFilter', 'API_VERSION', '$sce', '$rootScope','$window', mifosX.controllers.ViewLoanDetailsController]).run(function ($log) {
