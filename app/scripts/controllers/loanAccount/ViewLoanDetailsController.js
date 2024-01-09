@@ -958,7 +958,6 @@
 
         scope.retrieveCashFlow = function(){
                     resourceFactory.retrieveCashFlow.get({loanId: routeParams.id}, function (data) {
-                        console.log(data);
                         scope.cashFlowData = data;
                     });
                 }
