@@ -164,6 +164,10 @@
                             <th class="table-bold-loan">{{'label.heading.kivaUUId' | translate}}</th>
                             <td><span class="padded-td">{{loandetails.kivaUUId}}</span><span ng-hide="loandetails.kivaUUId">{{'label.heading.notprovided' | translate}}</span></td>
                         </tr>
+                        <tr ng-show="isPendingDisbursement">
+                            <th class="table-bold-loan">{{'label.heading.disbursementStatus' | translate}}</th>
+                            <td><span class="padded-td">{{loandetails.subStatus.value}}</span></td>
+                        </tr>
                     </table>
                     <div ng-show="loandetails.summary">
                         <h3>{{'label.heading.currentBalance' | translate}}: {{loandetails.currency.displaySymbol}} {{loandetails.summary.totalOutstanding | number}}</h3>
