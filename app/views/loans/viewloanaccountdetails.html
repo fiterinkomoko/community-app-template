@@ -1550,6 +1550,198 @@
                         </table>
                         </div>
                     </uib-tab>
+                    <uib-tab ng-show="cashFlowData" heading="{{'label.heading.cashflowReport' | translate}}">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th class="empty"></th>
+                                <th class="empty"></th>
+                                <th class="empty" colspan="2" style="text-align: center;">{{'label.heading.historicalInformation' | translate | uppercase}}</th>
+                                <th class="empty">{{'label.heading.baseline' | translate | uppercase}}</th>
+                                <th class="empty" colspan="7" style="text-align: center;">{{'label.heading.projections' | translate | uppercase}}</th>
+                            </tr>
+                            <tr>
+                                <th class="empty">{{'label.heading.sN' | translate | uppercase}}</th>
+                                <th class="empty">{{'label.heading.particulars' | translate | uppercase}}</th>
+                                <th class="empty">{{'label.heading.previousMonth2' | translate}}</th>
+                                <th class="empty">{{'label.heading.previousMonth1' | translate}}</th>
+                                <th class="empty">{{'label.heading.month0' | translate}}</th>
+                                <th class="empty">{{'label.heading.month1' | translate}}</th>
+                                <th class="empty">{{'label.heading.month2' | translate}}</th>
+                                <th class="empty">{{'label.heading.month3' | translate}}</th>
+                                <th class="empty">{{'label.heading.month4' | translate}}</th>
+                                <th class="empty">{{'label.heading.month5' | translate}}</th>
+                                <th class="empty">{{'label.heading.month6' | translate}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr><td colspan="7"></td></tr>
+                            <tr ng-repeat="cash in cashFlowData" ng-if="cash.cashFlowType === 'INCOME' && cash.particularType === 'Sales Income'">
+                                <td><b>{{ cash.cashFlowType | translate | uppercase}}</b></td>
+                                <td><b>{{ cash.particularType }}</b></td>
+                                <td>{{ cash.previousMonth2 | number }}</td>
+                                <td>{{ cash.previousMonth1 | number }}</td>
+                                <td>{{ cash.month0 | number }}</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                            </tr>
+                            <tr>
+                                <td><b></b></td>
+                                <td><b>{{'label.heading.otherIncome' | translate}}</b></td>
+                                <td>900</td>
+                                <td>900</td>
+                                <td>900</td>
+                                <td>900</td>
+                                <td>900</td>
+                                <td>900</td>
+                                <td>900</td>
+                                <td>900</td>
+                                <td>900</td>
+                            </tr>
+                            <tr ng-repeat="cash in cashFlowData" ng-if="cash.cashFlowType === 'INCOME' && cash.particularType === 'Other Income'">
+                                <td></td>
+                                <td>&nbsp;&nbsp;&nbsp;{{ cash.name }}</td>
+                                <td>{{ cash.previousMonth2 | number }}</td>
+                                <td>{{ cash.previousMonth1 | number }}</td>
+                                <td>{{ cash.month0 | number }}</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                            </tr>
+                            <tr><td colspan="7"></td></tr>
+                            <tr>
+                                <td><b></b></td>
+                                <td><b>{{'label.heading.totalIncome' | translate | uppercase}}</b></td>
+                                <td><b>900</b></td>
+                                <td><b>900</b></td>
+                                <td><b>900</b></td>
+                                <td><b>900</b></td>
+                                <td><b>900</b></td>
+                                <td><b>900</b></td>
+                                <td><b>900</b></td>
+                                <td><b>900</b></td>
+                                <td><b>900</b></td>
+                            </tr>
+                            <tr><td colspan="7"></td></tr>
+                            <tr ng-repeat="cash in cashFlowData" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Purchases'">
+                                <td><b>{{'label.heading.expensesBothBusinessAndNon' | translate | uppercase}}</b></td>
+                                <td><b>{{ cash.particularType}}</b></td>
+                                <td>{{ cash.previousMonth2 | number }}</td>
+                                <td>{{ cash.previousMonth1 | number }}</td>
+                                <td>{{ cash.month0 | number }}</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><b>{{'label.heading.businessExpenses' | translate}}</b></td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                            </tr>
+                            <tr ng-repeat="cash in cashFlowData" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Business Expenses'">
+                                <td></td>
+                                <td>&nbsp;&nbsp;&nbsp;{{ cash.name}}</td>
+                                <td>{{ cash.previousMonth2 | number }}</td>
+                                <td>{{ cash.previousMonth1 | number }}</td>
+                                <td>{{ cash.month0 | number }}</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><b>{{'label.heading.houseHoldExpense' | translate}}</b></td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                            </tr>
+                            <tr ng-repeat="cash in cashFlowData" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Household Expenses'">
+                                <td></td>
+                                <td>&nbsp;&nbsp;&nbsp;{{ cash.name}}</td>
+                                <td>{{ cash.previousMonth2 | number }}</td>
+                                <td>{{ cash.previousMonth1 | number }}</td>
+                                <td>{{ cash.month0 | number }}</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                                <td>1700</td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td><b>{{'label.heading.totalExpense' | translate | uppercase}}</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                            </tr>
+                            <tr><td colspan="7"></td></tr>
+                            <tr>
+                                <td><b>{{'label.heading.netCashFlow' | translate | uppercase}}</b></td>
+                                <td></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                                <td><b>1700</b></td>
+                            </tr>
+                            <tr><td colspan="7"></td></tr>
+                            <tr>
+                                <td></td>
+                                <td><b>{{'label.heading.allowableDSCR' | translate}}</b></td>
+                                <td>0.7</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><b>{{'label.heading.maximumAmountToBePaid' | translate}}</b></td>
+                                <td>147</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><b>{{'label.heading.maxLoanAmount' | translate}}</b></td>
+                                <td>882</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </uib-tab>
                 </uib-tabset>
             </div>
         </div>
