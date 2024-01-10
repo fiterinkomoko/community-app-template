@@ -23,6 +23,7 @@
             scope.submittedDatatables = [];
             scope.showClientOtherInfoForm = false;
             scope.clientOtherInfoData = {};
+            scope.isICReview = scope.action === 'icreviewlevelone' || scope.action === 'icreviewleveltwo' || scope.action === 'icreviewlevelthree' || scope.action === 'icreviewlevelfour' || scope.action === 'icreviewlevelfive';
             var submitStatus = [];
 
             rootScope.RequestEntities = function(entity,status,productId){
@@ -507,61 +508,70 @@
                        break;
                 case "icreviewlevelone":
                       scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELONE';
-                      resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+                      resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'icreview'}, function (data) {
 
                           scope.title = 'label.heading.icreviewleveloneloanaccount';
                           scope.labelName = 'label.input.icReviewOn';
                           scope.modelName = 'icReviewOn';
                           scope.formData[scope.modelName] =  new Date();
                           scope.noteFieldMandatory = true;
+                          scope.icreviewTemplate = data;
                       });
 
                       break;
                 case "icreviewleveltwo":
                      scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELTWO';
-                     resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+                     resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'icreview'}, function (data) {
 
                          scope.title = 'label.heading.icreviewleveltwoloanaccount';
                          scope.labelName = 'label.input.icReviewOn';
                          scope.modelName = 'icReviewOn';
                          scope.formData[scope.modelName] =  new Date();
                          scope.noteFieldMandatory = true;
+                         scope.icreviewTemplate = data;
+                         scope.icReviewPreviousRecommendedAmount = data.loanDecisionData.icReviewDecisionLevelOneRecommendedAmount;
                      });
 
                      break;
                 case "icreviewlevelthree":
                       scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELTHREE';
-                      resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+                      resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'icreview'}, function (data) {
 
                           scope.title = 'label.heading.icreviewlevelthreeloanaccount';
                           scope.labelName = 'label.input.icReviewOn';
                           scope.modelName = 'icReviewOn';
                           scope.formData[scope.modelName] =  new Date();
                           scope.noteFieldMandatory = true;
+                          scope.icreviewTemplate = data;
+                          scope.icReviewPreviousRecommendedAmount = data.loanDecisionData.icReviewDecisionLevelTwoRecommendedAmount;
                       });
 
                       break;
                 case "icreviewlevelfour":
                     scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELFOUR';
-                    resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+                    resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'icreview'}, function (data) {
 
                         scope.title = 'label.heading.icreviewlevelfourloanaccount';
                         scope.labelName = 'label.input.icReviewOn';
                         scope.modelName = 'icReviewOn';
                         scope.formData[scope.modelName] =  new Date();
                         scope.noteFieldMandatory = true;
+                        scope.icreviewTemplate = data;
+                        scope.icReviewPreviousRecommendedAmount = data.loanDecisionData.icReviewDecisionLevelThreeRecommendedAmount;
                     });
 
                     break;
                 case "icreviewlevelfive":
                     scope.taskPermissionName = 'ACCEPT_LOANICREVIEWDECISIONLEVELFIVE';
-                    resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+                    resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'icreview'}, function (data) {
 
                         scope.title = 'label.heading.icreviewlevelfiveloanaccount';
                         scope.labelName = 'label.input.icReviewOn';
                         scope.modelName = 'icReviewOn';
                         scope.formData[scope.modelName] =  new Date();
                         scope.noteFieldMandatory = true;
+                        scope.icreviewTemplate = data;
+                        scope.icReviewPreviousRecommendedAmount = data.loanDecisionData.icReviewDecisionLevelFourRecommendedAmount;
                     });
 
                     break;

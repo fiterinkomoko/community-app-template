@@ -5136,5 +5136,8 @@
   "label.input.clientAccountNumber": "Account Number",
   "label.input.clientBankName": "Bank Name",
   "label.heading.disbursementStatus": "Disbursement Status",
+  "label.input.icReviewPreviousRecommendedAmount": "Previous Recommended Amount",
+  "label.input.icReviewRecommendedAmount": "Recommended Amount",
+  "label.input.icReviewTermFrequency": "Loan Term",
   "----End---": "--End of file--- "
 }
