@@ -4282,6 +4282,8 @@
   "error.msg.loan.transaction.cannot.be.done.before.disbursement": "Disbursement should be done before making repayment",
   "validation.msg.loan.expectedDisbursementDate.disbursement.date.must.be.unique.for.tranches": "Tranche disbursement date must be unique",
   "error.msg.loan.disburse.amount.must.be.less.than.approved.amount": "Disbursement Amount must be less than or equal to approved principal amount",
+  "error.msg.loan.cashflow.projection.data.is.already.available.so.cashflow.cannot.be.regenerated": "Loan CashFlow Projection data is already Generated so CashFlow cannot be regenerated",
+  "error.msg.loan.projection.rate.is.not.available.so.cashflow.cannot.be.generated": "Loan Projection Rate is not available so CashFlow cannot be generated",
   "validation.msg.loan.disbursement.transactionAmount.not.greater.than.zero": "The transaction amount must be a number greater than zero.",
   "label.anchor.editdisbursedate": "Edit Disbursement",
   "label.heading.editdisbursedate": "Edit disbursement details",

@@ -1576,7 +1576,7 @@
                             </thead>
                             <tbody>
                             <tr><td colspan="7"></td></tr>
-                            <tr ng-repeat="cash in cashFlowData" ng-if="cash.cashFlowType === 'INCOME' && cash.particularType === 'Sales Income'">
+                            <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'INCOME' && cash.particularType === 'Sales Income'">
                                 <td><b>{{ cash.cashFlowType | translate | uppercase}}</b></td>
                                 <td><b>{{ cash.particularType }}</b></td>
                                 <td>{{ cash.previousMonth2 | number }}</td>
@@ -1602,7 +1602,7 @@
                                 <td>900</td>
                                 <td>900</td>
                             </tr>
-                            <tr ng-repeat="cash in cashFlowData" ng-if="cash.cashFlowType === 'INCOME' && cash.particularType === 'Other Income'">
+                            <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'INCOME' && cash.particularType === 'Other Income'">
                                 <td></td>
                                 <td>&nbsp;&nbsp;&nbsp;{{ cash.name }}</td>
                                 <td>{{ cash.previousMonth2 | number }}</td>
@@ -1630,7 +1630,7 @@
                                 <td><b>900</b></td>
                             </tr>
                             <tr><td colspan="7"></td></tr>
-                            <tr ng-repeat="cash in cashFlowData" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Purchases'">
+                            <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Purchases'">
                                 <td><b>{{'label.heading.expensesBothBusinessAndNon' | translate | uppercase}}</b></td>
                                 <td><b>{{ cash.particularType}}</b></td>
                                 <td>{{ cash.previousMonth2 | number }}</td>
@@ -1656,7 +1656,7 @@
                                 <td>1700</td>
                                 <td>1700</td>
                             </tr>
-                            <tr ng-repeat="cash in cashFlowData" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Business Expenses'">
+                            <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Business Expenses'">
                                 <td></td>
                                 <td>&nbsp;&nbsp;&nbsp;{{ cash.name}}</td>
                                 <td>{{ cash.previousMonth2 | number }}</td>
@@ -1682,7 +1682,7 @@
                                 <td>1700</td>
                                 <td>1700</td>
                             </tr>
-                            <tr ng-repeat="cash in cashFlowData" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Household Expenses'">
+                            <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Household Expenses'">
                                 <td></td>
                                 <td>&nbsp;&nbsp;&nbsp;{{ cash.name}}</td>
                                 <td>{{ cash.previousMonth2 | number }}</td>

@@ -1021,7 +1021,7 @@
                         post: {method: 'POST',params:{}}
                     }),
                     retrieveCashFlow: defineResource(apiVer + "/loans/retrieveCashFlow/:loanId", {loanId:'@loanId'}, {
-                        get: {method: 'GET',params:{},isArray: true}
+                        get: {method: 'GET',params:{}}
                     }),
                     loanDocumentsTemplateResource: defineResource(apiVer + "/loans/:loanId/documents/template", {loanId: '@loanId'}, {
                         get: {method: 'GET', params: {}}
