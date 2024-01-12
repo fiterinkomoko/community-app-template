@@ -1551,6 +1551,7 @@
                         </div>
                     </uib-tab>
                     <uib-tab ng-show="cashFlowData" heading="{{'label.heading.cashflowReport' | translate}}">
+                        <div style="overflow-x:auto;">
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -1566,12 +1567,11 @@
                                 <th class="empty">{{'label.heading.previousMonth2' | translate}}</th>
                                 <th class="empty">{{'label.heading.previousMonth1' | translate}}</th>
                                 <th class="empty">{{'label.heading.month0' | translate}}</th>
-                                <th class="empty">{{'label.heading.month1' | translate}}</th>
-                                <th class="empty">{{'label.heading.month2' | translate}}</th>
-                                <th class="empty">{{'label.heading.month3' | translate}}</th>
-                                <th class="empty">{{'label.heading.month4' | translate}}</th>
-                                <th class="empty">{{'label.heading.month5' | translate}}</th>
-                                <th class="empty">{{'label.heading.month6' | translate}}</th>
+
+                                <th class="empty" ng-repeat="sales in cashFlowData.cashFlowProjectionDataList" ng-if="sales.cashFlowType === 'INCOME' && sales.particularType === 'Sales Income'">
+                                    Month {{ monthCounter }}
+                                    <span ng-init="monthCounter = monthCounter + 1"></span>
+                                </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -1582,12 +1582,8 @@
                                 <td>{{ cash.previousMonth2 | number }}</td>
                                 <td>{{ cash.previousMonth1 | number }}</td>
                                 <td>{{ cash.month0 | number }}</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
+                                <td ng-repeat="sales in cashFlowData.cashFlowProjectionDataList" ng-if="sales.cashFlowType === 'INCOME' && sales.particularType === 'Sales Income'">{{ sales.amount | number }}</td>
+
                             </tr>
                             <tr>
                                 <td><b></b></td>
@@ -1608,12 +1604,8 @@
                                 <td>{{ cash.previousMonth2 | number }}</td>
                                 <td>{{ cash.previousMonth1 | number }}</td>
                                 <td>{{ cash.month0 | number }}</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
+                                <td ng-repeat="sales in cashFlowData.cashFlowProjectionDataList" ng-if="sales.cashFlowType === 'INCOME' && sales.particularType === 'Sales Income'">{{ cash.month0 | number }}</td>
+
                             </tr>
                             <tr><td colspan="7"></td></tr>
                             <tr>
@@ -1636,12 +1628,7 @@
                                 <td>{{ cash.previousMonth2 | number }}</td>
                                 <td>{{ cash.previousMonth1 | number }}</td>
                                 <td>{{ cash.month0 | number }}</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
+                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ purchases.amount | number }}</td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -1662,12 +1649,8 @@
                                 <td>{{ cash.previousMonth2 | number }}</td>
                                 <td>{{ cash.previousMonth1 | number }}</td>
                                 <td>{{ cash.month0 | number }}</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
+                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ cash.month0 | number }}</td>
+
                             </tr>
                             <tr>
                                 <td></td>
@@ -1688,12 +1671,8 @@
                                 <td>{{ cash.previousMonth2 | number }}</td>
                                 <td>{{ cash.previousMonth1 | number }}</td>
                                 <td>{{ cash.month0 | number }}</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
+                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ cash.month0 | number }}</td>
+
                             </tr>
 
                             <tr>
@@ -1741,6 +1720,7 @@
                             </tr>
                             </tbody>
                         </table>
+                        </div>
                     </uib-tab>
                 </uib-tabset>
             </div>

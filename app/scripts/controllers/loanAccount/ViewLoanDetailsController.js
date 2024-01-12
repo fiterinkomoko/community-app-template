@@ -11,6 +11,7 @@
             scope.isHideAccrualsCheckboxChecked = true;
             scope.loandetails = [];
             scope.isPendingDisbursement = false;
+            scope.monthCounter = 1;
 
             scope.routeTo = function (loanId, transactionId, transactionTypeId) {
                 if (transactionTypeId == 2 || transactionTypeId == 4 || transactionTypeId == 1) {
