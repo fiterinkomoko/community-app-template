@@ -5139,7 +5139,8 @@
   "label.input.icReviewPreviousRecommendedAmount": "Previous Recommended Amount",
   "label.input.icReviewRecommendedAmount": "Recommended Amount",
   "label.input.icReviewTermFrequency": "Loan Term",
-
+  "label.input.allowableDSCR": "Allowable DSCR",
+  "validation.msg.loanproduct.allowableDSCR.cannot.be.blank": "Allowable DSCR is mandatory.",
   "label.heading.financialRatioReport": "Financial Ratios",
   "label.heading.financialRatio.balanceSheet": "Balance Sheet",
   "label.heading.financialRatio.financialRatios": "Financial Ratios",
