@@ -1023,8 +1023,14 @@
                     retrieveCashFlow: defineResource(apiVer + "/loans/retrieveCashFlow/:loanId", {loanId:'@loanId'}, {
                         get: {method: 'GET',params:{},isArray: true}
                     }),
+                    retrieveFinancialRatio: defineResource(apiVer + "/loans/retrieveFinancialRatio/:loanId", {loanId:'@loanId'}, {
+                                            get: {method: 'GET',params:{}}
+                    }),
                     loanDocumentsTemplateResource: defineResource(apiVer + "/loans/:loanId/documents/template", {loanId: '@loanId'}, {
                         get: {method: 'GET', params: {}}
+                    }),
+                    generateFinancialRatio: defineResource(apiVer + "/loans/generateFinancialRatio/:loanId", {loanId:'@loanId'}, {
+                                            post: {method: 'POST',params:{}}
                     })
                 };
             }];
