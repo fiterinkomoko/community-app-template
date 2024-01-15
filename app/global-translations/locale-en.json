@@ -5136,7 +5136,11 @@
   "label.input.clientAccountNumber": "Account Number",
   "label.input.clientBankName": "Bank Name",
   "label.heading.disbursementStatus": "Disbursement Status",
-  "label.input.icReviewPreviousRecommendedAmount": "Previous Recommended Amount",
+  "label.input.icReviewDecisionLevelOneRecommendedAmount" : "IC review level 1 recommended amount",
+  "label.input.icReviewDecisionLevelTwoRecommendedAmount" : "IC review level 2 recommended amount",
+  "label.input.icReviewDecisionLevelThreeRecommendedAmount" : "IC review level 3 recommended amount",
+  "label.input.icReviewDecisionLevelFourRecommendedAmount" : "IC review level 4 recommended amount",
+  "label.input.icReviewDecisionLevelFiveRecommendedAmount" : "IC review level 5 recommended amount",
   "label.input.icReviewRecommendedAmount": "Recommended Amount",
   "label.input.icReviewTermFrequency": "Loan Term",
   "label.input.allowableDSCR": "Allowable DSCR",
@@ -5183,5 +5187,6 @@
   "error.msg.loan.cashflow.data.is.not.available.financialratio.cannot.be.generated": "Financial Ratio report cannot be created. CashFlow data not available.",
   "error.msg.loan.balancesheet.data.is.not.available.financialratio.cannot.be.generated" : "Financial Ratio report cannot be created. Balance Sheet data not available.",
   "label.button.generateFinancialRatio": "Financial Ratio",
+  "error.msg.loan.ic.review.recommended.amount.must.be.lower.than.max.loan.amount": "IC Review recommended amount must be lower than max loan amount from cash flow calculation",
   "----End---": "--End of file--- "
 }
