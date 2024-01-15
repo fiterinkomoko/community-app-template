@@ -292,17 +292,17 @@
                 </div>
             </div>
             <div ng-show="isICReview">
-                <div ng-show="icReviewPreviousRecommendedAmount" class="form-group">
-                    <label class="control-label col-sm-2" for="icReviewPreviousRecommendedAmount">{{ 'label.input.icReviewPreviousRecommendedAmount' | translate }}</label>
+                <div ng-show="icReviewPreviousRecommendedAmount" ng-repeat="previousRecommendedAmount in icReviewPreviousRecommendedAmount" class="form-group">
+                    <label class="control-label col-sm-2" for="{{previousRecommendedAmount.label}}">{{ 'label.input.' + previousRecommendedAmount.label | translate }}</label>
                     <div class="col-sm-3">
                         <div class="input-group">
                             <span class="input-group-addon">{{ icreviewTemplate.currency.displaySymbol }}</span>
                             <input 
-                                id="icReviewPreviousRecommendedAmount" 
+                                id="{{previousRecommendedAmount.label}}"
                                 class="form-control" 
                                 type="text" 
-                                name="icReviewPreviousRecommendedAmount" 
-                                ng-model="icReviewPreviousRecommendedAmount" 
+                                name="{{previousRecommendedAmount.label}}" 
+                                ng-model="previousRecommendedAmount.value" 
                                 number-format readonly />
                         </div>
                     </div>
