@@ -1568,9 +1568,8 @@
                                 <th class="empty">{{'label.heading.previousMonth1' | translate}}</th>
                                 <th class="empty">{{'label.heading.month0' | translate}}</th>
 
-                                <th class="empty" ng-repeat="sales in cashFlowData.cashFlowProjectionDataList" ng-if="sales.cashFlowType === 'INCOME' && sales.particularType === 'Sales Income'">
-                                    Month {{ monthCounter }}
-                                    <span ng-init="monthCounter = monthCounter + 1"></span>
+                                <th class="empty" ng-repeat="sales in cashFlowData.cashFlowProjectionDataList | filter:{cashFlowType: 'INCOME', particularType: 'Sales Income'} | limitTo:(cashFlowData.cashFlowProjectionDataList.length / 2)">
+                                    Month {{ $index + 1 }}
                                 </th>
                             </tr>
                             </thead>
@@ -1588,15 +1587,11 @@
                             <tr>
                                 <td><b></b></td>
                                 <td><b>{{'label.heading.otherIncome' | translate}}</b></td>
-                                <td>900</td>
-                                <td>900</td>
-                                <td>900</td>
-                                <td>900</td>
-                                <td>900</td>
-                                <td>900</td>
-                                <td>900</td>
-                                <td>900</td>
-                                <td>900</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[0] | number }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[1] | number }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[2] | number }}</td>
+                                <td ng-repeat="sales in cashFlowData.cashFlowProjectionDataList" ng-if="sales.cashFlowType === 'INCOME' && sales.particularType === 'Sales Income'">{{ calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[2] | number }}</td>
+
                             </tr>
                             <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'INCOME' && cash.particularType === 'Other Income'">
                                 <td></td>
@@ -1633,15 +1628,11 @@
                             <tr>
                                 <td></td>
                                 <td><b>{{'label.heading.businessExpenses' | translate}}</b></td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[0] | number }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[1] | number }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] | number }}</td>
+                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] | number }}</td>
+
                             </tr>
                             <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Business Expenses'">
                                 <td></td>
@@ -1655,15 +1646,11 @@
                             <tr>
                                 <td></td>
                                 <td><b>{{'label.heading.houseHoldExpense' | translate}}</b></td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
-                                <td>1700</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[0] | number }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[1] | number }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2] | number }}</td>
+                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2] | number }}</td>
+
                             </tr>
                             <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Household Expenses'">
                                 <td></td>
