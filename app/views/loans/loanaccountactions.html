@@ -291,6 +291,67 @@
                     </div>
                 </div>
             </div>
+            <div ng-show="isICReview">
+                <div ng-show="icReviewPreviousRecommendedAmount" class="form-group">
+                    <label class="control-label col-sm-2" for="icReviewPreviousRecommendedAmount">{{ 'label.input.icReviewPreviousRecommendedAmount' | translate }}</label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">{{ icreviewTemplate.currency.displaySymbol }}</span>
+                            <input 
+                                id="icReviewPreviousRecommendedAmount" 
+                                class="form-control" 
+                                type="text" 
+                                name="icReviewPreviousRecommendedAmount" 
+                                ng-model="icReviewPreviousRecommendedAmount" 
+                                number-format readonly />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="icReviewRecommendedAmount">
+                        {{ 'label.input.icReviewRecommendedAmount' | translate }}
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">{{ icreviewTemplate.currency.displaySymbol }}</span>
+                            <input 
+                                id="icReviewRecommendedAmount" 
+                                class="form-control" 
+                                type="text" 
+                                name="icReviewRecommendedAmount" 
+                                ng-model="formData.icReviewRecommendedAmount" 
+                                number-format />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="icReviewTermFrequency">
+                        {{ 'label.input.icReviewTermFrequency' | translate }}
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-sm-3">
+                        <input 
+                            id="icReviewTermFrequency" 
+                            class="form-control" 
+                            type="text" 
+                            name="icReviewTermFrequency" 
+                            ng-model="formData.icReviewTermFrequency" 
+                            number-format />
+                    </div>
+                    <div class="col-sm-2">
+                        <select 
+                            id="icReviewTermPeriodFrequencyEnum" 
+                            ng-model="formData.icReviewTermPeriodFrequencyEnum" 
+                            class="form-control col=sm-2" 
+                            name="icReviewTermPeriodFrequencyEnum"
+                            ng-options="termFrequencyType.id as termFrequencyType.value for termFrequencyType in icreviewTemplate.termFrequencyTypeOptions"
+                            value="{{frequency.id}}">
+                                <option value="">-- Term Period --</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
             <div class="form-group" ng-show="showNoteField">
                 <label class="control-label col-sm-2" for="note">{{ 'label.input.note' | translate}}
                     <span ng-show="noteFieldMandatory"

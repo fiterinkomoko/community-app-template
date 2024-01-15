@@ -879,6 +879,19 @@
                                type="text" ng-model="formData.maxNumberOfLoanExtensionsAllowed" late-validate number=true >
                     </div>
             </div>
+            <div class="form-group">
+                <label class="control-label col-sm-4">
+                    {{ 'label.input.allowableDSCR' | translate }}
+                    <span class="required">*</span>
+                </label>
+                <div class="col-sm-2">
+                    <input id="allowableDSCR" class="form-control" type="text" name="allowableDSCR" 
+                        ng-model="formData.allowableDSCR" number-format required late-validate />
+                </div>
+                <div class="col-sm-2">
+                    <form-validate valattributeform="Settings" valattribute="allowableDSCR" />
+                </div>
+            </div>
                     <!-- bnpl product -->
             <div class="form-group">
                 <div class="col-sm-3">
@@ -2063,6 +2076,10 @@
                 <tr>
                     <td>{{'label.input.canUseForTopup' | translate}}</td>
                     <td colspan="3">{{loanproduct.canUseForTopup | YesOrNo}}</td>
+                </tr>
+                <tr>
+                    <td>{{'label.input.allowableDSCR' | translate}}</td>
+                    <td colspan="3">{{loanproduct.allowableDSCR | number}}</td>
                 </tr>
 
                 <tr>

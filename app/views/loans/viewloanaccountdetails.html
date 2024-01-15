@@ -1709,6 +1709,286 @@
                         </table>
                         </div>
                     </uib-tab>
+                    <uib-tab ng-show="financialRatioData" heading="{{'label.heading.financialRatioReport' | translate}}">
+
+                        <style type="text/css">.ritz .waffle a { color: inherit; }.ritz .waffle .s1{border-bottom:1px SOLID #000000;background-color:#ffffff;}.ritz .waffle .s4{border-bottom:1px SOLID #000000;border-right:1px SOLID #000000;background-color:#ffffff;text-align:center;font-weight:bold;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s10{border-bottom:1px SOLID #000000;border-right:1px SOLID #000000;background-color:#f3f3f3;text-align:right;font-weight:bold;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s11{border-bottom:1px SOLID #000000;border-right:1px SOLID #000000;background-color:#ffffff;text-align:left;font-weight:bold;color:#000000;font-family:'Arial';font-size:11pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s3{border-right:1px SOLID #000000;background-color:#ffffff;}.ritz .waffle .s12{border-bottom:1px SOLID #000000;border-right:1px SOLID #000000;background-color:#ffffff;text-align:right;font-weight:bold;color:#000000;font-family:'Arial';font-size:11pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s14{border-bottom:1px SOLID #000000;border-right:1px SOLID #000000;background-color:#f3f3f3;text-align:right;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s7{border-bottom:1px SOLID #000000;border-right:1px SOLID #000000;background-color:#ffffff;text-align:right;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s9{border-bottom:1px SOLID #000000;border-right:1px SOLID #000000;background-color:#f3f3f3;text-align:left;font-weight:bold;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s0{background-color:#ffffff;text-align:left;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s5{border-bottom:1px SOLID #000000;border-right:1px SOLID #000000;background-color:#ffffff;text-align:left;font-weight:bold;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:middle;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s6{border-bottom:1px SOLID #000000;border-right:1px SOLID #000000;background-color:#ffffff;text-align:left;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s13{border-bottom:1px SOLID #000000;background-color:#ffffff;text-align:left;font-weight:bold;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s8{border-bottom:1px SOLID #000000;border-right:1px SOLID #000000;background-color:#ffffff;text-align:left;font-weight:bold;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}.ritz .waffle .s2{border-bottom:1px SOLID #000000;background-color:#ffffff;text-align:left;color:#000000;font-family:'Arial';font-size:10pt;vertical-align:bottom;white-space:nowrap;direction:ltr;padding:2px 3px 2px 3px;}</style>
+                        <div class="ritz grid-container" dir="ltr" style="padding-left: 80px;">
+                            <table class="waffle" cellspacing="0" cellpadding="0">
+
+                                <tbody>
+                                <tr style="height: 20px">
+
+                                    <td></td>
+                                    <td></td>
+                                    <td class="s0"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td></td>
+                                    <td class="s1"></td>
+                                    <td class="s2"></td>
+                                    <td class="s1"></td>
+                                    <td class="s1"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="s1"></td>
+                                    <td class="s1"></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s4" dir="ltr" colspan="4">{{'label.heading.financialRatio.balanceSheet' | translate }}</td>
+                                    <td></td>
+                                    <td class="s3" style="width:100px;"></td>
+                                    <td class="s4" style="width:100px;" dir="ltr" colspan="2"> {{'label.heading.financialRatio.financialRatios' | translate }} </td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s4" dir="ltr" colspan="2">{{'label.heading.financialRatio.assets' | translate }}</td>
+                                    <td class="s4" dir="ltr" colspan="2">{{'label.heading.financialRatio.liabilities' | translate }}</td>
+                                    <td></td>
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.netMargin' | translate }}</td>
+                                    <td class="s7">{{financialRatioData.netMargin | number}}</td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s4" dir="ltr" colspan="2">{{'label.heading.financialRatio.currentAssets' | translate }}</td>
+                                    <td class="s4" dir="ltr" colspan="2">{{'label.heading.financialRatio.shortTerm' | translate }} </td>
+                                    <td></td>
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.rotation' | translate }}</td>
+                                    <td class="s7">{{financialRatioData.rotation | number}}</td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.cash' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.cash | number}}</td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.goodsBoughtOnCredit' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.goodsBoughtOnCredit | number}}</td>
+                                    <td></td>
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.liquidity' | translate }} </td>
+                                    <td class="s7">{{financialRatioData.liquidity | number}}</td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.inventoryStock' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.inventoryStock | number}}</td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.pendingPayable' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.anyOtherPendingPayables | number}}</td>
+                                    <td></td>
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.leverage' | translate }}</td>
+                                    <td class="s7">{{financialRatioData.leverage | number}}</td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.receivables' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.receivables | number}}</td>
+                                    <td class="s6" dir="ltr"></td>
+                                    <td class="s6"></td>
+                                    <td></td>
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.capitalization' | translate }}</td>
+                                    <td class="s7">{{financialRatioData.capitalization | number}}</td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.chama' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.chamaTontines | number}}</td>
+                                    <td class="s6" dir="ltr"></td>
+                                    <td class="s6"></td>
+                                    <td></td>
+                                    <td class="s3"></td>
+                                    <td class="s6 softmerge" dir="ltr">
+                                        <div class="softmerge-inner" style="width:119px;left:-1px">{{'label.heading.financialRatio.dscr' | translate }}</div>
+                                    </td>
+                                    <td class="s7">{{financialRatioData.dscr | number}}</td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.otherCurrentAssets' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.otherCurrentAssets | number}}</td>
+                                    <td class="s8" dir="ltr"></td>
+                                    <td class="s6"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s9 softmerge" dir="ltr">
+                                        <div class="softmerge-inner" style="width:132px;left:-1px">{{'label.heading.financialRatio.totalCurrentAssets' | translate }}</div>
+                                    </td>
+                                    <td class="s10">{{financialRatioData.totalCurrentAssets | number}}</td>
+                                    <td class="s9" dir="ltr">{{'label.heading.financialRatio.totalShortTerm' | translate }} </td>
+                                    <td class="s10" dir="ltr">{{financialRatioData.totalShortTerm | number}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s4" dir="ltr" colspan="2">{{'label.heading.financialRatio.fixedAssets' | translate }}</td>
+                                    <td class="s4" dir="ltr" colspan="2">{{'label.heading.financialRatio.longTerm' | translate }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.equipment' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.equipmentTools | number}}</td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.unsecuredLoans' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.unsecuredLoans | number}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.furniture' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.furniture | number}}</td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.assetFinancing' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.assetFinancing | number}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.businessPremises' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.businessPremises | number}}</td>
+                                    <td class="s6"></td>
+                                    <td class="s6"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.otherFixedAssets' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.otherFixedAssets | number}}</td>
+                                    <td class="s6"></td>
+                                    <td class="s6"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="s0"></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s9" dir="ltr">{{'label.heading.financialRatio.totalFixedAssets' | translate }}</td>
+                                    <td class="s10" dir="ltr">{{financialRatioData.totalFixedAssets | number}}</td>
+                                    <td class="s9" dir="ltr">{{'label.heading.financialRatio.totalLongTerm' | translate }}</td>
+                                    <td class="s10" dir="ltr">{{financialRatioData.totalLongTerm | number}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s9" dir="ltr">{{'label.heading.financialRatio.totalAssets' | translate }}</td>
+                                    <td class="s10">{{financialRatioData.totalAssets | number}}</td>
+                                    <td class="s9" dir="ltr">{{'label.heading.financialRatio.totalLiabilities' | translate }}</td>
+                                    <td class="s10" dir="ltr">{{financialRatioData.totalLiabilities | number}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td></td>
+                                    <td></td>
+                                    <td class="s3"></td>
+                                    <td class="s11" dir="ltr">{{'label.heading.financialRatio.equity' | translate }}</td>
+                                    <td class="s12">{{financialRatioData.equity | number}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td></td>
+                                    <td></td>
+                                    <td class="s0"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td></td>
+                                    <td class="s13" dir="ltr" colspan="2">{{'label.heading.financialRatio.bankStatementSummary' | translate }}</td>
+                                    <td class="s1"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s9" dir="ltr">{{'label.heading.financialRatio.deposits' | translate }}Deposits</td>
+                                    <td class="s9" dir="ltr">{{'label.heading.financialRatio.withdrawals' | translate }}Withdrawals</td>
+                                    <td class="s9" dir="ltr">{{'label.heading.financialRatio.turnOver' | translate }}Monthly turn over</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr style="height: 20px">
+
+                                    <td class="s3"></td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.bssDeposits | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.bssWithdrawals | number}}</td>
+                                    <td class="s14" dir="ltr">{{financialRatioData.bssMonthlyTurnOver | number}}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </uib-tab>
                 </uib-tabset>
             </div>
         </div>
