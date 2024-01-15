@@ -11,6 +11,7 @@
             scope.isHideAccrualsCheckboxChecked = true;
             scope.loandetails = [];
             scope.isPendingDisbursement = false;
+            scope.projectionSize = 0;
 
             scope.routeTo = function (loanId, transactionId, transactionTypeId) {
                 if (transactionTypeId == 2 || transactionTypeId == 4 || transactionTypeId == 1) {
@@ -969,6 +970,7 @@
         scope.retrieveCashFlow = function(){
                     resourceFactory.retrieveCashFlow.get({loanId: routeParams.id}, function (data) {
                         scope.cashFlowData = data;
+                        scope.projectionSize = data.cashFlowProjectionDataList.length/2;
                     });
                 }
 
@@ -997,6 +999,11 @@
                 }, 0);
 
                 return [sumPreviousMonth2, sumPreviousMonth1, sumMonth0];
+            };
+
+        scope.computeTotalValue = function (num1, num2) {
+        console.log("num1: " + num1 + " num2: " + num2);
+              return Number(num1) + Number(num2);
             };
 
 
