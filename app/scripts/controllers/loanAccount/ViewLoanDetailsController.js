@@ -185,6 +185,11 @@
                             location.path('/viewloanaccount/' + accountId);
                             });
                          break;
+                       case "generateFinancialRatio":
+                                                   resourceFactory.generateFinancialRatio.post({loanId: accountId},function (data) {
+                                                   location.path('/viewloanaccount/' + accountId);
+                                                   });
+                                                break;
                 }
             };
 
@@ -384,6 +389,10 @@
                             {
                                 name: "button.generatecashflow",
                                 taskPermissionName: 'GENERATE_CASHFLOW'
+                            },
+                            {
+                                name: "button.generateFinancialRatio",
+                                taskPermissionName: 'GENERATE_FINANCIALRATIO'
                             },
                             {
                                 name: "button.addcollateral",
@@ -599,6 +608,7 @@
                 scope.crbMetropolIdentityVerification();
                 }
                 scope.retrieveCashFlow();
+                scope.retrieveFinancialRatio();
             });
 
             var fetchFunction = function (offset, limit, callback) {
@@ -962,7 +972,15 @@
                     });
                 }
 
+         scope.retrieveFinancialRatio = function(){
+                                    resourceFactory.retrieveFinancialRatio.get({loanId: routeParams.id}, function (data) {
+                                        scope.financialRatioData = data;
+                                    });
+                                }
+
         }
+
+
     });
     mifosX.ng.application.controller('ViewLoanDetailsController', ['$scope', '$routeParams', 'ResourceFactory','PaginatorService', '$location', '$route', '$http', '$uibModal', 'dateFilter', 'API_VERSION', '$sce', '$rootScope','$window', mifosX.controllers.ViewLoanDetailsController]).run(function ($log) {
         $log.info("ViewLoanDetailsController initialized");
