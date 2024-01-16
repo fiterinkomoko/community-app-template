@@ -1667,35 +1667,33 @@
                                 <td><b>{{ cash.month0 + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2] | number }}</b></td>
                                 <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'"><b>{{ cash.month0 + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2] | number }}</b></td>
                             </tr>
-                            <tr><td colspan="7"></td></tr>
+                            <tr><td colspan="{{projectionSize+5}}"></td></tr>
                             <tr>
                                 <td><b>{{'label.heading.netCashFlow' | translate | uppercase}}</b></td>
                                 <td></td>
-                                <td><b>1700</b></td>
-                                <td><b>1700</b></td>
-                                <td><b>1700</b></td>
-                                <td><b>1700</b></td>
-                                <td><b>1700</b></td>
-                                <td><b>1700</b></td>
-                                <td><b>1700</b></td>
-                                <td><b>1700</b></td>
-                                <td><b>1700</b></td>
+                                <td><b>{{ cashFlowData.netCashFlowData.previousMonth2 | number }}</b></td>
+                                <td><b>{{ cashFlowData.netCashFlowData.previousMonth1 | number }}</b></td>
+                                <td><b>{{ cashFlowData.netCashFlowData.month0 | number }}</b></td>
+
                             </tr>
-                            <tr><td colspan="7"></td></tr>
+                            <tr><td colspan="{{projectionSize+5}}"></td></tr>
                             <tr>
                                 <td></td>
                                 <td><b>{{'label.heading.allowableDSCR' | translate}}</b></td>
-                                <td>0.7</td>
+                                <td>{{loandetails.allowableDscr}}</td>
+                                <td colspan="{{projectionSize+5}}"></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td><b>{{'label.heading.maximumAmountToBePaid' | translate}}</b></td>
-                                <td>147</td>
+                                <td>{{ loandetails.allowableDscr * cashFlowData.netCashFlowData.month0 | number}}</td>
+                                <td colspan="{{projectionSize+5}}"></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td><b>{{'label.heading.maxLoanAmount' | translate}}</b></td>
-                                <td>882</td>
+                                <td>{{loandetails.allowableDscr * cashFlowData.netCashFlowData.month0 * projectionSize | number}}</td>
+                                <td colspan="{{projectionSize+5}}"></td>
                             </tr>
                             </tbody>
                         </table>
