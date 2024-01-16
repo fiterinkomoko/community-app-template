@@ -90,6 +90,7 @@
                 scope.formData.allowVariableInstallments = false ;
                 scope.formData.isBnplLoanProduct = false;
                 scope.formData.requiresEquityContribution = false;
+                scope.formData.allowableDSCR = null;
                 scope.product.interestRecalculationNthDayTypeOptions.push({"code" : "onDay", "id" : -2, "value" : "on day"});
                 scope.loanproduct = angular.copy(scope.formData);
                 scope.isClicked = false;

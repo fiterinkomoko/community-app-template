@@ -113,7 +113,8 @@
                     isAccountLevelArrearsToleranceEnable : scope.product.isAccountLevelArrearsToleranceEnable,
                     isBnplLoanProduct : scope.product.isBnplLoanProduct,
                     requiresEquityContribution : scope.product.requiresEquityContribution,
-                    equityContributionLoanPercentage : scope.product.equityContributionLoanPercentage
+                    equityContributionLoanPercentage : scope.product.equityContributionLoanPercentage,
+                    allowableDSCR : scope.product.allowableDSCR,
                 };
 
                 if (scope.product.isInterestRecalculationEnabled) {
