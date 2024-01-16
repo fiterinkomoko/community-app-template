@@ -5139,5 +5139,10 @@
   "label.input.icReviewPreviousRecommendedAmount": "Previous Recommended Amount",
   "label.input.icReviewRecommendedAmount": "Recommended Amount",
   "label.input.icReviewTermFrequency": "Loan Term",
+  "error.msg.required.crb.verification": "CRB Verification required",
+  "label.input.isIdeaClient": "Is Idea Client?",
+  "error.msg.loan.required.cashflow.data": "CashFlow data not available.",
+  "error.msg.loan.required.financialRatio.data": "Financial Ratio data not available.",
+  "error.msg.loan.recommended.amount.cannot.be.greater.than.calculated.amount": "Recommended amount cannot be greater than the calculated amount {{params[0].value}}",
   "----End---": "--End of file--- "
 }
