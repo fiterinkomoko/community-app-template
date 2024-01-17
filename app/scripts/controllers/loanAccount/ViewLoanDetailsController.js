@@ -12,6 +12,9 @@
             scope.loandetails = [];
             scope.isPendingDisbursement = false;
             scope.projectionSize = 0;
+            scope.totalIncome = [];
+            scope.totalExpense = [];
+
 
             scope.routeTo = function (loanId, transactionId, transactionTypeId) {
                 if (transactionTypeId == 2 || transactionTypeId == 4 || transactionTypeId == 1) {
@@ -610,6 +613,9 @@
                 }
                 scope.retrieveCashFlow();
                 scope.retrieveFinancialRatio();
+                if(data.nextLoanIcReviewDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT"){
+                    scope.showApprovedICAmount = true;
+                }
             });
 
             var fetchFunction = function (offset, limit, callback) {
@@ -1001,12 +1007,23 @@
                 return [sumPreviousMonth2, sumPreviousMonth1, sumMonth0];
             };
 
-        scope.computeTotalValue = function (num1, num2) {
-        console.log("num1: " + num1 + " num2: " + num2);
-              return Number(num1) + Number(num2);
-            };
+        scope.calculateAndSaveTotalIncome = function (amount) {
+                    scope.totalIncome.push(amount);
+                };
+        scope.calculateAndSaveTotalExpense = function (amount) {
+                    scope.totalExpense.push(amount);
+                };
 
-            scope.openCashFlowEditModal = function (id) {
+        scope.calculateNetCashFlow = function(index) {
+            if (index >= scope.totalIncome.length || index >= scope.totalExpense.length) {
+                return 0;
+            }
+            var income = scope.totalIncome[index];
+            var expense = scope.totalExpense[index];
+            return income - expense;
+        };
+
+        scope.openCashFlowEditModal = function (id) {
             scope.projectionUpdate= {};
             var totalInstallments = scope.loandetails.numberOfRepayments;
             scope.installmentMonthsOptions = [];
@@ -1029,7 +1046,7 @@
             };
 
             var AddCashFlowProjectionRateCtrl = function ($scope, $uibModalInstance) {
-                
+
                 $scope.submitForm = function () {
                     resourceFactory.generateCashFlow.post({loanId: routeParams.id, cashFlowType: this.projectionUpdate.cashFlowType,
                      month: this.projectionUpdate.month, projectionRate: this.projectionUpdate.projectionRate, locale: scope.optlang.code},function (data) {
@@ -1042,7 +1059,6 @@
                     $uibModalInstance.dismiss('cancel');
                 };
             };
-
 
         }
 

@@ -17,10 +17,6 @@
             resourceFactory.dueDiligenceLoanDecisionEngineResource.getTemplate({loanId: scope.loanId}, function (data) {
                 scope.loandetails = data;
                 scope.productId = data.loanProductId;
-                scope.cohortOptions = data.cohortOptions;
-                scope.countryOptions = data.countryOptions;
-                scope.surveyLocationOptions = data.surveyLocationOptions;
-                scope.programOptions = data.programOptions;
             });
 
 
@@ -32,13 +28,7 @@
                  this.formData.locale = scope.optlang.code;
                  this.formData.dateFormat = scope.df;
 
-                 if (scope.first.startDate) {
-                        this.formData.startDate = dateFilter(scope.first.startDate, scope.df);
-                 }
-                if (scope.second.endDate) {
-                     this.formData.endDate = dateFilter(scope.second.endDate, scope.df);
-                }
-                if (scope.third.dueDiligenceOn) {
+                 if (scope.third.dueDiligenceOn) {
                      this.formData.dueDiligenceOn = dateFilter(scope.third.dueDiligenceOn, scope.df);
                 }
 
