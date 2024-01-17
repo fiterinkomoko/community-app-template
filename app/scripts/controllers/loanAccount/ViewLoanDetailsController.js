@@ -11,6 +11,10 @@
             scope.isHideAccrualsCheckboxChecked = true;
             scope.loandetails = [];
             scope.isPendingDisbursement = false;
+            scope.projectionSize = 0;
+            scope.totalIncome = [];
+            scope.totalExpense = [];
+
 
             scope.routeTo = function (loanId, transactionId, transactionTypeId) {
                 if (transactionTypeId == 2 || transactionTypeId == 4 || transactionTypeId == 1) {
@@ -609,6 +613,9 @@
                 }
                 scope.retrieveCashFlow();
                 scope.retrieveFinancialRatio();
+                if(data.nextLoanIcReviewDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT"){
+                    scope.showApprovedICAmount = true;
+                }
             });
 
             var fetchFunction = function (offset, limit, callback) {
@@ -969,6 +976,7 @@
         scope.retrieveCashFlow = function(){
                     resourceFactory.retrieveCashFlow.get({loanId: routeParams.id}, function (data) {
                         scope.cashFlowData = data;
+                        scope.projectionSize = data.cashFlowProjectionDataList.length/2;
                     });
                 }
 
@@ -977,6 +985,45 @@
                                         scope.financialRatioData = data;
                                     });
                                 }
+
+        scope.calculateSums = function(cashFlowDataList, cashFlowType, particularType) {
+
+                var filteredData = cashFlowDataList.filter(function(cash) {
+                    return cash.cashFlowType === cashFlowType && cash.particularType === particularType;
+                });
+
+                var sumPreviousMonth2 = filteredData.reduce(function(sum, cash) {
+                    return sum + (cash.previousMonth2 || 0); // Use 0 if value is undefined or null
+                }, 0);
+
+                var sumPreviousMonth1 = filteredData.reduce(function(sum, cash) {
+                    return sum + (cash.previousMonth1 || 0);
+                }, 0);
+
+                var sumMonth0 = filteredData.reduce(function(sum, cash) {
+                    return sum + (cash.month0 || 0);
+                }, 0);
+
+                return [sumPreviousMonth2, sumPreviousMonth1, sumMonth0];
+            };
+
+        scope.calculateAndSaveTotalIncome = function (amount) {
+                    scope.totalIncome.push(amount);
+                };
+        scope.calculateAndSaveTotalExpense = function (amount) {
+                    scope.totalExpense.push(amount);
+                };
+
+        scope.calculateNetCashFlow = function(index) {
+            if (index >= scope.totalIncome.length || index >= scope.totalExpense.length) {
+                return 0;
+            }
+
+            var income = scope.totalIncome[index];
+            var expense = scope.totalExpense[index];
+
+            return income - expense;
+        };
 
         }
 
