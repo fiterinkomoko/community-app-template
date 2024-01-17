@@ -5180,5 +5180,10 @@
   "error.msg.loan.cashflow.data.is.not.available.financialratio.cannot.be.generated": "Financial Ratio report cannot be created. CashFlow data not available.",
   "error.msg.loan.balancesheet.data.is.not.available.financialratio.cannot.be.generated" : "Financial Ratio report cannot be created. Balance Sheet data not available.",
   "label.button.generateFinancialRatio": "Financial Ratio",
+  "label.heading.update.projection.rate": "Update Projection Rate",
+  "label.input.cashFlow.type": "CashFlow Type",
+  "label.menu.select": "Select",
+  "label.input.cashFlow.month": "Month",
+  "label.input.cashFlow.projectionRate": "Projection Rate",
   "----End---": "--End of file--- "
 }
