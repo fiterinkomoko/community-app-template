@@ -609,6 +609,9 @@
                 }
                 scope.retrieveCashFlow();
                 scope.retrieveFinancialRatio();
+                if(data.nextLoanIcReviewDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT"){
+                    scope.showApprovedICAmount = true;
+                }
             });
 
             var fetchFunction = function (offset, limit, callback) {
