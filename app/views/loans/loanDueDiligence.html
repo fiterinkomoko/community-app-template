@@ -16,91 +16,60 @@
             <fieldset>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="surveyName">{{ 'label.input.surveyname' | translate }}<span
+                    <label class="control-label col-sm-2" for="isIdeaClient">{{ 'label.input.isIdeaClient' | translate }}<span
                             class="required">*</span></label>
 
-                    <div class="col-sm-3">
-                        <input id="surveyName" name="surveyName" type="text" class="form-control" ng-model="formData.surveyName" required late-validate>
+                    <div class="col-sm-1">
+                        <input id="isIdeaClient" name="isIdeaClient" type="checkbox" class="form-control" ng-model="formData.isIdeaClient" >
                     </div>
-                    
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="recommendedAmount">
+                        {{ 'label.input.icReviewRecommendedAmount' | translate }}
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">{{ loandetails.currency.displaySymbol }}</span>
+                            <input
+                                    id="recommendedAmount"
+                                    class="form-control"
+                                    type="text"
+                                    name="recommendedAmount"
+                                    ng-model="formData.recommendedAmount"
+                                    number-format />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="recommendedLoanTermFrequency">
+                        {{ 'label.input.icReviewTermFrequency' | translate }}
+                        <span class="required">*</span>
+                    </label>
+                    <div class="col-sm-3">
+                        <input
+                                id="recommendedLoanTermFrequency"
+                                class="form-control"
+                                type="text"
+                                name="recommendedLoanTermFrequency"
+                                ng-model="formData.recommendedLoanTermFrequency"
+                                number-format />
+                    </div>
                     <div class="col-sm-2">
-                        <form-validate valattributeform="addduediligenceform" valattribute="surveyName"/>
-                    </div>
-                
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="startDate">{{ 'label.input.startdate' | translate }}<span
-                            class="required">*</span></label>
-
-                    <div class="col-sm-3">
-                        <input id="startDate" type="text" name="startDate" datepicker-pop="dd MMMM yyyy"
-                               ng-model="first.startDate" is-open="opened" min="'2000-01-01'" max="restrictDate"
-                               class="form-control" />
-                    </div>
-
-                    <div class="col-sm-2">
-                        <form-validate valattributeform="addduediligenceform" valattribute="startDate"/>
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="endDate">{{ 'label.input.enddate' | translate }}<span
-                            class="required">*</span></label>
-
-                    <div class="col-sm-3">
-                        <input id="endDate" type="text" name="endDate" datepicker-pop="dd MMMM yyyy"
-                               ng-model="second.endDate" is-open="opened" min="'2000-01-01'" max="restrictDate"
-                               class="form-control" />
-                    </div>
-
-                    <div class="col-sm-2">
-                        <form-validate valattributeform="addduediligenceform" valattribute="endDate"/>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="surveyLocation">{{ 'label.input.surveylocation' | translate }}<span
-                            class="required">*</span></label>
-
-                    <div class="col-sm-3">
-                        <select id="surveyLocation" ng-model="formData.surveyLocation" class="form-control"
-                                ng-options="survey.id as survey.name for survey in surveyLocationOptions"
-                                value="{{survey.id}}"><option value="">--{{'label.menu.surveyLocation' | translate}}--</option></select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="cohort">{{ 'label.input.cohort' | translate }}<span
-                            class="required">*</span></label>
-
-                    <div class="col-sm-3">
-                        <select id="cohort" ng-model="formData.cohort" class="form-control"
-                                ng-options="coht.id as coht.name for coht in cohortOptions"
-                                value="{{coht.id}}"><option value="">--{{'label.menu.cohort' | translate}}--</option></select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="program">{{ 'label.input.program' | translate }}<span
-                            class="required">*</span></label>
-
-                    <div class="col-sm-3">
-                        <select id="program" ng-model="formData.program" class="form-control"
-                                ng-options="prog.id as prog.name for prog in programOptions"
-                                value="{{prog.id}}"><option value="">--{{'label.menu.program' | translate}}--</option></select>
+                        <select
+                                id="recommendedLoanTermFrequencyType"
+                                ng-model="formData.recommendedLoanTermFrequencyType"
+                                class="form-control col=sm-2"
+                                name="recommendedLoanTermFrequencyType"
+                                ng-options="termFrequencyType.id as termFrequencyType.value for termFrequencyType in loandetails.termFrequencyTypeOptions"
+                                value="{{frequency.id}}">
+                            <option value="">-- Term Period --</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="country">{{ 'label.input.country' | translate }}<span
-                            class="required">*</span></label>
-
-                    <div class="col-sm-3">
-                        <select id="country" ng-model="formData.country" class="form-control"
-                                ng-options="cty.id as cty.name for cty in countryOptions"
-                                value="{{cty.id}}"><option value="">--{{'label.menu.country' | translate}}--</option></select>
-                    </div>
-                </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="dueDiligenceOn">{{ 'label.input.approvedondate' | translate }}<span
                             class="required">*</span></label>
