@@ -12,6 +12,9 @@
             scope.loandetails = [];
             scope.isPendingDisbursement = false;
             scope.projectionSize = 0;
+            scope.totalIncome = [];
+            scope.totalExpense = [];
+
 
             scope.routeTo = function (loanId, transactionId, transactionTypeId) {
                 if (transactionTypeId == 2 || transactionTypeId == 4 || transactionTypeId == 1) {
@@ -1001,12 +1004,23 @@
                 return [sumPreviousMonth2, sumPreviousMonth1, sumMonth0];
             };
 
-        scope.computeTotalValue = function (num1, num2) {
-        console.log("num1: " + num1 + " num2: " + num2);
-              return Number(num1) + Number(num2);
-            };
+        scope.calculateAndSaveTotalIncome = function (amount) {
+                    scope.totalIncome.push(amount);
+                };
+        scope.calculateAndSaveTotalExpense = function (amount) {
+                    scope.totalExpense.push(amount);
+                };
 
+        scope.calculateNetCashFlow = function(index) {
+            if (index >= scope.totalIncome.length || index >= scope.totalExpense.length) {
+                return 0;
+            }
 
+            var income = scope.totalIncome[index];
+            var expense = scope.totalExpense[index];
+
+            return income - expense;
+        };
 
         }
 
