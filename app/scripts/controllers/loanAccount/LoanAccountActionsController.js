@@ -529,7 +529,7 @@
                          scope.formData[scope.modelName] =  new Date();
                          scope.noteFieldMandatory = true;
                          scope.icreviewTemplate = data;
-                         scope.icReviewPreviousRecommendedAmount = data.loanDecisionData.icReviewDecisionLevelOneRecommendedAmount;
+                         scope.icReviewPreviousRecommendedAmount = icReviewLoanDecisionDataObjectToArray(data.loanDecisionData);
                      });
 
                      break;
@@ -543,7 +543,7 @@
                           scope.formData[scope.modelName] =  new Date();
                           scope.noteFieldMandatory = true;
                           scope.icreviewTemplate = data;
-                          scope.icReviewPreviousRecommendedAmount = data.loanDecisionData.icReviewDecisionLevelTwoRecommendedAmount;
+                          scope.icReviewPreviousRecommendedAmount = icReviewLoanDecisionDataObjectToArray(data.loanDecisionData);
                       });
 
                       break;
@@ -557,7 +557,7 @@
                         scope.formData[scope.modelName] =  new Date();
                         scope.noteFieldMandatory = true;
                         scope.icreviewTemplate = data;
-                        scope.icReviewPreviousRecommendedAmount = data.loanDecisionData.icReviewDecisionLevelThreeRecommendedAmount;
+                        scope.icReviewPreviousRecommendedAmount = icReviewLoanDecisionDataObjectToArray(data.loanDecisionData);
                     });
 
                     break;
@@ -571,7 +571,7 @@
                         scope.formData[scope.modelName] =  new Date();
                         scope.noteFieldMandatory = true;
                         scope.icreviewTemplate = data;
-                        scope.icReviewPreviousRecommendedAmount = data.loanDecisionData.icReviewDecisionLevelFourRecommendedAmount;
+                        scope.icReviewPreviousRecommendedAmount = icReviewLoanDecisionDataObjectToArray(data.loanDecisionData);
                     });
 
                     break;
@@ -941,6 +941,17 @@
             scope.isCashPayment = function() {
                 const paymentTypeId =scope.formData.paymentTypeId;
                 return scope.paymentTypes.find(function (paymentType) { return paymentTypeId === paymentType.id })?.isCashPayment || false;
+            }
+
+            function icReviewLoanDecisionDataObjectToArray(icReviewData) {
+                const result = [];
+                const icReviewKeys = Object.keys(icReviewData);
+                icReviewKeys.forEach(function(key) {
+                    if(key.includes('icReviewDecisionLevel')) {
+                        result.push({label : key, value: icReviewData[key]});
+                    }
+                });
+                return result;
             }
 
             
