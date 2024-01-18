@@ -17,6 +17,79 @@
             <button class="btn btn-primary" ng-click="delete()">{{'label.button.confirm' | translate}}</button>
         </div>
     </script>
+
+    <script type="text/ng-template" id="cashFlowProjectionUpdateModal.html">
+        <div class="modal-header">
+            <h4>{{ 'label.heading.update.projection.rate' | translate }}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="card">
+                <div class="content">
+                    <form name="addduediligenceform" class="form-horizontal" ng-submit="submitForm()">
+                        <api-validate></api-validate>
+                        <fieldset>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="cashFlowType">{{ 'label.input.cashFlow.type' | translate }}<span
+                                        class="required">*</span></label>
+
+                                <div class="col-sm-4">
+                                    <select id="cashFlowType" name="cashFlowType" class="form-control" ng-model="projectionUpdate.cashFlowType" required late-validate convert-to-number
+                                        ng-options="type.id as type.value for type in projectionCashFlowType"
+                                        value="{{type.value}}"><option value="">--{{'label.menu.select' | translate}}--</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-2">
+                                    <form-validate valattributeform="addduediligenceform" valattribute="projectionUpdate.cashFlowType"/>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="months">{{ 'label.input.cashFlow.month' | translate }}<span
+                                        class="required">*</span></label>
+
+                                <div class="col-sm-4">
+                                    <select id="months" ng-model="projectionUpdate.month" class="form-control" required late-validate
+                                            ng-options="installmentMonth.id as installmentMonth.value for installmentMonth in installmentMonthsOptions"
+                                            value="{{installmentMonth.value}}"><option value="">--{{'label.menu.select' | translate}}--</option></select>
+                                </div>
+
+                                <div class="col-sm-2">
+                                    <form-validate valattributeform="addduediligenceform" valattribute="projectionUpdate.month"/>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3" for="projectionRate">{{ 'label.input.cashFlow.projectionRate' | translate }}<span
+                                        class="required">*</span></label>
+
+                                <div class="col-sm-4">
+                                    <input id="projectionRate" name="projectionRate" type="text" data-ng-model="projectionUpdate.projectionRate"
+                                           class="input-sm form-control"
+                                           required late-validate>
+                                </div>
+
+                                <div class="col-sm-2">
+                                    <form-validate valattributeform="addduediligenceform" valattribute="projectionUpdate.projectionRate"/>
+                                </div>
+
+                            </div>
+                        </fieldset>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" ng-click="updateCashFlowProjection()">Save</button>
+                            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </script>
+
     <div class="card" style="min-height: 550px; overflow: hidden;">
         <div class="form-horizontal" ng-show="report">
         	<div class="form-group" ng-show="viewLoanReport">
@@ -1559,6 +1632,14 @@
                         </div>
                     </uib-tab>
                     <uib-tab ng-show="cashFlowData" heading="{{'label.heading.cashflowReport' | translate}}">
+                        <uib-tab-heading>
+                            {{'label.heading.cashflowReport' | translate}} &nbsp;&nbsp;<i class="fa fa-edit" ng-click="openCashFlowEditModal()" style="cursor:pointer"></i>
+                        </uib-tab-heading>
+                        <div>
+
+
+                            <h2 style="color: red;">{{result}}</h2>
+                        </div>
                         <div style="overflow-x:auto;">
                         <table class="table table-striped">
                             <thead>
