@@ -1018,12 +1018,47 @@
             if (index >= scope.totalIncome.length || index >= scope.totalExpense.length) {
                 return 0;
             }
-
             var income = scope.totalIncome[index];
             var expense = scope.totalExpense[index];
-
             return income - expense;
         };
+
+        scope.openCashFlowEditModal = function (id) {
+            scope.projectionUpdate= {};
+            var totalInstallments = scope.loandetails.numberOfRepayments;
+            scope.installmentMonthsOptions = [];
+            scope.projectionCashFlowType = [{id: 1, value: 'INCOME'},{id: 2, value: 'EXPENSE'}];
+            for(i = 1; i <= totalInstallments; i++) {
+               scope.installmentMonthsOptions.push({id: i, value: i});
+            }
+            $uibModal.open({
+                templateUrl: 'cashFlowProjectionUpdateModal.html',
+                scope: scope,
+                controller: AddCashFlowProjectionRateCtrl,
+                resolve: {
+                            installmentMonthsOptions: function() {
+                            return scope.installmentMonthsOptions;
+                            }
+                        }
+
+            });
+
+            };
+
+            var AddCashFlowProjectionRateCtrl = function ($scope, $uibModalInstance) {
+
+                $scope.submitForm = function () {
+                    resourceFactory.generateCashFlow.post({loanId: routeParams.id, cashFlowType: this.projectionUpdate.cashFlowType,
+                     month: this.projectionUpdate.month, projectionRate: this.projectionUpdate.projectionRate, locale: scope.optlang.code},function (data) {
+                        $uibModalInstance.close('updateCashFlowProjection');
+                        route.reload();
+                    });
+                }
+
+                $scope.cancel = function () {
+                    $uibModalInstance.dismiss('cancel');
+                };
+            };
 
         }
 

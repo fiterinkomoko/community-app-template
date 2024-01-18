@@ -5191,5 +5191,10 @@
   "label.button.generateFinancialRatio": "Financial Ratio",
   "error.msg.loan.ic.review.recommended.amount.must.be.lower.than.max.loan.amount": "IC Review recommended amount must be lower than max loan amount from cash flow calculation",
   "label.heading.approvedicreview": "Approved IC Amount",
+  "label.heading.update.projection.rate": "Update Projection Rate",
+  "label.input.cashFlow.type": "CashFlow Type",
+  "label.menu.select": "Select",
+  "label.input.cashFlow.month": "Month",
+  "label.input.cashFlow.projectionRate": "Projection Rate",
   "----End---": "--End of file--- "
 }
