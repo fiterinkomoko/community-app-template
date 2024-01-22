@@ -186,6 +186,7 @@
                              break;
                        case "generatecashflow":
                             resourceFactory.generateCashFlow.post({loanId: accountId},function (data) {
+                            scope.retrieveCashFlow();
                             location.path('/viewloanaccount/' + accountId);
                             });
                          break;
