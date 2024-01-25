@@ -5196,5 +5196,8 @@
   "label.menu.select": "Select",
   "label.input.cashFlow.month": "Month",
   "label.input.cashFlow.projectionRate": "Projection Rate",
+  "amount.can't.be.greater.than.maximum.applied.loan.amount.calculation": "Loan approved amount can't be greater than maximum applied loan amount calculation {{params[0].value}}",
+  "error.msg.loan.approval.amount.can't.be.greater.than.loan.amount.demanded": "Loan approved amount can't be greater than loan amount demanded {{params[0].value}}",
+  "error.msg.loan.approval.amount.can't.be.greater.than.ic.review.recommended.amount": "Loan approved amount can't be greater than the last IC recommended amount {{params[0].value}}",
   "----End---": "--End of file--- "
 }
