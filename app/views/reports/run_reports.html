@@ -24,7 +24,9 @@
 	        <br>
 
 	        <div class="form-group info" ng-repeat="reportParam in reportParams">
-	            <label class="control-label col-sm-2" for="{{reportParam.variable}}">{{ reportParam.label | translate}}</label>
+	            <label class="control-label col-sm-2" for="{{reportParam.variable}}">{{ reportParam.label | translate}}
+					<span class="required">*</span>
+				</label>
 
                 <div class="col-sm-3">
                     <select chosen="reportParam.selectOptions" id="{{reportParam.inputName}}" ng-model="formData[reportParam.inputName]"
@@ -37,7 +39,9 @@
 	        </div>
 	        <div class="form-group info" ng-repeat="reportTextParam in reportTextParams">
 	            <label class="control-label col-sm-2" for="{{reportTextParam.variable}}">{{ reportTextParam.label |
-	                translate}}</label>
+	                translate}}
+					<span class="required">*</span>
+				</label>
 
 	            <div class="col-sm-3">
 	                <input style="width: 257px" id="{{reportTextParam.inputName}}" type="text" ng-model="formData[reportTextParam.inputName]"  class="form-control" required late-Validate/>
@@ -45,7 +49,9 @@
 	        </div>
 	        <div class="form-group info" ng-repeat="reportDateParam in reportDateParams">
 	            <label class="control-label col-sm-2" for="{{reportDateParam.variable}}">{{ reportDateParam.label |
-	                translate}}</label>
+	                translate}}
+					<span class="required">*</span>
+				</label>
 
 	            <div class="col-sm-3">
 	                <input style="width: 257px" id="{{reportDateParam.inputName}}" type="text" datepicker-pop="yyyy-MM-dd"
