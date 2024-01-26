@@ -5199,5 +5199,8 @@
   "amount.can't.be.greater.than.maximum.applied.loan.amount.calculation": "Loan approved amount can't be greater than maximum applied loan amount calculation {{params[0].value}}",
   "error.msg.loan.approval.amount.can't.be.greater.than.loan.amount.demanded": "Loan approved amount can't be greater than loan amount demanded {{params[0].value}}",
   "error.msg.loan.approval.amount.can't.be.greater.than.ic.review.recommended.amount": "Loan approved amount can't be greater than the last IC recommended amount {{params[0].value}}",
+  "validation.msg.client.address.cannot.be.empty": "Client address cannot be empty",
+  "validation.msg.FamilyMembers.firstName.cannot.be.blank": "Family member first name cannot be blank",
+  "validation.msg.FamilyMembers.relationShipId.cannot.be.blank": "Family member relationship cannot be blank",
   "----End---": "--End of file--- "
 }
