@@ -105,6 +105,23 @@
             <textarea type="text" id="description" name="description" ng-model="formData.description" class="form-control" required="required"/>
         </td>
     </tr>
+    <tr ng-show="formData.productId">
+        <td class="width14">
+            <label>{{ 'label.input.loan.with.another.institution' | translate }}</label>
+        </td>
+        <td class="paddedbottom20 width36">
+            <input type="checkbox" id="loanWithAnotherInstitution" name="loanWithAnotherInstitution"
+                ng-model="formData.loanWithAnotherInstitution" />
+        </td>
+        <td class="width14" ng-show="formData.loanWithAnotherInstitution">
+            <label>{{ 'label.input.loan.with.another.institution.amount' | translate }}</label>
+        </td>
+        <td class="paddedbottom20 width36" ng-show="formData.loanWithAnotherInstitution">
+            <input type="text" id="loanWithAnotherInstitutionAmount" class="form-control"
+                ng-model="formData.loanWithAnotherInstitutionAmount" />
+            &nbsp;{{loanaccountinfo.currency.displaySymbol}}
+        </td>
+    </tr>
     </table>
 
     <!-- bnpl -->

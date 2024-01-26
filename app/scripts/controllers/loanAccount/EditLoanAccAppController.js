@@ -239,6 +239,11 @@
                  if(scope.loanaccountinfo.jlgInterestChartRateSummaryData != null && scope.loanaccountinfo.jlgInterestChartRateSummaryData !== undefined){
                   scope.interestRateChart = scope.loanaccountinfo.jlgInterestChartRateSummaryData;
                   }
+
+                if (scope.loanaccountinfo.loanWithAnotherInstitutionAmount) {
+                    scope.formData.loanWithAnotherInstitution = true;
+                    scope.formData.loanWithAnotherInstitutionAmount = scope.loanaccountinfo.loanWithAnotherInstitutionAmount;
+                }
             };
 
             //Rate
