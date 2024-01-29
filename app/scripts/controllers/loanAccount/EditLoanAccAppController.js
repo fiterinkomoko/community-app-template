@@ -94,6 +94,11 @@
             scope.collateralAddedDataArray = [];
 
             scope.addCollateral = function () {
+                if (scope.collateralFormData.collateralId == undefined || scope.collateralFormData.collateralId == null) {
+                    scope.collateralRequired = true;
+                    return;
+                }
+                 scope.collateralRequired = false;
                 scope.collateralAddedDataArray.push(scope.collateralsData.filter((collateral) => scope.collateralFormData.collateralId == collateral.collateralId)[0]);
                 scope.collateralsData = scope.collateralsData.filter((collateral) => scope.collateralFormData.collateralId != collateral.collateralId);
                 scope.collaterals.push({collateralId: scope.collateralFormData.collateralId, quantity: scope.collateralFormData.quantity, total: scope.collateralFormData.total, totalCollateral: scope.collateralFormData.totalCollateral});
@@ -239,6 +244,11 @@
                  if(scope.loanaccountinfo.jlgInterestChartRateSummaryData != null && scope.loanaccountinfo.jlgInterestChartRateSummaryData !== undefined){
                   scope.interestRateChart = scope.loanaccountinfo.jlgInterestChartRateSummaryData;
                   }
+
+                if (scope.loanaccountinfo.loanWithAnotherInstitutionAmount) {
+                    scope.formData.loanWithAnotherInstitution = true;
+                    scope.formData.loanWithAnotherInstitutionAmount = scope.loanaccountinfo.loanWithAnotherInstitutionAmount;
+                }
             };
 
             //Rate

@@ -241,6 +241,10 @@
                             <th class="table-bold-loan">{{'label.heading.disbursementStatus' | translate}}</th>
                             <td><span class="padded-td">{{loandetails.subStatus.value}}</span></td>
                         </tr>
+                        <tr ng-show="loandetails.loanWithAnotherInstitutionAmount">
+                            <th class="table-bold-loan">{{'label.heading.loan.with.another.institution.amount' | translate}}</th>
+                            <td>{{loandetails.loanWithAnotherInstitutionAmount | number}}</td>
+                        </tr>
                     </table>
                     <div ng-show="loandetails.summary">
                         <h3>{{'label.heading.currentBalance' | translate}}: {{loandetails.currency.displaySymbol}} {{loandetails.summary.totalOutstanding | number}}</h3>

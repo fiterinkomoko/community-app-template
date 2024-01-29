@@ -20,7 +20,9 @@
                     <div class="col-sm-3">
                         <select chosen="strataOptions" id="strataId" name = "strataId" ng-model="formData.strataId" class="form-control"
                                 ng-options="strata.id as strata.name for strata in strataOptions"
-                                value="{{strata.id}}" required></select>
+                                value="{{strata.id}}" required>
+                            <option disabled></option>
+                        </select>
                     </div>
                     <form-validate valattributeform="clientotherinfoform" valattribute="strataId"/>
                 </div>
@@ -31,7 +33,9 @@
                     <div class="col-sm-3">
                         <select chosen="nationalityOptions" id="nationalityId" name="nationalityId" ng-model="formData.nationalityId" class="form-control"
                                 ng-options="nationality.id as nationality.name for nationality in nationalityOptions"
-                                value="{{nationality.id}}" required></select>
+                                value="{{nationality.id}}" required>
+                            <option disabled></option>
+                        </select>
                     </div>
                     <form-validate valattributeform="clientotherinfoform" valattribute="nationalityId"/>
                 </div>
@@ -63,7 +67,9 @@
                     <div class="col-sm-3">
                         <select chosen="yearArrivedInHostCountryOptions" id="yearArrivedInHostCountryId" name="yearArrivedInHostCountryId" ng-model="formData.yearArrivedInHostCountryId" class="form-control"
                                 ng-options="yearArrivedInHostCountry.id as yearArrivedInHostCountry.name for yearArrivedInHostCountry in yearArrivedInHostCountryOptions"
-                                value="{{yearArrivedInHostCountry.id}}" required></select>
+                                value="{{yearArrivedInHostCountry.id}}" required>
+                            <option disabled></option>
+                        </select>
                     </div>
                     <form-validate valattributeform="clientotherinfoform" valattribute="yearArrivedInHostCountryId"/>
                 </div>
