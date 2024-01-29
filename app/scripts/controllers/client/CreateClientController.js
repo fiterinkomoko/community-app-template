@@ -487,7 +487,7 @@
 
 
                 // family array
-
+                scope.formData.familyMembers=[];
                 for(var i=0;i<scope.familyArray.length;i++)
                 {
                     var temp=new Object();
@@ -580,10 +580,10 @@
                 // business Owners array
                 if(scope.businessOwnerEnabled===true)
                 {
+	                scope.formData.businessOwners = [];
                 for(var i=0;i<scope.businessOwnersArray.length;i++)
                 {
                     var temp=new Object();
-                    scope.formData.businessOwners = [];
                     if(scope.businessOwnersArray[i].firstnameOwner)
                     {
                         temp.firstName=scope.businessOwnersArray[i].firstnameOwner;
@@ -672,11 +672,10 @@
                 }
                 if(scope.employmentInfoEnabled===true)
                 {
-
+                  scope.formData.employmentInformation = [];
                   for(var i=0;i<scope.employmentInfoArray.length;i++)
                   {
                     var temp=new Object();
-                    scope.formData.employmentInformation = [];
                     temp.employmentStatusId=scope.formData.employmentStatusId;
                     delete scope.formData.employmentStatusId;
 
