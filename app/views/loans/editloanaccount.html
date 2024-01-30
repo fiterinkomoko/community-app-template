@@ -660,7 +660,7 @@
             </select>&nbsp;&nbsp;
             <div class="col-sm-2">
                 <input class="form-control" type="text" ng-model="collateralFormData.quantity" placeholder="{{'label.input.quantity' | translate}}"
-                    number-format ng-change="updateValues()">
+                    number-format ng-change="updateValues()" ng-class="{'redBorder': qtyRequired}">
             </div>
             <div class="col-sm-2">
                 <input class="form-control" type="text" ng-model="collateralFormData.total"
