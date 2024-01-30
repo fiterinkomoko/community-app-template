@@ -542,6 +542,10 @@
                 } else {
                     delete scope.formData.datatables;
                 }
+                if (!this.formData.loanWithAnotherInstitution) {
+                    this.formData.loanWithAnotherInstitution = false;
+                    delete this.formData.loanWithAnotherInstitutionAmount;
+                }
                 resourceFactory.loanResource.save(this.formData, function (data) {
                     scope.carryForwardLoanTerm = 0;
                     location.path('/viewloanaccount/' + data.loanId);
