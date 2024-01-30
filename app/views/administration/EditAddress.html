@@ -91,7 +91,9 @@
                     <select chosen="stateOptions" id="stateOption" ng-model="formData.stateProvinceId"  class="form-control"
                             name="stateProvinceId"
                             ng-options="stateOption.id as stateOption.name for stateOption in stateOptions"
-                            value="formData.stateProvinceId" required late-validate></select>
+                            value="formData.stateProvinceId" required late-validate>
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
                 </div>
                 <div class="col-sm-2">
                     <form-validate valattributeform="FieldConfiguration" valattribute="stateProvinceId" />
@@ -105,7 +107,9 @@
                     <select chosen="lgaOptions" name = "lga" ng-model="formData.lgaId"
                             class="form-control"
                             ng-options="lgaOption.id as lgaOption.name for lgaOption in lgaOptions"
-                            value="formData.lgaId"></select>
+                            value="formData.lgaId">
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
                 </div>
             </div>
 
@@ -117,7 +121,9 @@
                     <select chosen="countryOptions" id="countryOption" ng-model="formData.countryId"  class="form-control"
                             name="countryId"
                             ng-options="countryOption.id as countryOption.name for countryOption in countryOptions"
-                            value="formData.countryId" required late-validate></select>
+                            value="formData.countryId" required late-validate>
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
                 </div>
                 <div class="col-sm-2">
                     <form-validate valattributeform="FieldConfiguration" valattribute="countryId" />

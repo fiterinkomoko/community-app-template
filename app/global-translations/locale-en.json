@@ -5205,6 +5205,11 @@
   "validation.msg.loan.loanWithAnotherInstitutionAmount.cannot.be.blank": "Loan with another institution is selected, amount is required",
   "validation.msg.client.address.cannot.be.empty": "Client address cannot be empty",
   "validation.msg.FamilyMembers.firstName.cannot.be.blank": "Family member first name cannot be blank",
-  "validation.msg.FamilyMembers.relationShipId.cannot.be.blank": "Family member relationship cannot be blank",
+  "validation.msg.FamilyMembers.relationshipId.cannot.be.blank": "Family member relationship cannot be blank",
+  "validation.msg.FamilyMembers.lastName.cannot.be.blank": "Family member last name cannot be blank",
+  "validation.msg.FamilyMembers.age.cannot.be.blank": "Family member age cannot be blank",
+  "validation.msg.FamilyMembers.mobileNumber.cannot.be.blank": "Family member mobile number cannot be blank",
+  "validation.msg.FamilyMembers.genderId.cannot.be.blank": "Family member gender cannot be blank",
+  "validation.msg.FamilyMembers.countryId.cannot.be.blank": "Family member country cannot be blank",
   "----End---": "--End of file--- "
 }
