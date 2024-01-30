@@ -248,6 +248,8 @@
                 if (scope.loanaccountinfo.loanWithAnotherInstitutionAmount) {
                     scope.formData.loanWithAnotherInstitution = true;
                     scope.formData.loanWithAnotherInstitutionAmount = scope.loanaccountinfo.loanWithAnotherInstitutionAmount;
+                } else {
+                    scope.formData.loanWithAnotherInstitution = false;
                 }
             };
 
