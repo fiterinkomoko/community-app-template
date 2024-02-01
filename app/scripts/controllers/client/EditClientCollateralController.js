@@ -36,18 +36,18 @@
             });
             scope.createAdditionalDetails = function () {
              if(scope.additionalDetailsAddOrRemove && scope.additionalCollateralDetailsEnabled){
-                scope.collateralDataRequestBody.upiNo = scope.additionalDetails.upiNo;
-                scope.collateralDataRequestBody.chassisNo = scope.additionalDetails.chassisNo;
-                scope.collateralDataRequestBody.collateralOwnerFirst = scope.additionalDetails.collateralOwnerFirst;
-                scope.collateralDataRequestBody.idNoOfCollateralOwnerFirst = scope.additionalDetails.idNoOfCollateralOwnerFirst;
-                scope.collateralDataRequestBody.collateralOwnerSecond = scope.additionalDetails.collateralOwnerSecond;
-                scope.collateralDataRequestBody.idNoOfCollateralOwnerSecond = scope.additionalDetails.idNoOfCollateralOwnerSecond;
-                scope.collateralDataRequestBody.worthOfCollateral = scope.additionalDetails.worthOfCollateral;
-                scope.collateralDataRequestBody.provinceId = scope.additionalDetails.province != null ? scope.additionalDetails.province.id : null;
-                scope.collateralDataRequestBody.districtId = scope.additionalDetails.district != null ? scope.additionalDetails.district.id : null;
-                scope.collateralDataRequestBody.sectorId = scope.additionalDetails.sector != null ? scope.additionalDetails.sector.id : null;
-                scope.collateralDataRequestBody.villageId = scope.additionalDetails.village != null ? scope.additionalDetails.village.id : null;
-                scope.collateralDataRequestBody.cellId = scope.additionalDetails.cell != null ? scope.additionalDetails.cell.id : null;
+                scope.collateralDataRequestBody.upiNo = scope.additionalDetails.upiNo == "" ? undefined : scope.additionalDetails.upiNo;
+                scope.collateralDataRequestBody.chassisNo = scope.additionalDetails.chassisNo == "" ? undefined : scope.additionalDetails.chassisNo;
+                scope.collateralDataRequestBody.collateralOwnerFirst = scope.additionalDetails.collateralOwnerFirst == "" ? undefined : scope.additionalDetails.collateralOwnerFirst;
+                scope.collateralDataRequestBody.idNoOfCollateralOwnerFirst = scope.additionalDetails.idNoOfCollateralOwnerFirst == "" ? undefined : scope.additionalDetails.idNoOfCollateralOwnerFirst ;
+                scope.collateralDataRequestBody.collateralOwnerSecond = scope.additionalDetails.collateralOwnerSecond == "" ? undefined : scope.additionalDetails.collateralOwnerSecond;
+                scope.collateralDataRequestBody.idNoOfCollateralOwnerSecond = scope.additionalDetails.idNoOfCollateralOwnerSecond == "" ? undefined : scope.additionalDetails.idNoOfCollateralOwnerSecond;
+                scope.collateralDataRequestBody.worthOfCollateral = scope.additionalDetails.worthOfCollateral == "" ? undefined : scope.additionalDetails.worthOfCollateral;
+                scope.collateralDataRequestBody.provinceId = scope.additionalDetails.province != null ? scope.additionalDetails.province.id : undefined;
+                scope.collateralDataRequestBody.districtId = scope.additionalDetails.district != null ? scope.additionalDetails.district.id : undefined;
+                scope.collateralDataRequestBody.sectorId = scope.additionalDetails.sector != null ? scope.additionalDetails.sector.id : undefined;
+                scope.collateralDataRequestBody.villageId = scope.additionalDetails.village != null ? scope.additionalDetails.village.id : undefined;
+                scope.collateralDataRequestBody.cellId = scope.additionalDetails.cell != null ? scope.additionalDetails.cell.id : undefined;
              }
             }
 
@@ -59,6 +59,12 @@
             scope.cancel = function () {
                 location.path('/viewclient/' + scope.clientId);
             };
+
+            scope.updateValues = function () {
+                scope.formData.quantity = scope.formData.quantity * 1.0;
+                scope.formData.total = scope.formData.quantity * scope.collaterals.basePrice;
+                scope.formData.totalCollateral = scope.formData.total * scope.collaterals.pctToBase/100.00;
+            }
 
             scope.submit = function () {
                 this.formData.locale = scope.optlang.code;
