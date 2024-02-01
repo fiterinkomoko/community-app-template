@@ -99,15 +99,11 @@
                         <input id="pctToBase" name="pctToBase" type="text" ng-model="formData.pctToBase" class="form-control" number-format disabled/>
                     </div>
                     <div ng-show ="additionalDetailsAddOrRemove">
-                        <label class="control-label col-sm-2" for="collateralOwnerSecond">{{ 'label.input.collateralOwnerSecond' | translate }}
-                            <span class="required">*</span></label>
+                        <label class="control-label col-sm-2" for="collateralOwnerSecond">{{ 'label.input.collateralOwnerSecond' | translate }}</label>
 
                         <div class="col-sm-3">
                             <input id="collateralOwnerSecond" name="collateralOwnerSecond" type="text" class="form-control"
-                                   ng-model="additionalDetails.collateralOwnerSecond" ng-required="additionalDetailsAddOrRemove">
-                        </div>
-                        <div class="col-sm-2">
-                            <form-validate valattributeform="createcollateralform" valattribute="collateralOwnerSecond"/>
+                                   ng-model="additionalDetails.collateralOwnerSecond">
                         </div>
                     </div>
                 </div>
@@ -134,15 +130,11 @@
                         <input id="total" name="total" type="text" ng-model="formData.total" class="form-control" number-format required disabled/>
                     </div>
                     <div ng-show ="additionalDetailsAddOrRemove">
-                        <label class="control-label col-sm-2" for="idNoOfCollateralOwnerSecond">{{ 'label.input.idNoOfCollateralOwnerSecond' | translate }}<span
-                                class="required">*</span></label>
+                        <label class="control-label col-sm-2" for="idNoOfCollateralOwnerSecond">{{ 'label.input.idNoOfCollateralOwnerSecond' | translate }}</label>
 
                         <div class="col-sm-3">
                             <input id="idNoOfCollateralOwnerSecond" name="idNoOfCollateralOwnerSecond" type="text" class="form-control"
-                                   ng-model="additionalDetails.idNoOfCollateralOwnerSecond" ng-required="additionalDetailsAddOrRemove">
-                        </div>
-                        <div class="col-sm-2">
-                            <form-validate valattributeform="createcollateralform" valattribute="idNoOfCollateralOwnerSecond"/>
+                                   ng-model="additionalDetails.idNoOfCollateralOwnerSecond">
                         </div>
                     </div>
                 </div>
