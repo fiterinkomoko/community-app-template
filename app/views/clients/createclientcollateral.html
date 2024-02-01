@@ -5,7 +5,7 @@
             <h4>{{ 'label.heading.createcollateral' | translate }}</h4>
         </div>
         <br/>
-        <form name="createcollateralform" class="form-horizontal" ng-submit="submit()">
+        <form name="createcollateralform" class="form-horizontal" rc-submit="submit()">
             <api-validate></api-validate>
             <fieldset>
                 <div class="form-group">
@@ -17,11 +17,7 @@
                                 ng-options="collateral.id as collateral.name for collateral in collaterals"
                                 value="{{collateral.id}}" ng-change="collateralProductChange(formData.collateralId)"></select>
                     </div>
-                    <div class="control-label col-sm-3" data-ng-show="additionalCollateralDetailsEnabled && disabled == false">
-                        <h5><strong>{{ 'label.input.additionalDetails' | translate }}</strong>&nbsp;<a
-                                ng-click="addAdditionalDetails()"><i class="fa fa-plus"
-                                title="{{'label.button.additionalDetails' | translate}}"></i></a></h5>
-                    </div>
+
                 </div>
 
                 <div class="form-group" ng-show="disabled == false">
@@ -103,10 +99,15 @@
                         <input id="pctToBase" name="pctToBase" type="text" ng-model="formData.pctToBase" class="form-control" number-format disabled/>
                     </div>
                     <div ng-show ="additionalDetailsAddOrRemove">
-                        <label class="control-label col-sm-2" for="collateralOwnerSecond">{{ 'label.input.collateralOwnerSecond' | translate }}</label>
+                        <label class="control-label col-sm-2" for="collateralOwnerSecond">{{ 'label.input.collateralOwnerSecond' | translate }}
+                            <span class="required">*</span></label>
 
                         <div class="col-sm-3">
-                            <input id="collateralOwnerSecond" name="collateralOwnerSecond" type="text" class="form-control" ng-model="additionalDetails.collateralOwnerSecond">
+                            <input id="collateralOwnerSecond" name="collateralOwnerSecond" type="text" class="form-control"
+                                   ng-model="additionalDetails.collateralOwnerSecond" ng-required="additionalDetailsAddOrRemove">
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="createcollateralform" valattribute="collateralOwnerSecond"/>
                         </div>
                     </div>
                 </div>
@@ -116,7 +117,7 @@
                             class="required">*</span></label>
 
                     <div class="col-sm-3">
-                        <input id="quantity" name="quantity" type="text" ng-model="formData.quantity" ng-change="updateValues()" class="form-control" number-format required late-Validate/>
+                        <input id="quantity" name="quantity" type="number" min="1" ng-model="formData.quantity" ng-change="updateValues()" class="form-control" required late-Validate/>
                     </div>
 
                     <div class="col-sm-2">
@@ -133,10 +134,15 @@
                         <input id="total" name="total" type="text" ng-model="formData.total" class="form-control" number-format required disabled/>
                     </div>
                     <div ng-show ="additionalDetailsAddOrRemove">
-                        <label class="control-label col-sm-2" for="idNoOfCollateralOwnerSecond">{{ 'label.input.idNoOfCollateralOwnerSecond' | translate }}</label>
+                        <label class="control-label col-sm-2" for="idNoOfCollateralOwnerSecond">{{ 'label.input.idNoOfCollateralOwnerSecond' | translate }}<span
+                                class="required">*</span></label>
 
                         <div class="col-sm-3">
-                            <input id="idNoOfCollateralOwnerSecond" name="idNoOfCollateralOwnerSecond" type="text" class="form-control" ng-model="additionalDetails.idNoOfCollateralOwnerSecond">
+                            <input id="idNoOfCollateralOwnerSecond" name="idNoOfCollateralOwnerSecond" type="text" class="form-control"
+                                   ng-model="additionalDetails.idNoOfCollateralOwnerSecond" ng-required="additionalDetailsAddOrRemove">
+                        </div>
+                        <div class="col-sm-2">
+                            <form-validate valattributeform="createcollateralform" valattribute="idNoOfCollateralOwnerSecond"/>
                         </div>
                     </div>
                 </div>
@@ -149,10 +155,11 @@
                         <input id="totalCollateral" name="totalCollateral" type="text" ng-model="formData.totalCollateral" class="form-control" number-format required disabled/>
                     </div>
                     <div ng-show ="additionalDetailsAddOrRemove">
-                        <label class="control-label col-sm-2" for="worthOfCollateral">{{'label.input.worthOfCollateral' | translate}}</label>
+                        <label class="control-label col-sm-2" for="worthOfCollateral">{{'label.input.worthOfCollateral' | translate}}<span
+                                class="required">*</span></label>
 
                         <div class="col-sm-3">
-                            <input id="worthOfCollateral" name="worthOfCollateral" type="text" ng-model="additionalDetails.worthOfCollateral" class="form-control" number-format ng-required="additionalDetailsAddOrRemove"/>
+                            <input id="worthOfCollateral" name="worthOfCollateral" type="text" ng-model="additionalDetails.worthOfCollateral" class="form-control" ng-required="additionalDetailsAddOrRemove"/>
                         </div>
                         <div class="col-sm-2">
                             <form-validate valattributeform="createcollateralform" valattribute="worthOfCollateral"/>
@@ -163,14 +170,14 @@
                         <label class="control-label col-sm-2">{{ 'label.heading.province' | translate }}</label>
                         <div class="col-sm-3">
                             <select chosen="provinceOptions" name = "province" ng-model="additionalDetails.provinceId"
-                                    class="form-control" required ng-options="provinceOption.id as provinceOption.name for provinceOption in provinceOptions"
+                                    class="form-control" ng-options="provinceOption.id as provinceOption.name for provinceOption in provinceOptions"
                                     value="provinceId"></select>
                         </div>
 
                         <label class="control-label col-sm-2">{{ 'label.heading.district' | translate }}</label>
                         <div class="col-sm-3">
                             <select chosen="districtOptions" name = "district" ng-model="additionalDetails.districtId"
-                                    class="form-control" required ng-options="districtOption.id as districtOption.name for districtOption in districtOptions"
+                                    class="form-control" ng-options="districtOption.id as districtOption.name for districtOption in districtOptions"
                                     value="districtId"></select>
                         </div>
                 </div>
@@ -178,13 +185,13 @@
                     <label class="control-label col-sm-2">{{ 'label.heading.sector' | translate }}</label>
                     <div class="col-sm-3">
                         <select chosen="sectorOptions" name = "sector" ng-model="additionalDetails.sectorId"
-                                class="form-control" required ng-options="sectorOption.id as sectorOption.name for sectorOption in sectorOptions"
+                                class="form-control" ng-options="sectorOption.id as sectorOption.name for sectorOption in sectorOptions"
                                 value="sectorId"></select>
                     </div>
                     <label class="control-label col-sm-2">{{ 'label.heading.cell' | translate }}</label>
                     <div class="col-sm-3">
                         <select chosen="cellOptions" name = "cell" ng-model="additionalDetails.cellId"
-                                class="form-control" required ng-options="cellOption.id as cellOption.name for cellOption in cellOptions"
+                                class="form-control" ng-options="cellOption.id as cellOption.name for cellOption in cellOptions"
                                 value="cellId"></select>
                     </div>
                 </div>
@@ -192,7 +199,7 @@
                     <label class="control-label col-sm-2">{{ 'label.heading.village' | translate }}</label>
                     <div class="col-sm-3">
                         <select chosen="villageOptions" name = "village" ng-model="additionalDetails.villageId"
-                                class="form-control" required ng-options="villageOption.id as villageOption.name for villageOption in villageOptions"
+                                class="form-control" ng-options="villageOption.id as villageOption.name for villageOption in villageOptions"
                                 value="villageId"></select>
                     </div>
 
