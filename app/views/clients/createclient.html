@@ -460,7 +460,9 @@
                               <select chosen="relationshipIdOptions" id="relationshipIdOption" name="relationshipIdOption"
                                  ng-model="familyArray[$index].relationshipId" class="form-control"
                                  ng-options="relationshipIdOption.id as relationshipIdOption.name for relationshipIdOption in relationshipIdOptions track by relationshipIdOption.id"
-                                 value="formData.relationshipId" ></select>
+                                 value="formData.relationshipId" required>
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                            <div class="col-sm-2">
                               <form-validate valattributeform="createclientform" valattribute="relationshipIdOption" />
@@ -472,11 +474,14 @@
 
                         <div class="form-group">
                            <label class="control-label col-sm-2" for="firstName">{{'label.input.firstname' | translate
-                              }}</label>
+                              }}<span class="required">*</span></label>
 
                            <div class="col-sm-3">
                               <input type="text" id="firstName" name="firstName"
-                                 ng-model="familyArray[$index].firstName" class="form-control">
+                                 ng-model="familyArray[$index].firstName" class="form-control" required>
+                           </div>
+                           <div class="col-sm-2">
+                              <form-validate valattributeform="createclientform" valattribute="firstName" />
                            </div>
 
                         </div>
@@ -494,11 +499,14 @@
 
                         <div class="form-group">
                            <label class="control-label col-sm-2" for="lastName">{{'label.input.lastname' | translate
-                              }}</label>
+                              }}<span class="required">*</span></label>
 
                            <div class="col-sm-3">
                               <input type="text" id="lastName" name="lastName" ng-model="familyArray[$index].lastName"
-                                 class="form-control">
+                                 class="form-control" required>
+                           </div>
+                           <div class="col-sm-2">
+                              <form-validate valattributeform="createclientform" valattribute="lastName" />
                            </div>
 
                         </div>
@@ -525,21 +533,27 @@
 
                         <div class="form-group">
                            <label class="control-label col-sm-2" for="mobileNumber">{{ 'label.input.mobileNumber' |
-                              translate }}</label>
+                              translate }}<span class="required">*</span></label>
 
                            <div class="col-sm-3">
                               <input type="text" id="mobileNumber" name="mobileNumber"
-                                 ng-model="familyArray[$index].mobileNumber" class="form-control">
+                                 ng-model="familyArray[$index].mobileNumber" class="form-control" required>
+                           </div>
+                           <div class="col-sm-2">
+                              <form-validate valattributeform="createclientform" valattribute="mobileNumber" />
                            </div>
 
                         </div>
 
                         <div class="form-group">
-                           <label class="control-label col-sm-2" for="age">{{ 'label.input.age' | translate }}</label>
+                           <label class="control-label col-sm-2" for="age">{{ 'label.input.age' | translate }}<span class="required">*</span></label>
 
                            <div class="col-sm-3">
                               <input type="text" id="age" name="age" ng-model="familyArray[$index].age"
-                                 class="form-control">
+                                 class="form-control" number-only required>
+                           </div>
+                           <div class="col-sm-2">
+                              <form-validate valattributeform="createclientform" valattribute="age" />
                            </div>
 
                         </div>
@@ -557,13 +571,18 @@
 
                         <div class="form-group">
                            <div class="control-label col-sm-2">
-                              <label>{{ 'label.input.gender' | translate }}</label>
+                              <label>{{ 'label.input.gender' | translate }}<span class="required">*</span></label>
                            </div>
                            <div class="col-sm-3">
                               <select chosen="genderIdOptions" id="genderIdOption"
                                  ng-model="familyArray[$index].genderId" class="form-control"
                                  ng-options="genderIdOption.id as genderIdOption.name for genderIdOption in genderIdOptions track by genderIdOption.id"
-                                 value="formData.genderId"></select>
+                                 value="formData.genderId" required>
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
+                           </div>
+                           <div class="col-sm-2">
+                              <form-validate valattributeform="createclientform" valattribute="mobileNumber" />
                            </div>
                         </div>
 
@@ -576,7 +595,9 @@
                               <select chosen="professionIdOptions" id="professionIdOption"
                                  ng-model="familyArray[$index].professionId" class="form-control"
                                  ng-options="professionIdOption.id as professionIdOption.name for professionIdOption in professionIdOptions track by professionIdOption.id"
-                                 value="formData.professionId"></select>
+                                 value="formData.professionId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                         </div>
 
@@ -589,7 +610,9 @@
                               <select chosen="maritalStatusIdOptions" id="maritalStatusId"
                                  ng-model="familyArray[$index].maritalStatusId" class="form-control"
                                  ng-options="maritalStatusIdOption.id as maritalStatusIdOption.name for maritalStatusIdOption in maritalStatusIdOptions track by maritalStatusIdOption.id"
-                                 value="formData.maritalStatusId"></select>
+                                 value="formData.maritalStatusId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                         </div>
 
@@ -611,7 +634,9 @@
                                  <select chosen="addressTypes" name="addressType"
                                          ng-model="familyArray[$index].addressTypeId" class="form-control"
                                          ng-options="addressType.id as addressType.name for addressType in addressTypes "
-                                         value="addressTypeId" late-validate></select>
+                                         value="addressTypeId" late-validate>
+                                    <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                                 </select>
                               </div>
                            </div>
                            <div class="form-group">
@@ -642,7 +667,9 @@
                               <div class="col-sm-3">
                                  <select chosen="cityOptions" name = "cityOption" ng-model="familyArray[$index].cityId"
                                          class="form-control" ng-options="cityOption.id as cityOption.name for cityOption in cityOptions track by cityOption.id"
-                                         value="cityId"></select>
+                                         value="cityId">
+                                    <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                                 </select>
                               </div>
 
                            </div>
@@ -654,19 +681,26 @@
                                  <select chosen="stateOptions" name = "stateProvince" ng-model="familyArray[$index].stateProvinceId"
                                          class="form-control"
                                          ng-options="stateOption.id as stateOption.name for stateOption in stateOptions track by stateOption.id"
-                                         value="stateProvinceId"></select>
+                                         value="stateProvinceId">
+                                    <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                                 </select>
                               </div>
                            </div>
 
                            <div class="form-group" >
                               <div class="control-label col-sm-2">
-                                 <label>{{ 'label.input.country' | translate }}</label>
+                                 <label>{{ 'label.input.country' | translate }}<span class="required">*</span></label>
                               </div>
                               <div class="col-sm-3">
                                  <select chosen="countryOptions" name = "country" ng-model="familyArray[$index].countryId"
                                          class="form-control"
                                          ng-options="countryOption.id as countryOption.name for countryOption in countryOptions track by countryOption.id"
-                                         value="countryId"></select>
+                                         value="countryId" required>
+                                    <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                                 </select>
+                              </div>
+                              <div class="col-sm-2">
+                                 <form-validate valattributeform="createclientform" valattribute="mobileNumber" />
                               </div>
                            </div>
                            <div class="form-group">
@@ -734,7 +768,9 @@
                               <select chosen="titleOptions" name = "titleOption" ng-model="businessOwnersArray[$index].titleId"
                                       class="form-control" required
                                       ng-options="titleOption.id as titleOption.name for titleOption in titleOptions track by titleOption.id"
-                                      value="titleId"></select>
+                                      value="titleId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                            <div class="col-sm-2">
                               <form-validate valattributeform="createclientform" valattribute="title" />
@@ -759,7 +795,9 @@
                            <div class="col-sm-3">
                               <select chosen="typeOptions" name = "typeOption" ng-model="businessOwnersArray[$index].typeId"
                                       class="form-control" required ng-options="typeOption.id as typeOption.name for typeOption in typeOptions track by typeOption.id"
-                                      value="typeId"></select>
+                                      value="typeId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                            <div class="col-sm-2">
                               <form-validate valattributeform="createclientform" valattribute="type" />
@@ -877,7 +915,9 @@
                            <div class="col-sm-3">
                               <select chosen="cityOptions" name = "cityOption" ng-model="businessOwnersArray[$index].cityId"
                                       class="form-control" required ng-options="cityOption.id as cityOption.name for cityOption in cityOptions track by cityOption.id"
-                                      value="cityId"></select>
+                                      value="cityId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                            <div class="col-sm-2">
                               <form-validate valattributeform="createclientform" valattribute="city" />
@@ -892,7 +932,9 @@
                               <select chosen="stateOptions" name = "stateProvince" ng-model="businessOwnersArray[$index].stateProvinceId"
                                       class="form-control" required
                                       ng-options="stateOption.id as stateOption.name for stateOption in stateOptions track by stateOption.id"
-                                      value="stateProvinceId"></select>
+                                      value="stateProvinceId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                            <div class="col-sm-2">
                               <form-validate valattributeform="createclientform" valattribute="stateProvince" />
@@ -905,7 +947,9 @@
                               <select chosen="countryOptions" name = "country" ng-model="businessOwnersArray[$index].countryId"
                                       class="form-control" required
                                       ng-options="countryOption.id as countryOption.name for countryOption in countryOptions track by countryOption.id"
-                                      value="countryId"></select>
+                                      value="countryId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                            <div class="col-sm-2">
                               <form-validate valattributeform="createclientform" valattribute="country" />
@@ -1011,7 +1055,9 @@
                               <select chosen="cityOptions" name = "cityId" ng-model="employmentInfoArray[$index].cityId"
                                       class="form-control"
                                       ng-options="cityOption.id as cityOption.name for cityOption in cityOptions track by cityOptions.id"
-                                      value="cityId"></select>
+                                      value="cityId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                         </div>
                         <div class="form-group">
@@ -1022,7 +1068,9 @@
                               <select chosen="stateOptions" name = "stateProvince" ng-model="employmentInfoArray[$index].stateProvinceId"
                                       class="form-control"
                                       ng-options="stateOption.id as stateOption.name for stateOption in stateOptions track by stateOption.id"
-                                      value="stateProvinceId"></select>
+                                      value="stateProvinceId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                         </div>
 
@@ -1034,7 +1082,9 @@
                               <select chosen="lgaOptions" name = "lga" ng-model="employmentInfoArray[$index].lgaId"
                                       class="form-control"
                                       ng-options="lgaOption.id as lgaOption.name for lgaOption in lgaOptions track by lgaOption.id"
-                                      value="lgaId"></select>
+                                      value="lgaId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                         </div>
 
@@ -1046,7 +1096,9 @@
                               <select chosen="countryOptions" name = "country" ng-model="employmentInfoArray[$index].countryId"
                                       class="form-control"
                                       ng-options="countryOption.id as countryOption.name for countryOption in countryOptions track by countryOption.id"
-                                      value="countryId"></select>
+                                      value="countryId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                         </div>
                         <div class="form-group"  ng-show ="showBusinessOption || showJobOption">
@@ -1062,7 +1114,9 @@
                               <select chosen="industryOptions" name = "industryId" ng-model="employmentInfoArray[$index].industryId"
                                       class="form-control"
                                       ng-options="industryOption.id as industryOption.name for industryOption in industryOptions track by industryOption.id"
-                                      value="industryId"></select>
+                                      value="industryId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                         </div>
                         <div class="form-group" ng-show ="showBusinessOption">
@@ -1078,7 +1132,9 @@
                               <select chosen="bankOptions" name = "bankId" ng-model="employmentInfoArray[$index].bankId"
                                       class="form-control"
                                       ng-options="bankOption.id as bankOption.name for bankOption in bankOptions track by bankOption.id"
-                                      value="bankId"></select>
+                                      value="bankId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                         </div>
                         <div class="form-group" ng-show ="showBusinessOption">
@@ -1119,7 +1175,9 @@
                               <select chosen="addressTypes" name="addressType"
                                       ng-model="addressArray[$index].addressTypeId" class="form-control"
                                       ng-options="addressType.id as addressType.name for addressType in addressTypes "
-                                      value="addressTypeId" required late-validate></select>
+                                      value="addressTypeId" required late-validate>
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                            <div class="col-sm-2">
                               <form-validate valattributeform="createclientform" valattribute="addressType" />
@@ -1195,7 +1253,9 @@
                                       name="stateProvinceId"
                                       class="form-control"
                                       ng-options="stateOption.id as stateOption.name for stateOption in stateOptions track by stateOption.id"
-                                      value="stateProvinceId" required late-validate></select>
+                                      value="stateProvinceId" required late-validate>
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                            <div class="col-sm-2">
                               <form-validate valattributeform="createclientform" valattribute="stateProvinceId" />
@@ -1209,7 +1269,9 @@
                               <select chosen="lgaOptions" name = "lga" ng-model="addressArray[$index].lgaId"
                                       class="form-control"
                                       ng-options="lgaOption.id as lgaOption.name for lgaOption in lgaOptions track by lgaOption.id"
-                                      value="lgaId"></select>
+                                      value="lgaId">
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                         </div>
                         <div class="form-group" ng-show="countryId">
@@ -1221,7 +1283,9 @@
                                       name="countryId"
                                       class="form-control"
                                       ng-options="countryOption.id as countryOption.name for countryOption in countryOptions track by countryOption.id"
-                                      value="countryId" required late-validate></select>
+                                      value="countryId" required late-validate>
+                                 <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                              </select>
                            </div>
                            <div class="col-sm-2">
                               <form-validate valattributeform="createclientform" valattribute="countryId" />

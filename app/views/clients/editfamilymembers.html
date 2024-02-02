@@ -6,10 +6,10 @@
         <fieldset>
 
             <div class="form-group" >
-                <label class="control-label col-sm-2" for="firstName">{{'label.input.firstname' | translate }}</label>
+                <label class="control-label col-sm-2" for="firstName">{{'label.input.firstname' | translate }}<span class="required">*</span></label>
 
                 <div class="col-sm-3">
-                    <input type="text" id="firstName" name="firstName"  ng-model="formData.firstName"  class="form-control">
+                    <input type="text" id="firstName" name="firstName"  ng-model="formData.firstName"  class="form-control" required>
                 </div>
 
             </div>
@@ -24,10 +24,10 @@
             </div>
 
             <div class="form-group" >
-                <label class="control-label col-sm-2" for="lastName">{{'label.input.lastname' | translate }}</label>
+                <label class="control-label col-sm-2" for="lastName">{{'label.input.lastname' | translate }}<span class="required">*</span></label>
 
                 <div class="col-sm-3">
-                    <input type="text" id="lastName" name="lastName" ng-model="formData.lastName"  class="form-control">
+                    <input type="text" id="lastName" name="lastName" ng-model="formData.lastName"  class="form-control" required>
                 </div>
 
             </div>
@@ -50,19 +50,19 @@
 
 
             <div class="form-group" >
-                <label class="control-label col-sm-2" for="mobileNumber">{{ 'label.input.mobileNumber' | translate }}</label>
+                <label class="control-label col-sm-2" for="mobileNumber">{{ 'label.input.mobileNumber' | translate }}<span class="required">*</span></label>
 
                 <div class="col-sm-3">
-                    <input type="text" id="mobileNumber" name="mobileNumber" ng-model="formData.mobileNumber"  class="form-control">
+                    <input type="text" id="mobileNumber" name="mobileNumber" ng-model="formData.mobileNumber"  class="form-control" required>
                 </div>
 
             </div>
 
             <div class="form-group" >
-                <label class="control-label col-sm-2" for="age">{{ 'label.input.age' | translate }}</label>
+                <label class="control-label col-sm-2" for="age">{{ 'label.input.age' | translate }}<span class="required">*</span></label>
 
                 <div class="col-sm-3">
-                    <input type="text" id="age" name="age" ng-model="formData.age"  class="form-control">
+                    <input type="text" id="age" name="age" ng-model="formData.age"  class="form-control" number-only required>
                 </div>
 
             </div>
@@ -81,12 +81,14 @@
 
             <div class="form-group">
                 <div class="control-label col-sm-2">
-                    <label>{{ 'label.input.relationship' | translate }}</label>
+                    <label>{{ 'label.input.relationship' | translate }}<span class="required">*</span></label>
                 </div>
                 <div class="col-sm-3" >
-                    <select chosen="relationshipIdOptions" id="relationshipIdOption" ng-model="formData.relationshipId"  class="form-control"
-                            ng-options="relationshipIdOption.id as relationshipIdOption.name for relationshipIdOption in relationshipIdOptions track by relationshipIdOption.id"
-                            value="formData.relationshipId"></select>
+                    <select id="relationshipId" ng-model="formData.relationshipId"  class="form-control"
+                            ng-options="relationshipIdOption.id as relationshipIdOption.name for relationshipIdOption in relationshipIdOptions"
+                            value="{{relationshipIdOption.id}}">
+                        <option value="" disabled>{{'label.selectone' | translate}}</option>
+                    </select>
                 </div>
             </div>
             <div>
@@ -95,12 +97,14 @@
 
             <div class="form-group" >
                 <div class="control-label col-sm-2">
-                    <label>{{ 'label.input.gender' | translate }}</label>
+                    <label>{{ 'label.input.gender' | translate }}<span class="required">*</span></label>
                 </div>
                 <div class="col-sm-3" >
-                    <select chosen="genderIdOptions" id="genderIdOption" ng-model="formData.genderId"  class="form-control"
-                            ng-options="genderIdOption.id as genderIdOption.name for genderIdOption in genderIdOptions track by genderIdOption.id"
-                            value="formData.genderId"></select>
+                    <select id="genderIdOption" ng-model="formData.genderId"  class="form-control"
+                            ng-options="genderIdOption.id as genderIdOption.name for genderIdOption in genderIdOptions"
+                            value="{{genderIdOption.id}}">
+                        <option value="" disabled>--{{'label.selectone' | translate}}--</option>
+                    </select>
                 </div>
             </div>
 
@@ -110,9 +114,11 @@
                     <label>{{ 'label.input.profession' | translate }}</label>
                 </div>
                 <div class="col-sm-3" >
-                    <select chosen="professionIdOptions" id="professionIdOption" ng-model="formData.professionId"  class="form-control"
-                            ng-options="professionIdOption.id as professionIdOption.name for professionIdOption in professionIdOptions track by professionIdOption.id"
-                            value="formData.professionId"></select>
+                    <select id="professionIdOption" ng-model="formData.professionId"  class="form-control"
+                            ng-options="professionIdOption.id as professionIdOption.name for professionIdOption in professionIdOptions"
+                            value="{{professionIdOption.id}}">
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
                 </div>
             </div>
 
@@ -122,9 +128,11 @@
                     <label>{{ 'label.input.maritalstatus' | translate }}</label>
                 </div>
                 <div class="col-sm-3" >
-                    <select chosen="maritalStatusIdOptions" id="maritalStatusId" ng-model="formData.maritalStatusId"  class="form-control"
-                            ng-options="maritalStatusIdOption.id as maritalStatusIdOption.name for maritalStatusIdOption in maritalStatusIdOptions track by maritalStatusIdOption.id"
-                            value="formData.maritalStatusId"></select>
+                    <select id="maritalStatusId" ng-model="formData.maritalStatusId"  class="form-control"
+                            ng-options="maritalStatusIdOption.id as maritalStatusIdOption.name for maritalStatusIdOption in maritalStatusIdOptions"
+                            value="{{maritalStatusIdOption.id}}">
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
                 </div>
             </div>
 
@@ -142,9 +150,11 @@
                     <label>{{ 'label.input.addressType' | translate }}</label>
                 </div>
                 <div class="col-sm-3"  >
-                    <select chosen="addressTypes" id="addressType"  ng-model="formData.addressTypeId"  class="form-control"
+                    <select id="addressType"  ng-model="formData.addressTypeId"  class="form-control"
                             ng-options="addressType.id as addressType.name for addressType in addressTypes"
-                            value="addressTypeId"  ></select>
+                            value="{{addressType.id}}"  >
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
 
                 </div>
             </div>
@@ -181,9 +191,11 @@
                     <label>{{ 'label.heading.city' | translate }}</label>
                 </div>
                 <div class="col-sm-3" >
-                    <select chosen="cityOptions" id="cityOption" ng-model="formData.cityId"  class="form-control"
+                    <select id="cityOption" ng-model="formData.cityId"  class="form-control"
                             ng-options="cityOption.id as cityOption.name for cityOption in cityOptions"
-                            value="formData.cityId"></select>
+                            value="{{cityOption.id}}">
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
                 </div>
             </div>
 
@@ -195,9 +207,11 @@
                     <label>{{ 'label.input.state_province' | translate }}</label>
                 </div>
                 <div class="col-sm-3" >
-                    <select chosen="stateOptions" id="stateOption" ng-model="formData.stateProvinceId"  class="form-control"
+                    <select id="stateOption" ng-model="formData.stateProvinceId"  class="form-control"
                             ng-options="stateOption.id as stateOption.name for stateOption in stateOptions "
-                            value="formData.stateProvinceId" ></select>
+                            value="{{stateOption.id}}" >
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
                 </div>
             </div>
             <div>
@@ -206,12 +220,14 @@
 
             <div class="form-group">
                 <div class="control-label col-sm-2">
-                    <label>{{ 'label.input.country' | translate }}</label>
+                    <label>{{ 'label.input.country' | translate }}<span class="required">*</span></label>
                 </div>
                 <div class="col-sm-3" >
-                    <select chosen="countryOptions" id="countryOption" ng-model="formData.countryId"  class="form-control"
+                    <select id="countryOption" ng-model="formData.countryId"  class="form-control"
                             ng-options="countryOption.id as countryOption.name for countryOption in countryOptions "
-                            value="formData.countryId"></select>
+                            value="{{countryOption.id}}" required>
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group" >

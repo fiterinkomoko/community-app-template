@@ -17,9 +17,9 @@
                       strataId: data.strata.id,
                       businessLocation: data.businessLocation,
                       taxIdentificationNumber: data.taxIdentificationNumber,
-                      coSignorsName: data.coSignors,
-                      guarantor: data.guarantor,
-                      incomeGeneratingActivity: data.incomeGeneratingActivity,
+                      coSignorsName: data.coSignors == "" ? undefined: data.coSignors,
+                      guarantor: data.guarantor == "" ? undefined: data.guarantor,
+                      incomeGeneratingActivity: data.incomeGeneratingActivity == 0 ? undefined: data.incomeGeneratingActivity,
                       incomeGeneratingActivityMonthlyAmount: data.incomeGeneratingActivityMonthlyAmount,
                       telephoneNo: data.telephoneNumber,
                 }
