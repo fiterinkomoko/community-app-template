@@ -62,13 +62,13 @@
 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="yearArrivedInHostCountryId">{{ 'label.input.yearArrivedInHostCountry' | translate }}
-                        <span class="required">*</span></label>
+                        <span ng-show="yearArrivedRequired" class="required">*</span></label>
 
                     <div class="col-sm-3">
                         <select chosen="yearArrivedInHostCountryOptions" id="yearArrivedInHostCountryId" name="yearArrivedInHostCountryId" ng-model="formData.yearArrivedInHostCountryId" class="form-control"
                                 ng-options="yearArrivedInHostCountry.id as yearArrivedInHostCountry.name for yearArrivedInHostCountry in yearArrivedInHostCountryOptions"
-                                value="{{yearArrivedInHostCountry.id}}" required>
-                            <option disabled></option>
+                                value="{{yearArrivedInHostCountry.id}}" ng-required="checkIfHostCommunitySelected()">
+                            <option value="" disabled></option>
                         </select>
                     </div>
                     <form-validate valattributeform="clientotherinfoform" valattribute="yearArrivedInHostCountryId"/>
@@ -83,8 +83,7 @@
                     <form-validate valattributeform="clientotherinfoform" valattribute="nationalIdentificationNumber"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="passportNumber">
-                        {{ 'label.input.passportNumber' | translate }}
+                    <label class="control-label col-sm-2" for="passportNumber">{{ 'label.input.passportNumber' | translate }}
                         <span class="required">*</span>
                     </label>
 
