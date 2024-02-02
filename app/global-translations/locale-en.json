@@ -5211,5 +5211,8 @@
   "validation.msg.FamilyMembers.mobileNumber.cannot.be.blank": "Family member mobile number cannot be blank",
   "validation.msg.FamilyMembers.genderId.cannot.be.blank": "Family member gender cannot be blank",
   "validation.msg.FamilyMembers.countryId.cannot.be.blank": "Family member country cannot be blank",
+  "validation.msg.ClientCollateralAdditionalData.collateralOwnerFirst.cannot.be.blank": "Collateral owner first cannot be blank",
+  "validation.msg.ClientCollateralAdditionalData.idNoOfCollateralOwnerFirst.cannot.be.blank": "First owner id cannot be blank",
+  "validation.msg.ClientCollateralAdditionalData.worthOfCollateral.cannot.be.blank": "Worth of collateral cannot be blank",
   "----End---": "--End of file--- "
 }
