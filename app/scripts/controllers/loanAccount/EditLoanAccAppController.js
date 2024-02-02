@@ -98,7 +98,12 @@
                     scope.collateralRequired = true;
                     return;
                 }
-                 scope.collateralRequired = false;
+                if (scope.collateralFormData.quantity == undefined || scope.collateralFormData.quantity == null) {
+                    scope.qtyRequired = true;
+                    return;
+                }
+                scope.collateralRequired = false;
+                scope.qtyRequired = false;
                 scope.collateralAddedDataArray.push(scope.collateralsData.filter((collateral) => scope.collateralFormData.collateralId == collateral.collateralId)[0]);
                 scope.collateralsData = scope.collateralsData.filter((collateral) => scope.collateralFormData.collateralId != collateral.collateralId);
                 scope.collaterals.push({collateralId: scope.collateralFormData.collateralId, quantity: scope.collateralFormData.quantity, total: scope.collateralFormData.total, totalCollateral: scope.collateralFormData.totalCollateral});
