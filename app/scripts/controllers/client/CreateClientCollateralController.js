@@ -3,13 +3,14 @@
         CreateClientCollateralController: function (scope, resourceFactory, routeParams, location) {
 
             scope.formData = {};
+            scope.submitData = {};
             scope.clientId = routeParams.id;
             scope.collateralData = {};
             scope.disable = true;
             scope.collateralDataRequestBody = {};
             scope.collateralId;
             scope.additionalCollateralDetailsEnabled = false;
-            scope.additionalDetailsAddOrRemove = false;
+            scope.additionalDetailsAddOrRemove = true;
             scope.additionalDetails = {};
 
             scope.updateValues = function () {
@@ -50,24 +51,20 @@
                 scope.additionalCollateralDetailsEnabled = data.enabled;
             });
 
-            scope.addAdditionalDetails = function () {
-               scope.additionalDetailsAddOrRemove =  scope.additionalDetailsAddOrRemove == true ? false : true;
-               scope.additionalDetails = {};
-            }
             scope.createAdditionalDetails = function () {
              if(scope.additionalDetailsAddOrRemove && scope.additionalCollateralDetailsEnabled){
-                this.formData.upiNo = scope.additionalDetails.upiNo;
-                this.formData.chassisNo = scope.additionalDetails.chassisNo;
-                this.formData.collateralOwnerFirst = scope.additionalDetails.collateralOwnerFirst;
-                this.formData.idNoOfCollateralOwnerFirst = scope.additionalDetails.idNoOfCollateralOwnerFirst;
-                this.formData.collateralOwnerSecond = scope.additionalDetails.collateralOwnerSecond;
-                this.formData.idNoOfCollateralOwnerSecond = scope.additionalDetails.idNoOfCollateralOwnerSecond;
-                this.formData.worthOfCollateral = scope.additionalDetails.worthOfCollateral;
-                this.formData.provinceId = scope.additionalDetails.provinceId;
-                this.formData.districtId = scope.additionalDetails.districtId;
-                this.formData.sectorId = scope.additionalDetails.sectorId;
-                this.formData.villageId = scope.additionalDetails.villageId;
-                this.formData.cellId = scope.additionalDetails.cellId;
+                this.submitData.upiNo = scope.additionalDetails.upiNo;
+                this.submitData.chassisNo = scope.additionalDetails.chassisNo;
+                this.submitData.collateralOwnerFirst = scope.additionalDetails.collateralOwnerFirst;
+                this.submitData.idNoOfCollateralOwnerFirst = scope.additionalDetails.idNoOfCollateralOwnerFirst;
+                this.submitData.collateralOwnerSecond = scope.additionalDetails.collateralOwnerSecond;
+                this.submitData.idNoOfCollateralOwnerSecond = scope.additionalDetails.idNoOfCollateralOwnerSecond;
+                this.submitData.worthOfCollateral = scope.additionalDetails.worthOfCollateral;
+                this.submitData.provinceId = scope.additionalDetails.provinceId;
+                this.submitData.districtId = scope.additionalDetails.districtId;
+                this.submitData.sectorId = scope.additionalDetails.sectorId;
+                this.submitData.villageId = scope.additionalDetails.villageId;
+                this.submitData.cellId = scope.additionalDetails.cellId;
              }
             }
 
@@ -76,18 +73,14 @@
             };
 
             scope.submit = function () {
-                this.formData.locale = scope.optlang.code;
+                this.submitData.locale = scope.optlang.code;
+                this.submitData.collateralId = this.formData.collateralId;
+                this.submitData.quantity = this.formData.quantity;
 
-                delete this.formData.name;
-                delete this.formData.pctToBase;
-                delete this.formData.basePrice;
-                delete this.formData.type;
-                delete this.formData.unitType;
-                delete this.formData.total;
-                delete this.formData.totalCollateral;
+
                 scope.createAdditionalDetails();
 
-                resourceFactory.clientcollateralResource.save({clientId: scope.clientId}, this.formData, function (data) {
+                resourceFactory.clientcollateralResource.save({clientId: scope.clientId}, this.submitData, function (data) {
                     location.path('/viewclient/' + scope.clientId + '/viewclientcollateral/' + data.resourceId);
                 });
             };

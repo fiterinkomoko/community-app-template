@@ -13,7 +13,9 @@
                 <div class="col-sm-3"  >
                     <select chosen="addressTypes" id="addressType"  ng-change="isEditRequired(addressTypeId)" ng-model="addressTypeId" name="addressTypeId" class="form-control"
                             ng-options="addressType.id as addressType.name for addressType in addressTypes track by addressType.id"
-                            value="addressTypeId" required late-validate ></select>
+                            value="addressTypeId" required late-validate >
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
 
                 </div>
                 <div class="col-sm-2">
@@ -104,7 +106,9 @@
                     <select chosen="stateOptions" id="stateOption" ng-model="formData.stateProvinceId"  class="form-control"
                             name="stateProvinceId"
                             ng-options="stateOption.id as stateOption.name for stateOption in stateOptions track by stateOption.id"
-                            value="formData.state_province_id" required late-validate></select>
+                            value="formData.state_province_id" required late-validate>
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
                 </div>
                 <div class="col-sm-2">
                     <form-validate valattributeform="FieldConfiguration" valattribute="stateProvinceId" />
@@ -118,7 +122,9 @@
                     <select chosen="lgaOptions" name = "lga" ng-model="formData.lgaId"
                             class="form-control"
                             ng-options="lgaOption.id as lgaOption.name for lgaOption in lgaOptions track by lgaOption.id"
-                            value="formData.lgaId"></select>
+                            value="formData.lgaId">
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
                 </div>
             </div>
 
@@ -130,7 +136,9 @@
                     <select chosen="countryOptions" id="countryOption" ng-model="formData.countryId"  class="form-control"
                             name="countryId"
                             ng-options="countryOption.id as countryOption.name for countryOption in countryOptions track by countryOption.id"
-                            value="formData.countryId" required late-validate></select>
+                            value="formData.countryId" required late-validate>
+                        <option disabled value="">--{{'label.selectone' | translate}}--</option>
+                    </select>
                 </div>
                 <div class="col-sm-2">
                     <form-validate valattributeform="FieldConfiguration" valattribute="countryId" />
