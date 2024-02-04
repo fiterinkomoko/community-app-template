@@ -206,6 +206,9 @@
                         update: {method: 'PUT', params: {}},
                         delete: {method: 'DELETE'}
                     }),
+                    clientcollateralListResource: defineResource(apiVer + "/clients/:clientId/collaterals/list", {clientId: '@clientId'}, {
+                        getAllCollaterals: {method: 'GET', params: {}, isArray: true}
+                    }),
                     clientcollateralTemplateResource: defineResource(apiVer + "/clients/:clientId/collaterals/template", {clientId: '@clientId', prodId: '@prodId'}, {
                         getAllCollaterals: {method: 'GET', params: {prodId: '@prodId'}, isArray: true},
                     }),

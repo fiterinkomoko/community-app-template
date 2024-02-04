@@ -1,6 +1,7 @@
 <div class="content-container" ng-controller="ViewAllClientCollateralController">
     <ul class="breadcrumb">
-        <li><a href="#/viewclients">{{'label.anchor.clients' | translate}}</a></li>
+        <li><a href="#/clients">{{'label.anchor.clients' | translate}}</a></li>
+        <li><a href="#/viewclient/{{clientId}}">{{'label.anchor.client' | translate}}</a></li>
         <li class="active">{{'label.anchor.collaterals' | translate}}</li>
     </ul>
     
@@ -10,7 +11,7 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-2 col-sm-3 paddedbottom20">
+            <div class="col-md-2 col-sm-3 paddedbottom20 pull-right" >
                 <a href="#/createclientcollateral/{{clientId}}" class="btn btn-primary pull-right" has-permission='CREATE_CLIENT_COLLATERAL'><i class="fa fa-plus "></i>&nbsp;&nbsp;{{'label.button.createclientcollateral' | translate}}</a>
             </div>
         </div>
@@ -24,15 +25,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr class="pointer-main" dir-paginate="collateral in collaterals | orderBy:'name':reverse |  itemsPerPage: CollateralsPerPage">
+            <tr class="pointer-main" ng-repeat="collateral in collaterals">
                 <td class="pointer" data-ng-click="routeTo(collateral.id)">{{collateral.name | translate}}</td>
                 <td class="pointer" data-ng-click="routeTo(collateral.id)">{{collateral.quantity}}</td>
-                <td class="pointer" data-ng-click="routeTo(collateral.id)">{{collateral.totalValue}}</td>
-                <td class="pointer" data-ng-click="routeTo(collateral.id)">{{collateral.totalCollateralValue}}</td>
+                <td class="pointer" data-ng-click="routeTo(collateral.id)">{{collateral.total}}</td>
+                <td class="pointer" data-ng-click="routeTo(collateral.id)">{{collateral.totalCollateral}}</td>
             </tr>
             </tbody>
         </table>
-        <dir-pagination-controls boundary-links="true" template-url="bower_components/angular-utils-pagination/dirPagination.tpl.html"></dir-pagination-controls>
     </div>
     
 </div>
