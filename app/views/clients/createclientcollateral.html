@@ -151,7 +151,8 @@
                                 class="required">*</span></label>
 
                         <div class="col-sm-3">
-                            <input id="worthOfCollateral" name="worthOfCollateral" type="text" ng-model="additionalDetails.worthOfCollateral" class="form-control" ng-required="additionalDetailsAddOrRemove"/>
+                            <input id="worthOfCollateral" name="worthOfCollateral" type="text" ng-model="additionalDetails.worthOfCollateral" class="form-control"
+                             ng-required="additionalDetailsAddOrRemove" number-format late-validate number=true />
                         </div>
                         <div class="col-sm-2">
                             <form-validate valattributeform="createcollateralform" valattribute="worthOfCollateral"/>
@@ -161,16 +162,20 @@
                 <div class="form-group" ng-if="disabled == false" ng-show ="additionalDetailsAddOrRemove">
                         <label class="control-label col-sm-2">{{ 'label.heading.province' | translate }}</label>
                         <div class="col-sm-3">
-                            <select chosen="provinceOptions" name = "province" ng-model="additionalDetails.provinceId"
-                                    class="form-control" ng-options="provinceOption.id as provinceOption.name for provinceOption in provinceOptions"
-                                    value="provinceId"></select>
+                            <select chosen="provinceOptions" name="province" ng-model="additionalDetails.provinceId"
+                                class="form-control" ng-options="provinceOption.id as provinceOption.name for provinceOption in provinceOptions"
+                                value="provinceId">
+                                <option value=""></option>
+                            </select>
                         </div>
 
                         <label class="control-label col-sm-2">{{ 'label.heading.district' | translate }}</label>
                         <div class="col-sm-3">
                             <select chosen="districtOptions" name = "district" ng-model="additionalDetails.districtId"
                                     class="form-control" ng-options="districtOption.id as districtOption.name for districtOption in districtOptions"
-                                    value="districtId"></select>
+                                    value="districtId">
+                                    <option value=""></option>
+                                </select>
                         </div>
                 </div>
                 <div class="form-group" ng-if="disabled == false" ng-show ="additionalDetailsAddOrRemove">
@@ -178,13 +183,17 @@
                     <div class="col-sm-3">
                         <select chosen="sectorOptions" name = "sector" ng-model="additionalDetails.sectorId"
                                 class="form-control" ng-options="sectorOption.id as sectorOption.name for sectorOption in sectorOptions"
-                                value="sectorId"></select>
+                                value="sectorId">
+                                <option value=""></option>
+                            </select>
                     </div>
                     <label class="control-label col-sm-2">{{ 'label.heading.cell' | translate }}</label>
                     <div class="col-sm-3">
                         <select chosen="cellOptions" name = "cell" ng-model="additionalDetails.cellId"
                                 class="form-control" ng-options="cellOption.id as cellOption.name for cellOption in cellOptions"
-                                value="cellId"></select>
+                                value="cellId">
+                                <option value=""></option>
+                            </select>
                     </div>
                 </div>
                 <div class="form-group" ng-if="disabled == false" ng-show ="additionalDetailsAddOrRemove">
@@ -192,7 +201,9 @@
                     <div class="col-sm-3">
                         <select chosen="villageOptions" name = "village" ng-model="additionalDetails.villageId"
                                 class="form-control" ng-options="villageOption.id as villageOption.name for villageOption in villageOptions"
-                                value="villageId"></select>
+                                value="villageId">
+                                <option value=""></option>
+                            </select>
                     </div>
 
                 </div>
