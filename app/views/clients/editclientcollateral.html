@@ -5,7 +5,7 @@
             <h4>{{ 'label.heading.editcollateral' | translate }}</h4>
         </div>
         <br/>
-        <form name="editcollateralform" class="form-horizontal" ng-submit="submit()">
+        <form name="editcollateralform" class="form-horizontal" rc-submit="submit()">
             <api-validate></api-validate>
             <fieldset>
                 <div class="form-group">
@@ -15,7 +15,7 @@
                     <div class="col-sm-3">
                         <input id="name" name="name" type="text" class="form-control" ng-model="formData.name" required disabled>
                     </div>
-                
+                    
                 </div>
 
                 <div class="form-group">
@@ -27,7 +27,7 @@
                     </div>
 
                     <div class="col-sm-2">
-                        <form-validate valattributeform="createcollateralform" valattribute="quantity"/>
+                        <form-validate valattributeform="editcollateralform" valattribute="quantity"/>
                     </div>
 
                 </div>
@@ -39,7 +39,7 @@
                     <div class="col-sm-3">
                         <input id="total" name="total" type="text" ng-model="formData.total" class="form-control" number-format disabled/>
                     </div>
-
+                    
                 </div>
 
                 <div class="form-group">
@@ -49,7 +49,7 @@
                     <div class="col-sm-3">
                         <input id="totalCollateral" name="totalCollateral" type="text" ng-model="formData.totalCollateral" class="form-control" number-format disabled/>
                     </div>
-
+                    
                 </div>
                 <div class="form-group" ng-if="additionalCollateralDetailsEnabled && !existingAdditionalDetails">
                   <div class="control-label col-sm-3">
@@ -85,7 +85,7 @@
                             <input id="collateralOwnerFirst" name="collateralOwnerFirst" type="text" class="form-control" ng-model="additionalDetails.collateralOwnerFirst" ng-required="additionalDetailsAddOrRemove">
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="createcollateralform" valattribute="collateralOwnerFirst"/>
+                            <form-validate valattributeform="editcollateralform" valattribute="collateralOwnerFirst"/>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                             <input id="idNoOfCollateralOwnerFirst" name="idNoOfCollateralOwnerFirst" type="text" class="form-control" ng-model="additionalDetails.idNoOfCollateralOwnerFirst" ng-required="additionalDetailsAddOrRemove">
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="createcollateralform" valattribute="idNoOfCollateralOwnerFirst"/>
+                            <form-validate valattributeform="editcollateralform" valattribute="idNoOfCollateralOwnerFirst"/>
                         </div>
                     </div>
                 </div>
@@ -126,10 +126,11 @@
                                 class="required">*</span></label>
 
                         <div class="col-sm-3">
-                            <input id="worthOfCollateral" name="worthOfCollateral" type="text" ng-model="additionalDetails.worthOfCollateral" class="form-control" number-format ng-required="additionalDetailsAddOrRemove"/>
+                            <input id="worthOfCollateral" name="worthOfCollateral" type="text" ng-model="additionalDetails.worthOfCollateral" class="form-control"
+                            ng-required="additionalDetailsAddOrRemove" number-format late-validate number=true />
                         </div>
                         <div class="col-sm-2">
-                            <form-validate valattributeform="createcollateralform" valattribute="worthOfCollateral"/>
+                            <form-validate valattributeform="editcollateralform" valattribute="worthOfCollateral"/>
                         </div>
                     </div>
                 </div>
@@ -139,7 +140,9 @@
                     <div class="col-sm-3">
                         <select chosen="provinceOptions" id ="provinceId" name ="provinceId" ng-model="additionalDetails.province.id"
                                 class="form-control" ng-options="provinceOption.id as provinceOption.name for provinceOption in provinceOptions"
-                                value="provinceId"></select>
+                                value="provinceId">
+                                <option value=""></option>
+                            </select>
                     </div>
                     </div>
                 </div>
@@ -148,8 +151,10 @@
                     <label class="control-label col-sm-2">{{ 'label.heading.district' | translate }}</label>
                     <div class="col-sm-3">
                         <select chosen="districtOptions" name = "district" ng-model="additionalDetails.district.id"
-                                class="form-control" required ng-options="districtOption.id as districtOption.name for districtOption in districtOptions"
-                                value="districtId"></select>
+                                class="form-control" ng-options="districtOption.id as districtOption.name for districtOption in districtOptions"
+                                value="districtId">
+                                <option value=""></option>
+                            </select>
                     </div>
                     </div>
                 </div>
@@ -157,24 +162,30 @@
                     <label class="control-label col-sm-2">{{ 'label.heading.sector' | translate }}</label>
                     <div class="col-sm-3">
                         <select chosen="sectorOptions" name = "sector" ng-model="additionalDetails.sector.id"
-                                class="form-control" required ng-options="sectorOption.id as sectorOption.name for sectorOption in sectorOptions"
-                                value="sectorId"></select>
+                                class="form-control" ng-options="sectorOption.id as sectorOption.name for sectorOption in sectorOptions"
+                                value="sectorId">
+                                <option value=""></option>
+                            </select>
                     </div>
                 </div>
                 <div class="form-group" ng-show ="additionalDetailsAddOrRemove">
                     <label class="control-label col-sm-2">{{ 'label.heading.cell' | translate }}</label>
                     <div class="col-sm-3">
                         <select chosen="cellOptions" name = "cell" ng-model="additionalDetails.cell.id"
-                                class="form-control" required ng-options="cellOption.id as cellOption.name for cellOption in cellOptions"
-                                value="cellId"></select>
+                                class="form-control" ng-options="cellOption.id as cellOption.name for cellOption in cellOptions"
+                                value="cellId">
+                                <option value=""></option>
+                            </select>
                     </div>
                 </div>
                 <div class="form-group" ng-show ="additionalDetailsAddOrRemove">
                     <label class="control-label col-sm-2">{{ 'label.heading.village' | translate }}</label>
                     <div class="col-sm-3">
                         <select chosen="villageOptions" name = "village" ng-model="additionalDetails.village.id"
-                                class="form-control" required ng-options="villageOption.id as villageOption.name for villageOption in villageOptions"
-                                value="villageId"></select>
+                                class="form-control" ng-options="villageOption.id as villageOption.name for villageOption in villageOptions"
+                                value="villageId">
+                                <option value=""></option>
+                            </select>
                     </div>
                 </div>
                 <div class="col-md-offset-3">
