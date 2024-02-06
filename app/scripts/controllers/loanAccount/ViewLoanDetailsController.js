@@ -333,6 +333,7 @@
                     taskPermissionName: 'VERIFYLOANONTRANSUNIONCRBRWANDA_LOAN'
                 };
                 }
+                scope.getCrbReport();
                 }
                 function getIdentityVerificationActionOptions(data) {
                 if((data.currency.code == "KES")){

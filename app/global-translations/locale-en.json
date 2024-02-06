@@ -2344,6 +2344,7 @@
   "label.heading.scheduledPaymentAmount": "Scheduled Payment Amount",
   "label.heading.tradeSector": "Trade Sector",
   "label.heading.worstArrear": "Worst Arrear",
+  "label.heading.TransAccountOwner": "Account Owner",
 
 
   "#Anchors": "..",
