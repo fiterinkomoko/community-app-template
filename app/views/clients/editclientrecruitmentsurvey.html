@@ -10,7 +10,7 @@
             <h4>{{ 'label.heading.editClientRecruitmentSurvey' | translate }}</h4>
         </div>
         <br/>
-        <form name="surveyform" class="form-horizontal" rc-submit="submit()" >
+        <form name="surveyform" class="form-horizontal" novalidate="" rc-submit="submit()" >
             <api-validate></api-validate>
             <fieldset>
                 <div class="form-group">
@@ -45,7 +45,7 @@
                                 ng-options="program.id as program.name for program in programOptions"
                                 value="{{program.id}}" required></select>
                     </div>
-                    <form-validate valattributeform="surveyform" valattribute="nationalityId"/>
+                    <form-validate valattributeform="surveyform" valattribute="programId"/>
                 </div>
 
                 <div class="form-group">
@@ -53,7 +53,7 @@
                         <span class="required">*</span></label>
 
                     <div class="col-sm-3">
-                        <input id="surveyName" name="surveyName" type="text" class="form-control" ng-model="formData.surveyName">
+                        <input id="surveyName" name="surveyName" type="text" class="form-control" ng-model="formData.surveyName" required>
                     </div>
                     <form-validate valattributeform="surveyform" valattribute="surveyName"/>
                 </div>
@@ -75,7 +75,7 @@
                     <div class="col-sm-3">
                         <input id="startDate" type="text" name="startDate" datepicker-pop="dd MMMM yyyy"
                                ng-model="formData.startDate" is-open="opened1" min="minDate" max="restrictDate"
-                               class="form-control" />
+                               class="form-control" required />
                     </div>
                     <form-validate valattributeform="surveyform" valattribute="startDate"/>
                 </div>
@@ -85,7 +85,7 @@
                     <div class="col-sm-3">
                         <input id="endDate" type="text" name="endDate" datepicker-pop="dd MMMM yyyy"
                                ng-model="formData.endDate" is-open="opened1" min="minDate" max="restrictDate"
-                               class="form-control" />
+                               class="form-control" required />
                     </div>
                     <form-validate valattributeform="surveyform" valattribute="endDate"/>
                 </div>
