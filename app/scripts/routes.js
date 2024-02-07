@@ -271,6 +271,9 @@
             .when('/viewclient/:id/viewclientcollateral/:collateralId', {
                 templateUrl: 'views/clients/viewclientcollateral.html'
             })
+            .when('/clients/:id/viewclientcollateral/:collateralId', {
+                templateUrl: 'views/clients/viewclientcollateral.html'
+            })
             .when('/viewclient/:id/viewallclientcollaterals', {
                 templateUrl: 'views/clients/viewallclientcollaterals.html'
             })

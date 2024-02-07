@@ -151,6 +151,8 @@
 
                     })
 
+                    scope.addressArray.push({});
+
 
                 }
 
@@ -542,6 +544,10 @@
                     if(scope.familyArray[i].email)
                     {
                         temp.email=scope.familyArray[i].email;
+                    }
+                    if(scope.familyArray[i].addressTypeId)
+                    {
+                        temp.addressTypeId=scope.familyArray[i].addressTypeId;
                     }
                     if(scope.familyArray[i].addressLine1)
                     {

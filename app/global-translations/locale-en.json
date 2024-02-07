@@ -5257,6 +5257,10 @@
   "validation.msg.ClientCollateralAdditionalData.collateralOwnerFirst.cannot.be.blank": "Collateral owner first cannot be blank",
   "validation.msg.ClientCollateralAdditionalData.idNoOfCollateralOwnerFirst.cannot.be.blank": "First owner id cannot be blank",
   "validation.msg.ClientCollateralAdditionalData.worthOfCollateral.cannot.be.blank": "Worth of collateral cannot be blank",
+  "validation.msg.loanproduct.transfersInSuspenseAccountId.cannot.be.blank": "Transfers in suspense is mandatory.",
+  "validation.msg.loanproduct.incomeFromRecoveryAccountId.cannot.be.blank": "Income from Recovery Repayments is mandatory.",
+  "validation.msg.loanproduct.overpaymentLiabilityAccountId.cannot.be.blank": "Over payment liability is mandatory.",
   "validation.msg.ClientRecruitmentSurvey.endDate.is.less.than.date": "The End Date must be the same as or after the Start Date",
+  "validation.msg.loan.loanPurposeId.cannot.be.blank": "Loan purpose cannot be blank",
   "----End---": "--End of file--- "
 }

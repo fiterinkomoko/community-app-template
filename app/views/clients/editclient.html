@@ -32,14 +32,20 @@
 	        </div>
 
 			<div class="form-group">
-				<label class="control-label col-sm-2">{{'label.input.legalForm' | translate}}</label>
+				<label class="control-label col-sm-2">
+					{{'label.input.legalForm' | translate}}
+					<span class="required">*</span>
+				</label>
 
 				<div class="col-sm-3">
-					<select id="legalFormId" ng-model="formData.legalFormId"  class="form-control"
+					<select id="legalFormId" ng-model="formData.legalFormId"  class="form-control" name="legalFormId"
 							ng-options="legalForm.id as legalForm.value for legalForm in clientLegalFormOptions" value="{{legalForm.id}}"
-							ng-change="displayPersonOrNonPersonOptions(formData.legalFormId)">
+							ng-change="displayPersonOrNonPersonOptions(formData.legalFormId)" required late-validate>
 						<option value="">--{{'label.menu.legalForm' | translate}}--</option>
 					</select>
+				</div>
+				<div class="col-sm-2">
+					<form-validate valattributeform="editclientform" valattribute="legalFormId" />
 				</div>
 			</div>
 			<div data-ng-switch on="showNonPersonOptions">
@@ -146,10 +152,10 @@
 			<div class="form-group">
 			    <label class="control-label col-sm-2">{{ 'label.input.clientuid' | translate }}: <span class="required">*</span> </label>
 			    <div class="col-sm-3">
-			        <input id="externalId" type="text" ng-model="formData.externalId" class="form-control"required late-validate />
+			        <input id="externalId" type="text" ng-model="formData.externalId" class="form-control" name="externalId" required late-validate />
 			    </div>
 				<div class="col-sm-2">
-					<form-validate valattributeform="createclientform" valattribute="externalId" />
+					<form-validate valattributeform="editclientform" valattribute="externalId" />
 				</div>
 			</div>
 			<div class="form-group">
@@ -200,7 +206,7 @@
 
 				<div data-ng-switch on="showNonPersonOptions">
 					<div data-ng-switch-when="false">
-						<label class="control-label col-sm-2">{{'label.input.gender' | translate}}<span class="required">*</span></label>
+						<label class="control-label col-sm-2">{{'label.input.gender' | translate}}</label>
 
 						<div class="col-sm-3">
 							<select id="genderId" ng-model="formData.genderId"  class="form-control"
@@ -366,9 +372,10 @@
 	                        class="required">*</span></label>
 	
 	                <div class="col-sm-3">
-	                    <input id="activationDate" type="text" datepicker-pop="dd MMMM yyyy"
+	                    <input id="activationDate" type="text" name="activationDate" datepicker-pop="dd MMMM yyyy"
 	                           ng-model="date.activationDate" is-open="opened" min="'2000-01-01'"
-	                           max="restrictDate"  class="form-control"/>
+	                           max="restrictDate"  class="form-control" required late-validate />
+						<form-validate valattributeform="editclientform" valattribute="activationDate" />
 	                </div>
 
 					<label class="control-label col-sm-2" ng-hide = "formData.legalFormId=='2'">{{'label.input.singleWithdrawLimit' | translate}}</label>
