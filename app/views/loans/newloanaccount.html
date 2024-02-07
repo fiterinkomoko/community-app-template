@@ -281,7 +281,7 @@
                     <api-validate></api-validate>
                     <!--<h3>{{ 'label.heading.terms' | translate }}</h3>-->
                     <hr>
-                    <table ng-show="loanaccountinfo" ng-hide="previewRepayment" class=" width100">
+                    <table ng-show="loanaccountinfo" class=" width100">
                         <tr>
                             <td class="width19">
                                 <label>{{ 'label.input.principal' | translate }}&nbsp;
@@ -828,7 +828,7 @@
                                 <strong>{{ 'label.heading.collaterals' | translate }}</strong>
                             </label>
                             <select ng-model="collateralFormData.collateralId" ng-options="collateral.collateralId as collateral.name for collateral in collateralsData"
-                                value="{{collateral.collateralId}}" class="form-control width170px col-sm-2" ng-class="{'redBorder': collateralRequired}">
+                                value="{{collateral.collateralId}}" class="form-control width170px col-sm-2" ng-class="{'redBorder': collateralRequired}" ng-change="updateValues()">
                             </select>&nbsp;&nbsp;
                             <div class="col-sm-2">
                                 <input class="form-control" type="text" ng-model="collateralFormData.quantity" placeholder="{{'label.input.quantity' | translate}}"
@@ -888,7 +888,7 @@
                             </a>
                         </span>
                         <span>
-                            <a ng-show="previewRepayment" ng-click="previewRepayment=!previewRepayment">
+                            <a ng-show="previewRepayment" ng-click="hidePreviewRepayments()">
                                 <i class="fa fa-circle-arrow-left">{{'label.anchor.backtoloaninfo' | translate}}</i>
                             </a>
                             <br>
