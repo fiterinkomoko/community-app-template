@@ -151,6 +151,8 @@
 
                     })
 
+                    scope.addressArray.push({});
+
 
                 }
 
