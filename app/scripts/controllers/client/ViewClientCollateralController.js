@@ -1,7 +1,10 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
         ViewClientCollateralController: function (scope, resourceFactory, routeParams, location, $uibModal) {
-
+            scope.redirectToListingPage = false;
+            if (location.url().startsWith("/clients")) {
+                scope.redirectToListingPage = true;
+            }
             scope.formData = {};
             scope.clientId = routeParams.id;
             scope.collateralId = routeParams.collateralId;

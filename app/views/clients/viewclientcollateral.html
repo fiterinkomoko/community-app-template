@@ -1,7 +1,13 @@
 <div class="content-container" ng-controller="ViewClientCollateralController">
-    <ul class="breadcrumb">
+    <ul class="breadcrumb" ng-show="!redirectToListingPage">
         <li><a href="#/clients">{{'label.anchor.clients' | translate}}</a></li>
-        <li><a href="#/viewclient/{{clientId}}">{{'label.anchor.clientcollateral' | translate}}</a></li>
+        <li><a href="#/viewclient/{{clientId}}">{{'label.anchor.client' | translate}}</a></li>
+        <li class="active">{{collateralId}}</li>
+    </ul>
+    <ul class="breadcrumb" ng-show="redirectToListingPage">
+        <li><a href="#/clients">{{'label.anchor.clients' | translate}}</a></li>
+        <li><a href="#/viewclient/{{clientId}}">{{'label.anchor.client' | translate}}</a></li>
+        <li><a href="#/viewclient/{{clientId}}/viewallclientcollaterals">{{'label.anchor.clientcollateral' | translate}}</a></li>
         <li class="active">{{collateralId}}</li>
     </ul>
     <div class="card well">
