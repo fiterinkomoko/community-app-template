@@ -1206,143 +1206,193 @@
 	<div class="col-md-12" ng-show="isAccountingEnabled()">
 	<div class="form-group">
 	    <h4>{{"label.heading.assets" | translate}}</h4>
-	    <label class="control-label col-sm-2">{{ 'label.input.fundsource' | translate }}
+	    <label class="control-label col-sm-2">
+			{{ 'label.input.fundsource' | translate }}
+			<span class="required">*</span>
 	        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.fundsource' | translate}}" tooltip-append-to-body="true"></i>
 	    </label>
 	    <div class="col-sm-3">
-	        <select id="fundSourceAccountId" ng-model="formData.fundSourceAccountId" chosen="assetAccountOptions"
-	                ng-options="assetAccount.id as assetAccount.name for assetAccount in assetAccountOptions"
-	                value="{{assetAccount.id}}">
+	        <select id="fundSourceAccountId" class="form-control" name="fundSourceAccountId"
+				ng-model="formData.fundSourceAccountId" chosen="assetAccountOptions" 
+				ng-options="assetAccount.id as assetAccount.name for assetAccount in assetAccountOptions"
+				value="{{assetAccount.id}}" ng-required="isAccountingEnabled()">
+				<option value=""></option>
 	        </select>
+			<form-validate valattributeform="editloanproductform" valattribute="fundSourceAccountId" />
 	    </div>
-	    <label class="control-label col-sm-2">{{ 'label.input.loanportfolio' | translate }}
+	    <label class="control-label col-sm-2">
+			{{ 'label.input.loanportfolio' | translate }}
+			<span class="required">*</span>
 	        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.loanportfolio' | translate}}" tooltip-append-to-body="true"></i>
 	    </label>
 	    <div class="col-sm-3">
-	        <select id="loanPortfolioAccountId" class="form-control" ng-model="formData.loanPortfolioAccountId"
-	                chosen="assetAccountOptions"
-	                ng-options="assetAccount.id as assetAccount.name for assetAccount in assetAccountOptions"
-	                value="{{assetAccount.id}}">
+	        <select id="loanPortfolioAccountId" class="form-control" name="loanPortfolioAccountId"
+				ng-model="formData.loanPortfolioAccountId" chosen="assetAccountOptions"
+				ng-options="assetAccount.id as assetAccount.name for assetAccount in assetAccountOptions"
+				value="{{assetAccount.id}}" ng-required="isAccountingEnabled()">
+				<option value=""></option>
 	        </select>
+			<form-validate valattributeform="editloanproductform" valattribute="loanPortfolioAccountId" />
 	    </div>
 	</div>
 	<div class="form-group" ng-show="isAccrualAccountingEnabled()">
-	    <label class="control-label col-sm-2">{{ 'label.input.receivableinterest' | translate }}
+	    <label class="control-label col-sm-2">
+			{{ 'label.input.receivableinterest' | translate }}
+			<span class="required">*</span>
 	        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.receivableinterest' | translate}}" tooltip-append-to-body="true"></i>
 	    </label>
 	    <div class="col-sm-3">
-	        <select id="receivableInterestAccountId" class="form-control"
-	                ng-model="formData.receivableInterestAccountId" chosen="assetAccountOptions"
-	                ng-options="assetAccount.id as assetAccount.name for assetAccount in assetAccountOptions"
-	                value="{{assetAccount.id}}">
+	        <select id="receivableInterestAccountId" class="form-control" name="receivableInterestAccountId"
+				ng-model="formData.receivableInterestAccountId" chosen="assetAccountOptions"
+				ng-options="assetAccount.id as assetAccount.name for assetAccount in assetAccountOptions"
+				value="{{assetAccount.id}}" ng-required="isAccrualAccountingEnabled()">
+				<option value=""></option>
 	        </select>
+			<form-validate valattributeform="editloanproductform" valattribute="receivableInterestAccountId" />
 	    </div>
-	    <label class="control-label col-sm-2">{{ 'label.input.receivablefees' | translate }}
+	    <label class="control-label col-sm-2">
+			{{ 'label.input.receivablefees' | translate }}
+			<span class="required">*</span>
 	        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.receivablefees' | translate}}" tooltip-append-to-body="true"></i>
 	    </label>
 	    <div class="col-sm-3">
-	        <select id="receivableFeeAccountId" ng-model="formData.receivableFeeAccountId"
-	                chosen="assetAccountOptions"
-	                ng-options="assetAccount.id as assetAccount.name for assetAccount in assetAccountOptions"
-	                value="{{assetAccount.id}}">
+	        <select id="receivableFeeAccountId" class="form-control" name="receivableFeeAccountId" 
+				ng-model="formData.receivableFeeAccountId" chosen="assetAccountOptions"
+				ng-options="assetAccount.id as assetAccount.name for assetAccount in assetAccountOptions"
+				value="{{assetAccount.id}}" ng-required="isAccrualAccountingEnabled()">
+				<option value=""></option>
 	        </select>
+			<form-validate valattributeform="editloanproductform" valattribute="receivableFeeAccountId" />
 	    </div>
 	</div>
 	<div class="form-group" ng-show="isAccrualAccountingEnabled()">
-	    <label class="control-label col-sm-2">{{ 'label.input.receivablepenalties' | translate }}
+	    <label class="control-label col-sm-2">
+			{{ 'label.input.receivablepenalties' | translate }}
+			<span class="required">*</span>
 	        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.receivablepenalties' | translate}}" tooltip-append-to-body="true"></i>
 	    </label>
 	    <div class="col-sm-3">
-	        <select id="receivablePenaltyAccountId" ng-model="formData.receivablePenaltyAccountId"
-	                chosen="assetAccountOptions"
-	                ng-options="assetAccount.id as assetAccount.name for assetAccount in assetAccountOptions"
-	                value="{{assetAccount.id}}">
+	        <select id="receivablePenaltyAccountId" class="form-control" name="receivablePenaltyAccountId"
+				ng-model="formData.receivablePenaltyAccountId" chosen="assetAccountOptions"
+				ng-options="assetAccount.id as assetAccount.name for assetAccount in assetAccountOptions"
+				value="{{assetAccount.id}}" ng-required="isAccrualAccountingEnabled()">
+				<option value=""></option>
 	        </select>
+			<form-validate valattributeform="editloanproductform" valattribute="receivablePenaltyAccountId" />
 	    </div>
 	</div>
 	<div class="form-group">
-	    <label class="control-label col-sm-2">{{ 'label.input.transfersinsuspense' | translate }}
+	    <label class="control-label col-sm-2">
+			{{ 'label.input.transfersinsuspense' | translate }}
+			<span class="required">*</span>
 	        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.transfersinsuspense' | translate}}" tooltip-append-to-body="true"></i></a>
 	    </label>
 	    <div class="col-sm-3">
-	        <select id="transfersInSuspenseAccountId" ng-model="formData.transfersInSuspenseAccountId"
-	                chosen="assetAccountOptions"
-	                ng-options="assetAccount.id as assetAccount.name for assetAccount in assetAccountOptions"
-	                value="{{assetAccount.id}}">
+	        <select id="transfersInSuspenseAccountId" class="form-control" name="transfersInSuspenseAccountId"
+				ng-model="formData.transfersInSuspenseAccountId" chosen="assetAccountOptions"
+				ng-options="assetAccount.id as assetAccount.name for assetAccount in assetAccountOptions"
+				value="{{assetAccount.id}}" ng-required="isAccountingEnabled()">
+				<option value=""></option>
 	        </select>
+			<form-validate valattributeform="editloanproductform" valattribute="transfersInSuspenseAccountId" />
 	    </div>
 	</div>
 	<hr>
 	<div class="form-group">
 	    <h4>{{"label.heading.income" | translate}}</h4>
-	    <label class="control-label col-sm-2">{{ 'label.input.incomefrominterest' | translate }}
+	    <label class="control-label col-sm-2">
+			{{ 'label.input.incomefrominterest' | translate }}
+			<span class="required">*</span>
 	        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.incomefrominterest' | translate}}" tooltip-append-to-body="true"></i>
 	    </label>
 	    <div class="col-sm-3">
-	        <select id="interestOnLoanAccountId" ng-model="formData.interestOnLoanAccountId"
-	                chosen="incomeAccountOptions"
-	                ng-options="incomeAccount.id as incomeAccount.name for incomeAccount in incomeAccountOptions"
-	                value="{{incomeAccount.id}}">
+	        <select id="interestOnLoanAccountId" class="form-control" name="interestOnLoanAccountId"
+				ng-model="formData.interestOnLoanAccountId" chosen="incomeAccountOptions"
+				ng-options="incomeAccount.id as incomeAccount.name for incomeAccount in incomeAccountOptions"
+				value="{{incomeAccount.id}}" ng-required="isAccountingEnabled()">
+				<option value=""></option>
 	        </select>
+			<form-validate valattributeform="editloanproductform" valattribute="interestOnLoanAccountId" />
 	    </div>
-	    <label class="control-label col-sm-2">{{ 'label.input.incomefromfees' | translate }}
+	    <label class="control-label col-sm-2">
+			{{ 'label.input.incomefromfees' | translate }}
+			<span class="required">*</span>
 	        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.incomefromfees' | translate}}" tooltip-append-to-body="true"></i>
 	    </label>
 	    <div class="col-sm-3">
-	        <select id="incomeFromFeeAccountId" ng-model="formData.incomeFromFeeAccountId"
-	                chosen="incomeAccountOptions"
-	                ng-options="incomeAccount.id as incomeAccount.name for incomeAccount in incomeAccountOptions"
-	                value="{{incomeAccount.id}}">
+	        <select id="incomeFromFeeAccountId" class="form-control" name="incomeFromFeeAccountId"
+				ng-model="formData.incomeFromFeeAccountId" chosen="incomeAccountOptions"
+				ng-options="incomeAccount.id as incomeAccount.name for incomeAccount in incomeAccountOptions"
+				value="{{incomeAccount.id}}" ng-required="isAccountingEnabled()">
+				<option value=""></option>
 	        </select>
+			<form-validate valattributeform="editloanproductform" valattribute="incomeFromFeeAccountId" />
 	    </div>
 	</div>
 	<div class="form-group">
-	    <label class="control-label col-sm-2">{{ 'label.input.incomefrompenalties' | translate }}
+	    <label class="control-label col-sm-2">
+			{{ 'label.input.incomefrompenalties' | translate }}
+			<span class="required">*</span>
 	        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.incomefrompenalties' | translate}}" tooltip-append-to-body="true"></i>
 	    </label>
 	    <div class="col-sm-3">
-	        <select id="incomeFromPenaltyAccountId" ng-model="formData.incomeFromPenaltyAccountId"
-	                chosen="incomeAccountOptions"
-	                ng-options="incomeAccount.id as incomeAccount.name for incomeAccount in incomeAccountOptions"
-	                value="{{incomeAccount.id}}">
+	        <select id="incomeFromPenaltyAccountId" class="form-control" name="incomeFromPenaltyAccountId"
+				ng-model="formData.incomeFromPenaltyAccountId" chosen="incomeAccountOptions"
+				ng-options="incomeAccount.id as incomeAccount.name for incomeAccount in incomeAccountOptions"
+				value="{{incomeAccount.id}}" ng-required="isAccountingEnabled()">
+				<option value=""></option>
 	        </select>
+			<form-validate valattributeform="editloanproductform" valattribute="incomeFromPenaltyAccountId" />
 	    </div>
-	    <label class="control-label col-sm-2">{{ 'label.input.recoverypayments' | translate }}
+	    <label class="control-label col-sm-2">
+			{{ 'label.input.recoverypayments' | translate }}
+			<span class="required">*</span>
 	        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.recoverypayments' | translate}}" tooltip-append-to-body="true"></i>
 	    </label>
 	    <div class="col-sm-3">
-	        <select id="incomeFromRecoveryAccountId" ng-model="formData.incomeFromRecoveryAccountId"
-	                chosen="incomeAccountOptions"
-	                ng-options="incomeAccount.id as incomeAccount.name for incomeAccount in incomeAccountOptions"
-	                value="{{incomeAccount.id}}">
+	        <select id="incomeFromRecoveryAccountId" class="form-control" name="incomeFromRecoveryAccountId"
+				ng-model="formData.incomeFromRecoveryAccountId" chosen="incomeAccountOptions"
+				ng-options="incomeAccount.id as incomeAccount.name for incomeAccount in incomeAccountOptions"
+				value="{{incomeAccount.id}}" ng-required="isAccountingEnabled()">
+				<option value=""></option>
 	        </select>
+			<form-validate valattributeform="editloanproductform" valattribute="incomeFromRecoveryAccountId" />
 	    </div>
 	</div>
 	<hr>
 	<div class="form-group">
 	    <h4>{{"label.heading.expenses" | translate}}</h4>
-	    <label class="control-label col-sm-2">{{ 'label.input.loseswrittenoff' | translate }}
+	    <label class="control-label col-sm-2">
+			{{ 'label.input.loseswrittenoff' | translate }}
+			<span class="required">*</span>
 	        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.loseswrittenoff' | translate}}" tooltip-append-to-body="true"></i>
 	    </label>
 	    <div class="col-sm-3">
-	        <select id="writeOffAccountId" ng-model="formData.writeOffAccountId" chosen="expenseAccountOptions"
-	                ng-options="expenseAccount.id as expenseAccount.name for expenseAccount in expenseAccountOptions"
-	                value="{{expenseAccount.id}}">
+	        <select id="writeOffAccountId" class="form-control" name="writeOffAccountId"
+				ng-model="formData.writeOffAccountId" chosen="expenseAccountOptions"
+				ng-options="expenseAccount.id as expenseAccount.name for expenseAccount in expenseAccountOptions"
+				value="{{expenseAccount.id}}" ng-required="isAccountingEnabled()">
+				<option value=""></option>
 	        </select>
+			<form-validate valattributeform="editloanproductform" valattribute="writeOffAccountId" />
 	    </div>
 	</div>
 	<hr>
 	<div class="form-group">
 	    <h4>{{"label.heading.liabilities" | translate}}</h4>
-	    <label class="control-label col-sm-2">{{ 'label.input.overpaymentliability' | translate }}
+	    <label class="control-label col-sm-2">
+			{{ 'label.input.overpaymentliability' | translate }}
+			<span class="required">*</span>
 	        <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.overpaymentliability' | translate}}" tooltip-append-to-body="true"></i>
 	    </label>
 	    <div class="col-sm-3">
-	        <select id="overpaymentLiabilityAccountId" ng-model="formData.overpaymentLiabilityAccountId"
-	                chosen="liabilityAccountOptions"
-	                ng-options="liabilityAccount.id as liabilityAccount.name for liabilityAccount in liabilityAccountOptions"
-	                value="{{liabilityAccount.id}}">
+	        <select id="overpaymentLiabilityAccountId" class="form-control" name="overpaymentLiabilityAccountId"
+				ng-model="formData.overpaymentLiabilityAccountId" chosen="liabilityAccountOptions"
+				ng-options="liabilityAccount.id as liabilityAccount.name for liabilityAccount in liabilityAccountOptions"
+				value="{{liabilityAccount.id}}" ng-required="isAccountingEnabled()">
+				<option value=""></option>
 	        </select>
+			<form-validate valattributeform="editloanproductform" valattribute="overpaymentLiabilityAccountId" />
 	    </div>
 	</div>
 	<hr>
