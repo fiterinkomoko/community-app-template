@@ -36,13 +36,13 @@
     </tr>
     <tr ng-show="formData.productId">
         <td>
-            <label>{{ 'label.input.loanpurpose' | translate }}:&nbsp;</label>
+            <label>{{ 'label.input.loanpurpose' | translate }}:&nbsp;<span class="required">*</span></label>
         </td>
         <td class="paddedbottom10">
             <select chosen="loanaccountinfo.loanPurposeOptions" id="loanPurposeId" ng-model="formData.loanPurposeId" class="form-control width170px"
                     ng-options="loanPurpose.id as loanPurpose.name for loanPurpose in loanaccountinfo.loanPurposeOptions | orderBy:'name':reverse"
-                    value="{{loanPurpose.id}}">
-                <option value="">{{'label.selectpurpose' | translate}}</option>
+                    value="{{loanPurpose.id}}" required>
+                <option value="" disabled>{{'label.selectpurpose' | translate}}</option>
             </select>
         </td>
         <td ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.fundId == true"><label>{{ 'label.input.fund' | translate }}:&nbsp;</label></td>
@@ -72,7 +72,7 @@
         </td>
     </tr>
     <tr ng-show="formData.productId">
-        <td><label>{{ 'label.input.externalid' | translate }}<span c    lass="required">*</span></label></td>
+        <td><label>{{ 'label.input.externalid' | translate }}<span class="required">*</span></label></td>
         <td class="paddedbottom10">
             <input type="text" id="externalId" name="externalId" ng-model="formData.externalId" class="form-control"/>
         </td>
