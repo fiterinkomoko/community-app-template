@@ -543,6 +543,10 @@
                     {
                         temp.email=scope.familyArray[i].email;
                     }
+                    if(scope.familyArray[i].addressTypeId)
+                    {
+                        temp.addressTypeId=scope.familyArray[i].addressTypeId;
+                    }
                     if(scope.familyArray[i].addressLine1)
                     {
                         temp.address1=scope.familyArray[i].addressLine1;
