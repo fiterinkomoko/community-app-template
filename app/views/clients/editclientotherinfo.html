@@ -45,9 +45,9 @@
                             </label>
 
                     <div class="col-sm-3">
-                        <input id="numberOfChildren" name="numberOfChildren" type="text" class="form-control" ng-model="formData.numberOfChildren" late-validate>
+                        <input id="numberOfChildren" name="numberOfChildren" type="text" class="form-control" ng-model="formData.numberOfChildren" late-validate number=true>
                     </div>
-
+                    <form-validate valattributeform="editclientotherinfoform" valattribute="numberOfChildren" />
                 </div>
 
                 <div class="form-group">
@@ -55,9 +55,9 @@
                     </label>
 
                     <div class="col-sm-3">
-                        <input id="numberOfDependent" name="numberOfDependent" type="text" class="form-control" ng-model="formData.numberOfDependents" late-validate>
+                        <input id="numberOfDependent" name="numberOfDependent" type="text" class="form-control" ng-model="formData.numberOfDependents" late-validate number=true>
                     </div>
-
+                    <form-validate valattributeform="editclientotherinfoform" valattribute="numberOfDependent" />
                 </div>
 
                 <div class="form-group">
@@ -84,29 +84,35 @@
                     <form-validate valattributeform="editclientotherinfoform" valattribute="nationalIdentificationNumber"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="passportNumber">{{ 'label.input.passportNumber' | translate }}
+                    <label class="control-label col-sm-2" for="passportNumber">
+                        {{ 'label.input.passportNumber' | translate }}
+                        <span class="required">*</span>
                     </label>
 
                     <div class="col-sm-3">
-                        <input id="passportNumber" name="passportNumber" type="text" class="form-control" ng-model="formData.passportNumber" late-validate>
+                        <input id="passportNumber" name="passportNumber" type="text" class="form-control" ng-model="formData.passportNumber" required late-validate>
                     </div>
                     <form-validate valattributeform="editclientotherinfoform" valattribute="passportNumber"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="bankAccountNumber">{{ 'label.input.bankAccountNumber' | translate }}
+                    <label class="control-label col-sm-2" for="bankAccountNumber">
+                        {{ 'label.input.bankAccountNumber' | translate }}
+                        <span class="required">*</span>
                     </label>
 
                     <div class="col-sm-3">
-                        <input id="bankAccountNumber" name="bankAccountNumber" type="text" class="form-control" ng-model="formData.bankAccountNumber" late-validate>
+                        <input id="bankAccountNumber" name="bankAccountNumber" type="text" class="form-control" ng-model="formData.bankAccountNumber" required late-validate>
                     </div>
                     <form-validate valattributeform="editclientotherinfoform" valattribute="bankAccountNumber"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="bankName">{{ 'label.input.bankName' | translate }}
+                    <label class="control-label col-sm-2" for="bankName">
+                        {{ 'label.input.bankName' | translate }}
+                        <span class="required">*</span>
                     </label>
 
                     <div class="col-sm-3">
-                        <input id="bankName" name="bankName" type="text" class="form-control" ng-model="formData.bankName" late-validate>
+                        <input id="bankName" name="bankName" type="text" class="form-control" ng-model="formData.bankName" required late-validate>
                     </div>
                     <form-validate valattributeform="editclientotherinfoform" valattribute="bankName"/>
                 </div>

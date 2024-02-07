@@ -1,7 +1,13 @@
 <div class="content-container" ng-controller="ViewClientCollateralController">
-    <ul class="breadcrumb">
+    <ul class="breadcrumb" ng-show="!redirectToListingPage">
         <li><a href="#/clients">{{'label.anchor.clients' | translate}}</a></li>
-        <li><a href="#/viewclient/{{clientId}}">{{'label.anchor.clientcollateral' | translate}}</a></li>
+        <li><a href="#/viewclient/{{clientId}}">{{'label.anchor.client' | translate}}</a></li>
+        <li class="active">{{collateralId}}</li>
+    </ul>
+    <ul class="breadcrumb" ng-show="redirectToListingPage">
+        <li><a href="#/clients">{{'label.anchor.clients' | translate}}</a></li>
+        <li><a href="#/viewclient/{{clientId}}">{{'label.anchor.client' | translate}}</a></li>
+        <li><a href="#/viewclient/{{clientId}}/viewallclientcollaterals">{{'label.anchor.clientcollateral' | translate}}</a></li>
         <li class="active">{{collateralId}}</li>
     </ul>
     <div class="card well">
@@ -34,15 +40,15 @@
                 </tr>
                 <tr>
                     <td>{{'label.heading.quantity' | translate}}</td>
-                    <td>{{collateral.quantity}}</td>
+                    <td>{{collateral.quantity | number}}</td>
                 </tr>
                 <tr>
                     <td>{{'label.heading.totalValue' | translate}}</td>
-                    <td>{{collateral.total}}</td>
+                    <td>{{collateral.total | number}}</td>
                 </tr>
                 <tr>
                     <td>{{'label.heading.totalCollateralValue' | translate}}</td>
-                    <td>{{collateral.totalCollateral}}</td>
+                    <td>{{collateral.totalCollateral | number}}</td>
                 </tr>
                 <tr ng-show="additionalDetails">
                     <td>{{'label.heading.upiNo' | translate}}</td>
@@ -70,7 +76,7 @@
                 </tr>
                 <tr ng-show="additionalDetails">
                     <td>{{'label.heading.worthOfCollateral' | translate}}</td>
-                    <td>{{additionalDetails.worthOfCollateral}}</td>
+                    <td>{{additionalDetails.worthOfCollateral | number}}</td>
                 </tr>
                 <tr ng-show="additionalDetails.province">
                     <td>{{'label.heading.province' | translate}}</td>

@@ -36,13 +36,13 @@
     </tr>
     <tr ng-show="formData.productId">
         <td>
-            <label>{{ 'label.input.loanpurpose' | translate }}:&nbsp;</label>
+            <label>{{ 'label.input.loanpurpose' | translate }}:&nbsp;<span class="required">*</span></label>
         </td>
         <td class="paddedbottom10">
             <select chosen="loanaccountinfo.loanPurposeOptions" id="loanPurposeId" ng-model="formData.loanPurposeId" class="form-control width170px"
                     ng-options="loanPurpose.id as loanPurpose.name for loanPurpose in loanaccountinfo.loanPurposeOptions | orderBy:'name':reverse"
-                    value="{{loanPurpose.id}}">
-                <option value="">{{'label.selectpurpose' | translate}}</option>
+                    value="{{loanPurpose.id}}" required>
+                <option value="" disabled>{{'label.selectpurpose' | translate}}</option>
             </select>
         </td>
         <td ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.fundId == true"><label>{{ 'label.input.fund' | translate }}:&nbsp;</label></td>
@@ -72,7 +72,7 @@
         </td>
     </tr>
     <tr ng-show="formData.productId">
-        <td><label>{{ 'label.input.externalid' | translate }}<span c    lass="required">*</span></label></td>
+        <td><label>{{ 'label.input.externalid' | translate }}<span class="required">*</span></label></td>
         <td class="paddedbottom10">
             <input type="text" id="externalId" name="externalId" ng-model="formData.externalId" class="form-control"/>
         </td>
@@ -149,7 +149,7 @@
     </table>
     <!-- bnpl ends -->
 
-<div ng-hide="previewRepayment">
+<div>
     <div ng-show="loanaccountinfo">
         <div ng-hide="loanaccountinfo.meeting == undefined">
             <hr/>
@@ -178,7 +178,7 @@
         <div ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.linkAccountId == true && response.uiDisplayConfigurations.loanAccount.isHiddenField.createStandingInstruction == true">
         <label ng-show="loanaccountinfo"><strong>{{ 'label.heading.savingsLinkage' | translate }}</strong></label>
         </div>
-        <table ng-show="loanaccountinfo" ng-hide="previewRepayment" class="width100">
+        <table ng-show="loanaccountinfo" class="width100">
             <tr>
                 <td class="width19" ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.linkAccountId == true">
                     <label>{{ 'label.input.linksavings' | translate }}:</label>
@@ -656,7 +656,7 @@
                 <strong>{{ 'label.heading.collaterals' | translate }}</strong>
             </label>
             <select ng-model="collateralFormData.collateralId" ng-options="collateral.collateralId as collateral.name for collateral in collateralsData"
-                value="{{collateral.collateralId}}" class="form-control width170px col-sm-2" ng-class="{'redBorder': collateralRequired}">
+                value="{{collateral.collateralId}}" class="form-control width170px col-sm-2" ng-class="{'redBorder': collateralRequired}" ng-change="updateValues()">
             </select>&nbsp;&nbsp;
             <div class="col-sm-2">
                 <input class="form-control" type="text" ng-model="collateralFormData.quantity" placeholder="{{'label.input.quantity' | translate}}"
@@ -675,7 +675,7 @@
                     <i class="fa fa-plus "></i>&nbsp;Add</a>
             </div>
         </div>
-        <div ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenSection.collateralSection == true">
+        <div ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenSection.collateralSection">
             <table class="" class="width100" ng-show="collaterals.length>0">
                 <tr class="graybg">
                     <th>{{'label.heading.id' | translate}}</th>
@@ -765,7 +765,7 @@
 </div>
 <div class="col-md-offset-6">
     <button id="cancel" type="reset" class="btn btn-default" ng-click="cancel()">{{'label.button.cancel' | translate}}</button>
-    <button id="save" type="submit" class="btn btn-primary" has-permission='UPDATE_LOAN' ng-show="loanaccountinfo" ng-click="submit()">{{'label.button.save' |
+    <button id="save" type="submit" class="btn btn-primary" has-permission='UPDATE_LOAN' ng-show="loanaccountinfo">{{'label.button.save' |
         translate}}
     </button>
 </div>

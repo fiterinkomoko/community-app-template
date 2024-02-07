@@ -8,7 +8,7 @@
                     scope.formNameAttribute = attr.valattributeform;
                     scope.inputAttributeName = attr.valattribute;
                     var template = '<span  ng-show="' + scope.formNameAttribute + '.' + scope.inputAttributeName + '.$invalid">' +
-                        '<small class="error" ng-show="' + scope.formNameAttribute + '.' + scope.inputAttributeName + '.$error.req || rc.' + scope.formNameAttribute + '.attempted || ' + scope.formNameAttribute + '.$submitted ">' +
+                        '<small class="error" ng-show="' + scope.formNameAttribute + '.' + scope.inputAttributeName + '.$error.required && (rc.' + scope.formNameAttribute + '.attempted || ' + scope.formNameAttribute + '.$submitted)">' +
                         '{{' + "'label.requirefield'" + ' | translate}}' +
                         '</small>' +
                         '<small class="required error" ng-show="' + scope.formNameAttribute + '.' + scope.inputAttributeName + '.$error.nval">' +

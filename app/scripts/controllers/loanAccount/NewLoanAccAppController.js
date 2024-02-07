@@ -365,12 +365,17 @@
                 scope.collateralAddedDataArray.push(scope.collateralsData.filter((collateral) => scope.collateralFormData.collateralId == collateral.collateralId)[0]);
                 scope.collateralsData = scope.collateralsData.filter((collateral) => scope.collateralFormData.collateralId != collateral.collateralId);
                 scope.collaterals.push({collateralId: scope.collateralFormData.collateralId, quantity: scope.collateralFormData.quantity, total: scope.collateralFormData.total, totalCollateral: scope.collateralFormData.totalCollateral});
+                scope.collateralFormData.quantity = undefined;
+                scope.collateralFormData.total = undefined;
+                scope.collateralFormData.totalCollateral = undefined;
             };
 
             scope.updateValues = function() {
                 scope.collateralObject = scope.collateralsData.filter((collateral) => collateral.collateralId == scope.collateralFormData.collateralId)[0];
-                scope.collateralFormData.total = scope.collateralFormData.quantity * scope.collateralObject.basePrice;
-                scope.collateralFormData.totalCollateral = scope.collateralFormData.total * scope.collateralObject.pctToBase / 100.0;
+                if (scope.collateralObject != undefined) {
+                    scope.collateralFormData.total = scope.collateralFormData.quantity * scope.collateralObject.basePrice;
+                    scope.collateralFormData.totalCollateral = scope.collateralFormData.total * scope.collateralObject.pctToBase / 100.0;
+                }
             }
 
             scope.deleteCollateral = function (index) {
@@ -409,7 +414,7 @@
                 if (scope.collaterals.length > 0) {
                     scope.formData.collateral = [];
                     for (var i in scope.collaterals) {
-                        scope.formData.collateral.push({type: scope.collaterals[i].type, value: scope.collaterals[i].value, description: scope.collaterals[i].description});
+                        scope.formData.collateral.push({clientCollateralId: scope.collaterals[i].collateralId, quantity: scope.collaterals[i].quantity});
                     }
                     ;
                 }
@@ -439,6 +444,10 @@
                     scope.formData.syncRepaymentsWithMeeting = scope.syncRepaymentsWithMeeting;
                 });
 
+            }
+
+            scope.hidePreviewRepayments = function() {
+                scope.previewRepayment = false;
             }
 
 

@@ -41,23 +41,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="numberOfChildren">{{ 'label.input.numberOfChildren' | translate }}
-                            </label>
-
+                    <label class="control-label col-sm-2" for="numberOfChildren">
+                        {{ 'label.input.numberOfChildren' | translate }}
+                    </label>
                     <div class="col-sm-3">
-                        <input id="numberOfChildren" name="numberOfChildren" type="text" class="form-control" ng-model="formData.numberOfChildren" late-validate>
+                        <input id="numberOfChildren" name="numberOfChildren" type="text" class="form-control" ng-model="formData.numberOfChildren" late-validate number=true>
                     </div>
-                
+                    <form-validate valattributeform="clientotherinfoform" valattribute="numberOfChildren" />
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="numberOfDependent">{{ 'label.input.numberOfDependent' | translate }}
+                    <label class="control-label col-sm-2" for="numberOfDependent">
+                        {{ 'label.input.numberOfDependent' | translate }}
                     </label>
-
                     <div class="col-sm-3">
-                        <input id="numberOfDependent" name="numberOfDependent" type="text" class="form-control" ng-model="formData.numberOfDependents" late-validate>
+                        <input id="numberOfDependent" name="numberOfDependent" type="text" class="form-control" ng-model="formData.numberOfDependents" late-validate number=true>
                     </div>
-
+                    <form-validate valattributeform="clientotherinfoform" valattribute="numberOfDependent" />
                 </div>
 
                 <div class="form-group">
