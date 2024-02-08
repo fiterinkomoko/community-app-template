@@ -24,7 +24,7 @@
 	  },
 	  "isHiddenSection": {
 		"interestRecalculationSection": true,
-		"collateralSection": true
+		"collateralSection": false
 	  },
 	  "isReadOnlyField": {
 		"loanTermFrequencyType": true

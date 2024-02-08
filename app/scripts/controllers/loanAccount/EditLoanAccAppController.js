@@ -18,6 +18,13 @@
 
             resourceFactory.loanResource.get({loanId: routeParams.id, template: true, associations: 'charges,collateral,meeting,multiDisburseDetails',staffInSelectedOfficeOnly:true}, function (data) {
                 scope.loanaccountinfo = data;
+                if (scope.loanaccountinfo.collateral) {
+                    for (var i in scope.loanaccountinfo.collateral) {
+                        scope.collaterals.push({collateralId: scope.loanaccountinfo.collateral[i].clientCollateralId, id: scope.loanaccountinfo.collateral[i].id, quantity: scope.loanaccountinfo.collateral[i].quantity,
+                            total: scope.loanaccountinfo.collateral[i].total, totalCollateral: scope.loanaccountinfo.collateral[i].totalCollateral});
+
+                    }
+                }
 
                 resourceFactory.loanResource.get({resourceType: 'template', templateType: 'collateral', productId: data.loanProductId, fields: 'id,loanCollateralOptions'}, function (data) {
                     scope.collateralOptions = data.loanCollateralOptions || [];
@@ -58,6 +65,7 @@
                     scope.collateralsData = data;
                     if (scope.loanaccountinfo.collateral) {
                         for (var i in scope.loanaccountinfo.collateral) {
+                        scope.collateralAddedDataArray.push(scope.collateralsData.filter((collateral) => collateral.collateralId == scope.loanaccountinfo.collateral[i].clientCollateralId)[0]);
                             scope.collateralsData = scope.collateralsData.filter((x) => x.collateralId !== scope.loanaccountinfo.collateral[i].clientCollateralId);
                         }
                     }
@@ -107,12 +115,17 @@
                 scope.collateralAddedDataArray.push(scope.collateralsData.filter((collateral) => scope.collateralFormData.collateralId == collateral.collateralId)[0]);
                 scope.collateralsData = scope.collateralsData.filter((collateral) => scope.collateralFormData.collateralId != collateral.collateralId);
                 scope.collaterals.push({collateralId: scope.collateralFormData.collateralId, quantity: scope.collateralFormData.quantity, total: scope.collateralFormData.total, totalCollateral: scope.collateralFormData.totalCollateral});
+                scope.collateralFormData.quantity = undefined;
+                scope.collateralFormData.total = undefined;
+                scope.collateralFormData.totalCollateral = undefined;
             };
 
             scope.updateValues = function() {
                 scope.collateralObject = scope.collateralsData.filter((collateral) => collateral.collateralId == scope.collateralFormData.collateralId)[0];
-                scope.collateralFormData.total = scope.collateralFormData.quantity * scope.collateralObject.basePrice;
-                scope.collateralFormData.totalCollateral = scope.collateralFormData.total * scope.collateralObject.pctToBase / 100.0;
+                if (scope.collateralObject != undefined) {
+                    scope.collateralFormData.total = scope.collateralFormData.quantity * scope.collateralObject.basePrice;
+                    scope.collateralFormData.totalCollateral = scope.collateralFormData.total * scope.collateralObject.pctToBase / 100.0;
+                }
             }
 
             scope.deleteCollateral = function (index) {
@@ -432,6 +445,9 @@
 
             }
 
+            scope.hidePreviewRepayments = function() {
+                scope.previewRepayment = false;
+            }
 
             uiConfigService.appendConfigToScope(scope);
 
@@ -460,13 +476,8 @@
                 if (scope.collaterals.length > 0) {
                     scope.formData.collateral = [];
                     for (var i in scope.collaterals) {
-                        scope.formData.collateral.push({clientCollateralId: scope.collaterals[i].collateralId, quantity: scope.collaterals[i].quantity * 1.0});
-                    }
-                    if (scope.loanaccountinfo.collateral) {
-                        for (var i in scope.loanaccountinfo.collateral) {
-                            scope.collateralsData = scope.collateralsData.filter((x) => x.collateralId !== scope.loanaccountinfo.collateral[i].clientCollateralId);
-                            scope.formData.collateral.push({clientCollateralId: scope.loanaccountinfo.collateral[i].clientCollateralId, id: scope.loanaccountinfo.collateral[i].id, quantity: scope.loanaccountinfo.collateral[i].quantity});
-                        }
+                        var colId = scope.collaterals[i].id == undefined ? null : scope.collaterals[i].id;
+                        scope.formData.collateral.push({clientCollateralId: scope.collaterals[i].collateralId, id: colId, quantity: scope.collaterals[i].quantity * 1.0});
                     }
                 }
 
