@@ -5259,5 +5259,13 @@
   "validation.msg.ClientCollateralAdditionalData.worthOfCollateral.cannot.be.blank": "Worth of collateral cannot be blank",
   "validation.msg.ClientRecruitmentSurvey.endDate.is.less.than.date": "The End Date must be the same as or after the Start Date",
   "validation.msg.loan.loanPurposeId.cannot.be.blank": "Loan purpose cannot be blank",
+  "validation.msg.loan.description.cannot.be.blank": "Loan description cannot be blank",
+  "validation.msg.client.recruitment.survey.required": "Client recruitment survey required",
+  "validation.msg.client.recruitment.survey.country.required": "Client recruitment survey country required",
+  "validation.msg.client.recruitment.survey.location.required": "Client recruitment survey location required",
+  "validation.msg.client.survey.location.not.supported.by.kiva": "Client Survey location/country not supported by kiva",
+  "validation.msg.loan.currency.not.supported.by.kiva": "Loan Currency not supported by kiva",
+  "validation.msg.loan.department.not.supported.by.kiva": "Loan Department not supported by kiva",
+  "validation.msg.loan.profile.image.not.uploaded": "Kiva Loan profile image not uploaded",
   "----End---": "--End of file--- "
 }
