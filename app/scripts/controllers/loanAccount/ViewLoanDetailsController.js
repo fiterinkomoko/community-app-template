@@ -162,27 +162,28 @@
                           break;
                       case "crbVerification":
                             resourceFactory.verifyLoanOnTransUnionRwanda.post({loanId: accountId},function (data) {
+                                   scope.getCrbReport();
                                    location.path('/viewloanaccount/' + accountId);
                                });
-                            scope.getCrbReport();
+
                             break;
                       case "crbVerificationKenya":
                             resourceFactory.verifyLoanOnMetropolKenya.post({loanId: accountId},function (data) {
+                                 scope.crbMetropolIdentityVerification();
                                  location.path('/viewloanaccount/' + accountId);
                              });
-                             scope.crbMetropolIdentityVerification();
                             break;
                       case "verifyLoanCreditInfoEnhancedOnMetropolKenya":
                               resourceFactory.verifyLoanCreditInfoEnhancedOnMetropolKenya.post({loanId: accountId},function (data) {
+                                   scope.crbMetropolIdentityVerification();
                                    location.path('/viewloanaccount/' + accountId);
                                });
-                               scope.crbMetropolIdentityVerification();
                               break;
                        case "verifyLoanReportJsonOnMetropolKenya":
                              resourceFactory.verifyLoanReportJsonOnMetropolKenya.post({loanId: accountId},function (data) {
+                                 scope.crbMetropolIdentityVerification();
                                  location.path('/viewloanaccount/' + accountId);
                               });
-                              scope.crbMetropolIdentityVerification();
                              break;
                        case "generatecashflow":
                             resourceFactory.generateCashFlow.post({loanId: accountId},function (data) {
@@ -333,7 +334,6 @@
                     taskPermissionName: 'VERIFYLOANONTRANSUNIONCRBRWANDA_LOAN'
                 };
                 }
-                scope.getCrbReport();
                 }
                 function getIdentityVerificationActionOptions(data) {
                 if((data.currency.code == "KES")){
