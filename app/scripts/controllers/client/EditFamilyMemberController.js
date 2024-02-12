@@ -9,6 +9,7 @@
             scope.date = {};
            clientId=routeParams.clientId;
             familyMemberId=routeParams.familyMemberId;
+            scope.maxDate = new Date();
 
             resourceFactory.familyMemberTemplate.get({clientId:clientId},function(data)
             {
