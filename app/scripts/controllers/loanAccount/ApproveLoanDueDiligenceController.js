@@ -12,7 +12,7 @@
             scope.second.endDate = new Date();
             scope.third = {};
             scope.third.dueDiligenceOn = new Date();
-
+            scope.formData.isCrbVerificationRequired = true;
 
             resourceFactory.dueDiligenceLoanDecisionEngineResource.getTemplate({loanId: scope.loanId}, function (data) {
                 scope.loandetails = data;
