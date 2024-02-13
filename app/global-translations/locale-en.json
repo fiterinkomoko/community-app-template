@@ -5270,5 +5270,6 @@
   "validation.msg.loan.currency.not.supported.by.kiva": "Loan Currency not supported by kiva",
   "validation.msg.loan.department.not.supported.by.kiva": "Loan Department not supported by kiva",
   "validation.msg.loan.profile.image.not.uploaded": "Kiva Loan profile image not uploaded",
+  "error.msg.document.save": "Error occurred while saving document: {{params[1].value}}",
   "----End---": "--End of file--- "
 }
