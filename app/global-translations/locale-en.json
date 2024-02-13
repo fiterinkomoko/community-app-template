@@ -518,7 +518,7 @@
   "validation.msg.invalid.integer": "`{{params[0].value}}` is an invalid integer.",
   "validation.msg.invalid.integer.format": "`{{params[0].value}}` is an invalid integer.",
   "validation.msg.invalid.decimal.format": "`{{params[0].value}}` is an invalid decimal.",
-  "error.msg.document.file.too.big": "You may not upload a file larger than 5 MB.",
+  "error.msg.document.file.too.big": "You may not upload a file larger than {{params[2].value}} MB.",
   "validation.msg.document.fileName.cannot.be.blank": "Please select a file.",
   "validation.msg.document.name.cannot.be.blank": "Please enter the name for the document.",
   "resourceId.not.integer": "ID should be an integer.",
@@ -5270,5 +5270,6 @@
   "validation.msg.loan.currency.not.supported.by.kiva": "Loan Currency not supported by kiva",
   "validation.msg.loan.department.not.supported.by.kiva": "Loan Department not supported by kiva",
   "validation.msg.loan.profile.image.not.uploaded": "Kiva Loan profile image not uploaded",
+  "error.msg.document.save": "Error occurred while saving document: {{params[1].value}}",
   "----End---": "--End of file--- "
 }
