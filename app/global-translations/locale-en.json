@@ -5184,6 +5184,7 @@
   "label.input.icReviewRecommendedAmount": "Recommended Amount",
   "label.input.icReviewTermFrequency": "Loan Term",
   "error.msg.required.crb.verification": "CRB Verification required",
+  "label.input.isCrbVerificationRequired": "CRB Verification required?",
   "label.input.isIdeaClient": "Is Idea Client?",
   "error.msg.loan.required.cashflow.data": "CashFlow data not available.",
   "error.msg.loan.required.financialRatio.data": "Financial Ratio data not available.",
