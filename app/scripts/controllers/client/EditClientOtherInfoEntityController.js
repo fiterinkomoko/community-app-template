@@ -22,6 +22,8 @@
                       incomeGeneratingActivity: data.incomeGeneratingActivity == 0 ? undefined: data.incomeGeneratingActivity,
                       incomeGeneratingActivityMonthlyAmount: data.incomeGeneratingActivityMonthlyAmount,
                       telephoneNo: data.telephoneNumber,
+                      bankAccountNumber: data.bankAccountNumber,
+                      bankName: data.bankName,   
                 }
             });
 
