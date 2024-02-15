@@ -17,6 +17,7 @@
             <button class="btn btn-primary" ng-click="delete()">{{'label.button.confirm' | translate}}</button>
         </div>
     </script>
+    <api-validate></api-validate>
 
     <script type="text/ng-template" id="cashFlowProjectionUpdateModal.html">
         <div class="modal-header">
@@ -1106,7 +1107,6 @@
                     </uib-tab>
                     <uib-tab heading="{{loandatatable.registeredTableName}}" ng-repeat="loandatatable in loandatatables" has-permission='READ_{{loandatatable.registeredTableName}}'
                          select="dataTableChange(loandatatable)">
-                        <api-validate></api-validate>
                         <div>
                             <div data-ng-show="choice" class="btn-group pull-right">
                                 <a ng-show="datatabledetails.isData" class="btn btn-danger pull-right"
