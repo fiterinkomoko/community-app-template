@@ -5272,5 +5272,6 @@
   "validation.msg.loan.department.not.supported.by.kiva": "Loan Department not supported by kiva",
   "validation.msg.loan.profile.image.not.uploaded": "Kiva Loan profile image not uploaded",
   "error.msg.document.save": "Error occurred while saving document: {{params[1].value}}",
+  "label.fileSizeMustBeUnderLimitSize": "File size must be under",
   "----End---": "--End of file--- "
 }

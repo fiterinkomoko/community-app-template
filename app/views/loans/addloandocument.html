@@ -55,7 +55,11 @@
                             class="required">*</span></label>
 
                     <div class="col-sm-3">
-                        <input id="file" type="file" ngf-select="onFileSelect($files)">
+                        <input id="file" type="file" name="file" ng-model="formData.file" 
+                            ngf-select="onFileSelect($files)" required limit-file-size="1" />
+                    </div>
+                    <div class="col-sm-3">
+                        <form-validate valattributeform="loandocumentform" valattribute="file" />
                     </div>
                 </div>
 
