@@ -14,6 +14,10 @@
                         '<small class="required error" ng-show="' + scope.formNameAttribute + '.' + scope.inputAttributeName + '.$error.nval">' +
                         '{{' + "'label.mustbenumeric'" + ' | translate}}' +
                         '</small>' +
+                        '<small class="required error" ng-show="' + scope.formNameAttribute + '.' + scope.inputAttributeName + '.$error.fileSize">' +
+                        '{{' + "'label.fileSizeMustBeUnderLimitSize'" + ' | translate}}' + ' ' +
+                        '{{' + scope.formNameAttribute + '.' + scope.inputAttributeName + '.$$attr.limitFileSize' + '}}' + ' MB' +
+                        '</small>' +
                         '</span>';
                     elm.html('').append($compile(template)(scope));
 
