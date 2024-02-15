@@ -432,6 +432,7 @@ define(['Q', 'underscore', 'mifosX'], function (Q) {
             'ScrollableDirective',
             'DecimalDirective',
             'NumberOnlyDirective',
+            'LimitFileSizeDirective',
         ]
     };
 
