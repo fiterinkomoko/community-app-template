@@ -100,12 +100,27 @@
             };
 
             scope.add = function () {
-            	if(scope.clientData.available != ""){
-            		var temp = {};
-                    temp.id = scope.clientData.available.id;
-                    temp.displayName = scope.clientData.available.displayName;
-                	scope.addedClients.push(temp);
-            	}
+                if (scope.clientData.available !== "") {
+                    var availableClient = scope.clientData.available;
+                    // Check if the client already exists in addedClients
+                    var exists = scope.addedClients.some(function (client) {
+                        return client.id === availableClient.id;
+                    });
+
+                    if (exists) {
+                        alert('Client ['+ availableClient.displayName +'] already added. Please select another client.');
+                    } else {
+                        var temp = {
+                            id: availableClient.id,
+                            displayName: availableClient.displayName
+                        };
+
+                        scope.addedClients.push(temp);
+                        var temp = "";
+                        scope.clientData.available = "";
+                        scope.client = "";
+                    }
+                }
             };
             scope.sub = function (id) {
             	for (var i = 0; i < scope.addedClients.length; i++) {
