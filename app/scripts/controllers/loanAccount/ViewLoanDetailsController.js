@@ -394,11 +394,11 @@
                             },
                             {
                                 name: "button.generatecashflow",
-                                taskPermissionName: 'GENERATE_CASHFLOW'
+                                taskPermissionName: 'GENERATE_CASHFLOW_LOAN'
                             },
                             {
                                 name: "button.generateFinancialRatio",
-                                taskPermissionName: 'GENERATE_FINANCIALRATIO'
+                                taskPermissionName: 'GENERATE_FINANCIALRATIO_LOAN'
                             },
                             {
                                 name: "button.addcollateral",
