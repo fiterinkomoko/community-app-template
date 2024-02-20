@@ -9,59 +9,32 @@
             $scope.addressTypeId={};
             $scope.clients={};
             $scope.addressType={};
-            entityname="ADDRESS";
+            var entityname="ADDRESS";
             $scope.addStatus="";
             $scope.editable=false;
-            clientId=routeParams.clientId;
-            addresstypid=routeParams.addrType;
+            var clientId=routeParams.clientId;
+            var addresstypid=routeParams.addrType;
             $scope.addressTypeEditable=true;
 
 
-            isActive={};
+            var isActive={};
             var addressId=routeParams.addrId;
 
-            
-            resourceFactory.clientaddressFields.get(function(data){
-                    $scope.addressTypes=data.addressTypeIdOptions;
-                    $scope.countryOptions=data.countryIdOptions;
-                    $scope.stateOptions=data.stateProvinceIdOptions;
-                    $scope.lgaOptions = data.lgaIdOptions;
+            resourceFactory.addressFieldConfiguration.get({entity:entityname},function(dataConfig) {
+                for(var i=0;i<dataConfig.length;i++)
+                {
+                    dataConfig[i].field='$scope.'+dataConfig[i].field;
+                    if(dataConfig[i].is_enabled == undefined) {
+                        //For dev.mifos.io or demo.mifos.io
+                        eval(dataConfig[i].field+"="+dataConfig[i].isEnabled);
+                    } else {
+                        //For fineract server
+                        eval(dataConfig[i].field+"="+dataConfig[i].is_enabled);
+                    }
                 }
-            )
-
-
-            resourceFactory.addressFieldConfiguration.get({entity:entityname},function(data){
-
-
-
-                   for(var i=0;i<data.length;i++)
-                        {
-                            data[i].field='$scope.'+data[i].field;
-                            if(data[i].is_enabled == undefined) {
-                                //For dev.mifos.io or demo.mifos.io
-                                eval(data[i].field+"="+data[i].isEnabled);
-                            } else {
-                                //For fineract server
-                                eval(data[i].field+"="+data[i].is_enabled);
-                            }
-                        }
-
-                    })
-
-            $scope.routeTo=function()
-            {
-                location.path('/viewclient/'+clientId);
-            }
-
-
-
-
                 resourceFactory.clientAddress.get({type:addresstypid,clientId:clientId},function(data)
                 {
-
-
-
-                        $scope.editable=true;
+                    $scope.editable=true;
                     for(var i=0;i<data.length;i++)
                     {
                         if(data[i].addressId==addressId)
@@ -120,32 +93,40 @@
                             }
                             if(data[i].lgaId)
                             {
-                               $scope.formData.lgaId=data[i].lgaId;
+                            $scope.formData.lgaId=data[i].lgaId;
                             }
-
                             if(data[i].physicalAddressDistrict)
                             {
-                               $scope.formData.physicalAddressDistrict=data[i].physicalAddressDistrict;
+                            $scope.formData.physicalAddressDistrict=data[i].physicalAddressDistrict;
                             }
                             if(data[i].physicalAddressSector)
                             {
-                               $scope.formData.physicalAddressSector=data[i].physicalAddressSector;
+                            $scope.formData.physicalAddressSector=data[i].physicalAddressSector;
                             }
                             if(data[i].physicalAddressCell)
                             {
-                               $scope.formData.physicalAddressCell=data[i].physicalAddressCell;
+                            $scope.formData.physicalAddressCell=data[i].physicalAddressCell;
                             }
                             if(data[i].addressTypeId)
                             {
-                               $scope.formData.addressTypeId=data[i].addressTypeId;
+                            $scope.formData.addressTypeId=data[i].addressTypeId;
                             }
                         }
                     }
 
-
-
+                    resourceFactory.clientaddressFields.get(function(dataOptions) {
+                        $scope.addressTypes=dataOptions.addressTypeIdOptions;
+                        $scope.countryOptions=dataOptions.countryIdOptions;
+                        $scope.stateOptions=dataOptions.stateProvinceIdOptions;
+                        $scope.lgaOptions = dataOptions.lgaIdOptions;
+                    })
                 });
+            })
 
+            $scope.routeTo=function()
+            {
+                location.path('/viewclient/'+clientId);
+            }
 
             $scope.updateaddress=function()
             {
