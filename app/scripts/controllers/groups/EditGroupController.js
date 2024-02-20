@@ -106,7 +106,7 @@
                     name: data.name,
                     externalId: data.externalId,
                     staffId: data.staffId,
-                    representativeName: data.representativeName
+                    representativeId: data.representativeId
                 };
                 if (data.activationDate) {
                     var actDate = dateFilter(data.activationDate, scope.df);
