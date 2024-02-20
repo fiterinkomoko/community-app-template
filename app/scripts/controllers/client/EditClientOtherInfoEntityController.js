@@ -6,9 +6,11 @@
             scope.clientId = routeParams.clientId;
             scope.otherInfoId = routeParams.otherInfoId;
             scope.otherInfoData = {};
+            scope.yearArrivedRequired = true;
 
             resourceFactory.clientOtherInfoTemplateResource.get({clientId:routeParams.clientId}, function(data){
                 scope.strataOptions = data.strataOptions;
+                scope.yearArrivedInHostCountryOptions = data.yearArrivedInHostCountryOptions;
             });
 
             resourceFactory.otherInfoEntityResource.get({clientId:routeParams.clientId, otherInfoId: routeParams.otherInfoId}, function(data){
@@ -23,9 +25,21 @@
                       incomeGeneratingActivityMonthlyAmount: data.incomeGeneratingActivityMonthlyAmount,
                       telephoneNo: data.telephoneNumber,
                       bankAccountNumber: data.bankAccountNumber,
-                      bankName: data.bankName,   
+                      bankName: data.bankName,
+                      yearArrivedInHostCountryId: data.yearArrivedInHostCountry.id === 0 ? undefined: data.yearArrivedInHostCountry.id,   
                 }
             });
+
+            scope.checkIfHostCommunitySelected = function () {
+                if (scope.strataOptions && this.formData.strataId != undefined) {
+                    var selectedObj = scope.strataOptions.filter(x => x.id === this.formData.strataId).at(0);
+                    scope.yearArrivedRequired = !(selectedObj.name.toUpperCase() === 'HOST COMMUNITY');
+                    return scope.yearArrivedRequired;
+                } else {
+                    scope.yearArrivedRequired = true;
+                    return scope.yearArrivedRequired;
+                }
+            };
 
             scope.cancel = function () {
                 location.path('/clientOtherInfo/' + scope.clientId);

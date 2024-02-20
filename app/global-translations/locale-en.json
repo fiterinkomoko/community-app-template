@@ -5274,6 +5274,7 @@
   "validation.msg.loan.profile.image.not.uploaded": "Kiva Loan profile image not uploaded",
   "error.msg.document.save": "Error occurred while saving document: {{params[1].value}}",
   "label.fileSizeMustBeUnderLimitSize": "File size must be under",
-  "error.msg.client.other.info.duplicate.national_identification_number": "Client with National Identification Number {{params[0].value}} already exists",
+  "error.msg.client.other.info.duplicate.nationalIdentificationNumber": "Client with National Identification Number {{params[0].value}} already exists",
+  "error.msg.client.other.info.duplicate.coSignorsName": "Client with Co-Signors Name {{params[0].value}} already exists",
   "----End---": "--End of file--- "
 }
