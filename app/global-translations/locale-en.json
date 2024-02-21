@@ -5275,5 +5275,6 @@
   "error.msg.document.save": "Error occurred while saving document: {{params[1].value}}",
   "label.fileSizeMustBeUnderLimitSize": "File size must be under",
   "error.msg.client.other.info.duplicate.national_identification_number": "Client with National Identification Number {{params[0].value}} already exists",
+  "validation.msg.group.externalId.cannot.be.blank": "UUID cannot be blank",
   "----End---": "--End of file--- "
 }
