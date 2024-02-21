@@ -5277,5 +5277,7 @@
   "error.msg.client.other.info.duplicate.nationalIdentificationNumber": "Client with National Identification Number {{params[0].value}} already exists",
   "error.msg.client.other.info.duplicate.coSignorsName": "Client with Co-Signors Name {{params[0].value}} already exists",
   "validation.msg.group.externalId.cannot.be.blank": "UUID cannot be blank",
+  "error.msg.loan.recommended.amount.cannot.be.greater.than.applied.amount": "Recommended amount cannot be greater than the Applied amount {{params[0].value}} ",
+  "error.msg.required.crb.verification.if.strata.is.not.refugee": " CRB verification is required because the client is not a refugee, even though he/she is an Ideal client. Please change the client's strata to Refugee. If you want to ignore CRB verification .",
   "----End---": "--End of file--- "
 }
