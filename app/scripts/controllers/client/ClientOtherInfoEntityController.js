@@ -6,9 +6,11 @@
             scope.clientId = routeParams.clientId;
             scope.otherInfoData = {};
             scope.exists= false;
+            scope.yearArrivedRequired = true;
 
             resourceFactory.clientOtherInfoTemplateResource.get({clientId:routeParams.clientId}, function(data){
                 scope.strataOptions = data.strataOptions;
+                scope.yearArrivedInHostCountryOptions = data.yearArrivedInHostCountryOptions;
             });
 
             resourceFactory.clientOtherInfoEntityResource.getAll({clientId:routeParams.clientId}, function(data){
@@ -18,6 +20,17 @@
                 }
 
             });
+
+            scope.checkIfHostCommunitySelected = function () {
+                if (scope.strataOptions && this.formData.strataId != undefined) {
+                    var selectedObj = scope.strataOptions.filter(x => x.id === this.formData.strataId).at(0);
+                    scope.yearArrivedRequired = !(selectedObj.name.toUpperCase() === 'HOST COMMUNITY');
+                    return scope.yearArrivedRequired;
+                } else {
+                    scope.yearArrivedRequired = true;
+                    return scope.yearArrivedRequired;
+                }
+            };
 
             scope.cancel = function () {
                 location.path('/viewclient/' + scope.clientId);
