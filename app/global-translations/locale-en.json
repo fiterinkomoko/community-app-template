@@ -1512,6 +1512,7 @@
   "label.heading.kivaUUId": "Kiva UUId",
   "label.heading.approvedamount": "Approved Amount",
   "label.heading.proposedamount": "Proposed Amount",
+  "label.heading.appliedamount": "Applied Amount",
   "label.heading.arrearsby": "Arrears By",
   "label.heading.repayments": "Repayments",
   "label.heading.interest": "Interest",
@@ -5273,5 +5274,8 @@
   "validation.msg.loan.profile.image.not.uploaded": "Kiva Loan profile image not uploaded",
   "error.msg.document.save": "Error occurred while saving document: {{params[1].value}}",
   "label.fileSizeMustBeUnderLimitSize": "File size must be under",
+  "error.msg.client.other.info.duplicate.nationalIdentificationNumber": "Client with National Identification Number {{params[0].value}} already exists",
+  "error.msg.client.other.info.duplicate.coSignorsName": "Client with Co-Signors Name {{params[0].value}} already exists",
+  "validation.msg.group.externalId.cannot.be.blank": "UUID cannot be blank",
   "----End---": "--End of file--- "
 }
