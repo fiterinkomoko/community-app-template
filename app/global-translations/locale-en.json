@@ -5279,5 +5279,6 @@
   "validation.msg.group.externalId.cannot.be.blank": "UUID cannot be blank",
   "error.msg.loan.recommended.amount.cannot.be.greater.than.applied.amount": "Recommended amount cannot be greater than the Applied amount {{params[0].value}} ",
   "error.msg.required.crb.verification.if.strata.is.not.refugee": " CRB verification is required because the client is not a refugee, even though he/she is an Ideal client. Please change the client's strata to Refugee. If you want to ignore CRB verification .",
+  "error.msg.glim.loan.approval.state.invalid": "Loan Account cannot be approved because it's Decision state is invalid. Contract should be signed before approval",
   "----End---": "--End of file--- "
 }
