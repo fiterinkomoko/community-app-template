@@ -74,16 +74,18 @@
                                                     <tr>
                                                         <td><label>{{ 'label.input.submittedon' | translate }}<span class="required">*</span>:&nbsp;</label></td>
                                                         <td class="paddedbottom10">
-                                                            <input type="text" id="submittedOnDate" name="submittedon" datepicker-pop="dd MMMM yyyy"
-                                                                   ng-model="loanApplicationCommonData.submittedOnDate" is-open="opened" class="form-control"/>
+                                                            <input type="text" id="submittedOnDate" name="submittedOnDate" datepicker-pop="dd MMMM yyyy"
+                                                                   ng-model="loanApplicationCommonData.submittedOnDate" is-open="opened" class="form-control" required/>
+                                                            <form-validate valattributeform="newjlgloanform" valattribute="submittedOnDate" />
                                                         </td>
                                                         <td>
                                                             <label title="{{ 'label.input.expecteddisbursementon' | translate }}">{{ 'label.input.disbursementon' |
                                                                 translate }}<span class="required">*</span>:&nbsp;</label>
                                                         </td>
                                                         <td class="paddedbottom10">
-                                                            <input id="expectedDisbursementDate" sort type="text" name="expecteddisbursementon"
-                                                                   datepicker-pop="dd MMMM yyyy" ng-model="loanApplicationCommonData.expectedDisbursementDate" is-open="opened1" class="form-control"/>
+                                                            <input id="expectedDisbursementDate" sort type="text" name="expectedDisbursementDate"
+                                                                   datepicker-pop="dd MMMM yyyy" ng-model="loanApplicationCommonData.expectedDisbursementDate" is-open="opened1" class="form-control" required/>
+                                                            <form-validate valattributeform="newjlgloanform" valattribute="expectedDisbursementDate" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -92,11 +94,13 @@
                                                         <i class="fa fa-question-circle" uib-tooltip="{{'label.tooltip.department' | translate}}"></i>
                                                     </td>
                                                     <td class="paddedbottom20 width36">
-                                                        <select id="department" ng-model="formData.department" class="form-control"
+                                                        <select id="department" name="department" ng-model="formData.department" class="form-control"
                                                                 ng-options="dept.id as dept.name for dept in loanaccountinfo.departmentOptions"
-                                                                value="{{dept.id}}" required="required" >
-                                                            <option value="">--{{'label.menu.department' | translate}}--</option>
+                                                                value="{{dept.id}}" required late-Validate ng-class="{'ng-invalid ng-touched' : newjlgloanform.department.$error.required}">
+                                                            <option value="" disabled>--{{'label.menu.department' | translate}}--</option>
                                                         </select>
+                                                        <form-validate valattributeform="newjlgloanform" valattribute="department" />
+
                                                     </td>
                                                     </tr>
                                                 </table>
@@ -111,11 +115,10 @@
                                                     </td>
                                                     <td class="width36 paddedbottom10">
                                                         <input id="loanTermFrequency" class="form-control" name="loanterm" type="text"
-                                                               ng-model="formData.loanTermFrequency" required late-Validate/>
+                                                               ng-model="formData.loanTermFrequency" required late-Validate number-only/>
                                                         <select id="loanTermFrequencyType" class="form-control" ng-model="formData.loanTermFrequencyType"
                                                                 ng-options="termFrequencyType.id as termFrequencyType.value for termFrequencyType in loanaccountinfo.termFrequencyTypeOptions"
                                                                 value="{{termFrequencyType.id}}"/>
-                                                        <form-validate valattributeform="newloanaccountform" valattribute="loanterm"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -123,14 +126,13 @@
                                                     </td>
                                                     <td class="paddedbottom10" ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.numberOfRepayments == true">
                                                         <input id="numberOfRepayments" class="form-control" name="numofrepayments" type="text"
-                                                               ng-model="formData.numberOfRepayments" required late-Validate/>&nbsp;
-                                                        <form-validate valattributeform="newloanaccountform" valattribute="numofrepayments"/>
+                                                               ng-model="formData.numberOfRepayments" required late-Validate number-only/>&nbsp;
                                                     </td>
                                                     <td ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.repaymentEvery == true"><label>{{ 'label.input.repaidevery' | translate }}&nbsp;<span class="required">*</span></label></td>
                                                     <td class="paddedbottom10 width500px" ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.repaymentEvery == true">
 
                                                         <input id="repaymentEvery" class="form-control" type="text" name="repaidevery"
-                                                               ng-model="formData.repaymentEvery" ng-disabled="!loanaccountinfo.product.allowAttributeOverrides.repaymentEvery" required late-Validate/>
+                                                               ng-model="formData.repaymentEvery" ng-disabled="!loanaccountinfo.product.allowAttributeOverrides.repaymentEvery" required late-Validate number-only/>
                                                         <select id="repaymentFrequencyType" class="form-control" ng-model="formData.repaymentFrequencyType"
                                                                 ng-options="repaymentFrequencyType.id as repaymentFrequencyType.value for repaymentFrequencyType in loanaccountinfo.termFrequencyTypeOptions"
                                                                 ng-disabled="!loanaccountinfo.product.allowAttributeOverrides.repaymentEvery"
@@ -147,8 +149,6 @@
                                                                 value="{{repaymentFrequencyDayOfWeekType.id}}">
                                                             <option value="">{{'label.selectday' | translate}}</option>
                                                         </select>&nbsp;
-
-                                                        <form-validate valattributeform="newloanaccountform" valattribute="repaidevery"/>
                                                     </td>
 
                                                 </tr>
@@ -172,8 +172,9 @@
                                                     <td><label>{{ 'label.input.nominalinterestrate' | translate }}&nbsp;<span
                                                             class="required">*</span></label></td>
                                                     <td class="paddedbottom10">
-                                                        <input id="interestRatePerPeriod" class="form-control" type="text" name="nominalinterestrate"
-                                                               ng-model="formData.interestRatePerPeriod"/>&nbsp;&nbsp;{{loanaccountinfo.interestRateFrequencyType.value}}
+                                                        <input id="interestRatePerPeriod" class="form-control" type="text" name="interestRatePerPeriod"
+                                                               ng-model="formData.interestRatePerPeriod" number-only/>&nbsp;&nbsp;{{loanaccountinfo.interestRateFrequencyType.value}}
+                                                        <form-validate valattributeform="newjlgloanform" valattribute="interestRatePerPeriod"/>
                                                     </td>
                                                     <td ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.interestType == true"><label>{{ 'label.input.interestmethod' | translate }}</label></td>
                                                     <td class="paddedbottom10" ng-hide="response.uiDisplayConfigurations.loanAccount.isHiddenField.interestType == true">
@@ -224,7 +225,9 @@
                                                 </tr>
                                             </table>
                                         </div>
-
+                                        <style type="text/css">
+                                            .ng-invalid .formRequire { outline: red solid 3px; }
+                                        </style>
                                         <div class="row" data-ng-show="productDetails">
                                             <table class="table table-condensed">
                                                 <thead>
@@ -245,7 +248,10 @@
                                                     </td>
                                                     <td>{{client.id}}</td>
                                                     <td>{{client.displayName}}</td>
-                                                    <td><select ng-model="group.clients[outerIndex].loanPurposeId"
+                                                    <td><select id="purpose_{{outerIndex}}" name="purpose_{{outerIndex}}"
+                                                                ng-class="{'ng-invalid ng-touched' : newjlgloanform[ 'purpose_' + outerIndex ].$error.required}"
+                                                                ng-required="group.clients[outerIndex].isSelected"
+                                                                ng-model="group.clients[outerIndex].loanPurposeId"
                                                                 ng-options="loanPurpose.id as loanPurpose.name for loanPurpose in loanPurposes | orderBy:'name':reverse"
                                                                 class="loanPurposeId form-control width170px"
                                                                 value="{{loanPurpose.id}}">
@@ -253,20 +259,26 @@
                                                     </select>
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="externalId" name="externalId" ng-model="formData[outerIndex].externalId" class="form-control" required="required"/>
+                                                        <input type="text" id="externalId_{{outerIndex}}" name="externalId_{{outerIndex}}" ng-model="formData[outerIndex].externalId"
+                                                               ng-class="{'ng-invalid ng-touched' : newjlgloanform[ 'externalId_' + outerIndex ].$error.required}"
+                                                               class="form-control" ng-required="group.clients[outerIndex].isSelected"/>
                                                     </td>
                                                     <td>
                                                         <input  type="text"
                                                                 class="form-control principal"
-                                                                name="principal"
+                                                                id="principal_{{outerIndex}}" name="principal_{{outerIndex}}"
                                                                 ng-model="group.clients[outerIndex].principal"
-                                                                required
+                                                                ng-required="group.clients[outerIndex].isSelected"
+                                                                ng-class="{'ng-invalid ng-touched' : newjlgloanform[ 'principal_' + outerIndex ].$error.required}"
+                                                                ng-required="group.clients[outerIndex].isSelected"
                                                                 number-format
                                                                 late-Validate/>&nbsp;{{productDetails.currency.displaySymbol}}
                                                         <form-validate valattributeform="newjlgloanaccountform" valattribute="principal"/>
                                                     </td>
                                                     <td>
-                                                        <textarea type="text" id="description" name="description" ng-model="formData[outerIndex].description" class="form-control" required="required"/>
+                                                        <textarea type="text" id="description_{{outerIndex}}" name="description_{{outerIndex}}" ng-model="formData[outerIndex].description"
+                                                                  class="form-control" ng-required="group.clients[outerIndex].isSelected"
+                                                                  ng-class="{'ng-invalid ng-touched' : newjlgloanform[ 'description_' + outerIndex ].$error.required}"/>
                                                     </td>
                                                 </tr>
                                                 <tbody>
