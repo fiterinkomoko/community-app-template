@@ -5276,5 +5276,6 @@
   "label.fileSizeMustBeUnderLimitSize": "File size must be under",
   "error.msg.client.other.info.duplicate.national_identification_number": "Client with National Identification Number {{params[0].value}} already exists",
   "validation.msg.group.externalId.cannot.be.blank": "UUID cannot be blank",
+  "error.msg.glim.loan.approval.state.invalid": "Loan Account cannot be approved because it's Decision state is invalid. Contract should be signed before approval",
   "----End---": "--End of file--- "
 }
