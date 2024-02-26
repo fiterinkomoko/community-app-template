@@ -613,8 +613,7 @@
                 }else if(data.currency.code == "KES"){
                 scope.crbMetropolIdentityVerification();
                 }
-                scope.retrieveCashFlow();
-                scope.retrieveFinancialRatio();
+
                 if(data.nextLoanIcReviewDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT"){
                     scope.showApprovedICAmount = true;
                 }
