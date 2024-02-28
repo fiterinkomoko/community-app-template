@@ -1,6 +1,6 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        ViewLoanDetailsController: function (scope, routeParams, resourceFactory,paginatorService, location, route, http, $uibModal, dateFilter, API_VERSION, $sce, $rootScope, $window) {
+        ViewLoanDetailsController: function (scope, routeParams, resourceFactory,paginatorService, location, route, http, $uibModal, dateFilter, API_VERSION, $sce, $rootScope, $window, interval) {
             scope.loandocuments = [];
             scope.report = false;
             scope.hidePentahoReport = true;
@@ -14,7 +14,21 @@
             scope.projectionSize = 0;
             scope.totalIncome = [];
             scope.totalExpense = [];
+            scope.cashFlowData = { cashFlowDataList: [] };
+            scope.financialRatioData = {};
 
+
+            scope.interval = interval(function () {
+                if(scope.isPendingDisbursement){
+                    fetchLoanAccountDetails();
+                } else {
+                    interval.cancel(scope.interval);
+                }
+            }, 10000);
+
+            scope.$on('$destroy', function () {
+                interval.cancel(scope.interval);
+            });
 
             scope.routeTo = function (loanId, transactionId, transactionTypeId) {
                 if (transactionTypeId == 2 || transactionTypeId == 4 || transactionTypeId == 1) {
@@ -224,400 +238,406 @@
                 };
             };
 
-            resourceFactory.LoanAccountResource.getLoanAccountDetails({loanId: routeParams.id, associations: 'all',exclude: 'guarantors,futureSchedule'}, function (data) {
-                scope.loandetails = data;
-                scope.productId = data.loanProductId;
-                scope.convertDateArrayToObject('date');
-                scope.recalculateInterest = data.recalculateInterest || true;
-                scope.isWaived = scope.loandetails.repaymentSchedule.totalWaived > 0;
-                scope.date.fromDate =  new Date(data.timeline.actualDisbursementDate);
-                scope.date.toDate = new Date();
-                scope.status = data.status.value;
-                scope.chargeAction = data.status.value == "Submitted and pending approval" ? true : false;
-                if(scope.status == 'Submitted and pending approval' || scope.status == 'Approved'){
-                scope.date.fromDate = new Date(data.timeline.submittedOnDate);
-                }
-                if(scope.loandetails.status && scope.loandetails.status.id === 200 && scope.loandetails.subStatus && scope.loandetails.subStatus.id === 200) {
-                    scope.isPendingDisbursement = true;
-                }
-                scope.decimals = data.currency.decimalPlaces;
-                if (scope.loandetails.charges) {
-                    scope.charges = scope.loandetails.charges;
-                    for (var i in scope.charges) {
-                        if (scope.charges[i].paid || scope.charges[i].waived || scope.charges[i].chargeTimeType.value == 'Disbursement' || scope.loandetails.status.value != 'Active') {
-                            var actionFlag = true;
-                        }
-                        else {
-                            var actionFlag = false;
-                        }
-                        scope.charges[i].actionFlag = actionFlag;
+            var fetchLoanAccountDetails = function () {
+                resourceFactory.LoanAccountResource.getLoanAccountDetails({loanId: routeParams.id, associations: 'all',exclude: 'guarantors,futureSchedule'}, function (data) {
+                    scope.loandetails = data;
+                    scope.productId = data.loanProductId;
+                    scope.convertDateArrayToObject('date');
+                    scope.recalculateInterest = data.recalculateInterest || true;
+                    scope.isWaived = scope.loandetails.repaymentSchedule.totalWaived > 0;
+                    scope.date.fromDate =  new Date(data.timeline.actualDisbursementDate);
+                    scope.date.toDate = new Date();
+                    scope.status = data.status.value;
+                    scope.chargeAction = data.status.value == "Submitted and pending approval" ? true : false;
+                    if(scope.status == 'Submitted and pending approval' || scope.status == 'Approved'){
+                    scope.date.fromDate = new Date(data.timeline.submittedOnDate);
                     }
-
-                    scope.chargeTableShow = true;
-                }
-                else {
-                    scope.chargeTableShow = false;
-                }
-                if (scope.status == "Submitted and pending approval" || scope.status == "Active" || scope.status == "Approved") {
-                    scope.choice = true;
-                }
-                function getLoanStage(data) {
-                if((data.isExtendLoanLifeCycleConfig == false)){
-                    return {
-                        name: "button.approve",
-                        icon: "fa fa-check",
-                        taskPermissionName: 'APPROVE_LOAN'
-                    };
-                }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState == null || data.loanDecisionState == ""))){
-                return {
-                    name: "button.reviewapplication",
-                    icon: "fa fa-check",
-                    taskPermissionName: 'ACCEPT_LOANAPPLICATIONREVIEW'
-                };
-                }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "REVIEW_APPLICATION"))){
-                return {
-                    name: "button.duediligence",
-                    icon: "fa fa-check",
-                    taskPermissionName: 'ACCEPT_DUEDILIGENCE'
-                };
-                }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "DUE_DILIGENCE"))){
-                    return {
-                        name: "button.icreviewlevelone",
-                        icon: "fa fa-check",
-                        taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELONE'
-                 };
-                 }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "IC_REVIEW_LEVEL_ONE" && data.nextLoanIcReviewDecisionState.value == "IC_REVIEW_LEVEL_TWO"))){
-                    return {
-                       name: "button.icreviewleveltwo",
-                       icon: "fa fa-check",
-                       taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELTWO'
-                   };
-                 }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "IC_REVIEW_LEVEL_TWO" && data.nextLoanIcReviewDecisionState.value == "IC_REVIEW_LEVEL_THREE"))){
-                 return {
-                    name: "button.icreviewlevelthree",
-                    icon: "fa fa-check",
-                    taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELTHREE'
-                };
-              }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "IC_REVIEW_LEVEL_THREE" && data.nextLoanIcReviewDecisionState.value == "IC_REVIEW_LEVEL_FOUR"))){
-                return {
-                   name: "button.icreviewlevelfour",
-                   icon: "fa fa-check",
-                   taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELFOUR'
-               };
-             }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "IC_REVIEW_LEVEL_FOUR" && data.nextLoanIcReviewDecisionState.value == "IC_REVIEW_LEVEL_FIVE"))){
-              return {
-                 name: "button.icreviewlevelfive",
-                 icon: "fa fa-check",
-                 taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELFIVE'
-             };
-           }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT" && data.loanDecisionState.value != "PREPARE_AND_SIGN_CONTRACT"))){
-              return {
-                 name: "button.prepareandsigncontract",
-                 icon: "fa fa-check",
-                 taskPermissionName: 'ACCEPT_LOANPREPAREANDSIGNCONTRACT'
-             };
-           } else if(((data.isExtendLoanLifeCycleConfig == true) && (data.loanDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT" && data.loanDecisionState.value == "PREPARE_AND_SIGN_CONTRACT"))){
-            return {
-                name: "button.approve",
-                icon: "fa fa-check",
-                taskPermissionName: 'APPROVE_LOAN'
-            };
-          }else{
-                console.log("No Options Found here . . . . ");
-                }
-                }
-                function getCrbActionOptions(data) {
-                if((data.currency.code == "RWF")){
-                return {
-                    name: "button.crbVerification",
-                    icon: "fa fa-search",
-                    taskPermissionName: 'VERIFYLOANONTRANSUNIONCRBRWANDA_LOAN'
-                };
-                }
-                }
-                function getIdentityVerificationActionOptions(data) {
-                if((data.currency.code == "KES")){
-                    return {
-                       name: "button.crbVerificationKenya",
-                       taskPermissionName: 'VERIFYLOANONMETROPOLCRBKENYA_LOAN'
-                    };
-                }
-                }
-                function getCreditInfoEnhancedActionOptions(data) {
-                if((data.currency.code == "KES")){
-                    return {
-                       name: "button.verifyLoanCreditInfoEnhancedOnMetropolKenya",
-                       taskPermissionName: 'VERIFYLOANCREDITINFOENHANCEDONMETROPOLCRBKENYA_LOAN'
-                    };
-                }
-                }
-                function getCreditReportJsonActionOptions(data) {
-                if((data.currency.code == "KES")){
-                    return {
-                       name: "button.verifyLoanReportJsonOnMetropolKenya",
-                       taskPermissionName: 'VERIFYLOANREPORTJSONONMETROPOLCRBKENYA_LOAN'
-                    };
-                }
-                }
-                if (data.status.value == "Submitted and pending approval") {
-                    scope.buttons = { singlebuttons: [
-                        {
-                            name: "button.addloancharge",
-                            icon: "fa fa-plus",
-                            taskPermissionName: 'CREATE_LOANCHARGE'
-                        },
-                        getLoanStage(data),
-                        getCrbActionOptions(data),
-                        {
-                            name: "button.modifyapplication",
-                            icon: "fa fa-pincel-square-o",
-                            taskPermissionName: 'UPDATE_LOAN'
-                        },
-                        {
-                            name: "button.reject",
-                            icon: "fa fa-times",
-                            taskPermissionName: 'REJECT_LOAN'
-                        }
-                    ],
-                        options: [
-                            {
-                                name: (scope.loandetails.loanOfficerName?"button.changeloanofficer":"button.assignloanofficer"),
-                                taskPermissionName: 'UPDATELOANOFFICER_LOAN'
-                            },
-                            {
-                                name: "button.withdrawnbyclient",
-                                taskPermissionName: 'WITHDRAW_LOAN'
-                            },
-                            {
-                                name: "button.delete",
-                                taskPermissionName: 'DELETE_LOAN'
-                            },
-                            {
-                                name: "button.generatecashflow",
-                                taskPermissionName: 'GENERATE_CASHFLOW_LOAN'
-                            },
-                            {
-                                name: "button.generateFinancialRatio",
-                                taskPermissionName: 'GENERATE_FINANCIALRATIO_LOAN'
-                            },
-                            {
-                                name: "button.addcollateral",
-                                taskPermissionName: 'CREATE_COLLATERAL'
-                            },
-                            {
-                                name: "button.listguarantor",
-                                taskPermissionName: 'READ_GUARANTOR'
-                            },
-                            {
-                                name: "button.createguarantor",
-                                taskPermissionName: 'CREATE_GUARANTOR'
-                            },
-                            {
-                                name: "button.loanscreenreport",
-                                taskPermissionName: 'READ_LOAN'
-                            },
-                            ...[
-                                getIdentityVerificationActionOptions(data),
-                                getCreditInfoEnhancedActionOptions(data),
-                                getCreditReportJsonActionOptions(data)
-                            ].filter(option => option !== undefined)
-                        ]
-
-                    };
-                    if(data.isVariableInstallmentsAllowed) {
-                        scope.buttons.options.push({
-                            name: "button.adjustrepaymentschedule",
-                            taskPermissionName: 'ADJUST_REPAYMENT_SCHEDULE'
-                        }) ;
+                    if(scope.loandetails.status && scope.loandetails.status.id === 200 && scope.loandetails.subStatus && scope.loandetails.subStatus.id === 200) {
+                        scope.isPendingDisbursement = true;
+                    } else {
+                        scope.isPendingDisbursement = false;
                     }
-                }
-                if (data.status.value == "Approved") {
-                    scope.buttons = { singlebuttons: [
-                        {
-                            name: (scope.loandetails.loanOfficerName?"button.changeloanofficer":"button.assignloanofficer"),
-                            icon: "fa fa-user",
-                            taskPermissionName: 'UPDATELOANOFFICER_LOAN'
+                    scope.decimals = data.currency.decimalPlaces;
+                    if (scope.loandetails.charges) {
+                        scope.charges = scope.loandetails.charges;
+                        for (var i in scope.charges) {
+                            if (scope.charges[i].paid || scope.charges[i].waived || scope.charges[i].chargeTimeType.value == 'Disbursement' || scope.loandetails.status.value != 'Active') {
+                                var actionFlag = true;
+                            }
+                            else {
+                                var actionFlag = false;
+                            }
+                            scope.charges[i].actionFlag = actionFlag;
                         }
-                    ],
-                        options: [
+
+                        scope.chargeTableShow = true;
+                    }
+                    else {
+                        scope.chargeTableShow = false;
+                    }
+                    if (scope.status == "Submitted and pending approval" || scope.status == "Active" || scope.status == "Approved") {
+                        scope.choice = true;
+                    }
+                    function getLoanStage(data) {
+                    if((data.isExtendLoanLifeCycleConfig == false)){
+                        return {
+                            name: "button.approve",
+                            icon: "fa fa-check",
+                            taskPermissionName: 'APPROVE_LOAN'
+                        };
+                    }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState == null || data.loanDecisionState == ""))){
+                    return {
+                        name: "button.reviewapplication",
+                        icon: "fa fa-check",
+                        taskPermissionName: 'ACCEPT_LOANAPPLICATIONREVIEW'
+                    };
+                    }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "REVIEW_APPLICATION"))){
+                    return {
+                        name: "button.duediligence",
+                        icon: "fa fa-check",
+                        taskPermissionName: 'ACCEPT_DUEDILIGENCE'
+                    };
+                    }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "DUE_DILIGENCE"))){
+                        return {
+                            name: "button.icreviewlevelone",
+                            icon: "fa fa-check",
+                            taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELONE'
+                    };
+                    }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "IC_REVIEW_LEVEL_ONE" && data.nextLoanIcReviewDecisionState.value == "IC_REVIEW_LEVEL_TWO"))){
+                        return {
+                        name: "button.icreviewleveltwo",
+                        icon: "fa fa-check",
+                        taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELTWO'
+                    };
+                    }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "IC_REVIEW_LEVEL_TWO" && data.nextLoanIcReviewDecisionState.value == "IC_REVIEW_LEVEL_THREE"))){
+                    return {
+                        name: "button.icreviewlevelthree",
+                        icon: "fa fa-check",
+                        taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELTHREE'
+                    };
+                }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "IC_REVIEW_LEVEL_THREE" && data.nextLoanIcReviewDecisionState.value == "IC_REVIEW_LEVEL_FOUR"))){
+                    return {
+                    name: "button.icreviewlevelfour",
+                    icon: "fa fa-check",
+                    taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELFOUR'
+                };
+                }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.loanDecisionState.value == "IC_REVIEW_LEVEL_FOUR" && data.nextLoanIcReviewDecisionState.value == "IC_REVIEW_LEVEL_FIVE"))){
+                return {
+                    name: "button.icreviewlevelfive",
+                    icon: "fa fa-check",
+                    taskPermissionName: 'ACCEPT_LOANICREVIEWDECISIONLEVELFIVE'
+                };
+            }else if((data.isExtendLoanLifeCycleConfig == true && (data.loanDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT" && data.loanDecisionState.value != "PREPARE_AND_SIGN_CONTRACT"))){
+                return {
+                    name: "button.prepareandsigncontract",
+                    icon: "fa fa-check",
+                    taskPermissionName: 'ACCEPT_LOANPREPAREANDSIGNCONTRACT'
+                };
+            } else if(((data.isExtendLoanLifeCycleConfig == true) && (data.loanDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT" && data.loanDecisionState.value == "PREPARE_AND_SIGN_CONTRACT"))){
+                return {
+                    name: "button.approve",
+                    icon: "fa fa-check",
+                    taskPermissionName: 'APPROVE_LOAN'
+                };
+            }else{
+                    console.log("No Options Found here . . . . ");
+                    }
+                    }
+                    function getCrbActionOptions(data) {
+                    if((data.currency.code == "RWF")){
+                    return {
+                        name: "button.crbVerification",
+                        icon: "fa fa-search",
+                        taskPermissionName: 'VERIFYLOANONTRANSUNIONCRBRWANDA_LOAN'
+                    };
+                    }
+                    }
+                    function getIdentityVerificationActionOptions(data) {
+                    if((data.currency.code == "KES")){
+                        return {
+                        name: "button.crbVerificationKenya",
+                        taskPermissionName: 'VERIFYLOANONMETROPOLCRBKENYA_LOAN'
+                        };
+                    }
+                    }
+                    function getCreditInfoEnhancedActionOptions(data) {
+                    if((data.currency.code == "KES")){
+                        return {
+                        name: "button.verifyLoanCreditInfoEnhancedOnMetropolKenya",
+                        taskPermissionName: 'VERIFYLOANCREDITINFOENHANCEDONMETROPOLCRBKENYA_LOAN'
+                        };
+                    }
+                    }
+                    function getCreditReportJsonActionOptions(data) {
+                    if((data.currency.code == "KES")){
+                        return {
+                        name: "button.verifyLoanReportJsonOnMetropolKenya",
+                        taskPermissionName: 'VERIFYLOANREPORTJSONONMETROPOLCRBKENYA_LOAN'
+                        };
+                    }
+                    }
+                    if (data.status.value == "Submitted and pending approval") {
+                        scope.buttons = { singlebuttons: [
                             {
                                 name: "button.addloancharge",
+                                icon: "fa fa-plus",
+                                taskPermissionName: 'CREATE_LOANCHARGE'
+                            },
+                            getLoanStage(data),
+                            getCrbActionOptions(data),
+                            {
+                                name: "button.modifyapplication",
+                                icon: "fa fa-pincel-square-o",
+                                taskPermissionName: 'UPDATE_LOAN'
+                            },
+                            {
+                                name: "button.reject",
+                                icon: "fa fa-times",
+                                taskPermissionName: 'REJECT_LOAN'
+                            }
+                        ],
+                            options: [
+                                {
+                                    name: (scope.loandetails.loanOfficerName?"button.changeloanofficer":"button.assignloanofficer"),
+                                    taskPermissionName: 'UPDATELOANOFFICER_LOAN'
+                                },
+                                {
+                                    name: "button.withdrawnbyclient",
+                                    taskPermissionName: 'WITHDRAW_LOAN'
+                                },
+                                {
+                                    name: "button.delete",
+                                    taskPermissionName: 'DELETE_LOAN'
+                                },
+                                {
+                                    name: "button.generatecashflow",
+                                    taskPermissionName: 'GENERATE_CASHFLOW_LOAN'
+                                },
+                                {
+                                    name: "button.generateFinancialRatio",
+                                    taskPermissionName: 'GENERATE_FINANCIALRATIO_LOAN'
+                                },
+                                {
+                                    name: "button.addcollateral",
+                                    taskPermissionName: 'CREATE_COLLATERAL'
+                                },
+                                {
+                                    name: "button.listguarantor",
+                                    taskPermissionName: 'READ_GUARANTOR'
+                                },
+                                {
+                                    name: "button.createguarantor",
+                                    taskPermissionName: 'CREATE_GUARANTOR'
+                                },
+                                {
+                                    name: "button.loanscreenreport",
+                                    taskPermissionName: 'READ_LOAN'
+                                },
+                                ...[
+                                    getIdentityVerificationActionOptions(data),
+                                    getCreditInfoEnhancedActionOptions(data),
+                                    getCreditReportJsonActionOptions(data)
+                                ].filter(option => option !== undefined)
+                            ]
+
+                        };
+                        if(data.isVariableInstallmentsAllowed) {
+                            scope.buttons.options.push({
+                                name: "button.adjustrepaymentschedule",
+                                taskPermissionName: 'ADJUST_REPAYMENT_SCHEDULE'
+                            }) ;
+                        }
+                    }
+                    if (data.status.value == "Approved") {
+                        scope.buttons = { singlebuttons: [
+                            {
+                                name: (scope.loandetails.loanOfficerName?"button.changeloanofficer":"button.assignloanofficer"),
+                                icon: "fa fa-user",
+                                taskPermissionName: 'UPDATELOANOFFICER_LOAN'
+                            }
+                        ],
+                            options: [
+                                {
+                                    name: "button.addloancharge",
+                                    taskPermissionName: 'CREATE_LOANCHARGE'
+                                },
+                                {
+                                    name: "button.listguarantor",
+                                    taskPermissionName: 'READ_GUARANTOR'
+                                },
+                                {
+                                    name: "button.createguarantor",
+                                    taskPermissionName: 'CREATE_GUARANTOR'
+                                },
+                                {
+                                    name: "button.loanscreenreport",
+                                    taskPermissionName: 'READ_LOAN'
+                                }
+                            ]
+
+                        };
+
+                        if(!data.subStatus || (data.subStatus && data.subStatus.code !== 'loanSubStatus.loanSubStatusType.pending.disbursement')) {
+                            scope.buttons.singlebuttons.push({
+                                name: "button.disburse",
+                                icon: "fa fa-flag",
+                                taskPermissionName: 'DISBURSE_LOAN'
+                            });
+                            scope.buttons.singlebuttons.push({
+                                name: "button.disbursetosavings",
+                                icon: "fa fa-flag",
+                                taskPermissionName: 'DISBURSETOSAVINGS_LOAN'
+                            });
+                            scope.buttons.singlebuttons.push({
+                                name: "button.undoapproval",
+                                icon: "fa fa-undo",
+                                taskPermissionName: 'APPROVALUNDO_LOAN'
+                            });
+                        }
+                    }
+                    if (data.status.value == "Active") {
+                        scope.buttons = { singlebuttons: [
+                            {
+                                name: "button.addloancharge",
+                                icon: "fa fa-plus",
                                 taskPermissionName: 'CREATE_LOANCHARGE'
                             },
                             {
-                                name: "button.listguarantor",
-                                taskPermissionName: 'READ_GUARANTOR'
+                                name: "button.foreclosure",
+                                icon: "icon-dollar",
+                                taskPermissionName: 'FORECLOSURE_LOAN'
                             },
                             {
-                                name: "button.createguarantor",
-                                taskPermissionName: 'CREATE_GUARANTOR'
+                                name: "button.makerepayment",
+                                icon: "fa fa-dollar",
+                                taskPermissionName: 'REPAYMENT_LOAN'
                             },
                             {
-                                name: "button.loanscreenreport",
-                                taskPermissionName: 'READ_LOAN'
+                                name: "button.undodisbursal",
+                                icon: "fa fa-undo",
+                                taskPermissionName: 'DISBURSALUNDO_LOAN'
+                            }
+                        ],
+                            options: [
+                                {
+                                    name: "button.waiveinterest",
+                                    taskPermissionName: 'WAIVEINTERESTPORTION_LOAN'
+                                },
+                                {
+                                    name: "button.reschedule",
+                                    taskPermissionName: 'CREATE_RESCHEDULELOAN'
+                                },
+                                {
+                                    name: "button.writeoff",
+                                    taskPermissionName: 'WRITEOFF_LOAN'
+                                },
+
+                                {
+                                    name: "button.payoff",
+                                    taskPermissionName: 'PAY_OFF_LOAN'
+                                },
+                                {
+                                    name: "button.close-rescheduled",
+                                    taskPermissionName: 'CLOSEASRESCHEDULED_LOAN'
+                                },
+                                {
+                                    name: "button.close",
+                                    taskPermissionName: 'CLOSE_LOAN'
+                                },
+                                {
+                                    name: "button.loanscreenreport",
+                                    taskPermissionName: 'READ_LOAN'
+                                },
+                                {
+                                    name: "button.listguarantor",
+                                    taskPermissionName: 'READ_GUARANTOR'
+                                },
+                                {
+                                    name: "button.createguarantor",
+                                    taskPermissionName: 'CREATE_GUARANTOR'
+                                },
+                                {
+                                    name: "button.recoverguarantee",
+                                    taskPermissionName: 'RECOVERGUARANTEES_LOAN'
+                                }
+                            ]
+
+                        };
+
+                        if (data.canDisburse) {
+                            scope.buttons.singlebuttons.splice(1, 0, {
+                                name: "button.disburse",
+                                icon: "fa fa-flag",
+                                taskPermissionName: 'DISBURSE_LOAN'
+                            });
+                            scope.buttons.singlebuttons.splice(1, 0, {
+                                name: "button.disbursetosavings",
+                                icon: "fa fa-flag",
+                                taskPermissionName: 'DISBURSETOSAVINGS_LOAN'
+                            });
+                        }
+                        //loan officer not assigned to loan, below logic
+                        //helps to display otherwise not
+                        if (!data.loanOfficerName) {
+                            scope.buttons.singlebuttons.splice(1, 0, {
+                                name: "button.assignloanofficer",
+                                icon: "fa fa-user",
+                                taskPermissionName: 'UPDATELOANOFFICER_LOAN'
+                            });
+                        }
+
+                        if(scope.recalculateInterest){
+                            scope.buttons.singlebuttons.splice(1, 0, {
+                                name: "button.prepayment",
+                                icon: "fa fa-money",
+                                taskPermissionName: 'REPAYMENT_LOAN'
+                            });
+                        }
+                    }
+                    if (data.status.value == "Overpaid") {
+                        scope.buttons = { singlebuttons: [
+                            {
+                                name: "button.transferFunds",
+                                icon: "fa fa-exchange",
+                                taskPermissionName: 'CREATE_ACCOUNTTRANSFER'
                             }
                         ]
-
-                    };
-
-                    if(!data.subStatus || (data.subStatus && data.subStatus.code !== 'loanSubStatus.loanSubStatusType.pending.disbursement')) {
-                        scope.buttons.singlebuttons.push({
-                            name: "button.disburse",
-                            icon: "fa fa-flag",
-                            taskPermissionName: 'DISBURSE_LOAN'
-                        });
-                        scope.buttons.singlebuttons.push({
-                            name: "button.disbursetosavings",
-                            icon: "fa fa-flag",
-                            taskPermissionName: 'DISBURSETOSAVINGS_LOAN'
-                        });
-                        scope.buttons.singlebuttons.push({
-                            name: "button.undoapproval",
-                            icon: "fa fa-undo",
-                            taskPermissionName: 'APPROVALUNDO_LOAN'
-                        });
+                        };
                     }
-                }
-                if (data.status.value == "Active") {
-                    scope.buttons = { singlebuttons: [
-                        {
-                            name: "button.addloancharge",
-                            icon: "fa fa-plus",
-                            taskPermissionName: 'CREATE_LOANCHARGE'
-                        },
-                        {
-                            name: "button.foreclosure",
-                            icon: "icon-dollar",
-                            taskPermissionName: 'FORECLOSURE_LOAN'
-                        },
-                        {
-                            name: "button.makerepayment",
-                            icon: "fa fa-dollar",
-                            taskPermissionName: 'REPAYMENT_LOAN'
-                        },
-                        {
-                            name: "button.undodisbursal",
-                            icon: "fa fa-undo",
-                            taskPermissionName: 'DISBURSALUNDO_LOAN'
-                        }
-                    ],
-                        options: [
+                    if (data.status.value == "Closed (written off)") {
+                        scope.buttons = { singlebuttons: [
                             {
-                                name: "button.waiveinterest",
-                                taskPermissionName: 'WAIVEINTERESTPORTION_LOAN'
-                            },
-                            {
-                                name: "button.reschedule",
-                                taskPermissionName: 'CREATE_RESCHEDULELOAN'
-                            },
-                            {
-                                name: "button.writeoff",
-                                taskPermissionName: 'WRITEOFF_LOAN'
-                            },
-
-                            {
-                                name: "button.payoff",
-                                taskPermissionName: 'PAY_OFF_LOAN'
-                            },
-                            {
-                                name: "button.close-rescheduled",
-                                taskPermissionName: 'CLOSEASRESCHEDULED_LOAN'
-                            },
-                            {
-                                name: "button.close",
-                                taskPermissionName: 'CLOSE_LOAN'
-                            },
-                            {
-                                name: "button.loanscreenreport",
-                                taskPermissionName: 'READ_LOAN'
-                            },
-                            {
-                                name: "button.listguarantor",
-                                taskPermissionName: 'READ_GUARANTOR'
-                            },
-                            {
-                                name: "button.createguarantor",
-                                taskPermissionName: 'CREATE_GUARANTOR'
-                            },
-                            {
-                                name: "button.recoverguarantee",
-                                taskPermissionName: 'RECOVERGUARANTEES_LOAN'
+                                name: "button.recoverypayment",
+                                icon: "fa fa-briefcase",
+                                taskPermissionName: 'RECOVERYPAYMENT_LOAN'
                             }
                         ]
-
-                    };
-
-                    if (data.canDisburse) {
-                        scope.buttons.singlebuttons.splice(1, 0, {
-                            name: "button.disburse",
-                            icon: "fa fa-flag",
-                            taskPermissionName: 'DISBURSE_LOAN'
-                        });
-                        scope.buttons.singlebuttons.splice(1, 0, {
-                            name: "button.disbursetosavings",
-                            icon: "fa fa-flag",
-                            taskPermissionName: 'DISBURSETOSAVINGS_LOAN'
-                        });
-                    }
-                    //loan officer not assigned to loan, below logic
-                    //helps to display otherwise not
-                    if (!data.loanOfficerName) {
-                        scope.buttons.singlebuttons.splice(1, 0, {
-                            name: "button.assignloanofficer",
-                            icon: "fa fa-user",
-                            taskPermissionName: 'UPDATELOANOFFICER_LOAN'
-                        });
+                        };
                     }
 
-                    if(scope.recalculateInterest){
-                        scope.buttons.singlebuttons.splice(1, 0, {
-                            name: "button.prepayment",
-                            icon: "fa fa-money",
-                            taskPermissionName: 'REPAYMENT_LOAN'
-                        });
-                    }
-                }
-                if (data.status.value == "Overpaid") {
-                    scope.buttons = { singlebuttons: [
-                        {
-                            name: "button.transferFunds",
-                            icon: "fa fa-exchange",
-                            taskPermissionName: 'CREATE_ACCOUNTTRANSFER'
-                        }
-                    ]
-                    };
-                }
-                if (data.status.value == "Closed (written off)") {
-                    scope.buttons = { singlebuttons: [
-                        {
-                            name: "button.recoverypayment",
-                            icon: "fa fa-briefcase",
-                            taskPermissionName: 'RECOVERYPAYMENT_LOAN'
-                        }
-                    ]
-                    };
-                }
+                    resourceFactory.standingInstructionTemplateResource.get({fromClientId: scope.loandetails.clientId,fromAccountType: 1,fromAccountId: routeParams.id},function (response) {
+                        scope.standinginstruction = response;
+                        scope.searchTransaction();
+                    });
 
-                resourceFactory.standingInstructionTemplateResource.get({fromClientId: scope.loandetails.clientId,fromAccountType: 1,fromAccountId: routeParams.id},function (response) {
-                    scope.standinginstruction = response;
-                    scope.searchTransaction();
+                    resourceFactory.creditBureauByLoanProductId.get({loanProductId: scope.productId}, function (data) {
+                        scope.cblpstatuses = data;
+                        scope.cblpstatusactive = data.isActive;
+                        scope.cbIsCreditCheckMandatory = data.isCreditCheckMandatory
+                    });
+                    if((data.currency.code == "RWF")){
+                    scope.getCrbReport();
+                    }else if(data.currency.code == "KES"){
+                    scope.crbMetropolIdentityVerification();
+                    }
+
+                    if(data.nextLoanIcReviewDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT"){
+                        scope.showApprovedICAmount = true;
+                    }
                 });
+            }
 
-                resourceFactory.creditBureauByLoanProductId.get({loanProductId: scope.productId}, function (data) {
-                    scope.cblpstatuses = data;
-                    scope.cblpstatusactive = data.isActive;
-                    scope.cbIsCreditCheckMandatory = data.isCreditCheckMandatory
-                });
-                if((data.currency.code == "RWF")){
-                 scope.getCrbReport();
-                }else if(data.currency.code == "KES"){
-                scope.crbMetropolIdentityVerification();
-                }
-
-                if(data.nextLoanIcReviewDecisionState != null && data.nextLoanIcReviewDecisionState.value == "PREPARE_AND_SIGN_CONTRACT"){
-                    scope.showApprovedICAmount = true;
-                }
-            });
+            fetchLoanAccountDetails();
 
             var fetchFunction = function (offset, limit, callback) {
                 var params = {};
@@ -1065,7 +1085,7 @@
 
 
     });
-    mifosX.ng.application.controller('ViewLoanDetailsController', ['$scope', '$routeParams', 'ResourceFactory','PaginatorService', '$location', '$route', '$http', '$uibModal', 'dateFilter', 'API_VERSION', '$sce', '$rootScope','$window', mifosX.controllers.ViewLoanDetailsController]).run(function ($log) {
+    mifosX.ng.application.controller('ViewLoanDetailsController', ['$scope', '$routeParams', 'ResourceFactory','PaginatorService', '$location', '$route', '$http', '$uibModal', 'dateFilter', 'API_VERSION', '$sce', '$rootScope','$window', '$interval', mifosX.controllers.ViewLoanDetailsController]).run(function ($log) {
         $log.info("ViewLoanDetailsController initialized");
     });
 }(mifosX.controllers || {}));
