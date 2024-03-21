@@ -353,7 +353,7 @@
                     }
                     }
                     function getIdentityVerificationActionOptions(data) {
-                    if((data.currency.code == "KES")){
+                    if((data.currency.code == "KES"  && data.clientLegalForm == 1)){
                         return {
                         name: "button.crbVerificationKenya",
                         taskPermissionName: 'VERIFYLOANONMETROPOLCRBKENYA_LOAN'
