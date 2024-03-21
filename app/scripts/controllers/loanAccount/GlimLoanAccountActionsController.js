@@ -724,14 +724,13 @@
                 }else if(scope.action == "undoapproval"){
 
                     resourceFactory.glimLoan.post({glimId: scope.glimId,command:'undoapproval'},scope.formData,function (data) {
-
-                        location.path('/viewloanaccount/' + scope.accountId);
+                        location.path('/viewglimaccount/' +scope.groupId+"/" +routeParams.id +"/"+routeParams.glimId);
                     });
 
                 }else if(scope.action == "undodisbursal"){
 
                     resourceFactory.glimLoan.post({glimId: scope.glimId,command:"undodisbursal"},scope.formData,function (data) {
-                        location.path('/viewloanaccount/' + scope.accountId);
+                        location.path('/viewglimaccount/' +scope.groupId+"/" +routeParams.id +"/"+routeParams.glimId);
                     });
                 }
                 else  if(scope.action=="glimrepayment")
