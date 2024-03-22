@@ -5070,7 +5070,7 @@
   "label.menu.businessRegistered": "Select Yes or No Option",
   "label.menu.title": "Select Title Option",
   "label.menu.maritalstatus": "Select Marital Status",
-  "label.input.ageinbusiness": "Age in Business",
+  "label.input.ageinbusiness": "Business Start Date",
   "label.input.pep": "Is PEP",
   "label.menu.pep" : "Select PEP| Yes or No",
   "label.heading.guarantee.gender": "Gender",
