@@ -69,11 +69,6 @@
                 if (data[0].loanStatus === "APPROVED") {
                     scope.buttons = { singlebuttons: [
                         {
-                            name: "button.disburse",
-                            icon: "fa fa-flag",
-                            taskPermissionName: 'DISBURSE_LOAN'
-                        },
-                        {
                             name: "button.undoapproval",
                             icon: "fa fa-undo",
                             taskPermissionName: 'APPROVALUNDO_LOAN'
@@ -88,11 +83,6 @@
                             name: "button.makerepayment",
                             icon: "fa fa-dollar",
                             taskPermissionName: 'REPAYMENT_LOAN'
-                        },
-                        {
-                            name: "button.undodisbursal",
-                            icon: "fa fa-undo",
-                            taskPermissionName: 'DISBURSALUNDO_LOAN'
                         }
                     ]
                     };
