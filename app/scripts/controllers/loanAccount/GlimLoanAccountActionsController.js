@@ -761,7 +761,7 @@
                 {
                     params.glimId = scope.glimId;
                     resourceFactory.glimLoan.save(params, this.formData, function (data) {
-                        location.path('/viewloanaccount/' + data.loanId);
+                        location.path('/viewglimaccount/' +scope.groupId+"/" +routeParams.id +"/"+routeParams.glimId);
                     });
                 }
             };
