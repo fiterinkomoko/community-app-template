@@ -433,6 +433,7 @@ define(['Q', 'underscore', 'mifosX'], function (Q) {
             'DecimalDirective',
             'NumberOnlyDirective',
             'LimitFileSizeDirective',
+            'NumberOnlyFormatDirective',
         ]
     };
 
