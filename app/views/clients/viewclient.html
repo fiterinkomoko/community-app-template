@@ -1216,18 +1216,18 @@
 
 				<!--family tab-->
 
-				<uib-tab ng-show="families" heading="{{'label.heading.nextOfKin' | translate}}" >
+				<uib-tab ng-show="families" heading="{{'label.heading.nextOfKin' | translate}}" has-permission='READ_FAMILYMEMBERS'>
 					<div ng-show="families">
-						<button class="btn btn-primary pull-right" ng-click="routeToaddFamilyMember()"><i class="icon-plus icon-white"></i>{{'label.button.addNextOfKin' | translate}}</button>
+						<button class="btn btn-primary pull-right" ng-click="routeToaddFamilyMember()" has-permission='CREATE_FAMILYMEMBERS'><i class="icon-plus icon-white"></i>{{'label.button.addNextOfKin' | translate}}</button>
 						<br>
 						<table class="table" ng-repeat="family in families"  class="table table-condensed">
 							<thead>
 							<tr class="graybg">
 								<th class="graybg"> {{family.relationship}}</th>
 								<td>
-									<button class="btn btn-primary pull-right" ng-click="deleteFamilyMember(family.id)"><i class="icon-plus icon-white"></i>{{'label.button.delete' | translate}}</button>
+									<button class="btn btn-primary pull-right" ng-click="deleteFamilyMember(family.id)" has-permission='DELETE_FAMILYMEMBERS'><i class="icon-plus icon-white"></i>{{'label.button.delete' | translate}}</button>
 
-									<button class="btn btn-primary pull-right" ng-click="editFamilyMember(family.id)"><i class="icon-plus icon-white"></i>{{'label.button.edit' | translate}}</button>
+									<button class="btn btn-primary pull-right" ng-click="editFamilyMember(family.id)" has-permission='UPDATE_FAMILYMEMBERS'><i class="icon-plus icon-white"></i>{{'label.button.edit' | translate}}</button>
 								</td>
 
 							</tr>
