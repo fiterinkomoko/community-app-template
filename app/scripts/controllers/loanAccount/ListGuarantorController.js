@@ -18,12 +18,16 @@
             });
 
 
-            scope.showDetails = function (parentindex, index) {
-                scope.guarantorData = scope.guarantorDetails[parentindex];
-                if (index == null) {
+            scope.showDetails = function (id, fundId) {
+                scope.guarantorData = scope.guarantorDetails.find(function(item) {
+                    return item.id === id;
+                });
+                if (fundId == null) {
                     scope.guarantorFundDetail = null;
                 } else {
-                    scope.guarantorFundDetail = scope.guarantorData.guarantorFundingDetails[index];
+                    scope.guarantorFundDetail = scope.guarantorData.guarantorFundingDetails.find(function(item) {
+                        return item.id === fundId;
+                    });
                 }
 
                 $uibModal.open({
