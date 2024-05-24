@@ -128,7 +128,7 @@
                         <td>
                             <button class="btn btn-info" data-ng-click="showDetails(guarantor.id,null)"
                                     ><i class="fa fa-eye "></i></button>
-                            <a data-ng-show="guarantor.status && guarantor.guarantorType.id == 3 && guarantor.id"
+                            <a data-ng-show="guarantor.status  && guarantor.id"
                                href="#/editguarantor/{{guarantor.id}}/{{guarantor.loanId}}" class="btn btn-primary"><i
                                     class="fa fa-edit"></i></a>
                             <button class="btn btn-warning" data-ng-click="deleteGuarantor(guarantor.id,null)"
