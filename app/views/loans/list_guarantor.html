@@ -103,7 +103,7 @@
                         <td>{{guarantorfund.amountRemaining | number}}</td>
                         <td>{{guarantorfund.status.code | translate}}</td>
                         <td>
-                            <button class="btn btn-info" data-ng-click="showDetails($parent.$index,$index)"
+                            <button class="btn btn-info" data-ng-click="showDetails(guarantor.id.guarantorfund.id)"
                                     ><i class="fa fa-eye "></i></button>
                             <a has-permission='READ_SAVINGSACCOUNT' id="viewtransactions"
                                href="#/viewguarantortransactions/{{guarantorfund.savingsAccount.id}}/{{guarantorfund.id}}/listguarantors/{{guarantor.loanId}}"
@@ -126,7 +126,7 @@
                         <td data-ng-show="guarantor.status">{{'guarantorFundStatusType.active' | translate}}</td>
                         <td data-ng-hide="guarantor.status">{{'guarantorFundStatusType.deleted' | translate}}</td>
                         <td>
-                            <button class="btn btn-info" data-ng-click="showDetails($index,null)"
+                            <button class="btn btn-info" data-ng-click="showDetails(guarantor.id,null)"
                                     ><i class="fa fa-eye "></i></button>
                             <a data-ng-show="guarantor.status && guarantor.guarantorType.id == 3 && guarantor.id"
                                href="#/editguarantor/{{guarantor.id}}/{{guarantor.loanId}}" class="btn btn-primary"><i
