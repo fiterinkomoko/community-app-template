@@ -2208,39 +2208,39 @@
                             <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'INCOME' && cash.particularType === 'Sales Income'">
                                 <td><b>{{ cash.cashFlowType | translate | uppercase}}</b></td>
                                 <td><b>{{ cash.particularType }}</b></td>
-                                <td>{{ cash.previousMonth2 | number }}</td>
-                                <td>{{ cash.previousMonth1 | number }}</td>
-                                <td>{{ cash.month0 | number }}</td>
-                                <td ng-repeat="sales in cashFlowData.cashFlowProjectionDataList" ng-if="sales.cashFlowType === 'INCOME' && sales.particularType === 'Sales Income'">{{ sales.amount | number }}</td>
+                                <td>{{ cash.previousMonth2 | number : '2' }}</td>
+                                <td>{{ cash.previousMonth1 | number : '2' }}</td>
+                                <td>{{ cash.month0 | number : '2' }}</td>
+                                <td ng-repeat="sales in cashFlowData.cashFlowProjectionDataList" ng-if="sales.cashFlowType === 'INCOME' && sales.particularType === 'Sales Income'">{{ sales.amount | number : '2' }}</td>
 
                             </tr>
                             <tr>
                                 <td><b></b></td>
                                 <td><b>{{'label.heading.otherIncome' | translate}}</b></td>
-                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[0] | number }}</td>
-                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[1] | number }}</td>
-                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[2] | number }}</td>
-                                <td ng-repeat="sales in cashFlowData.cashFlowProjectionDataList" ng-if="sales.cashFlowType === 'INCOME' && sales.particularType === 'Sales Income'">{{ calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[2] | number }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[0] | number : '2' }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[1] | number : '2' }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[2] | number : '2' }}</td>
+                                <td ng-repeat="sales in cashFlowData.cashFlowProjectionDataList" ng-if="sales.cashFlowType === 'INCOME' && sales.particularType === 'Sales Income'">{{ calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[2] | number : '2' }}</td>
 
                             </tr>
                             <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'INCOME' && cash.particularType === 'Other Income'">
                                 <td></td>
                                 <td>&nbsp;&nbsp;&nbsp;{{ cash.name }}</td>
-                                <td>{{ cash.previousMonth2 | number }}</td>
-                                <td>{{ cash.previousMonth1 | number }}</td>
-                                <td>{{ cash.month0 | number }}</td>
-                                <td ng-repeat="sales in cashFlowData.cashFlowProjectionDataList" ng-if="sales.cashFlowType === 'INCOME' && sales.particularType === 'Sales Income'">{{ cash.month0 | number }}</td>
+                                <td>{{ cash.previousMonth2 | number : '2' }}</td>
+                                <td>{{ cash.previousMonth1 | number : '2' }}</td>
+                                <td>{{ cash.month0 | number : '2' }}</td>
+                                <td ng-repeat="sales in cashFlowData.cashFlowProjectionDataList" ng-if="sales.cashFlowType === 'INCOME' && sales.particularType === 'Sales Income'">{{ cash.month0 | number : '2' }}</td>
 
                             </tr>
                             <tr><td colspan="7"></td></tr>
                             <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'INCOME' && cash.particularType === 'Sales Income'">
                                 <td><b></b></td>
                                 <td><b>{{'label.heading.totalIncome' | translate | uppercase}}</b></td>
-                                <td><b>{{ cash.previousMonth2 + calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[0] | number }}</b></td>
-                                <td><b>{{ cash.previousMonth1 + calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[1] | number }}</b></td>
-                                <td><b>{{ cash.month0 + calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[2] | number }}</b></td>
+                                <td><b>{{ cash.previousMonth2 + calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[0] | number : '2' }}</b></td>
+                                <td><b>{{ cash.previousMonth1 + calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[1] | number : '2' }}</b></td>
+                                <td><b>{{ cash.month0 + calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[2] | number : '2' }}</b></td>
                                 <td ng-repeat="sales in cashFlowData.cashFlowProjectionDataList" ng-if="sales.cashFlowType === 'INCOME' && sales.particularType === 'Sales Income'">
-                                    <b>{{ sales.amount + calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[2] | number }}</b>
+                                    <b>{{ sales.amount + calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[2] | number : '2' }}</b>
                                     <span ng-init="calculateAndSaveTotalIncome(sales.amount + calculateSums(cashFlowData.cashFlowDataList, 'INCOME', 'Other Income')[2])"></span>
 
                                 </td>
@@ -2250,58 +2250,58 @@
                             <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Purchases'">
                                 <td><b>{{'label.heading.expensesBothBusinessAndNon' | translate | uppercase}}</b></td>
                                 <td><b>{{ cash.particularType}}</b></td>
-                                <td>{{ cash.previousMonth2 | number }}</td>
-                                <td>{{ cash.previousMonth1 | number }}</td>
-                                <td>{{ cash.month0 | number }}</td>
-                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ purchases.amount | number }}</td>
+                                <td>{{ cash.previousMonth2 | number : '2' }}</td>
+                                <td>{{ cash.previousMonth1 | number : '2' }}</td>
+                                <td>{{ cash.month0 | number : '2' }}</td>
+                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ purchases.amount | number : '2' }}</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td><b>{{'label.heading.businessExpenses' | translate}}</b></td>
-                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[0] | number }}</td>
-                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[1] | number }}</td>
-                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] | number }}</td>
-                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] | number }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[0] | number : '2' }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[1] | number : '2' }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] | number : '2' }}</td>
+                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] | number : '2' }}</td>
 
                             </tr>
                             <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Business Expenses'">
                                 <td></td>
                                 <td>&nbsp;&nbsp;&nbsp;{{ cash.name}}</td>
-                                <td>{{ cash.previousMonth2 | number }}</td>
-                                <td>{{ cash.previousMonth1 | number }}</td>
-                                <td>{{ cash.month0 | number }}</td>
-                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ cash.month0 | number }}</td>
+                                <td>{{ cash.previousMonth2 | number : '2' }}</td>
+                                <td>{{ cash.previousMonth1 | number : '2' }}</td>
+                                <td>{{ cash.month0 | number : '2' }}</td>
+                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ cash.month0 | number : '2' }}</td>
 
                             </tr>
                             <tr>
                                 <td></td>
                                 <td><b>{{'label.heading.houseHoldExpense' | translate}}</b></td>
-                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[0] | number }}</td>
-                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[1] | number }}</td>
-                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2] | number }}</td>
-                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2] | number }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[0] | number : '2' }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[1] | number : '2' }}</td>
+                                <td>{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2] | number : '2' }}</td>
+                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2] | number : '2' }}</td>
 
                             </tr>
                             <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Household Expenses'">
                                 <td></td>
                                 <td>&nbsp;&nbsp;&nbsp;{{ cash.name}}</td>
-                                <td>{{ cash.previousMonth2 | number }}</td>
-                                <td>{{ cash.previousMonth1 | number }}</td>
-                                <td>{{ cash.month0 | number }}</td>
-                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ cash.month0 | number }}</td>
+                                <td>{{ cash.previousMonth2 | number : '2' }}</td>
+                                <td>{{ cash.previousMonth1 | number : '2' }}</td>
+                                <td>{{ cash.month0 | number : '2' }}</td>
+                                <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">{{ cash.month0 | number : '2' }}</td>
 
                             </tr>
 
                             <tr ng-repeat="cash in cashFlowData.cashFlowDataList" ng-if="cash.cashFlowType === 'EXPENSE' && cash.particularType === 'Purchases'">
                                 <td></td>
                                 <td><b>{{'label.heading.totalExpense' | translate | uppercase}}</b></td>
-                                <td><b>{{ cash.previousMonth2 + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[0] + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[0] | number }}</b></td>
-                                <td><b>{{ cash.previousMonth1 + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[1] + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[1] | number }}</b></td>
-                                <td><b>{{ cash.month0 + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2] | number }}</b></td>
+                                <td><b>{{ cash.previousMonth2 + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[0] + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[0] | number : '2' }}</b></td>
+                                <td><b>{{ cash.previousMonth1 + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[1] + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[1] | number : '2' }}</b></td>
+                                <td><b>{{ cash.month0 + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2] | number : '2' }}</b></td>
                                 <td ng-repeat="purchases in cashFlowData.cashFlowProjectionDataList" ng-if="purchases.cashFlowType === 'EXPENSE' && purchases.particularType === 'Purchases'">
-                                    <b>{{ cash.month0 + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2] | number }}</b>
+                                    <b>{{ purchases.amount + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2] | number : '2' }}</b>
 
-                                    <span ng-init="calculateAndSaveTotalExpense(cash.month0 + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2])"></span>
+                                    <span ng-init="calculateAndSaveTotalExpense(purchases.amount + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Business Expenses')[2] + calculateSums(cashFlowData.cashFlowDataList, 'EXPENSE', 'Household Expenses')[2])"></span>
 
                                 </td>
                             </tr>
@@ -2309,11 +2309,11 @@
                             <tr>
                                 <td><b>{{'label.heading.netCashFlow' | translate | uppercase}}</b></td>
                                 <td></td>
-                                <td><b>{{ cashFlowData.netCashFlowData.previousMonth2 | number }}</b></td>
-                                <td><b>{{ cashFlowData.netCashFlowData.previousMonth1 | number }}</b></td>
-                                <td><b>{{ cashFlowData.netCashFlowData.month0 | number }}</b></td>
+                                <td><b>{{ cashFlowData.netCashFlowData.previousMonth2 | number : '2' }}</b></td>
+                                <td><b>{{ cashFlowData.netCashFlowData.previousMonth1 | number : '2' }}</b></td>
+                                <td><b>{{ cashFlowData.netCashFlowData.month0 | number : '2' }}</b></td>
                                 <td ng-repeat="sales in cashFlowData.cashFlowProjectionDataList | filter:{cashFlowType: 'INCOME', particularType: 'Sales Income'} | limitTo:(cashFlowData.cashFlowProjectionDataList.length / 2)">
-                                    <b> {{ calculateNetCashFlow($index) | number}} </b>
+                                    <b> {{ calculateNetCashFlow($index) | number : '2'}} </b>
                                 </td>
 
                             </tr>
@@ -2327,13 +2327,13 @@
                             <tr>
                                 <td></td>
                                 <td><b>{{'label.heading.maximumAmountToBePaid' | translate}}</b></td>
-                                <td>{{ loandetails.allowableDscr * cashFlowData.netCashFlowData.month0 | number}}</td>
+                                <td>{{ loandetails.allowableDscr * cashFlowData.netCashFlowData.month0 | number : '2'}}</td>
                                 <td colspan="{{projectionSize+5}}"></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td><b>{{'label.heading.maxLoanAmount' | translate}}</b></td>
-                                <td>{{loandetails.allowableDscr * cashFlowData.netCashFlowData.month0 * projectionSize | number}}</td>
+                                <td>{{loandetails.allowableDscr * cashFlowData.netCashFlowData.month0 * projectionSize | number : '2'}}</td>
                                 <td colspan="{{projectionSize+5}}"></td>
                             </tr>
                             </tbody>
@@ -2387,7 +2387,7 @@
                                     <td></td>
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.netMargin' | translate }}</td>
-                                    <td class="s7">{{financialRatioData.netMargin | number}}</td>
+                                    <td class="s7">{{financialRatioData.netMargin | number : '2'}}</td>
                                 </tr>
                                 <tr style="height: 20px">
 
@@ -2397,49 +2397,49 @@
                                     <td></td>
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.rotation' | translate }}</td>
-                                    <td class="s7">{{financialRatioData.rotation | number}}</td>
+                                    <td class="s7">{{financialRatioData.rotation | number : '2'}}</td>
                                 </tr>
                                 <tr style="height: 20px">
 
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.cash' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.cash | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.cash | number : '2'}}</td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.goodsBoughtOnCredit' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.goodsBoughtOnCredit | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.goodsBoughtOnCredit | number : '2'}}</td>
                                     <td></td>
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.liquidity' | translate }} </td>
-                                    <td class="s7">{{financialRatioData.liquidity | number}}</td>
+                                    <td class="s7">{{financialRatioData.liquidity | number : '2'}}</td>
                                 </tr>
                                 <tr style="height: 20px">
 
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.inventoryStock' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.inventoryStock | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.inventoryStock | number : '2'}}</td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.pendingPayable' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.anyOtherPendingPayables | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.anyOtherPendingPayables | number : '2'}}</td>
                                     <td></td>
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.leverage' | translate }}</td>
-                                    <td class="s7">{{financialRatioData.leverage | number}}</td>
+                                    <td class="s7">{{financialRatioData.leverage | number : '2'}}</td>
                                 </tr>
                                 <tr style="height: 20px">
 
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.receivables' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.receivables | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.receivables | number : '2'}}</td>
                                     <td class="s6" dir="ltr"></td>
                                     <td class="s6"></td>
                                     <td></td>
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.capitalization' | translate }}</td>
-                                    <td class="s7">{{financialRatioData.capitalization | number}}</td>
+                                    <td class="s7">{{financialRatioData.capitalization | number : '2'}}</td>
                                 </tr>
                                 <tr style="height: 20px">
 
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.chama' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.chamaTontines | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.chamaTontines | number : '2'}}</td>
                                     <td class="s6" dir="ltr"></td>
                                     <td class="s6"></td>
                                     <td></td>
@@ -2447,13 +2447,13 @@
                                     <td class="s6 softmerge" dir="ltr">
                                         <div class="softmerge-inner" style="width:119px;left:-1px">{{'label.heading.financialRatio.dscr' | translate }}</div>
                                     </td>
-                                    <td class="s7">{{financialRatioData.dscr | number}}</td>
+                                    <td class="s7">{{financialRatioData.dscr | number : '2'}}</td>
                                 </tr>
                                 <tr style="height: 20px">
 
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.otherCurrentAssets' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.otherCurrentAssets | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.otherCurrentAssets | number : '2'}}</td>
                                     <td class="s8" dir="ltr"></td>
                                     <td class="s6"></td>
                                     <td></td>
@@ -2467,9 +2467,9 @@
                                     <td class="s9 softmerge" dir="ltr">
                                         <div class="softmerge-inner" style="width:132px;left:-1px">{{'label.heading.financialRatio.totalCurrentAssets' | translate }}</div>
                                     </td>
-                                    <td class="s10">{{financialRatioData.totalCurrentAssets | number}}</td>
+                                    <td class="s10">{{financialRatioData.totalCurrentAssets | number : '2'}}</td>
                                     <td class="s9" dir="ltr">{{'label.heading.financialRatio.totalShortTerm' | translate }} </td>
-                                    <td class="s10" dir="ltr">{{financialRatioData.totalShortTerm | number}}</td>
+                                    <td class="s10" dir="ltr">{{financialRatioData.totalShortTerm | number : '2'}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2489,9 +2489,9 @@
 
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.equipment' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.equipmentTools | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.equipmentTools | number : '2'}}</td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.unsecuredLoans' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.unsecuredLoans | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.unsecuredLoans | number : '2'}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2501,9 +2501,9 @@
 
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.furniture' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.furniture | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.furniture | number : '2'}}</td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.assetFinancing' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.assetFinancing | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.assetFinancing | number : '2'}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2513,7 +2513,7 @@
 
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.businessPremises' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.businessPremises | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.businessPremises | number : '2'}}</td>
                                     <td class="s6"></td>
                                     <td class="s6"></td>
                                     <td></td>
@@ -2525,7 +2525,7 @@
 
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.otherFixedAssets' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.otherFixedAssets | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.otherFixedAssets | number : '2'}}</td>
                                     <td class="s6"></td>
                                     <td class="s6"></td>
                                     <td></td>
@@ -2537,9 +2537,9 @@
 
                                     <td class="s3"></td>
                                     <td class="s9" dir="ltr">{{'label.heading.financialRatio.totalFixedAssets' | translate }}</td>
-                                    <td class="s10" dir="ltr">{{financialRatioData.totalFixedAssets | number}}</td>
+                                    <td class="s10" dir="ltr">{{financialRatioData.totalFixedAssets | number : '2'}}</td>
                                     <td class="s9" dir="ltr">{{'label.heading.financialRatio.totalLongTerm' | translate }}</td>
-                                    <td class="s10" dir="ltr">{{financialRatioData.totalLongTerm | number}}</td>
+                                    <td class="s10" dir="ltr">{{financialRatioData.totalLongTerm | number : '2'}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2549,9 +2549,9 @@
 
                                     <td class="s3"></td>
                                     <td class="s9" dir="ltr">{{'label.heading.financialRatio.totalAssets' | translate }}</td>
-                                    <td class="s10">{{financialRatioData.totalAssets | number}}</td>
+                                    <td class="s10">{{financialRatioData.totalAssets | number : '2'}}</td>
                                     <td class="s9" dir="ltr">{{'label.heading.financialRatio.totalLiabilities' | translate }}</td>
-                                    <td class="s10" dir="ltr">{{financialRatioData.totalLiabilities | number}}</td>
+                                    <td class="s10" dir="ltr">{{financialRatioData.totalLiabilities | number : '2'}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2563,7 +2563,7 @@
                                     <td></td>
                                     <td class="s3"></td>
                                     <td class="s11" dir="ltr">{{'label.heading.financialRatio.equity' | translate }}</td>
-                                    <td class="s12">{{financialRatioData.equity | number}}</td>
+                                    <td class="s12">{{financialRatioData.equity | number : '2'}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -2607,9 +2607,9 @@
                                 <tr style="height: 20px">
 
                                     <td class="s3"></td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.bssDeposits | number}}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.bssWithdrawals | number}}</td>
-                                    <td class="s14" dir="ltr">{{financialRatioData.bssMonthlyTurnOver | number}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.bssDeposits | number : '2'}}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.bssWithdrawals | number : '2'}}</td>
+                                    <td class="s14" dir="ltr">{{financialRatioData.bssMonthlyTurnOver | number : '2'}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
