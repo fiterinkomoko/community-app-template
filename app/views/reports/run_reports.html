@@ -154,7 +154,8 @@
 	                </thead>
 	                <tbody>
 	                <!-- http://www.anujgakhar.com/2013/06/15/duplicates-in-a-repeater-are-not-allowed-in-angularjs/ -->
-	                <tr id="{{$index}}" data-ng-click="highlight($index)" ng-repeat="row in reportData.data track by $index">
+	                <tr id="{{$index}}" data-ng-click="highlight($index)" dir-paginate="row in reportData.data | itemsPerPage: recordsPerPage" class="pointer-main"
+                    total-items="totalRecords"  pagination-id="records">
 						<td ng-repeat="col in row.row track by $index">
 							<span ng-show="isDecimal($index)">{{col | FormatNumber:decimalsChoice}}</span>
 							<span ng-hide="isDecimal($index)">{{col}}</span>
@@ -162,6 +163,10 @@
 	                </tr>
 	                </tbody>
 	            </table>
+				<dir-pagination-controls align="center" boundary-links="true"
+                                     template-url="bower_components/angular-utils-pagination/dirPagination.tpl.html"
+                                     on-page-change="getResultsPage(newPageNumber)" pagination-id="records">
+               </dir-pagination-controls>
 
 
 				<!-- Table created and hidden only to be used for export table report into excel Epic INKO-32 
@@ -182,6 +187,7 @@
 	                </tr>
 	                </tbody>
 	            </table>
+				
 	        </div>
 	    </div>
 	    <div uib-collapse="hidePentahoReport" class="row alert-block span tab-content">

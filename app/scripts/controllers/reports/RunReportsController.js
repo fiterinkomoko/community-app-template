@@ -24,6 +24,7 @@
             scope.reportId = routeParams.reportId;
             scope.pentahoReportParameters = [];
             scope.type = "pie";
+            scope.recordsPerPage = 15;
 
             scope.highlight = function (id) {
                 var i = document.getElementById(id);
@@ -293,6 +294,42 @@
                 }
                 return false;
             };
+            scope.getResultsPage = function (pageNumber) {
+                
+                scope.errorDetails = [];
+                removeErrors();
+
+                //update date fields with proper dateformat
+                for (var i in scope.reportDateParams) {
+                    if (scope.formData[scope.reportDateParams[i].inputName]) {
+                        scope.formData[scope.reportDateParams[i].inputName] = dateFilter(scope.formData[scope.reportDateParams[i].inputName], 'yyyy-MM-dd');
+                    }
+                }
+
+                //Custom validation for report parameters
+                parameterValidationErrors();
+
+                if (scope.errorDetails.length == 0) {
+                    scope.isCollapsed = true;
+                        scope.hideTable = false;
+                        scope.hidePentahoReport = true;
+                        scope.hideChart = true;
+                         scope.formData.reportSource = scope.reportName;
+                        scope.formData.limit = scope.recordsPerPage;
+                         scope.formData.offset = ((pageNumber - 1) * scope.recordsPerPage);
+                         console.log(scope.formData);
+                         resourceFactory.runReportsResource.getReport(scope.formData, function (data) {
+                                //clear the csvData array for each request
+                            scope.csvData = [];
+                            scope.reportData.data = data.data;
+                            scope.totalRecords = data.count;
+                            scope.csvData.push(scope.row);
+                            for (var k in data.data) {
+                             scope.csvData.push(data.data[k].row);
+                            }
+                            });
+                        }
+            }
             scope.runReport = function () {
                 //clear the previous errors
                 scope.errorDetails = [];
@@ -317,11 +354,15 @@
                             scope.hidePentahoReport = true;
                             scope.hideChart = true;
                             scope.formData.reportSource = scope.reportName;
+                            scope.formData.limit = scope.recordsPerPage;
+                            scope.formData.offset = 0;
+                            console.log(scope.formData);
                             resourceFactory.runReportsResource.getReport(scope.formData, function (data) {
                                 //clear the csvData array for each request
                                 scope.csvData = [];
                                 scope.reportData.columnHeaders = data.columnHeaders;
                                 scope.reportData.data = data.data;
+                                scope.totalRecords = data.count;
                                 for (var i in data.columnHeaders) {
                                     scope.row.push(data.columnHeaders[i].columnName);
                                 }
