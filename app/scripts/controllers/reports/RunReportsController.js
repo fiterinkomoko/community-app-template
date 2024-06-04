@@ -129,12 +129,26 @@
                 return collapsed;
             };
 
-            scope.exportexcel =  function () {
-                const aboutData =  scope.reportName+'.xlsx';
-                let htmltable = angular.element(document).find('#report-export-table');
-                const html = htmltable[0].outerHTML;
-                window.open('data:application/vnd.ms-excel;charset=utf-8,' + encodeURIComponent(html), aboutData);  
-            }
+            scope.exportToExcel = function () {
+                // Send a request to the server to generate the Excel file
+                scope.formData.reportSource = scope.reportName;
+                scope.formData.exportXLSX = true;
+                var reportURL = $rootScope.hostUrl + API_VERSION + "/runreports/" + encodeURIComponent(scope.formData.reportSource);
+
+                http.get(reportURL, {responseType: 'arraybuffer', params: scope.formData})
+                .then(function (response) {
+                    var contentType = response.headers('Content-Type');
+                    var blob = new Blob([response.data], { type: contentType });
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = scope.reportName + '.xlsx';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }).catch(function (error) {
+                    console.error('Error downloading the Excel file:', error);
+                });
+            };
 
             function invalidDate(checkDate) {
                 // validates for yyyy-mm-dd returns true if invalid, false is valid
@@ -317,16 +331,9 @@
                          scope.formData.reportSource = scope.reportName;
                         scope.formData.limit = scope.recordsPerPage;
                          scope.formData.offset = ((pageNumber - 1) * scope.recordsPerPage);
-                         console.log(scope.formData);
                          resourceFactory.runReportsResource.getReport(scope.formData, function (data) {
-                                //clear the csvData array for each request
-                            scope.csvData = [];
                             scope.reportData.data = data.data;
                             scope.totalRecords = data.count;
-                            scope.csvData.push(scope.row);
-                            for (var k in data.data) {
-                             scope.csvData.push(data.data[k].row);
-                            }
                             });
                         }
             }
@@ -356,21 +363,12 @@
                             scope.formData.reportSource = scope.reportName;
                             scope.formData.limit = scope.recordsPerPage;
                             scope.formData.offset = 0;
-                            console.log(scope.formData);
                             resourceFactory.runReportsResource.getReport(scope.formData, function (data) {
-                                //clear the csvData array for each request
-                                scope.csvData = [];
                                 scope.reportData.columnHeaders = data.columnHeaders;
                                 scope.reportData.data = data.data;
                                 scope.totalRecords = data.count;
-                                for (var i in data.columnHeaders) {
-                                    scope.row.push(data.columnHeaders[i].columnName);
-                                }
-                                scope.csvData.push(scope.row);
-                                for (var k in data.data) {
-                                    scope.csvData.push(data.data[k].row);
-                                }
                             });
+                            scope.getCsvData();
                             break;
 
                         case "Pentaho":
@@ -444,6 +442,38 @@
                     }
                 }
             };
+
+            scope.getCsvData = function () {
+                scope.errorDetails = [];
+                removeErrors();
+
+                //update date fields with proper dateformat
+                for (var i in scope.reportDateParams) {
+                    if (scope.formData[scope.reportDateParams[i].inputName]) {
+                        scope.formData[scope.reportDateParams[i].inputName] = dateFilter(scope.formData[scope.reportDateParams[i].inputName], 'yyyy-MM-dd');
+                    }
+                }
+
+                //Custom validation for report parameters
+                parameterValidationErrors();
+
+                if (scope.errorDetails.length == 0) {
+                    scope.isCollapsed = true;
+                            delete scope.formData.limit;
+                            delete scope.formData.offset;
+                            resourceFactory.runReportsResource.getReport(scope.formData, function (data) {
+                                //clear the csvData array for each request
+                                scope.csvData = [];
+                                for (var i in data.columnHeaders) {
+                                    scope.row.push(data.columnHeaders[i].columnName);
+                                }
+                                scope.csvData.push(scope.row);
+                                for (var k in data.data) {
+                                    scope.csvData.push(data.data[k].row);
+                                }
+                            });
+                        }
+            }
         }
     });
     mifosX.ng.application.controller('RunReportsController', ['$scope', '$routeParams', 'ResourceFactory', '$location', 'dateFilter', '$http', 'API_VERSION', '$rootScope', '$sce', '$log', mifosX.controllers.RunReportsController]).run(function ($log) {
