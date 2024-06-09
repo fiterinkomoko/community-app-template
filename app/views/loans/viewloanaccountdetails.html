@@ -371,6 +371,12 @@
                             </td>
                         </tr>
                         <tr>
+                            <th class="table-bold-loan">{{'label.heading.department' | translate}}</th>
+                            <td><span class="padded-td">{{loandetails.department.name}}
+                                <span data-ng-hide="loandetails.department">{{'label.heading.notprovided' | translate}}</span></span>
+                            </td>
+                        </tr>
+                        <tr>
                             <th class="table-bold-loan">{{'label.heading.loanofficer' | translate}}</th>
                             <td><span class="padded-td"><span data-ng-hide="loandetails.loanOfficerName">{{'label.unassigned' | translate}}</span>{{loandetails.loanOfficerName}}&nbsp;
                                     <span ng-show="loandetails.loanOfficerName">
