@@ -9,6 +9,7 @@
             scope.productName="";
             scope.buttons={};
             scope.isExtendLoanLifeCycleConfig = false;
+            scope.approvalArray=[];
             scope.routeToLoan = function (id) {
                 location.path('/viewloanaccount/' + id);
             };
@@ -105,6 +106,7 @@
                         location.path('/editloanaccount/' + parentglimid);
                         break;
                     case "approve":
+                        $rootScope.sharedData = { parentglimid: parentglimid };
                         location.path('/glimloanaccount/' + routeParams.id + '/glimApprove/'+accountId +'/'+scope.groupId);   //accountid is glimId and  routerparamsid is child loanid
                         break;
                     case "reject":
