@@ -214,7 +214,8 @@
                         exactMatch=true;
                     }
                 }
-                location.path('/search/' + searchString).search({exactMatch: exactMatch, resource: scope.currentScope.value});
+                 var encodedSearchString = encodeURIComponent(searchString);
+                location.path('/search/' + encodedSearchString).search({exactMatch: exactMatch, resource: scope.currentScope.value});
 
             };
             scope.text = '<span>Mifos X is designed by the <a href="http://www.openmf.org/">Mifos Initiative</a>.' +
