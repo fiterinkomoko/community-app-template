@@ -1,6 +1,6 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        GLIMLoanAccountActionsController: function (scope, resourceFactory, location, routeParams, dateFilter) {
+        GLIMLoanAccountActionsController: function (scope, resourceFactory, location, routeParams, dateFilter, $rootScope) {
 
             scope.action = routeParams.action || "";
             scope.accountId = routeParams.id; //childloanId
@@ -53,6 +53,7 @@
                     });
                     break;
                 case "glimApprove":
+                    scope.data = $rootScope.sharedData;
                     scope.taskPermissionName = 'APPROVE_LOAN';
                     scope.showApprovalTable=true;
                     scope.approvalArray=[];
@@ -60,7 +61,7 @@
                     scope.totalLoanAmount=0;
                     scope.approvalFormData=[];
 
-                    resourceFactory.loanTemplateResource.get({loanId: scope.accountId, templateType: 'approval'}, function (data) {
+                    resourceFactory.loanTemplateResource.get({loanId: scope.data.parentglimid, templateType: 'approval'}, function (data) {
 
                         scope.title = 'label.heading.approveloanaccount';
                         scope.labelName = 'label.input.approvedondate';
@@ -98,7 +99,7 @@
                     });
                     // end of glim
 
-                    resourceFactory.LoanAccountResource.getLoanAccountDetails({loanId: routeParams.id, associations: 'multiDisburseDetails'}, function (data) {
+                    resourceFactory.LoanAccountResource.getLoanAccountDetails({loanId: scope.data.parentglimid, associations: 'multiDisburseDetails'}, function (data) {
                         scope.expectedDisbursementDate = new Date(data.timeline.expectedDisbursementDate);
                         if(data.disbursementDetails != ""){
                             scope.disbursementDetails = data.disbursementDetails;
@@ -814,7 +815,7 @@
             };
         }
     });
-    mifosX.ng.application.controller('GLIMLoanAccountActionsController', ['$scope', 'ResourceFactory', '$location', '$routeParams', 'dateFilter', mifosX.controllers.GLIMLoanAccountActionsController]).run(function ($log) {
+    mifosX.ng.application.controller('GLIMLoanAccountActionsController', ['$scope', 'ResourceFactory', '$location', '$routeParams', 'dateFilter', '$rootScope', mifosX.controllers.GLIMLoanAccountActionsController]).run(function ($log) {
         $log.info("GLIMLoanAccountActionsController initialized");
     });
 }(mifosX.controllers || {}));
