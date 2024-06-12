@@ -2201,6 +2201,7 @@
   "label.heading.corporateCrn": "Corporate Crn",
   "label.heading.companyRegNo": "Corporate Registration Number",
   "label.heading.companyName": "Corporate Name",
+  "label.heading.companyRegDate": "Corporate Registration Date",
 
   "label.heading.grade": "Grade",
   "label.heading.positiveScore": "Positive Score",
@@ -2335,6 +2336,7 @@
   "label.heading.npaTotalValueListed": "NPA Total Value Listed",
   "label.heading.paOpenAccounts": "PA Open Accounts",
   "label.heading.paOpenAccountsWithDh": "PA Open Accounts With DH",
+  "label.heading.npaClosedAccounts": "NPA Closed Accounts",
   "label.heading.closedAccounts": "Closed Accounts",
   "label.heading.creditApplications": "Credit Applications",
   "label.heading.creditHistory": "Credit History",
@@ -2355,6 +2357,7 @@
   "label.heading.TransBalanceAmount": "Balance Amount",
   "label.heading.disputed": "Disputed",
   "label.heading.isMyAccount": "Is My Account",
+  "label.heading.jointLoanParticipants": "Joint Loan Participants",
   "label.heading.lastPaymentDate": "Last Payment Date",
   "label.heading.listingDate": "Listing Date",
   "label.heading.principalAmount": "Principal Amount",
