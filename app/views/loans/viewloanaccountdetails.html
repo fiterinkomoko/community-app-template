@@ -1319,6 +1319,10 @@
                                 <td>{{'label.heading.companyName' | translate}}</td>
                                 <td><span class="padded-td">{{crbReportTransUnion.companyName}}</span></td>
                             </tr>
+                            <tr data-ng-show="crbReportTransUnion.clientType == 2">
+                                <td>{{'label.heading.companyRegDate' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.companyRegDate}}</span></td>
+                            </tr>
 
 
                             <tr data-ng-show="crbReportTransUnion.transUnionRwandaCrbSummaryReportData">
@@ -1612,7 +1616,7 @@
                                 <td><b>{{'label.heading.lastNPAListingDate' | translate}}</b></td>
                                 <td></td>
                             <tr data-ng-show="crbReportTransUnion.transUnionRwandaCrbSummaryReportData">
-                                <td>{{'label.heading.lastNPAListingDate' | translate}}</td>
+                                <td>{{'label.heading.otherSectors' | translate}}</td>
                                 <td><span class="padded-td">{{crbReportTransUnion.transUnionRwandaCrbSummaryReportData.lastNPAListingDate}}</span></td>
                             </tr>
 
@@ -1751,7 +1755,7 @@
                                 <td></td>
                             </tr>
                             <tr data-ng-show="crbReportTransUnion.transUnionRwandaCrbSummaryReportData">
-                                <td>{{'label.heading.allSector' | translate}}</td>
+                                <td>{{'label.heading.currency' | translate}}</td>
                                 <td><span class="padded-td">{{crbReportTransUnion.transUnionRwandaCrbSummaryReportData.npaTotalValueListedAllSectors}}</span></td>
                             </tr>
                             <tr data-ng-show="crbReportTransUnion.transUnionRwandaCrbSummaryReportData">
@@ -1797,6 +1801,24 @@
                                 <td><span class="padded-td">{{crbReportTransUnion.transUnionRwandaCrbSummaryReportData.paOpenAccountsWithDhOtherSectors}}</span></td>
                             </tr>
 
+
+                            <tr data-ng-show="crbReportTransUnion.transUnionRwandaCrbSummaryReportData">
+                                <td><b>{{'label.heading.npaClosedAccounts' | translate}}</b></td>
+                                <td></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.transUnionRwandaCrbSummaryReportData">
+                                <td>{{'label.heading.allSector' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.transUnionRwandaCrbSummaryReportData.npaClosedAccountsAllSectors}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.transUnionRwandaCrbSummaryReportData">
+                                <td>{{'label.heading.mySector' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.transUnionRwandaCrbSummaryReportData.npaClosedAccountsMySector}}</span></td>
+                            </tr>
+                            <tr data-ng-show="crbReportTransUnion.transUnionRwandaCrbSummaryReportData">
+                                <td>{{'label.heading.otherSectors' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportTransUnion.transUnionRwandaCrbSummaryReportData.npaClosedAccountsOtherSectors}}</span></td>
+                            </tr>
+
                             <tr data-ng-show="crbReportTransUnion.transUnionRwandaCrbSummaryReportData">
                                 <td><b>{{'label.heading.performingAccounts' | translate}}</b></td>
                                 <td></td>
@@ -1820,6 +1842,7 @@
                                 <th class="empty">{{'label.heading.currency' | translate}}</th>
                                 <th class="empty">{{'label.heading.disputed' | translate}}</th>
                                 <th class="empty">{{'label.heading.isMyAccount' | translate}}</th>
+                                <th class="empty">{{'label.heading.jointLoanParticipants' | translate}}</th>
                                 <th class="empty">{{'label.heading.lastPaymentDate' | translate}}</th>
                                 <th class="empty">{{'label.heading.listingDate' | translate}}</th>
                                 <th class="empty">{{'label.heading.principalAmount' | translate}}</th>
@@ -1845,6 +1868,7 @@
                                 <td>{{ account.currency }}</td>
                                 <td>{{ account.disputed }}</td>
                                 <td>{{ account.isMyAccount }}</td>
+                                <td>{{ account.jointLoanParticipants }}</td>
                                 <td>{{ account.lastPaymentDate }}</td>
                                 <td>{{ account.listingDate }}</td>
                                 <td>{{ account.principalAmount }}</td>
