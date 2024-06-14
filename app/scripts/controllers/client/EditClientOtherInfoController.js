@@ -26,7 +26,7 @@
                       passportNumber: data.passportNumber,
                       bankAccountNumber: data.bankAccountNumber,
                       bankName: data.bankName,
-                      telephoneNo: data.telephoneNumber
+                      telephoneNo: parseInt(data.telephoneNumber)
                 }
             });
 

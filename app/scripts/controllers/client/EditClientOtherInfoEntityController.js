@@ -23,7 +23,7 @@
                       guarantor: data.guarantor == "" ? undefined: data.guarantor,
                       incomeGeneratingActivity: data.incomeGeneratingActivity == 0 ? undefined: data.incomeGeneratingActivity,
                       incomeGeneratingActivityMonthlyAmount: data.incomeGeneratingActivityMonthlyAmount,
-                      telephoneNo: data.telephoneNumber,
+                      telephoneNo: parseInt(data.telephoneNumber),
                       bankAccountNumber: data.bankAccountNumber,
                       bankName: data.bankName,
                       yearArrivedInHostCountryId: data.yearArrivedInHostCountry.id === 0 ? undefined: data.yearArrivedInHostCountry.id,   
