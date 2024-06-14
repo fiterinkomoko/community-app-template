@@ -97,26 +97,22 @@
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="bankAccountNumber">
                             {{ 'label.input.bankAccountNumber' | translate }}
-                            <span class="required">*</span>
                         </label>
                     
                         <div class="col-sm-3">
                             <input id="bankAccountNumber" name="bankAccountNumber" type="text" class="form-control"
-                                ng-model="formData.bankAccountNumber" required late-validate />
+                                ng-model="formData.bankAccountNumber" late-validate />
                         </div>
-                        <form-validate valattributeform="clientotherinfoform" valattribute="bankAccountNumber" />
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="bankName">
                             {{ 'label.input.bankName' | translate }}
-                            <span class="required">*</span>
                         </label>
                     
                         <div class="col-sm-3">
                             <input id="bankName" name="bankName" type="text" class="form-control" 
-                                ng-model="formData.bankName" required late-validate />
+                                ng-model="formData.bankName" late-validate />
                         </div>
-                        <form-validate valattributeform="clientotherinfoform" valattribute="bankName" />
                     </div>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="telephoneNo">{{ 'label.input.telephoneNo' | translate }}
