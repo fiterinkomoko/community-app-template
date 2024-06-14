@@ -76,45 +76,40 @@
 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="nationalIdentificationNumber">{{ 'label.input.nationalIdentificationNumber' | translate }}
+                        <span class="required">*</span>
                     </label>
 
                     <div class="col-sm-3">
-                        <input id="nationalIdentificationNumber" name="nationalIdentificationNumber" type="text" class="form-control" ng-model="formData.nationalIdentificationNumber" late-validate>
+                        <input id="nationalIdentificationNumber" name="nationalIdentificationNumber" type="text" class="form-control" ng-model="formData.nationalIdentificationNumber" required late-validate>
                     </div>
                     <form-validate valattributeform="editclientotherinfoform" valattribute="nationalIdentificationNumber"/>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="passportNumber">
                         {{ 'label.input.passportNumber' | translate }}
-                        <span class="required">*</span>
                     </label>
 
                     <div class="col-sm-3">
-                        <input id="passportNumber" name="passportNumber" type="text" class="form-control" ng-model="formData.passportNumber" required late-validate>
+                        <input id="passportNumber" name="passportNumber" type="text" class="form-control" ng-model="formData.passportNumber"  late-validate>
                     </div>
-                    <form-validate valattributeform="editclientotherinfoform" valattribute="passportNumber"/>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="bankAccountNumber">
                         {{ 'label.input.bankAccountNumber' | translate }}
-                        <span class="required">*</span>
                     </label>
 
                     <div class="col-sm-3">
-                        <input id="bankAccountNumber" name="bankAccountNumber" type="text" class="form-control" ng-model="formData.bankAccountNumber" required late-validate>
+                        <input id="bankAccountNumber" name="bankAccountNumber" type="text" class="form-control" ng-model="formData.bankAccountNumber" late-validate>
                     </div>
-                    <form-validate valattributeform="editclientotherinfoform" valattribute="bankAccountNumber"/>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="bankName">
                         {{ 'label.input.bankName' | translate }}
-                        <span class="required">*</span>
                     </label>
 
                     <div class="col-sm-3">
-                        <input id="bankName" name="bankName" type="text" class="form-control" ng-model="formData.bankName" required late-validate>
+                        <input id="bankName" name="bankName" type="text" class="form-control" ng-model="formData.bankName" late-validate>
                     </div>
-                    <form-validate valattributeform="editclientotherinfoform" valattribute="bankName"/>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="telephoneNo">
