@@ -109,6 +109,7 @@
 					<div style="height:300px;">
 			            <nvd3-multi-bar-chart
 			                     data="BarData"
+								 options="chartOptions()"
 			                     id="barchart"
 			                     width="800"
 			                     height="380"
@@ -117,7 +118,8 @@
 			                     interactive="true"
 			                     tooltips="true"
 			                     color="colorFunction()"
-			                     showLegend="true">
+			                     showLegend="true"
+								 callback="chartCallback">
 			                 <svg></svg>
 			             </nvd3-multi-bar-chart>
 			        </div>

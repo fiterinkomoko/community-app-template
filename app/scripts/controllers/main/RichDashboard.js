@@ -1,6 +1,6 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        RichDashboard: function (scope, resourceFactory, localStorageService, $rootScope, location) {
+        RichDashboard: function (scope, resourceFactory, localStorageService, $rootScope, location, sessionManager, timeout) {
 
         	scope.recent = [];
             scope.recent = localStorageService.getFromLocalStorage('Location');
@@ -461,9 +461,38 @@
                 };
             };
 
+        // Callback function after chart is rendered
+        scope.chartCallback = function() {
+            timeout(function() {
+                updateLegendColors();
+            }, 0);
+        };
+
+
+        // Function to update legend colors
+        function updateLegendColors() {
+            timeout(function() {
+                d3.selectAll('.nv-legend-symbol')
+                    .style('fill', function(d, i) {
+                        // Define custom legend colors here
+                        var legendColors = ['#0f82f5', '#008000', '#808080', '#000000', '#FFE6E6'];
+                        return legendColors[i % legendColors.length];
+                    })
+                    .style('stroke', function(d, i) {
+                        // Define custom legend border colors here
+                        var legendBorderColors = ['#0f82f5', '#008000', '#808080', '#000000', '#FFE6E6'];
+                        return legendBorderColors[i % legendBorderColors.length];
+                    });
+            }, 0);
+        }
+
+        scope.$watch('BarData', function() {
+            updateLegendColors();
+        }, true);
+
         }
     });
-    mifosX.ng.application.controller('RichDashboard', ['$scope', 'ResourceFactory', 'localStorageService', '$rootScope', '$location', mifosX.controllers.RichDashboard]).run(function ($log) {
+    mifosX.ng.application.controller('RichDashboard', ['$scope', 'ResourceFactory', 'localStorageService', '$rootScope', '$location', 'SessionManager', '$timeout', mifosX.controllers.RichDashboard]).run(function ($log) {
         $log.info("RichDashboard initialized");
     });
 }(mifosX.controllers || {}));
