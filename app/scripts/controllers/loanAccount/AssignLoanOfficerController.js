@@ -12,7 +12,7 @@
             resourceFactory.loanResource.get({loanId: scope.loanId, template: true, fields: fields, staffInSelectedOfficeOnly:true}, function (data) {
                 if (data.loanOfficerOptions) {
                     scope.loanOfficers = data.loanOfficerOptions;
-                    scope.formData.toLoanOfficerId = data.loanOfficerOptions[0].id;
+                    scope.formData.toLoanOfficerId = data.loanOfficerId;
                 }
                 scope.data = data;
             });
