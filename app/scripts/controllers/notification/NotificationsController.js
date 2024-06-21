@@ -26,8 +26,8 @@
                     scope.initNotificationsPage();
                 } else {
                     scope.notifications = readNotifications;
+                    scope.notifications = scope.translateObjectToReadableForm(scope.notifications);
                 }
-
                 if (scope.numberOfUnreadNotifications > 0 ) {
                     resourceFactory.notificationsResource.update();
                     scope.numberOfUnreadNotifications = 0;
@@ -40,6 +40,7 @@
                 }, function (data) {
                     scope.totalNotifications = data.totalFilteredRecords;
                     scope.notifications = data.pageItems;
+                    scope.notifications = scope.translateObjectToReadableForm(scope.notifications);
                     localStorageService.addToLocalStorage("notifications", JSON.stringify(scope.notifications));
                 });
             };
@@ -49,6 +50,7 @@
                     limit: scope.notificationsPerPage
                 }, function (data) {
                     scope.notifications = data.pageItems;
+                    scope.notifications = scope.translateObjectToReadableForm(scope.notifications);
                 });
             };
             scope.fetchUnreadNotifications = function() {
@@ -73,9 +75,36 @@
                         (readNotifications
                             .slice(0, Math.abs(readNotifications.length - data.pageItems.length + 1)));
                     }
+                    scope.notifications = scope.translateObjectToReadableForm(scope.notifications);
                     localStorageService.addToLocalStorage("notifications", JSON.stringify(scope.notifications));
                 });
              };
+             scope.isJsonString = function(str) {
+                try {
+                    JSON.parse(str);
+                } catch (e) {
+                    return false;
+                }
+                return true;
+            };
+            scope.translateObjectToReadableForm = function(data) {
+                scope.records = data.map(function(item) {
+                if (scope.isJsonString(item.content)) {
+                    // Parse the JSON content
+                    if(item.objectType==='LoanRepaymentConfirmation'){
+                    var parsedContent = "Repayment Made";
+                    var parsedJson = JSON.parse(item.content);
+                    var parentObjectId = parsedJson['loanId'];
+                    // Merge the parsed content fields into the item object
+                    return { ...item, content: parsedContent, objectId: parentObjectId, objectType: 'loan'};
+                    }
+                    return item;
+                } else {
+                    return item;
+                }
+            });
+            return scope.records;
+            };
             scope.navigateToAction = function(notification) {
                 if(!notification.objectType || typeof(notification.objectType) !=='string'){
                     console.error('no object type found');
@@ -84,6 +113,7 @@
                 if(!objTypeUrlMap[notification.objectType] ){
                     return;
                 }
+                
                 location.path(objTypeUrlMap[notification.objectType] + notification.objectId);
             };
             scope.countFromLastResponse = function() {
