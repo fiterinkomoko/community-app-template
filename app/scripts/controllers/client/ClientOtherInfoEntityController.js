@@ -1,7 +1,9 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        ClientOtherInfoEntityController: function (scope, resourceFactory, routeParams, location, route) {
-
+        ClientOtherInfoEntityController: function (scope, resourceFactory, routeParams,dateFilter, location, route) {
+             scope.first = {};
+             scope.first.date = new Date();
+             scope.first.submitondate = new Date ();
             scope.formData = {};
             scope.clientId = routeParams.clientId;
             scope.otherInfoData = {};
@@ -40,6 +42,10 @@
                 this.formData.locale = scope.optlang.code;
                 this.formData.dateFormat = scope.df;
 
+            if (scope.first.submitondate) {
+                reqDate = dateFilter(scope.first.submitondate, scope.df);
+                this.formData.yearArrivedInHostCountry = reqDate;
+             }
                 resourceFactory.clientOtherInfoResource.save({clientId: scope.clientId}, this.formData, function (data) {
                     route.reload();
                 });
@@ -47,7 +53,7 @@
 
         }
     });
-    mifosX.ng.application.controller('ClientOtherInfoEntityController', ['$scope', 'ResourceFactory', '$routeParams', '$location', '$route', mifosX.controllers.ClientOtherInfoEntityController]).run(function ($log) {
+    mifosX.ng.application.controller('ClientOtherInfoEntityController', ['$scope', 'ResourceFactory', '$routeParams','dateFilter', '$location', '$route', mifosX.controllers.ClientOtherInfoEntityController]).run(function ($log) {
         $log.info("ClientOtherInfoEntityController initialized");
     });
 }(mifosX.controllers || {}));

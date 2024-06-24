@@ -1,7 +1,8 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        EditClientOtherInfoController: function (scope, resourceFactory, routeParams, location) {
-
+        EditClientOtherInfoController: function (scope, resourceFactory, routeParams,dateFilter, location) {
+            scope.date = {};
+             scope.restrictDate = new Date();
             scope.formData = {};
             scope.clientId = routeParams.clientId;
             scope.otherInfoId = routeParams.otherInfoId;
@@ -11,7 +12,6 @@
             resourceFactory.clientOtherInfoTemplateResource.get({clientId:routeParams.clientId}, function(data){
                 scope.strataOptions = data.strataOptions;
                 scope.nationalityOptions = data.nationalityOptions;
-                scope.yearArrivedInHostCountryOptions = data.yearArrivedInHostCountryOptions;
             });
 
             resourceFactory.otherInfoResource.get({clientId:routeParams.clientId, otherInfoId: routeParams.otherInfoId}, function(data){
@@ -19,7 +19,7 @@
                 scope.formData = {
                       strataId: data.strata.id,
                       nationalityId: data.nationality.id,
-                      yearArrivedInHostCountryId: data.yearArrivedInHostCountry.id,
+                      yearArrivedInHostCountry: data.yearArrivedInHostCountry,
                       numberOfDependents: data.numberOfDependents,
                       numberOfChildren: data.numberOfChildren,
                       nationalIdentificationNumber: data.nationalIdentificationNumber,
@@ -49,6 +49,10 @@
                 this.formData.locale = scope.optlang.code;
                 this.formData.dateFormat = scope.df;
 
+                if(scope.date.submittedOnDate){
+                    this.formData.yearArrivedInHostCountry = dateFilter(scope.date.submittedOnDate,  scope.df);
+                }
+
                 resourceFactory.otherInfoResource.put({clientId: scope.clientId, otherInfoId: routeParams.otherInfoId}, this.formData, function (data) {
                     location.path('/clientOtherInfo/' + scope.clientId);
                 });
@@ -56,7 +60,7 @@
 
         }
     });
-    mifosX.ng.application.controller('EditClientOtherInfoController', ['$scope', 'ResourceFactory', '$routeParams', '$location', mifosX.controllers.EditClientOtherInfoController]).run(function ($log) {
+    mifosX.ng.application.controller('EditClientOtherInfoController', ['$scope', 'ResourceFactory', '$routeParams','dateFilter', '$location', mifosX.controllers.EditClientOtherInfoController]).run(function ($log) {
         $log.info("EditClientOtherInfoController initialized");
     });
 }(mifosX.controllers || {}));
