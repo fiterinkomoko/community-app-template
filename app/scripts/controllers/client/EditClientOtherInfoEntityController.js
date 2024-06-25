@@ -28,6 +28,10 @@
                       bankName: data.bankName,
                        yearArrivedInHostCountry: data.yearArrivedInHostCountry,
                 }
+                  if (data.yearArrivedInHostCountry) {
+                var submittedOnDate = dateFilter(data.yearArrivedInHostCountry, scope.df);
+                scope.date.submittedOnDate = new Date(submittedOnDate);
+            }
             });
 
             scope.checkIfHostCommunitySelected = function () {

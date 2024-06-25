@@ -28,6 +28,10 @@
                       bankName: data.bankName,
                       telephoneNo: parseInt(data.telephoneNumber)
                 }
+               if (data.yearArrivedInHostCountry) {
+                    var submittedOnDate = dateFilter(data.yearArrivedInHostCountry, scope.df);
+                    scope.date.submittedOnDate = new Date(submittedOnDate);
+                }
             });
 
             scope.cancel = function () {

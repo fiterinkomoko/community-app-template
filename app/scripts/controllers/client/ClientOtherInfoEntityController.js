@@ -12,13 +12,16 @@
 
             resourceFactory.clientOtherInfoTemplateResource.get({clientId:routeParams.clientId}, function(data){
                 scope.strataOptions = data.strataOptions;
-                scope.yearArrivedInHostCountryOptions = data.yearArrivedInHostCountryOptions;
             });
 
             resourceFactory.clientOtherInfoEntityResource.getAll({clientId:routeParams.clientId}, function(data){
                 scope.otherInfoData = data[0];
                 if(scope.otherInfoData){
                  scope.exists = true;
+                }
+                if (data.yearArrivedInHostCountry) {
+                    var submittedOnDate = dateFilter(data.yearArrivedInHostCountry, scope.df);
+                    scope.date.submittedOnDate = new Date(submittedOnDate);
                 }
 
             });

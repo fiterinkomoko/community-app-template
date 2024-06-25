@@ -14,7 +14,6 @@
             resourceFactory.clientOtherInfoTemplateResource.get({clientId:routeParams.clientId}, function(data){
                 scope.strataOptions = data.strataOptions;
                 scope.nationalityOptions = data.nationalityOptions;
-                scope.yearArrivedInHostCountryOptions = data.yearArrivedInHostCountryOptions;
             });
 
             resourceFactory.clientOtherInfoResource.getAll({clientId:routeParams.clientId}, function(data){

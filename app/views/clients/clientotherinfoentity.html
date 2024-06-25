@@ -170,9 +170,9 @@
                         <td>{{'label.heading.strata' | translate}}</td>
                         <td>{{otherInfoData.strata.name}}</td>
                     </tr>
-                    <tr ng-show="otherInfoData.yearArrivedInHostCountry.name">
+                    <tr ng-show="otherInfoData.yearArrivedInHostCountry">
                         <td>{{'label.heading.yearArrivedInHostCountry' | translate}}</td>
-                        <td>{{otherInfoData.yearArrivedInHostCountry.name}}</td>
+                        <td>{{otherInfoData.yearArrivedInHostCountry | DateFormat}}</td>
                     </tr>
                     <tr>
                         <td>{{'label.heading.bankAccountNumber' | translate}}</td>
