@@ -1,7 +1,10 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        ClientOtherInfoController: function (scope, resourceFactory, routeParams, location, route) {
+        ClientOtherInfoController: function (scope, resourceFactory, routeParams,dateFilter, location, route) {
 
+            scope.first = {};
+            scope.first.date = new Date();
+             scope.first.submitondate = new Date ();
             scope.formData = {};
             scope.clientId = routeParams.clientId;
             scope.otherInfoData = {};
@@ -11,7 +14,6 @@
             resourceFactory.clientOtherInfoTemplateResource.get({clientId:routeParams.clientId}, function(data){
                 scope.strataOptions = data.strataOptions;
                 scope.nationalityOptions = data.nationalityOptions;
-                scope.yearArrivedInHostCountryOptions = data.yearArrivedInHostCountryOptions;
             });
 
             resourceFactory.clientOtherInfoResource.getAll({clientId:routeParams.clientId}, function(data){
@@ -41,6 +43,11 @@
                 this.formData.locale = scope.optlang.code;
                 this.formData.dateFormat = scope.df;
 
+                if (scope.first.submitondate) {
+                    reqDate = dateFilter(scope.first.submitondate, scope.df);
+                    this.formData.yearArrivedInHostCountry = reqDate;
+                 }
+
                 resourceFactory.clientOtherInfoResource.save({clientId: scope.clientId}, this.formData, function (data) {
                     route.reload();
                 });
@@ -48,7 +55,7 @@
 
         }
     });
-    mifosX.ng.application.controller('ClientOtherInfoController', ['$scope', 'ResourceFactory', '$routeParams', '$location', '$route', mifosX.controllers.ClientOtherInfoController]).run(function ($log) {
+    mifosX.ng.application.controller('ClientOtherInfoController', ['$scope', 'ResourceFactory', '$routeParams','dateFilter', '$location', '$route', mifosX.controllers.ClientOtherInfoController]).run(function ($log) {
         $log.info("ClientOtherInfoController initialized");
     });
 }(mifosX.controllers || {}));
