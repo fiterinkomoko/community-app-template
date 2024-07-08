@@ -83,6 +83,7 @@
                         for(i=0;i<scope.glimAccounts.length;i++)
                         {
 
+                            if(data[i].loanStatus.id != 500){
                             var temp={};
                             temp.parentAccountNo=data[i].parentAccountNo;
                             temp.clientName=data[i].clientName;
@@ -94,6 +95,7 @@
 
 
                             scope.approvalArray.push(temp);
+                            }
                         }
                     scope.calculateTotalApprovedAmount();
                     });
