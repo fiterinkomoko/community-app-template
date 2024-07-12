@@ -3,7 +3,7 @@
         ClientOtherInfoEntityController: function (scope, resourceFactory, routeParams,dateFilter, location, route) {
              scope.first = {};
              scope.first.date = new Date();
-             scope.first.submitondate = new Date ();
+             scope.first.submitondate;
             scope.formData = {};
             scope.clientId = routeParams.clientId;
             scope.otherInfoData = {};
