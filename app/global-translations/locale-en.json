@@ -2277,7 +2277,7 @@
   "label.heading.originalAmount": "Original Amount",
   "label.heading.overdueBalance": "Overdue Balance",
   "label.heading.overdueDate": "Overdue Date",
-  "label.heading.productTypeId": "Product Type Id",
+  "label.heading.accountType": "Account Type",
   "label.heading.ppiAnalysis": "PPI Analysis",
   "label.heading.ppiAnalysisMonth": "Month",
   "label.heading.ppiAnalysisPpi": "Ppi",
@@ -5230,6 +5230,7 @@
   "label.heading.financialRatio.pendingPayable": "Any other pending payables",
   "label.heading.financialRatio.leverage": "Leverage",
   "label.heading.financialRatio.receivables": "Receivables",
+  "label.heading.financialRatio.shortTermLoans": "Short Term Loans",
   "label.heading.financialRatio.capitalization": "Capitalization",
   "label.heading.financialRatio.chama": "Chama/Tontines",
   "label.heading.financialRatio.dscr": "DSCR",
@@ -5240,8 +5241,8 @@
   "label.heading.financialRatio.longTerm": "Long Term",
   "label.heading.financialRatio.equipment": "Equipment &amp; Tools",
   "label.heading.financialRatio.unsecuredLoans": "Unsecured loans",
+  "label.heading.financialRatio.securedLoans": "Secured loans",
   "label.heading.financialRatio.furniture": "Furniture",
-  "label.heading.financialRatio.assetFinancing": "Asset Financing",
   "label.heading.financialRatio.businessPremises": "Business Premises",
   "label.heading.financialRatio.otherFixedAssets": "Other Fixed Assets",
   "label.heading.financialRatio.totalFixedAssets": "Total Fixed Assets",
@@ -5305,5 +5306,6 @@
   "error.msg.loan.integration.disbursementRequest.unprocessableEntity": "Disbursement request failed with message {{params[2].value}}",
   "error.msg.loan.integration.disbursementRequest.loginFailed": "Login to inkomoko Integration has failed",
   "error.msg.client.other.info.clientId.invalid": "Client Other Info does not exist",
+  "label.heading.creditScore": "Metro Score",
   "----End---": "--End of file--- "
 }

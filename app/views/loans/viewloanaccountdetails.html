@@ -2127,7 +2127,14 @@
                                 <td>{{'label.heading.ppiAnalysisPpiRank' | translate}}</td>
                                 <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.ppiAnalysisPpiRank }}</span></td>
                             </tr>
-
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData" style="color: #5DC5E9;">
+                                <td><b>{{'label.heading.creditScore' | translate}}</b></td>
+                                <td></td>
+                            </tr>
+                            <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData">
+                                <td>{{'label.heading.creditScore' | translate}}</td>
+                                <td><span class="padded-td">{{crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData.creditScore}}</span></td>
+                            </tr>
 
                             <tr data-ng-show="crbReportMetrolpolIdentityVerification.metropolCrbCreditInfoEnchancedData" style="color: #5DC5E9;">
                                 <td><b>{{'label.heading.verifiedName' | translate}}</b></td>
@@ -2174,7 +2181,7 @@
                                 <th>{{'label.heading.originalAmount' | translate}}</th>
                                 <th>{{'label.heading.overdueBalance' | translate}}</th>
                                 <th>{{'label.heading.overdueDate' | translate}}</th>
-                                <th>{{'label.heading.productTypeId' | translate}}</th>
+                                <th>{{'label.heading.accountType' | translate}}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -2195,7 +2202,7 @@
                                 <td>{{acc.originalAmount}}</td>
                                 <td>{{acc.overdueBalance}}</td>
                                 <td>{{acc.overdueDate}}</td>
-                                <td>{{acc.productTypeId}}</td>
+                                <td>{{acc.accountType}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -2458,8 +2465,8 @@
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.receivables' | translate }}</td>
                                     <td class="s7" dir="ltr">{{financialRatioData.receivables | number : '2'}}</td>
-                                    <td class="s6" dir="ltr"></td>
-                                    <td class="s6"></td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.shortTermLoans' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.shortTermLoans | number : '2'}}</td>
                                     <td></td>
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.capitalization' | translate }}</td>
@@ -2532,8 +2539,8 @@
                                     <td class="s3"></td>
                                     <td class="s6" dir="ltr">{{'label.heading.financialRatio.furniture' | translate }}</td>
                                     <td class="s7" dir="ltr">{{financialRatioData.furniture | number : '2'}}</td>
-                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.assetFinancing' | translate }}</td>
-                                    <td class="s7" dir="ltr">{{financialRatioData.assetFinancing | number : '2'}}</td>
+                                    <td class="s6" dir="ltr">{{'label.heading.financialRatio.securedLoans' | translate }}</td>
+                                    <td class="s7" dir="ltr">{{financialRatioData.securedLoans | number : '2'}}</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
