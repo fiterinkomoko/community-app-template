@@ -73,7 +73,7 @@
                     // start of glim
 
                     resourceFactory.glimLoanTemplate.get({glimId: scope.glimId,isRepayment: false}, function (data) {
-                        scope.glimAccounts = data.filter(function (account) {return account.loanStatus.id != 500;});
+                        scope.glimAccounts = data;
 
                         if(scope.approvalArray.length!=0)
                         {
@@ -587,7 +587,7 @@
                     approvalFormData=[];
                     this.formData.approvalFormData=[];
                     this.formData.glimPrincipal=0;
-                    for(var j=0;j<scope.glimAccounts.length;j++)
+                    for(var j=0;j<scope.approvalArray.length;j++)
                     {
                         console.log(scope.approvalArray, scope.glimAccounts);
                         approvalFormData[j]={};
