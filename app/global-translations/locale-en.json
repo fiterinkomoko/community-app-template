@@ -5307,5 +5307,6 @@
   "error.msg.loan.integration.disbursementRequest.loginFailed": "Login to inkomoko Integration has failed",
   "error.msg.client.other.info.clientId.invalid": "Client Other Info does not exist",
   "label.heading.creditScore": "Metro Score",
+  "error.msg.loan.fundsource.kiva.desc.less.than.150" : "Description must be more than 150 words for KIVA fund source",
   "----End---": "--End of file--- "
 }
