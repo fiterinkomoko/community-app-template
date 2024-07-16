@@ -1,8 +1,8 @@
-name: Fineract Client Build
+name: Fineract Client Build UAT
 
 on:
   push:
-    branches: [ inkomoko ]
+    branches: [ inkomoko-uat ]
 
 jobs:
   
