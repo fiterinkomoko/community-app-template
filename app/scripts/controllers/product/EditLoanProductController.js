@@ -37,6 +37,8 @@
                 scope.expenseAccountOptions = scope.product.accountingMappingOptions.expenseAccountOptions || [];
                 scope.liabilityAccountOptions = data.accountingMappingOptions.liabilityAccountOptions || [];
                 scope.incomeAndLiabilityAccountOptions = scope.incomeAccountOptions.concat(scope.liabilityAccountOptions);
+                scope.assetLiabilityAccountOptions = scope.assetAccountOptions;
+                scope.assetLiabilityAccountOptions = scope.assetLiabilityAccountOptions.concat(scope.liabilityAccountOptions);
                 scope.penaltyOptions = scope.product.penaltyOptions || [];
                 scope.chargeOptions = scope.product.chargeOptions || [];
                 scope.charges = scope.product.charges || [];
@@ -235,7 +237,7 @@
                             paymentTypeId: fundSource.paymentType.id,
                             fundSourceAccountId: fundSource.fundSourceAccount.id,
                             paymentTypeOptions: scope.product.paymentTypeOptions,
-                            assetAccountOptions: scope.assetAccountOptions
+                            assetAccountOptions: scope.assetLiabilityAccountOptions
                         })
                     });
 
@@ -368,12 +370,12 @@
 
             scope.addConfigureFundSource = function () {
                 if (scope.product.paymentTypeOptions && scope.product.paymentTypeOptions.length > 0 &&
-                    scope.assetAccountOptions && scope.assetAccountOptions.length > 0) {
+                    scope.assetLiabilityAccountOptions && scope.assetLiabilityAccountOptions.length > 0) {
                     scope.configureFundOptions.push({
                         paymentTypeId: scope.product.paymentTypeOptions[0].id,
-                        fundSourceAccountId: scope.assetAccountOptions[0].id,
+                        fundSourceAccountId: scope.assetLiabilityAccountOptions[0].id,
                         paymentTypeOptions: scope.product.paymentTypeOptions,
-                        assetAccountOptions: scope.assetAccountOptions
+                        assetAccountOptions: scope.assetLiabilityAccountOptions
                     });
                 }
             };
