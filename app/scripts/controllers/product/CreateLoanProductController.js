@@ -49,6 +49,8 @@
                 scope.expenseAccountOptions = scope.product.accountingMappingOptions.expenseAccountOptions || [];
                 scope.liabilityAccountOptions = scope.product.accountingMappingOptions.liabilityAccountOptions || [];
                 scope.incomeAndLiabilityAccountOptions = scope.incomeAccountOptions.concat(scope.liabilityAccountOptions);
+                scope.assetLiabilityAccountOptions = scope.assetAccountOptions;
+                scope.assetLiabilityAccountOptions = scope.assetLiabilityAccountOptions.concat(scope.liabilityAccountOptions);
                 scope.penaltyOptions = scope.product.penaltyOptions || [];
                 scope.chargeOptions = scope.product.chargeOptions || [];
                 scope.overduecharges = [];
@@ -201,10 +203,11 @@
                 scope.frFlag = true;
                 scope.configureFundOptions.push({
                     paymentTypeId: scope.product.paymentTypeOptions.length > 0 ? scope.product.paymentTypeOptions[0].id : '',
-                    fundSourceAccountId: scope.assetAccountOptions.length > 0 ? scope.assetAccountOptions[0].id : '',
+                    fundSourceAccountId: scope.assetLiabilityAccountOptions.length > 0 ? scope.assetLiabilityAccountOptions[0].id : '',
                     paymentTypeOptions: scope.product.paymentTypeOptions.length > 0 ? scope.product.paymentTypeOptions : [],
-                    assetAccountOptions: scope.assetAccountOptions.length > 0 ? scope.assetAccountOptions : []
+                    assetAccountOptions: scope.assetLiabilityAccountOptions.length > 0 ? scope.assetLiabilityAccountOptions : []
                 });
+                console.log(scope.configureFundOptions);
             };
 
             scope.mapFees = function () {
