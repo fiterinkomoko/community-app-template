@@ -815,8 +815,8 @@
                 reportParams += encodeURIComponent(paramName) + "=" + encodeURIComponent(scope.startDate)+ "&";
                 paramName = "R_endDate";
                 reportParams += encodeURIComponent(paramName) + "=" + encodeURIComponent(scope.endDate)+ "&";
-                paramName = "R_selectLoan";
-                reportParams += encodeURIComponent(paramName) + "=" + encodeURIComponent(scope.loandetails.accountNo);
+                paramName = "R_loanId";
+                reportParams += encodeURIComponent(paramName) + "=" + encodeURIComponent(scope.loandetails.id);
                 if (reportParams > "") {
                     reportURL += "&" + reportParams;
                 }
