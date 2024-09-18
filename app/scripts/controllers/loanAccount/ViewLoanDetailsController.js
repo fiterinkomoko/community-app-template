@@ -1,6 +1,6 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        ViewLoanDetailsController: function (scope, routeParams, resourceFactory,paginatorService, location, route, http, $uibModal, dateFilter, API_VERSION, $sce, $rootScope, $window, interval) {
+        ViewLoanDetailsController: function (scope, routeParams, resourceFactory,paginatorService, location, route, http, $uibModal, dateFilter, API_VERSION, $sce, $rootScope, $window, interval, webStorage) {
             scope.loandocuments = [];
             scope.report = false;
             scope.hidePentahoReport = true;
@@ -903,8 +903,19 @@
                     scope.fileType = 'image/jpg';
             };
 
-            scope.downloadDocument = function (documentId) {
-
+            scope.downloadDocument = function (document) {
+                var url = scope.hostUrl + document.docUrl;
+                var sessionData = webStorage.get('sessionData');
+                var headers = { "Authorization": "Basic " + sessionData.authenticationKey };
+                fetch(url, {
+                    method: 'GET',
+                    headers
+                })
+                .then((res) => res.blob())
+                .then((blob) => {
+                    var _url = window.URL.createObjectURL(blob);
+                    window.open(_url, "_blank").focus();
+                });
             };
 
             scope.transactionSort = {
@@ -1085,7 +1096,7 @@
 
 
     });
-    mifosX.ng.application.controller('ViewLoanDetailsController', ['$scope', '$routeParams', 'ResourceFactory','PaginatorService', '$location', '$route', '$http', '$uibModal', 'dateFilter', 'API_VERSION', '$sce', '$rootScope','$window', '$interval', mifosX.controllers.ViewLoanDetailsController]).run(function ($log) {
+    mifosX.ng.application.controller('ViewLoanDetailsController', ['$scope', '$routeParams', 'ResourceFactory','PaginatorService', '$location', '$route', '$http', '$uibModal', 'dateFilter', 'API_VERSION', '$sce', '$rootScope','$window', '$interval', 'webStorage', mifosX.controllers.ViewLoanDetailsController]).run(function ($log) {
         $log.info("ViewLoanDetailsController initialized");
     });
 }(mifosX.controllers || {}));
