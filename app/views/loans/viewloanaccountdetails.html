@@ -1029,7 +1029,7 @@
                                 <td>{{document.fileName}}</td>
                                 <td>
                                     <a ng-click="downloadDocument(document)"><i class="fa fa-cloud-download"></i></a>&nbsp;
-                                    <a ng-show="document.fileIsImage" ng-click="previewDocument(document.docUrl,document.fileName)"><i class="fa fa-eye"></i></a>
+                                    <a ng-show="document.fileIsImage" ng-click="downloadDocument(document)"><i class="fa fa-eye"></i></a>
                                     <a ng-click="deleteDocument(document.id,$index)"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>

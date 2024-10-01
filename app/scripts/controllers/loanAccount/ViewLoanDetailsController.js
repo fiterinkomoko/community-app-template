@@ -894,15 +894,6 @@
                 });
             };
 
-            scope.previewDocument = function (url, fileName) {
-                scope.preview =  true;
-                scope.fileUrl = scope.hostUrl + url;
-                if(fileName.toLowerCase().indexOf('.png') != -1)
-                    scope.fileType = 'image/png';
-                else if((fileName.toLowerCase().indexOf('.jpg') != -1) || (fileName.toLowerCase().indexOf('.jpeg') != -1))
-                    scope.fileType = 'image/jpg';
-            };
-
             scope.downloadDocument = function (document) {
                 var url = scope.hostUrl + document.docUrl;
                 var sessionData = webStorage.get('sessionData');
