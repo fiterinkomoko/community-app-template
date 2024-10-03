@@ -1986,6 +1986,7 @@
 	"label.input.routingcode": "Code d’acheminement",
 	"label.input.receiptnumber": "Reçu#",
 	"label.input.banknumber": "Banque#",
+	"label.isPostedToOdoo": "Est publié sur Odoo",
 	"label.input.loanofficer": "Agent de crédit",
 	"label.input.chargepaymentby": "Paiement des frais par",
 	"label.input.duedate": "Date d’échéance",
