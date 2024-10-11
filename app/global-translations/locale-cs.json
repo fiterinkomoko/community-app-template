@@ -1939,6 +1939,7 @@
 	"label.input.routingcode": "Směrovací kód",
 	"label.input.receiptnumber": "Číslo stvrzenky",
 	"label.input.banknumber": "Číslo banky",
+	"label.isPostedToOdoo": "Je odesláno do Odoo",
 	"label.input.loanofficer": "Úvěrový poradce",
 	"label.input.chargepaymentby": "Platba poplatků za",
 	"label.input.duedate": "Datum splatnosti",
