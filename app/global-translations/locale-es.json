@@ -1895,7 +1895,6 @@
 	"label.input.routingcode": "Código de enrutamiento",
 	"label.input.receiptnumber": "Recibo #",
 	"label.input.banknumber": "Banco #",
-	"label.isPostedToOdoo": "Se ha publicado en Odoo",
 	"label.input.loanofficer": "Agente de préstamo",
 	"label.input.chargepaymentby": "Cargo de pago por",
 	"label.input.duedate": "Fecha límite",

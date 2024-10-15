@@ -1,6 +1,5 @@
 FROM timbru31/ruby-node:2.7 as builder
 
-#RUN apk add --no-cache git
 RUN mkdir /usr/src/app
 WORKDIR /usr/src/app
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
@@ -11,7 +10,6 @@ RUN npm install -g grunt-cli
 COPY . /usr/src/app
 RUN bower --allow-root install
 RUN npm install --legacy-peer-deps
-RUN gem install bundler -v 2.4.22
 RUN bundle install
 RUN grunt prod
 

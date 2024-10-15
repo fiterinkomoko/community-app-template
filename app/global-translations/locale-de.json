@@ -623,7 +623,6 @@
 	"label.input.accnum": "Kontonummer",
 	"label.input.checknumber": "Schecknummer",
 	"label.input.banknumber": "Banknummer",
-	"label.isPostedToOdoo": "Ist in Odoo gepostet",
 	"label.input.duedate": "Fälligkeitsdatum",
 	"label.input.months": "Monate",
 	"label.input.weeks": "Wochen",

@@ -1898,7 +1898,6 @@
 	"label.input.routingcode": "Routing Code",
 	"label.input.receiptnumber": "Risiti #",
 	"label.input.banknumber": "Benki #",
-	"label.isPostedToOdoo": "Imewekwa kwenye Odoo",
 	"label.input.loanofficer": "Afisa Mikopo",
 	"label.input.chargepaymentby": "Charge payment by",
 	"label.input.duedate": "Due date",

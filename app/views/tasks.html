@@ -259,7 +259,7 @@
                             </div>
                         </uib-tab>
 
-                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.loanreviewapplication' | translate}}" has-permission='READ_LOANAPPLICATIONREVIEW'>
+                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.loanreviewapplication' | translate}}" has-permission='ACCEPT_LOANAPPLICATIONREVIEW'>
                             <div class="head-affix">
                                 <table class="table condensed-table">
                                     <thead>
@@ -271,7 +271,7 @@
                                         </th>
                                         <th>
                                             <button type="button" class="btn btn-success" data-ng-click="approveLoan()"
-                                                    has-permission='ACCEPT_LOANAPPLICATIONREVIEW'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
+                                                    has-permission='APPROVE_LOAN'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
                                                 | translate}}
                                             </button>
                                         </th>
@@ -334,7 +334,7 @@
                                 </div>
                             </div>
                         </uib-tab>
-                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.loanduediligence' | translate}}" has-permission='READ_DUEDILIGENCE'>
+                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.loanduediligence' | translate}}" has-permission='ACCEPT_DUEDILIGENCE'>
                             <div class="head-affix">
                                 <table class="table condensed-table">
                                     <thead>
@@ -346,7 +346,7 @@
                                         </th>
                                         <th>
                                             <button type="button" class="btn btn-success" data-ng-click="approveLoan()"
-                                                    has-permission='ACCEPT_DUEDILIGENCE'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
+                                                    has-permission='APPROVE_LOAN'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
                                                 | translate}}
                                             </button>
                                         </th>
@@ -410,7 +410,7 @@
                             </div>
                         </uib-tab>
 
-                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.icReviewLevelOne' | translate}}" has-permission='READ_LOANICREVIEWDECISIONLEVELONE'>
+                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.icReviewLevelOne' | translate}}" has-permission='ACCEPT_LOANICREVIEWDECISIONLEVELONE'>
                             <div class="head-affix">
                                 <table class="table condensed-table">
                                     <thead>
@@ -422,7 +422,7 @@
                                         </th>
                                         <th>
                                             <button type="button" class="btn btn-success" data-ng-click="approveLoan()"
-                                                    has-permission='ACCEPT_LOANICREVIEWDECISIONLEVELONE'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
+                                                    has-permission='APPROVE_LOAN'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
                                                 | translate}}
                                             </button>
                                         </th>
@@ -485,7 +485,7 @@
                                 </div>
                             </div>
                         </uib-tab>
-                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.icReviewLevelTwo' | translate}}" has-permission='READ_LOANICREVIEWDECISIONLEVELTWO'>
+                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.icReviewLevelTwo' | translate}}" has-permission='ACCEPT_LOANICREVIEWDECISIONLEVELTWO'>
                             <div class="head-affix">
                                 <table class="table condensed-table">
                                     <thead>
@@ -497,7 +497,7 @@
                                         </th>
                                         <th>
                                             <button type="button" class="btn btn-success" data-ng-click="approveLoan()"
-                                                    has-permission='ACCEPT_LOANICREVIEWDECISIONLEVELTWO'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
+                                                    has-permission='APPROVE_LOAN'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
                                                 | translate}}
                                             </button>
                                         </th>
@@ -560,7 +560,7 @@
                                 </div>
                             </div>
                         </uib-tab>
-                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.icReviewLevelThree' | translate}}" has-permission='READ_LOANICREVIEWDECISIONLEVELTHREE'>
+                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.icReviewLevelThree' | translate}}" has-permission='ACCEPT_LOANICREVIEWDECISIONLEVELTHREE'>
                             <div class="head-affix">
                                 <table class="table condensed-table">
                                     <thead>
@@ -572,7 +572,7 @@
                                         </th>
                                         <th>
                                             <button type="button" class="btn btn-success" data-ng-click="approveLoan()"
-                                                    has-permission='ACCEPT_LOANICREVIEWDECISIONLEVELTHREE'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
+                                                    has-permission='APPROVE_LOAN'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
                                                 | translate}}
                                             </button>
                                         </th>
@@ -635,7 +635,7 @@
                                 </div>
                             </div>
                         </uib-tab>
-                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.icReviewLevelFour' | translate}}" has-permission='READ_LOANICREVIEWDECISIONLEVELFOUR'>
+                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.icReviewLevelFour' | translate}}" has-permission='ACCEPT_LOANICREVIEWDECISIONLEVELFOUR'>
                             <div class="head-affix">
                                 <table class="table condensed-table">
                                     <thead>
@@ -647,7 +647,7 @@
                                         </th>
                                         <th>
                                             <button type="button" class="btn btn-success" data-ng-click="approveLoan()"
-                                                    has-permission='ACCEPT_LOANICREVIEWDECISIONLEVELFOUR'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
+                                                    has-permission='APPROVE_LOAN'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
                                                 | translate}}
                                             </button>
                                         </th>
@@ -710,7 +710,7 @@
                                 </div>
                             </div>
                         </uib-tab>
-                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.icReviewLevelFive' | translate}}" has-permission='READ_LOANICREVIEWDECISIONLEVELFIVE'>
+                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.icReviewLevelFive' | translate}}" has-permission='ACCEPT_LOANICREVIEWDECISIONLEVELFIVE'>
                             <div class="head-affix">
                                 <table class="table condensed-table">
                                     <thead>
@@ -722,7 +722,7 @@
                                         </th>
                                         <th>
                                             <button type="button" class="btn btn-success" data-ng-click="approveLoan()"
-                                                    has-permission='ACCEPT_LOANICREVIEWDECISIONLEVELFIVE'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
+                                                    has-permission='APPROVE_LOAN'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
                                                 | translate}}
                                             </button>
                                         </th>
@@ -786,7 +786,7 @@
                             </div>
                         </uib-tab>
 
-                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.loanPrepareAndSignContract' | translate}}" has-permission='READ_LOANPREPAREANDSIGNCONTRACT'>
+                        <uib-tab data-ng-show="isExtendLoanLifeCycleConfig" heading="{{'label.heading.loanPrepareAndSignContract' | translate}}" has-permission='ACCEPT_LOANPREPAREANDSIGNCONTRACT'>
                             <div class="head-affix">
                                 <table class="table condensed-table">
                                     <thead>
@@ -798,7 +798,7 @@
                                         </th>
                                         <th>
                                             <button type="button" class="btn btn-success" data-ng-click="approveLoan()"
-                                                    has-permission='ACCEPT_LOANPREPAREANDSIGNCONTRACT'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
+                                                    has-permission='APPROVE_LOAN'><i class="fa fa-check"></i>&nbsp;&nbsp;{{'label.button.approve'
                                                 | translate}}
                                             </button>
                                         </th>

@@ -1885,7 +1885,6 @@
 	"label.input.routingcode": "Kode Routing",
 	"label.input.receiptnumber": "bon",
 	"label.input.banknumber": "bank",
-	"label.isPostedToOdoo": "Sudah diposting ke Odoo",
 	"label.input.loanofficer": "Petugas Produk Pinjaman/Pembiayaan",
 	"label.input.chargepaymentby": "denda pembayaran pada",
 	"label.input.duedate": "tanggal jatuh tempo",
