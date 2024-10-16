@@ -6,3 +6,4 @@ angular.module('configurations', [])
     .constant('KEEPALIVE_INTERVAL', 15 * 60)
     .constant('SECURITY', 'basicauth');
 // Use SECURITY constant as 'oauth' to enable Oauth2 on community app
+//basicauth
