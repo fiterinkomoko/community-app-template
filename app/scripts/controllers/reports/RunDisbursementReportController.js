@@ -10,6 +10,9 @@
             $scope.reportGenerated = false;
             $scope.isViewMode = false;
             $scope.loanProducts = [];
+            $scope.activeLoanOfficers = [];
+            $scope.authorizedSigners = [];
+            $scope.selectedInvestmentOfficerIds = [];
 
             if ($routeParams.reportId) {
 
@@ -30,6 +33,7 @@
                                 $scope.loanProductIds = params.product_ids ? params.product_ids.split(',').map(Number) : [];
                                 $scope.officeId = params.location_id || null;
                                 $scope.interestPercentage = params.interest_percentage || 0;
+                                $scope.selectedInvestmentOfficerIds = params.investment_officer_ids ? params.investment_officer_ids.split(',').map(Number) : [];
                             } catch (e) {
                                 console.error("Error parsing parameters", e);
                             }
@@ -56,38 +60,43 @@
                 $scope.loanProducts = data;
             });
 
-            // Run the report
-            $scope.runReport = function () {
+            //Load active loan officers
+            ResourceFactory.employeeResource.getLoanOfficers({}, function (data) {
+                $scope.activeLoanOfficers = data;
+            });
+
+
+            ResourceFactory.authorizedSignersResource.query(function(data) {
+                $scope.authorizedSigners = data || [];
+            });
+
+            // Build shared query params
+            $scope._buildQueryParams = function () {
                 let selectedOffice = null;
                 if ($scope.officeId) {
                     selectedOffice = $scope.offices.find(o => o.id === $scope.officeId);
                 }
-                const queryParams = {
+                return {
                     start_date: dateFilter($scope.startDate, 'yyyy-MM-dd'),
                     end_date: dateFilter($scope.endDate, 'yyyy-MM-dd'),
                     product_ids: $scope.loanProductIds.join(","),
                     location_name: selectedOffice ? selectedOffice.name : 'All',
                     location_id: $scope.officeId || null,
-                    interest_percentage: $scope.interestPercentage || 10
+                    interest_percentage: $scope.interestPercentage || 10,
+                    investment_officer_ids: ($scope.selectedInvestmentOfficerIds || []).join(",")
                 };
+            };
 
-                // Map format to HTTP Accept header
-                const acceptMap = {
-                    PDF: "application/pdf",
-                    EXCEL: "application/vnd.ms-excel",
-                };
-                const acceptHeader = acceptMap[$scope.fileFormat] || "application/pdf";
-
+            // Run the report — always previews as PDF
+            $scope.runReport = function () {
                 $http({
                     method: 'GET',
                     url: $rootScope.hostUrl + API_VERSION + "/reports/jasper/disbursement_report",
-                    params: queryParams,
+                    params: $scope._buildQueryParams(),
                     responseType: 'blob',
-                    headers: {
-                        'Accept': acceptHeader
-                    }
+                    headers: { 'Accept': 'application/pdf' }
                 }).then(function (response) {
-                    const blob = new Blob([response.data], { type: acceptHeader });
+                    const blob = new Blob([response.data], { type: 'application/pdf' });
                     const url = URL.createObjectURL(blob);
                     $scope.baseURL = $sce.trustAsResourceUrl(url);
                     $scope.reportGenerated = true;
@@ -97,33 +106,56 @@
                 });
             };
 
+            // Download the report as Excel
+            $scope.downloadExcel = function () {
+                $http({
+                    method: 'GET',
+                    url: $rootScope.hostUrl + API_VERSION + "/reports/jasper/disbursement_report",
+                    params: $scope._buildQueryParams(),
+                    responseType: 'blob',
+                    headers: { 'Accept': 'application/vnd.ms-excel' }
+                }).then(function (response) {
+                    const blob = new Blob([response.data], { type: 'application/vnd.ms-excel' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = ($scope.reportName || 'disbursement_report') + '.xls';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }).catch(function (err) {
+                    $log.error("Error downloading Excel:", err);
+                });
+            };
+
             $scope.saveRequest = function () {
                 let selectedOffice = null;
                 if ($scope.officeId) {
                     selectedOffice = $scope.offices.find(o => o.id === $scope.officeId);
                 }
-                const paramters = {
+                const parameters = {
                     fileFormat: $scope.fileFormat,
                     start_date: dateFilter($scope.startDate, 'yyyy-MM-dd'),
                     end_date: dateFilter($scope.endDate, 'yyyy-MM-dd'),
                     product_ids: $scope.loanProductIds.join(","),
                     location_name: selectedOffice ? selectedOffice.name : 'All',
                     location_id: $scope.officeId || null,
-                    interest_percentage: $scope.interestPercentage || 10
+                    interest_percentage: $scope.interestPercentage || 10,
+                    notifyUserId: $scope.notifyUserId,
+                    investment_officer_ids: ($scope.selectedInvestmentOfficerIds || []).join(",")
                 };
 
                 const payload = {
                     report_name: $scope.reportName,
                     file_format: $scope.fileFormat,
                     'status': 'PENDING',
-                    parameters: paramters
+                    parameters: parameters
                 }
 
                 ResourceFactory.disbursementReportsResource.create(
                     payload,
                     function () {
-                        // $log.info("Report request saved successfully");
-                        // $location.path('/disbursement-reports');
                         setTimeout(() => {
                             $location.path('/disbursement-reports');
                             $route.reload(); // force refresh data

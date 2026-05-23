@@ -1,10 +1,11 @@
 (function (module) {
     mifosX.controllers = _.extend(module, {
-        DisbursementReportController: function ($scope, $rootScope, resourceFactory, $location, $http) {
+        DisbursementReportController: function ($scope, $rootScope, resourceFactory, $location, $http,$uibModal) {
             $scope.activeTab = 'approved';
             $scope.pendingReports = [];
             $scope.approvedReports = [];
             $scope.rejectedReports = [];
+            $scope.selectedReport = {};
 
             // Pending reports
             resourceFactory.disbursementReportsResource.query({ status: 'PENDING' }, function (data) {
@@ -19,7 +20,6 @@
 
             // New report request → navigate to a new form screen
             $scope.newDisbursementReport = function () {
-                console.log("Navigating to new request form");
                 $location.path('/disbursement-request');
             };
 
@@ -72,7 +72,7 @@
 
     mifosX.ng.application.controller(
         'DisbursementReportController',
-        ['$scope', '$rootScope', 'ResourceFactory', '$location', '$http', mifosX.controllers.DisbursementReportController]
+        ['$scope', '$rootScope', 'ResourceFactory', '$location', '$http','$uibModal', mifosX.controllers.DisbursementReportController]
     ).run(function ($log) {
         $log.info("DisbursementReportController initialized");
     });
